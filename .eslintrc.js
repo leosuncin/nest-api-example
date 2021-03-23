@@ -35,12 +35,8 @@ module.exports = {
         ignores: ['modules'],
       },
     ],
-    'node/no-unpublished-import': [
-      'error',
-      {
-        allowModules: ['supertest', '@nestjs/testing'],
-      },
-    ],
+    // does not support alias paths
+    'node/no-missing-import': 'off',
   },
   overrides: [
     {
@@ -55,6 +51,7 @@ module.exports = {
   settings: {
     node: {
       tryExtensions: ['.js', '.json', '.ts'],
+      allowModules: ['supertest', '@nestjs/testing', 'ts-jest'],
     },
   },
 };

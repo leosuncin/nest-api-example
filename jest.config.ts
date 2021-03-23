@@ -1,3 +1,7 @@
+import { pathsToModuleNameMapper } from 'ts-jest/utils';
+
+import { compilerOptions } from './tsconfig.json';
+
 export default {
   projects: [
     {
@@ -6,6 +10,8 @@ export default {
       testEnvironment: 'node',
       rootDir: 'src',
       testRegex: '\\.spec\\.ts$',
+      moduleDirectories: ['node_modules', __dirname],
+      moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
     },
     {
       displayName: 'E2E test',
@@ -13,6 +19,8 @@ export default {
       testEnvironment: 'node',
       rootDir: 'test',
       testRegex: '\\.e2e-spec\\.ts$',
+      moduleDirectories: ['node_modules', __dirname],
+      moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
     },
   ],
 };
