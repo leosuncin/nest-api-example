@@ -6,6 +6,22 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: bahmutov/npm-install@v1
-      - uses: icrawl/action-tsc@v1
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+      - name: Install NPM dependencies 📦
+        uses: bahmutov/npm-install@v1
+      - name: Check types 🧩
+        uses: icrawl/action-tsc@v1
+      - name: Choose reporter for ReviewDog 🚦
+        uses: haya14busa/action-cond@v1
+        id: reporter
+        with:
+          cond: ${{ github.event_name == 'pull_request' }}
+          if_true: 'github-pr-review'
+          if_false: 'github-check'
+      - name: Run ESlint 🧹
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          eslint_flags: --ext .js,.ts .
+          reporter: ${{ steps.reporter.outputs.value }}
