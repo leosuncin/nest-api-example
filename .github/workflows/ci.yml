@@ -34,3 +34,32 @@ jobs:
           path: .husky
           pattern: '*'
           exclude: .husky/.gitignore
+
+  test:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip-ci')"
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+      - name: Install NPM dependencies 📦
+        uses: bahmutov/npm-install@v1
+      - name: Run tests 🧪
+        run: npx jest --ci --coverage --json --testLocationInResults --outputFile=result.json
+      - name: Report test results 📝
+        uses: tanmen/jest-reporter@v1
+        if: always()
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Monitor coverage 📫
+        if: "github.event_name == 'pull_request'"
+        uses: slavcodev/coverage-monitor-action@1.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          clover_file: coverage/clover.xml
+          threshold_alert: 50
+          threshold_warning: 80
+      - name: Upload code coverage ⬆️
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit-coverage
+          path: coverage
