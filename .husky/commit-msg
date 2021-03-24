@@ -3,4 +3,4 @@
 
 PATH=$(npm bin):$PATH
 
-commitlint --edit $1
+commitlint --edit "$1"
