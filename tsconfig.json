@@ -15,7 +15,7 @@
     "strict": true,
     "isolatedModules": true,
     "paths": {
-      "@app/*": ["src/*"]
+      "@/*": ["src/*"]
     }
   }
 }
