@@ -4,18 +4,15 @@ module.exports = {
     project: 'tsconfig.json',
     sourceType: 'module',
   },
-  plugins: ['switch-case', 'no-secrets'],
+  plugins: ['switch-case'],
   extends: [
-    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:node/recommended',
-    'plugin:sonarjs/recommended',
     'plugin:unicorn/recommended',
     'plugin:array-func/all',
     'plugin:eslint-comments/recommended',
     'plugin:optimize-regex/recommended',
-    'plugin:promise/recommended',
     'plugin:switch-case/recommended',
     'plugin:security/recommended',
     'prettier',
@@ -27,8 +24,8 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js', 'dist/**', 'coverage/**'],
   rules: {
-    'no-secrets/no-secrets': 'error',
     'unicorn/prevent-abbreviations': ['error', { checkFilenames: false }],
+    'unicorn/prefer-module': 'off',
     'node/no-unsupported-features/es-syntax': [
       'error',
       {
