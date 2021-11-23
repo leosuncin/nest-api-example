@@ -23,15 +23,19 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --selectProjects 'E2E test'",
     "test:watch": "jest --watch",
-    "type-check": "tsc --noEmit --noErrorTruncation --pretty false --incremental false"
+    "type-check": "tsc --noEmit --noErrorTruncation --pretty false --incremental false",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@nestjs/common": "^8.2.3",
     "@nestjs/core": "^8.2.3",
     "@nestjs/platform-express": "^8.2.3",
+    "@nestjs/typeorm": "^8.0.2",
+    "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.4.0"
+    "rxjs": "^7.4.0",
+    "typeorm": "^0.2.41"
   },
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
