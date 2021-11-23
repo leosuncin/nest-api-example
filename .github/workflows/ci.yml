@@ -9,7 +9,15 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v2
       - name: Install NPM dependencies 📦
-        uses: bahmutov/npm-install@v1
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Check types 🧩
         uses: icrawl/action-tsc@v1
       - name: Choose reporter for ReviewDog 🚦
@@ -42,7 +50,15 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v2
       - name: Install NPM dependencies 📦
-        uses: bahmutov/npm-install@v1
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Run tests 🧪
         run: npx jest --ci --coverage --json --testLocationInResults --outputFile=result.json
       - name: Report test results 📝
