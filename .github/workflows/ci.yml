@@ -41,7 +41,7 @@ jobs:
           shellcheck_flags: -e SC1091
           path: .husky
           pattern: '*'
-          exclude: .husky/.gitignore
+          exclude: '*/.gitignore'
 
   test:
     runs-on: ubuntu-latest
