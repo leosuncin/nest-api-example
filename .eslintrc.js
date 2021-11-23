@@ -4,7 +4,7 @@ module.exports = {
     project: 'tsconfig.json',
     sourceType: 'module',
   },
-  plugins: ['switch-case'],
+  plugins: ['switch-case', 'simple-import-sort'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
@@ -15,6 +15,8 @@ module.exports = {
     'plugin:optimize-regex/recommended',
     'plugin:switch-case/recommended',
     'plugin:security/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'prettier',
   ],
   root: true,
@@ -34,6 +36,12 @@ module.exports = {
     ],
     // does not support alias paths
     'node/no-missing-import': 'off',
+    'node/no-unpublished-import': 'off',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
   },
   overrides: [
     {
@@ -43,12 +51,34 @@ module.exports = {
         'plugin:jest/style',
         'plugin:jest-formatting/strict',
       ],
+      rules: {
+        'jest/expect-expect': [
+          'warn',
+          {
+            assertFunctionNames: [
+              'expect',
+              'request.**.expect',
+              '**.expect\\w+',
+            ],
+          },
+        ],
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/unbound-method': 'off',
+        'jest/unbound-method': 'error',
+      },
     },
   ],
   settings: {
     node: {
       tryExtensions: ['.js', '.json', '.ts'],
-      allowModules: ['supertest', '@nestjs/testing', 'ts-jest'],
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts'],
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+      },
     },
   },
 };
