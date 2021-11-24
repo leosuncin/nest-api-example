@@ -3,6 +3,7 @@ import {
   BeforeInsert,
   Column,
   CreateDateColumn,
+  DeepPartial,
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -33,6 +34,10 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  static fromPartial(data: DeepPartial<User>): User {
+    return Object.assign(new User(), data);
+  }
 
   @BeforeInsert()
   async hashPassword() {
