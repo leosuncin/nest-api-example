@@ -10,6 +10,7 @@ specifiers:
   '@nestjs/schematics': ^8.0.5
   '@nestjs/testing': ^8.2.3
   '@nestjs/typeorm': ^8.0.2
+  '@types/bcryptjs': ^2.4.2
   '@types/express': ^4.17.13
   '@types/faker': ^5.5.9
   '@types/jest': ^27.0.3
@@ -18,6 +19,7 @@ specifiers:
   '@types/validator': ^13.7.0
   '@typescript-eslint/eslint-plugin': ^5.4.0
   '@typescript-eslint/parser': ^5.4.0
+  bcryptjs: ^2.4.3
   class-transformer: ^0.5.1
   class-validator: ^0.13.2
   eslint: ^8.3.0
@@ -64,6 +66,7 @@ dependencies:
   '@nestjs/core': 8.2.3_1864eb04cdb557d7ef263925d28b0dee
   '@nestjs/platform-express': 8.2.3_4e195730d90113ce1578bd999274c7a8
   '@nestjs/typeorm': 8.0.2_4ba4467cef2d19f64acba2df5a9a3325
+  bcryptjs: 2.4.3
   class-transformer: 0.5.1
   class-validator: 0.13.2
   pg: 8.7.1
@@ -78,6 +81,7 @@ devDependencies:
   '@nestjs/cli': 8.1.5_eslint@8.3.0
   '@nestjs/schematics': 8.0.5_typescript@4.5.2
   '@nestjs/testing': 8.2.3_51e6544c14e6c411f90104b32018d9ce
+  '@types/bcryptjs': 2.4.2
   '@types/express': 4.17.13
   '@types/faker': 5.5.9
   '@types/jest': 27.0.3
@@ -1360,6 +1364,10 @@ packages:
       '@babel/types': 7.16.0
     dev: true
 
+  /@types/bcryptjs/2.4.2:
+    resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
+    dev: true
+
   /@types/body-parser/1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
@@ -2134,6 +2142,10 @@ packages:
 
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+
+  /bcryptjs/2.4.3:
+    resolution: {integrity: sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=}
+    dev: false
 
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}

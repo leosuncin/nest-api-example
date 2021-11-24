@@ -1,4 +1,6 @@
+import * as bcrypt from 'bcryptjs';
 import {
+  BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
@@ -31,4 +33,11 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  @BeforeInsert()
+  async hashPassword() {
+    const salt = await bcrypt.genSalt();
+
+    this.password = await bcrypt.hash(this.password, salt);
+  }
 }
