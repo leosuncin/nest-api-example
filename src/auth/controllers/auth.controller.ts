@@ -8,10 +8,11 @@ import {
 
 import { RegisterUser } from '@/auth/dto/register-user.dto';
 import type { User } from '@/auth/entities/user.entity';
+import { TokenInterceptor } from '@/auth/interceptors/token.interceptor';
 import { AuthenticationService } from '@/auth/services/authentication.service';
 
 @Controller('auth')
-@UseInterceptors(ClassSerializerInterceptor)
+@UseInterceptors(ClassSerializerInterceptor, TokenInterceptor)
 export class AuthController {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
