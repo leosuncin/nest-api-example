@@ -1,4 +1,5 @@
 import * as bcrypt from 'bcryptjs';
+import { Exclude } from 'class-transformer';
 import {
   BeforeInsert,
   Column,
@@ -21,6 +22,7 @@ export class User {
   username!: string;
 
   @Column()
+  @Exclude()
   password!: string;
 
   @Column({ nullable: true, default: '' })
