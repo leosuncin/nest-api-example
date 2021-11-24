@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register user validations should require all properties 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isDefined": "email should not be null or undefined",
+      "isEmail": "email must be an email",
+      "isNotEmpty": "email should not be empty",
+      "isString": "email must be a string",
+    },
+    "property": "email",
+    "target": RegisterUser {},
+    "value": undefined,
+  },
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isDefined": "password should not be null or undefined",
+      "isNotEmpty": "password should not be empty",
+      "isString": "password must be a string",
+      "maxLength": "password must be shorter than or equal to 30 characters",
+      "minLength": "password must be longer than or equal to 8 characters",
+    },
+    "property": "password",
+    "target": RegisterUser {},
+    "value": undefined,
+  },
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isDefined": "username should not be null or undefined",
+      "isNotEmpty": "username should not be empty",
+      "isString": "username must be a string",
+      "matches": "username must match /^[\\\\w.-]+$/i regular expression",
+      "maxLength": "username must be shorter than or equal to 30 characters",
+    },
+    "property": "username",
+    "target": RegisterUser {},
+    "value": undefined,
+  },
+]
+`;

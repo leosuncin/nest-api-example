@@ -68,6 +68,7 @@
     "eslint-plugin-switch-case": "^1.1.2",
     "eslint-plugin-unicorn": "^39.0.0",
     "faker": "^5.5.3",
+    "fast-check": "^2.19.0",
     "fluse": "^1.1.0",
     "fluse-plugin-faker": "^1.0.1",
     "fluse-plugin-typeorm": "^1.0.1",
