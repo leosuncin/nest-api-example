@@ -1,5 +1,6 @@
 import { HttpStatus, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { useContainer } from 'class-validator';
 import cookieParser from 'cookie-parser';
 
 import { AppModule } from '@/app.module';
@@ -15,6 +16,7 @@ async function bootstrap() {
     }),
   );
   app.use(cookieParser(process.env.SECRET));
+  useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
   await app.listen(process.env.PORT ?? 3000);
 }
