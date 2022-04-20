@@ -1,11 +1,31 @@
+import { Test } from '@nestjs/testing';
+import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
-import { validate } from 'class-validator';
+import { useContainer, validate } from 'class-validator';
 import faker from 'faker';
 import fc from 'fast-check';
 
 import { RegisterUser } from '@/auth/dto/register-user.dto';
+import { User } from '@/auth/entities/user.entity';
+import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 
 describe('Register user validations', () => {
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        {
+          provide: getRepositoryToken(User),
+          useValue: {
+            count: () => Promise.resolve(0),
+          },
+        },
+        IsAlreadyRegisterConstraint,
+      ],
+    }).compile();
+
+    useContainer(module, { fallbackOnErrors: true });
+  });
+
   it('should be validated', async () => {
     await fc.assert(
       fc.asyncProperty(
