@@ -9,6 +9,8 @@ import {
   MinLength,
 } from 'class-validator';
 
+import { IsAlreadyRegister } from '@/auth/validators/is-already-register.validator';
+
 export class RegisterUser {
   @Transform(({ value }): string =>
     typeof value === 'string' ? value.trim() : value,
@@ -17,6 +19,7 @@ export class RegisterUser {
   @IsString()
   @IsNotEmpty()
   @IsEmail()
+  @IsAlreadyRegister()
   readonly email!: string;
 
   @IsDefined()
@@ -34,5 +37,6 @@ export class RegisterUser {
   @IsNotEmpty()
   @MaxLength(30)
   @Matches(/^[\w.-]+$/i)
+  @IsAlreadyRegister()
   readonly username!: string;
 }
