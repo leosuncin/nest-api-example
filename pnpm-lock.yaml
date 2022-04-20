@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@commitlint/cli': ^15.0.0
   '@commitlint/config-conventional': ^15.0.0
+  '@faker-js/faker': ^6.1.2
   '@nestjs/cli': ^8.1.5
   '@nestjs/common': ^8.2.3
   '@nestjs/core': ^8.2.3
@@ -39,10 +40,8 @@ specifiers:
   eslint-plugin-simple-import-sort: ^7.0.0
   eslint-plugin-switch-case: ^1.1.2
   eslint-plugin-unicorn: ^39.0.0
-  faker: ^5.5.3
   fast-check: ^2.19.0
   fluse: ^1.1.0
-  fluse-plugin-faker: ^1.0.1
   fluse-plugin-typeorm: ^1.0.1
   husky: ^7.0.4
   jest: ^27.3.1
@@ -84,6 +83,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 15.0.0
   '@commitlint/config-conventional': 15.0.0
+  '@faker-js/faker': 6.1.2
   '@nestjs/cli': 8.1.5_eslint@8.3.0
   '@nestjs/schematics': 8.0.5_typescript@4.5.2
   '@nestjs/testing': 8.2.3_51e6544c14e6c411f90104b32018d9ce
@@ -111,10 +111,8 @@ devDependencies:
   eslint-plugin-simple-import-sort: 7.0.0_eslint@8.3.0
   eslint-plugin-switch-case: 1.1.2
   eslint-plugin-unicorn: 39.0.0_eslint@8.3.0
-  faker: 5.5.3
   fast-check: 2.19.0
   fluse: 1.1.0
-  fluse-plugin-faker: 1.0.1_faker@5.5.3+fluse@1.1.0
   fluse-plugin-typeorm: 1.0.1_fluse@1.1.0+typeorm@0.2.41
   husky: 7.0.4
   jest: 27.3.1_ts-node@10.4.0
@@ -779,6 +777,11 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@faker-js/faker/6.1.2:
+    resolution: {integrity: sha512-QSvmexHCxeRUk1/yKmoEDaWB5Hohjvtim5g2JJwy8S/l0L4b3y/GxSpE6vN4SBoVGGahEQW21uqyRr7EofI35A==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
   /@humanwhocodes/config-array/0.6.0:
@@ -3637,10 +3640,6 @@ packages:
       to-regex: 3.0.2
     dev: true
 
-  /faker/5.5.3:
-    resolution: {integrity: sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g==}
-    dev: true
-
   /fast-check/2.19.0:
     resolution: {integrity: sha512-qY4Rc0Nljl2aJx2qgbK3o6wPBjL9QvhKdD/VqJgaKd5ewn8l4ViqgDpUHJq/JkHTBnFKomYYvkFkOYGDVTT8bw==}
     engines: {node: '>=8.0.0'}
@@ -3789,16 +3788,6 @@ packages:
 
   /flatted/3.2.4:
     resolution: {integrity: sha512-8/sOawo8tJ4QOBX8YlQBMxL8+RLZfxMQOif9o0KUKTNTjMYElWPE0r/m5VNFxTRd0NSw8qSy8dajrwX4RYI1Hw==}
-    dev: true
-
-  /fluse-plugin-faker/1.0.1_faker@5.5.3+fluse@1.1.0:
-    resolution: {integrity: sha512-PtB0hz5Lt5KyBV7Z6iBeozroM13iDAy34Y+aHJU8CvCR0C9SrvGXbhRFthZZfuyjbp6fX4rQ0ffdRc6LzeTSZg==}
-    peerDependencies:
-      faker: ^5.4.0
-      fluse: ^1.0.0
-    dependencies:
-      faker: 5.5.3
-      fluse: 1.1.0
     dev: true
 
   /fluse-plugin-typeorm/1.0.1_fluse@1.1.0+typeorm@0.2.41:
