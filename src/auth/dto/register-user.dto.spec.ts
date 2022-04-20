@@ -1,8 +1,8 @@
+import { faker } from '@faker-js/faker';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
-import faker from 'faker';
 import fc from 'fast-check';
 
 import { RegisterUser } from '@/auth/dto/register-user.dto';
@@ -115,7 +115,7 @@ describe('Register user validations', () => {
               password: fc.constant('ThePassword!'),
               username: fc.oneof(
                 fc.nat(),
-                fc.string().filter((string) => !/^[\w.-]+$/i.test(string)),
+                fc.constant(''),
                 fc.string({ minLength: 31 }),
               ),
             },

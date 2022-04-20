@@ -45,6 +45,7 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@faker-js/faker": "^6.1.2",
     "@nestjs/cli": "^8.1.5",
     "@nestjs/schematics": "^8.0.5",
     "@nestjs/testing": "^8.2.3",
@@ -72,10 +73,8 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-switch-case": "^1.1.2",
     "eslint-plugin-unicorn": "^39.0.0",
-    "faker": "^5.5.3",
     "fast-check": "^2.19.0",
     "fluse": "^1.1.0",
-    "fluse-plugin-faker": "^1.0.1",
     "fluse-plugin-typeorm": "^1.0.1",
     "husky": "^7.0.4",
     "jest": "^27.3.1",
