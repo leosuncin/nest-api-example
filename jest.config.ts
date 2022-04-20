@@ -12,6 +12,7 @@ export default {
       testRegex: '\\.spec\\.ts$',
       moduleDirectories: ['node_modules', __dirname],
       moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
+      setupFilesAfterEnv: ['dotenv/config'],
     },
     {
       displayName: 'E2E test',
@@ -21,6 +22,7 @@ export default {
       testRegex: '\\.e2e-spec\\.ts$',
       moduleDirectories: ['node_modules', __dirname],
       moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
+      setupFilesAfterEnv: ['dotenv/config'],
     },
   ],
 };
