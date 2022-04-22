@@ -23,7 +23,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --selectProjects 'E2E test'",
     "test:watch": "jest --watch",
-    "type-check": "tsc --noEmit --noErrorTruncation --pretty false --incremental false",
+    "type-check": "tsc --noEmit --noErrorTruncation --pretty false --incremental false -p tsconfig.build.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
