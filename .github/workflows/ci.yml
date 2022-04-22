@@ -20,6 +20,8 @@ jobs:
           key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Check types 🧩
         uses: icrawl/action-tsc@v1
+        with:
+          project: tsconfig.build.json
       - name: Choose reporter for ReviewDog 🚦
         uses: haya14busa/action-cond@v1
         id: reporter
@@ -61,6 +63,8 @@ jobs:
           key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Run tests 🧪
         run: pnpm test:cov -- --ci --json --testLocationInResults --outputFile=result.json
+        env:
+          SECRET: qui-eu-ad-excepteur-occaecat-id-ipsum-ex-minim
       - name: Report test results 📝
         uses: tanmen/jest-reporter@v1
         if: always()
