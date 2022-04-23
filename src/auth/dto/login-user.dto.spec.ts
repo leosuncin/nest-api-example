@@ -1,11 +1,36 @@
 import { faker } from '@faker-js/faker';
+import { Test } from '@nestjs/testing';
+import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
-import { validate } from 'class-validator';
+import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
 
 import { LoginUser } from '@/auth/dto/login-user.dto';
+import { User } from '@/auth/entities/user.entity';
+import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
 
 describe('Login user validations', () => {
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        {
+          provide: getRepositoryToken(User),
+          useValue: {
+            findOne: () =>
+              Promise.resolve(
+                User.fromPartial({
+                  checkPassword: () => Promise.resolve(true),
+                }),
+              ),
+          },
+        },
+        ValidateCredentialConstraint,
+      ],
+    }).compile();
+
+    useContainer(module, { fallbackOnErrors: true });
+  });
+
   it('should be validated', async () => {
     await fc.assert(
       fc.asyncProperty(

@@ -5,6 +5,7 @@ Array [
   ValidationError {
     "children": Array [],
     "constraints": Object {
+      "credential": "password is incorrect",
       "isDefined": "password should not be null or undefined",
       "isNotEmpty": "password should not be empty",
       "isString": "password must be a string",
@@ -18,6 +19,7 @@ Array [
   ValidationError {
     "children": Array [],
     "constraints": Object {
+      "credential": "username is incorrect",
       "isDefined": "username should not be null or undefined",
       "isNotEmpty": "username should not be empty",
       "isString": "username must be a string",
