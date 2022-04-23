@@ -47,4 +47,8 @@ export class User {
 
     this.password = await bcrypt.hash(this.password, salt);
   }
+
+  checkPassword(plainPassword: string) {
+    return bcrypt.compare(plainPassword, this.password);
+  }
 }

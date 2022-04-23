@@ -6,6 +6,7 @@ import { AuthController } from '@/auth/controllers/auth.controller';
 import { User } from '@/auth/entities/user.entity';
 import { AuthenticationService } from '@/auth/services/authentication.service';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
+import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
 
 @Module({
   imports: [
@@ -17,7 +18,11 @@ import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-regist
       },
     }),
   ],
-  providers: [AuthenticationService, IsAlreadyRegisterConstraint],
+  providers: [
+    AuthenticationService,
+    IsAlreadyRegisterConstraint,
+    ValidateCredentialConstraint,
+  ],
   controllers: [AuthController],
 })
 export class AuthModule {}
