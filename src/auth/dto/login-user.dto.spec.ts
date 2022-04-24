@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
@@ -7,6 +6,7 @@ import fc from 'fast-check';
 
 import { LoginUser } from '@/auth/dto/login-user.dto';
 import { User } from '@/auth/entities/user.entity';
+import { loginFixture } from '@/auth/fixtures/auth.fixture';
 import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
 
 describe('Login user validations', () => {
@@ -38,16 +38,9 @@ describe('Login user validations', () => {
           .integer()
           .noBias()
           .noShrink()
-          .map((seed): LoginUser => {
-            faker.seed(seed);
-
-            return plainToInstance(LoginUser, {
-              password: faker.internet.password(),
-              username: faker.internet.userName(),
-            });
-          }),
+          .map((seed) => loginFixture().execute({ faker: { seed } })),
         async (data) => {
-          const errors = await validate(data);
+          const errors = await validate(await data);
 
           expect(errors).toHaveLength(0);
         },
