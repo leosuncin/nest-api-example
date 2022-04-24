@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
@@ -7,6 +6,7 @@ import fc from 'fast-check';
 
 import { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
+import { registerFixture } from '@/auth/fixtures/auth.fixture';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 
 describe('Register user validations', () => {
@@ -33,17 +33,9 @@ describe('Register user validations', () => {
           .integer()
           .noBias()
           .noShrink()
-          .map((seed): RegisterUser => {
-            faker.seed(seed);
-
-            return plainToInstance(RegisterUser, {
-              email: faker.internet.email(),
-              password: faker.internet.password(),
-              username: faker.internet.userName(),
-            });
-          }),
+          .map((seed) => registerFixture().execute({ faker: { seed } })),
         async (data) => {
-          const errors = await validate(data);
+          const errors = await validate(await data);
 
           expect(errors).toHaveLength(0);
         },
