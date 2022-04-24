@@ -2,6 +2,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { AuthController } from '@/auth/controllers/auth.controller';
+import type { LoginUser } from '@/auth/dto/login-user.dto';
 import type { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import { AuthenticationService } from '@/auth/services/authentication.service';
@@ -19,6 +20,11 @@ jest.mock('@/auth/services/authentication.service', () => ({
           }),
         ),
       ),
+      login: jest
+        .fn()
+        .mockImplementation((credentials: LoginUser) =>
+          Promise.resolve(User.fromPartial(credentials)),
+        ),
     };
   },
 }));
@@ -59,5 +65,15 @@ describe('AuthController', () => {
 
     await expect(controller.register(newUser)).resolves.toBeInstanceOf(User);
     expect(service.register).toHaveBeenCalledWith(newUser);
+  });
+
+  it('should login an user', async () => {
+    const credentials: LoginUser = {
+      password: 'Th€Pa$$w0rd!',
+      username: 'jhon-doe',
+    };
+
+    await expect(controller.login(credentials)).resolves.toBeInstanceOf(User);
+    expect(service.login).toHaveBeenCalledWith(credentials);
   });
 });
