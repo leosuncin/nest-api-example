@@ -1,28 +1,13 @@
-import { plainToInstance } from 'class-transformer';
+import { fluse } from 'fluse';
+import typeormPlugin from 'fluse-plugin-typeorm';
 
-import { LoginUser } from '@/auth/dto/login-user.dto';
-import { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
-import { fixture } from '@/common/test-helpers';
+import { fakerPlugin } from '@/common/fluse-plugin-faker';
 
-export const loginFixture = fixture<LoginUser, Partial<LoginUser>>({
-  create({ faker }, override) {
-    return plainToInstance(LoginUser, {
-      password: faker.internet.password(),
-      username: faker.internet.userName().toLowerCase(),
-      ...override,
-    });
-  },
-});
-
-export const registerFixture = fixture<RegisterUser, Partial<RegisterUser>>({
-  create({ faker }, override) {
-    return plainToInstance(RegisterUser, {
-      email: faker.internet.exampleEmail().toLowerCase(),
-      password: faker.internet.password(),
-      username: faker.internet.userName().toLowerCase(),
-      ...override,
-    });
+const { fixture } = fluse({
+  plugins: {
+    faker: fakerPlugin(),
+    orm: typeormPlugin(),
   },
 });
 

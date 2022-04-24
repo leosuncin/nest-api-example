@@ -10,13 +10,9 @@ import { Test } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { useContainer } from 'class-validator';
 import cookieParser from 'cookie-parser';
-import { fluse } from 'fluse';
-import typeormPlugin from 'fluse-plugin-typeorm';
 import { randomUUID } from 'node:crypto';
 import { DataType, newDb } from 'pg-mem';
 import type { Connection } from 'typeorm';
-
-import { fakerPlugin } from '@/common/fluse-plugin-faker';
 
 export const uuidRegex = /[\da-f]{8}(?:-[\da-f]{4}){3}-[\da-f]{12}/;
 
@@ -77,10 +73,3 @@ export async function buildTestApplication(
 
   return app.init();
 }
-
-export const { fixture, scenario } = fluse({
-  plugins: {
-    faker: fakerPlugin(),
-    orm: typeormPlugin(),
-  },
-});

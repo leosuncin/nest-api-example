@@ -5,11 +5,8 @@ import request from 'supertest';
 
 import { AuthModule } from '@/auth/auth.module';
 import type { User } from '@/auth/entities/user.entity';
-import {
-  loginFixture,
-  registerFixture,
-  userFixture,
-} from '@/auth/fixtures/user.fixture';
+import { loginFixture, registerFixture } from '@/auth/fixtures/auth.fixture';
+import { userFixture } from '@/auth/fixtures/user.fixture';
 import {
   buildTestApplication,
   isoDateRegex,
