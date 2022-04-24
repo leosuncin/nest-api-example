@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install NPM dependencies 📦
         uses: pnpm/action-setup@v2
         with:
           version: latest
           run_install: true
-      - name: Cache pnpm modules
-        uses: actions/cache@v2
+      - name: Cache pnpm modules 🗂️
+        uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -50,14 +50,14 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'skip-ci')"
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install NPM dependencies 📦
         uses: pnpm/action-setup@v2
         with:
           version: latest
           run_install: true
-      - name: Cache pnpm modules
-        uses: actions/cache@v2
+      - name: Cache pnpm modules 🗂️
+        uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -71,15 +71,16 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Monitor coverage 📫
-        if: "github.event_name == 'pull_request'"
-        uses: slavcodev/coverage-monitor-action@1.1.0
+        uses: slavcodev/coverage-monitor-action@1.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          clover_file: coverage/clover.xml
+          coverage_format: clover
+          coverage_path: coverage/clover.xml
+          check: github.event_name == 'pull_request'
           threshold_alert: 50
           threshold_warning: 80
       - name: Upload code coverage ⬆️
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: unit-coverage
           path: coverage
