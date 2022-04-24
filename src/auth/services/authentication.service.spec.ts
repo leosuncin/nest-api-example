@@ -3,9 +3,16 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { mock, mockReset } from 'jest-mock-extended';
 import type { Repository } from 'typeorm';
 
+import type { LoginUser } from '@/auth/dto/login-user.dto';
 import type { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import { AuthenticationService } from '@/auth/services/authentication.service';
+
+const user = User.fromPartial({
+  email: 'john@doe.me',
+  password: 'Th€Pa$$w0rd!',
+  username: 'john-doe',
+});
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
@@ -23,6 +30,9 @@ describe('AuthenticationService', () => {
           updatedAt: new Date(),
         }),
       ),
+    );
+    mockRepository.findOneOrFail.mockImplementation(() =>
+      Promise.resolve(user),
     );
 
     const module: TestingModule = await Test.createTestingModule({
@@ -52,5 +62,18 @@ describe('AuthenticationService', () => {
     await expect(service.register(newUser)).resolves.toBeInstanceOf(User);
     expect(mockRepository.create).toHaveBeenCalledWith(newUser);
     expect(mockRepository.save).toHaveBeenCalledTimes(1);
+  });
+
+  it('should login with an existing user without fail', async () => {
+    const credentials: LoginUser = {
+      password: 'Th€Pa$$w0rd!',
+      username: 'jhon-doe',
+    };
+
+    await expect(service.login(credentials)).resolves.toBeInstanceOf(User);
+    expect(mockRepository.findOneOrFail).toHaveBeenCalledWith({
+      where: { username: credentials.username },
+    });
+    expect(mockRepository.findOneOrFail).toHaveBeenCalledTimes(1);
   });
 });
