@@ -1,0 +1,18 @@
+{
+  "statusCode": 422,
+  "message": [
+    "password should not be null or undefined",
+    "password must be shorter than or equal to 30 characters",
+    "password must be longer than or equal to 8 characters",
+    "password should not be empty",
+    "password must be a string",
+    "password is incorrect",
+    "username should not be null or undefined",
+    "username must match /^[\\w.-]+$/i regular expression",
+    "username must be shorter than or equal to 30 characters",
+    "username should not be empty",
+    "username must be a string",
+    "username is incorrect"
+  ],
+  "error": "Unprocessable Entity"
+}

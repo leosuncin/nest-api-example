@@ -1,7 +1,7 @@
 import { HttpStatus } from '@nestjs/common';
 import { request, spec } from 'pactum';
 
-import { registerFixture } from '@/auth/fixtures/user.fixture';
+import { loginFixture, registerFixture } from '@/auth/fixtures/auth.fixture';
 import { isoDateRegex, uuidRegex } from '@/common/test-helpers';
 
 describe('AuthController (e2e)', () => {
@@ -40,17 +40,12 @@ describe('AuthController (e2e)', () => {
   });
 
   it('validate the register data', async () => {
-    const data = {};
-
     await spec()
+      .name('register-errors')
       .post('/auth/register')
-      .withBody(data)
+      .withBody({})
       .expectStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-      .expectJsonLike({
-        error: 'Unprocessable Entity',
-        message: 'Array.isArray($V) ',
-        statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
-      })
+      .expectJsonSnapshot()
       .toss();
   });
 
@@ -71,6 +66,59 @@ describe('AuthController (e2e)', () => {
           `username «${user.username}» is already registered`,
         ],
         error: 'Unprocessable Entity',
+      })
+      .toss();
+  });
+
+  it('login an existing user', async () => {
+    const data = {
+      username: user.username,
+      password: 'Th€Pa$$w0rd!',
+    };
+
+    await spec()
+      .post('/auth/login')
+      .withBody(data)
+      .expectStatus(HttpStatus.OK)
+      .expectCookiesLike({
+        token: 'typeof $V === "string"',
+        // eslint-disable-next-line unicorn/no-null
+        HttpOnly: null,
+        SameSite: 'Strict',
+      })
+      .expectJsonLike({
+        email: user.email,
+        username: user.username,
+        image: 'typeof $V === "string"',
+        bio: 'typeof $V === "string"',
+        id: uuidRegex,
+        createdAt: isoDateRegex,
+        updatedAt: isoDateRegex,
+      })
+      .toss();
+  });
+
+  it('validate the login data', async () => {
+    await spec()
+      .name('login-errors')
+      .post('/auth/login')
+      .withBody({})
+      .expectStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+      .expectJsonSnapshot()
+      .toss();
+  });
+
+  it('validate the login credentials', async () => {
+    const data = await loginFixture({ username: user.username }).execute();
+
+    await spec()
+      .post('/auth/login')
+      .withBody(data)
+      .expectStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+      .expectJsonLike({
+        error: 'Unprocessable Entity',
+        message: ['password is incorrect'],
+        statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
       })
       .toss();
   });
