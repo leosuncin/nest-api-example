@@ -5,6 +5,7 @@ import type { Repository } from 'typeorm';
 import { LoginUser } from '@/auth/dto/login-user.dto';
 import { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
+import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
 
 @Injectable()
 export class AuthenticationService {
@@ -24,6 +25,12 @@ export class AuthenticationService {
       where: {
         username: credentials.username,
       },
+    });
+  }
+
+  verifyPayload(payload: JwtPayload): Promise<User | undefined> {
+    return this.userRepository.findOne({
+      where: { id: payload.sub },
     });
   }
 }
