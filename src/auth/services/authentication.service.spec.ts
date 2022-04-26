@@ -6,6 +6,7 @@ import type { Repository } from 'typeorm';
 import type { LoginUser } from '@/auth/dto/login-user.dto';
 import type { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
+import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
 import { AuthenticationService } from '@/auth/services/authentication.service';
 
 const user = User.fromPartial({
@@ -34,6 +35,7 @@ describe('AuthenticationService', () => {
     mockRepository.findOneOrFail.mockImplementation(() =>
       Promise.resolve(user),
     );
+    mockRepository.findOne.mockImplementation(() => Promise.resolve(user));
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -75,5 +77,19 @@ describe('AuthenticationService', () => {
       where: { username: credentials.username },
     });
     expect(mockRepository.findOneOrFail).toHaveBeenCalledTimes(1);
+  });
+
+  it('should find a user from the payload', async () => {
+    const payload: JwtPayload = {
+      sub: user.id,
+      iat: Date.now(),
+      exp: Date.now() + 3600,
+    };
+
+    await expect(service.verifyPayload(payload)).resolves.toBeInstanceOf(User);
+    expect(mockRepository.findOne).toHaveBeenCalledWith({
+      where: { id: payload.sub },
+    });
+    expect(mockRepository.findOne).toHaveBeenCalledTimes(1);
   });
 });

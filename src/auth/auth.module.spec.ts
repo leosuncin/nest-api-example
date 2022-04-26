@@ -1,7 +1,8 @@
 import type { INestApplication } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { getConnectionToken } from '@nestjs/typeorm';
-import request from 'supertest';
+import request, { agent } from 'supertest';
 
 import { AuthModule } from '@/auth/auth.module';
 import type { User } from '@/auth/entities/user.entity';
@@ -16,12 +17,15 @@ import {
 describe('Auth module', () => {
   let app: INestApplication;
   let user: User;
+  let jwt: string;
 
   beforeAll(async () => {
     app = await buildTestApplication(AuthModule);
     user = await userFixture({ password: 'Th€Pa$$w0rd!' }).execute({
       orm: { connection: app.get(getConnectionToken()) },
     });
+    const jwtService = app.get(JwtService);
+    jwt = jwtService.sign({ sub: user.id });
   });
 
   it('register a new user', async () => {
@@ -135,6 +139,75 @@ describe('Auth module', () => {
           error: 'Unprocessable Entity',
           message: expect.arrayContaining([expect.any(String)]),
           statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+        });
+      });
+  });
+
+  it('get current authenticated user', async () => {
+    const client = agent(app.getHttpServer());
+
+    await client
+      .post('/auth/login')
+      .send({ username: user.username, password: 'Th€Pa$$w0rd!' })
+      .expect(HttpStatus.OK)
+      .expect('set-cookie', /token=/);
+
+    await client
+      .get('/auth/me')
+      .expect(HttpStatus.OK)
+      .expect(({ body, headers }) => {
+        expect(headers).not.toHaveProperty('set-cookie');
+
+        expect(body).toHaveProperty('id', user.id);
+        expect(body).toHaveProperty('email', user.email);
+        expect(body).toHaveProperty('username', user.username);
+        expect(body).toHaveProperty('image', user.image);
+        expect(body).toHaveProperty('bio', user.bio);
+        expect(body).not.toHaveProperty('password');
+        expect(body).toHaveProperty(
+          'createdAt',
+          expect.stringMatching(isoDateRegex),
+        );
+        expect(body).toHaveProperty(
+          'updatedAt',
+          expect.stringMatching(isoDateRegex),
+        );
+      });
+  });
+
+  it('get current user from JWT', async () => {
+    await request(app.getHttpServer())
+      .get('/auth/me')
+      .set('Authorization', `Bearer ${jwt}`)
+      .expect(HttpStatus.OK)
+      .expect(({ body, headers }) => {
+        expect(headers).not.toHaveProperty('set-cookie');
+
+        expect(body).toHaveProperty('id', user.id);
+        expect(body).toHaveProperty('email', user.email);
+        expect(body).toHaveProperty('username', user.username);
+        expect(body).toHaveProperty('image', user.image);
+        expect(body).toHaveProperty('bio', user.bio);
+        expect(body).not.toHaveProperty('password');
+        expect(body).toHaveProperty(
+          'createdAt',
+          expect.stringMatching(isoDateRegex),
+        );
+        expect(body).toHaveProperty(
+          'updatedAt',
+          expect.stringMatching(isoDateRegex),
+        );
+      });
+  });
+
+  it("fail to get current user when it's unauthenticated", async () => {
+    await request(app.getHttpServer())
+      .get('/auth/me')
+      .expect(HttpStatus.UNAUTHORIZED)
+      .expect(({ body }) => {
+        expect(body).toMatchObject({
+          message: 'Unauthorized',
+          statusCode: HttpStatus.UNAUTHORIZED,
         });
       });
   });

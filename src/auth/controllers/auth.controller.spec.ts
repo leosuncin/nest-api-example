@@ -76,4 +76,10 @@ describe('AuthController', () => {
     await expect(controller.login(credentials)).resolves.toBeInstanceOf(User);
     expect(service.login).toHaveBeenCalledWith(credentials);
   });
+
+  it('should get the current user', () => {
+    const user = User.fromPartial({});
+
+    expect(controller.currentUser(user)).toBe(user);
+  });
 });
