@@ -122,4 +122,43 @@ describe('AuthController (e2e)', () => {
       })
       .toss();
   });
+
+  it('get current authenticated user', async () => {
+    const tokenCookie = await spec()
+      .post('/auth/login')
+      .withBody({ username: user.username, password: 'Th€Pa$$w0rd!' })
+      .expectStatus(HttpStatus.OK)
+      .returns(({ res }) => res.headers['set-cookie'])
+      .toss();
+
+    await spec()
+      .get('/auth/me')
+      .withHeaders('Cookie', tokenCookie)
+      .expectStatus(HttpStatus.OK)
+      .expect(({ res }) => {
+        expect(res.headers).not.toHaveProperty('set-cookie');
+
+        expect(res.json).toMatchObject({
+          email: user.email,
+          username: user.username,
+          image: expect.any(String),
+          bio: expect.any(String),
+          id: expect.stringMatching(uuidRegex),
+          createdAt: expect.stringMatching(isoDateRegex),
+          updatedAt: expect.stringMatching(isoDateRegex),
+        });
+      })
+      .toss();
+  });
+
+  it("fail to get current user when it's unauthenticated", async () => {
+    await spec()
+      .get('/auth/me')
+      .expectStatus(HttpStatus.UNAUTHORIZED)
+      .expectJson({
+        message: 'Unauthorized',
+        statusCode: HttpStatus.UNAUTHORIZED,
+      })
+      .toss();
+  });
 });
