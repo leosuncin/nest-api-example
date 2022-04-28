@@ -5,6 +5,7 @@ import type { Repository } from 'typeorm';
 
 import type { LoginUser } from '@/auth/dto/login-user.dto';
 import type { RegisterUser } from '@/auth/dto/register-user.dto';
+import type { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
 import { AuthenticationService } from '@/auth/services/authentication.service';
@@ -32,10 +33,9 @@ describe('AuthenticationService', () => {
         }),
       ),
     );
-    mockRepository.findOneOrFail.mockImplementation(() =>
-      Promise.resolve(user),
+    mockRepository.merge.mockImplementation((entity, entityLike) =>
+      Object.assign(entity, entityLike),
     );
-    mockRepository.findOne.mockImplementation(() => Promise.resolve(user));
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -71,6 +71,7 @@ describe('AuthenticationService', () => {
       password: 'Th€Pa$$w0rd!',
       username: 'jhon-doe',
     };
+    mockRepository.findOneOrFail.mockResolvedValueOnce(user);
 
     await expect(service.login(credentials)).resolves.toBeInstanceOf(User);
     expect(mockRepository.findOneOrFail).toHaveBeenCalledWith({
@@ -85,11 +86,27 @@ describe('AuthenticationService', () => {
       iat: Date.now(),
       exp: Date.now() + 3600,
     };
+    mockRepository.findOne.mockResolvedValueOnce(user);
 
     await expect(service.verifyPayload(payload)).resolves.toBeInstanceOf(User);
     expect(mockRepository.findOne).toHaveBeenCalledWith({
       where: { id: payload.sub },
     });
     expect(mockRepository.findOne).toHaveBeenCalledTimes(1);
+  });
+
+  it('should update a user', async () => {
+    const changes: UpdateUser = {
+      image: 'https://thispersondoesnotexist.com/image',
+      username: 'john',
+      bio: 'Aute culpa quis nostrud ipsum.',
+      email: 'johndoe@example.com',
+      newPassword: 'ji32k7au4a83',
+      password: 'Th€Pa$$w0rd!',
+    };
+
+    await expect(service.update(user, changes)).resolves.toBeInstanceOf(User);
+    expect(mockRepository.merge).toHaveBeenCalledWith(user, changes);
+    expect(mockRepository.save).toHaveBeenCalledTimes(1);
   });
 });

@@ -6,26 +6,33 @@ import request, { agent } from 'supertest';
 
 import { AuthModule } from '@/auth/auth.module';
 import type { User } from '@/auth/entities/user.entity';
-import { loginFixture, registerFixture } from '@/auth/fixtures/auth.fixture';
+import {
+  loginFixture,
+  registerFixture,
+  updateFixture,
+} from '@/auth/fixtures/auth.fixture';
 import { userFixture } from '@/auth/fixtures/user.fixture';
 import {
   buildTestApplication,
+  database,
   isoDateRegex,
+  loadFixtures,
   uuidRegex,
 } from '@/common/test-helpers';
 
 describe('Auth module', () => {
+  const password = 'Th€Pa$$w0rd!';
   let app: INestApplication;
   let user: User;
   let jwt: string;
 
   beforeAll(async () => {
     app = await buildTestApplication(AuthModule);
-    user = await userFixture({ password: 'Th€Pa$$w0rd!' }).execute({
-      orm: { connection: app.get(getConnectionToken()) },
-    });
     const jwtService = app.get(JwtService);
+    const connection = app.get(getConnectionToken());
+    user = await userFixture({ password }).execute({ orm: { connection } });
     jwt = jwtService.sign({ sub: user.id });
+    await loadFixtures(connection);
   });
 
   it('register a new user', async () => {
@@ -90,7 +97,7 @@ describe('Auth module', () => {
   it('login an existing user', async () => {
     const data = {
       username: user.username,
-      password: 'Th€Pa$$w0rd!',
+      password,
     };
 
     await request(app.getHttpServer())
@@ -148,7 +155,7 @@ describe('Auth module', () => {
 
     await client
       .post('/auth/login')
-      .send({ username: user.username, password: 'Th€Pa$$w0rd!' })
+      .send({ username: user.username, password })
       .expect(HttpStatus.OK)
       .expect('set-cookie', /token=/);
 
@@ -206,6 +213,69 @@ describe('Auth module', () => {
       .expect(HttpStatus.UNAUTHORIZED)
       .expect(({ body }) => {
         expect(body).toMatchObject({
+          message: 'Unauthorized',
+          statusCode: HttpStatus.UNAUTHORIZED,
+        });
+      });
+  });
+
+  it('update current user info', async () => {
+    const data = await updateFixture({ password }).execute();
+    const backup = database.backup();
+
+    await request(app.getHttpServer())
+      .patch('/auth/me')
+      .set('Authorization', `Bearer ${jwt}`)
+      .send(data)
+      .expect(HttpStatus.OK)
+      .expect(({ body, headers }) => {
+        expect(headers).not.toHaveProperty('set-cookie');
+
+        expect(body).toHaveProperty('email', data.email);
+        expect(body).toHaveProperty('username', data.username);
+        expect(body).toHaveProperty('bio', data.bio);
+        expect(body).toHaveProperty('image', data.image);
+        expect(body).not.toHaveProperty('password');
+      });
+
+    backup.restore();
+  });
+
+  it.each([
+    /* wrong current password */
+    { password: 'ji32k7au4a83' },
+    /* email is already used by another user */
+    { email: 'jane@doe.me' },
+    /* username is already used by another user */
+    { username: 'jane-doe' },
+    /* wrong url due its protocol */
+    { image: 'ftp://localhost/avatar.png' },
+  ])('validate the update of current user', async (override) => {
+    const data = await updateFixture(override).execute();
+
+    await request(app.getHttpServer())
+      .patch('/auth/me')
+      .set('Authorization', `Bearer ${jwt}`)
+      .send(data)
+      .expect(HttpStatus.UNPROCESSABLE_ENTITY)
+      .expect(({ body }) => {
+        expect(body).toMatchObject({
+          error: 'Unprocessable Entity',
+          message: expect.arrayContaining([expect.any(String)]),
+          statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+        });
+      });
+  });
+
+  it("fail to update current user when it's unauthenticated", async () => {
+    const data = await updateFixture().execute();
+
+    await request(app.getHttpServer())
+      .patch('/auth/me')
+      .send(data)
+      .expect(HttpStatus.UNAUTHORIZED)
+      .expect(({ body }) => {
+        expect(body).toEqual({
           message: 'Unauthorized',
           statusCode: HttpStatus.UNAUTHORIZED,
         });

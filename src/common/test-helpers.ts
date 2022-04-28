@@ -11,8 +11,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { useContainer } from 'class-validator';
 import cookieParser from 'cookie-parser';
 import { randomUUID } from 'node:crypto';
+import path from 'node:path';
 import { DataType, newDb } from 'pg-mem';
 import type { Connection } from 'typeorm';
+import {
+  Builder,
+  fixturesIterator,
+  Loader,
+  Parser,
+  Resolver,
+} from 'typeorm-fixtures-cli';
 
 export const uuidRegex = /[\da-f]{8}(?:-[\da-f]{4}){3}-[\da-f]{12}/;
 
@@ -72,4 +80,19 @@ export async function buildTestApplication(
   useContainer(module, { fallbackOnErrors: true });
 
   return app.init();
+}
+
+export async function loadFixtures(connection: Connection) {
+  const loader = new Loader();
+  const resolver = new Resolver();
+
+  loader.load(path.resolve(process.cwd(), 'fixtures'));
+
+  const fixtures = resolver.resolve(loader.fixtureConfigs);
+  const builder = new Builder(connection, new Parser());
+
+  for (const fixture of fixturesIterator(fixtures)) {
+    const entity = await builder.build(fixture);
+    await connection.getRepository(entity.constructor.name).save(entity);
+  }
 }
