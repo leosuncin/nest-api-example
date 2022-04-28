@@ -4,6 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AuthController } from '@/auth/controllers/auth.controller';
 import type { LoginUser } from '@/auth/dto/login-user.dto';
 import type { RegisterUser } from '@/auth/dto/register-user.dto';
+import type { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import { AuthenticationService } from '@/auth/services/authentication.service';
 
@@ -24,6 +25,11 @@ jest.mock('@/auth/services/authentication.service', () => ({
         .fn()
         .mockImplementation((credentials: LoginUser) =>
           Promise.resolve(User.fromPartial(credentials)),
+        ),
+      update: jest
+        .fn()
+        .mockImplementation((user: User, changes: UpdateUser) =>
+          Promise.resolve(User.fromPartial({ ...user, ...changes })),
         ),
     };
   },
@@ -81,5 +87,22 @@ describe('AuthController', () => {
     const user = User.fromPartial({});
 
     expect(controller.currentUser(user)).toBe(user);
+  });
+
+  it('should update current user data', async () => {
+    const user = User.fromPartial({});
+    const changes: UpdateUser = {
+      image: 'https://thispersondoesnotexist.com/image',
+      username: 'john',
+      bio: 'Aute culpa quis nostrud ipsum.',
+      email: 'johndoe@example.com',
+      newPassword: 'ji32k7au4a83',
+      password: 'Th€Pa$$w0rd!',
+    };
+
+    await expect(controller.updateUser(user, changes)).resolves.toBeInstanceOf(
+      User,
+    );
+    expect(service.update).toHaveBeenCalledWith(user, changes);
   });
 });

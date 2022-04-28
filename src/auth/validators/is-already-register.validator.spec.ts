@@ -1,7 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { useContainer, validate } from 'class-validator';
-import { anyObject, mock, MockProxy } from 'jest-mock-extended';
+import { mock, mockReset } from 'jest-mock-extended';
 import type { Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
@@ -10,111 +10,156 @@ import {
   IsAlreadyRegisterConstraint,
 } from '@/auth/validators/is-already-register.validator';
 
+class WithEmail {
+  @IsAlreadyRegister()
+  readonly email!: string;
+
+  constructor(email: string, readonly id?: string) {
+    this.email = email;
+  }
+}
+class WithUsername {
+  @IsAlreadyRegister()
+  readonly username!: string;
+
+  constructor(username: string, readonly id?: string) {
+    this.username = username;
+  }
+}
+
 describe('IsAlreadyRegister', () => {
-  const user = User.fromPartial({
-    id: '',
-    email: 'john@doe.me',
-    password: 'Th€Pa$$w0rd!',
-    username: 'john_doe',
-    bio: '',
-    image: '',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
-  let mockRepository: MockProxy<Repository<User>>;
+  const mockRepository = mock<Repository<User>>();
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [
         {
           provide: getRepositoryToken(User),
-          useValue: mock<Repository<User>>(),
+          useValue: mockRepository,
         },
         IsAlreadyRegisterConstraint,
       ],
     }).compile();
 
     useContainer(module, { fallbackOnErrors: true });
-    mockRepository = module.get<Repository<User>, MockProxy<Repository<User>>>(
-      getRepositoryToken(User),
-    );
+    mockReset(mockRepository);
   });
 
-  it('should validate when the user already exists with email', async () => {
-    class DTO {
-      @IsAlreadyRegister()
-      readonly email!: string;
+  it('should fail when an user already exists with the same email', async () => {
+    const dto = new WithEmail('john@doe.me');
 
-      constructor(email: string) {
-        this.email = email;
-      }
-    }
-    const dto = new DTO(user.email);
-
-    mockRepository.count
-      .calledWith(anyObject({ email: user.email }))
-      .mockResolvedValue(1);
+    mockRepository.count.mockResolvedValueOnce(1);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'email');
+    expect(mockRepository.count).toHaveBeenCalledWith({
+      where: { email: 'john@doe.me' },
+    });
   });
 
-  it('should validate when the user already exists with username', async () => {
-    class DTO {
-      @IsAlreadyRegister()
-      readonly username!: string;
+  it('should fail when an user already exists with the same username', async () => {
+    const dto = new WithUsername('john-doe');
 
-      constructor(username: string) {
-        this.username = username;
-      }
-    }
-    const dto = new DTO(user.username);
-
-    mockRepository.count
-      .calledWith(anyObject({ username: user.username }))
-      .mockResolvedValue(1);
+    mockRepository.count.mockResolvedValueOnce(1);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'username');
+    expect(mockRepository.count).toHaveBeenCalledWith({
+      where: { username: 'john-doe' },
+    });
   });
 
-  it('should validate when the user not exists with email', async () => {
-    class DTO {
-      @IsAlreadyRegister()
-      readonly email!: string;
+  it('should pass when no user exists with the email', async () => {
+    const dto = new WithEmail('jane@doe.me');
 
-      constructor(email: string) {
-        this.email = email;
-      }
-    }
-    const dto = new DTO('jane@doe.me');
-
-    mockRepository.count.calledWith(anyObject()).mockResolvedValue(0);
+    mockRepository.count.mockResolvedValueOnce(0);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
+    expect(mockRepository.count).toHaveBeenCalledWith({
+      where: { email: 'jane@doe.me' },
+    });
   });
 
-  it('should validate when the user not exists with username', async () => {
-    class DTO {
-      @IsAlreadyRegister()
-      readonly username!: string;
+  it('should pass when no user exists with the username', async () => {
+    const dto = new WithUsername('jane.doe');
 
-      constructor(username: string) {
-        this.username = username;
-      }
-    }
-    const dto = new DTO('jane_doe');
-
-    mockRepository.count.calledWith(anyObject()).mockResolvedValue(0);
+    mockRepository.count.mockResolvedValueOnce(0);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
+    expect(mockRepository.count).toHaveBeenCalledWith({
+      where: { username: 'jane.doe' },
+    });
+  });
+
+  it('should pass when the email is not used by another user', async () => {
+    const dto = new WithEmail(
+      'johndoe@example.com',
+      '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+    );
+
+    mockRepository.count.mockResolvedValueOnce(0);
+
+    const errors = await validate(dto);
+
+    expect(errors).toHaveLength(0);
+    expect(mockRepository.count).toHaveBeenCalledWith({
+      where: { email: 'johndoe@example.com', id: expect.anything() },
+    });
+  });
+
+  it('should fail when the email is already used by another user', async () => {
+    const dto = new WithEmail(
+      'jane@doe.me',
+      '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+    );
+
+    mockRepository.count.mockResolvedValueOnce(1);
+
+    const errors = await validate(dto);
+
+    expect(errors).toHaveLength(1);
+    expect(mockRepository.count).toHaveBeenCalledWith({
+      where: { email: 'jane@doe.me', id: expect.anything() },
+    });
+  });
+
+  it('should pass when the username is not used by another user', async () => {
+    const dto = new WithUsername(
+      'johndoe',
+      '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+    );
+
+    mockRepository.count.mockResolvedValueOnce(0);
+
+    const errors = await validate(dto);
+
+    expect(errors).toHaveLength(0);
+    expect(mockRepository.count).toHaveBeenCalledWith({
+      where: { username: 'johndoe', id: expect.anything() },
+    });
+  });
+
+  it('should fail when the username is already used by another user', async () => {
+    const dto = new WithUsername(
+      'jane-doe',
+      '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+    );
+
+    mockRepository.count.mockResolvedValueOnce(1);
+
+    const errors = await validate(dto);
+
+    expect(errors).toHaveLength(1);
+    expect(mockRepository.count).toHaveBeenCalledWith({
+      where: { username: 'jane-doe', id: expect.anything() },
+    });
   });
 });
