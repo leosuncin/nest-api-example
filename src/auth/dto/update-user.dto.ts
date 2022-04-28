@@ -12,14 +12,18 @@ import {
   ValidateIf,
 } from 'class-validator';
 
+import { IsAlreadyRegister } from '@/auth/validators/is-already-register.validator';
+import { ValidateCredential } from '@/auth/validators/validate-credential.validator';
+
 export class UpdateUser {
   @Allow()
-  id!: string;
+  id?: string;
 
   @IsOptional()
   @IsString()
   @IsNotEmpty()
   @IsEmail()
+  @IsAlreadyRegister()
   readonly email?: string;
 
   @IsOptional()
@@ -27,6 +31,7 @@ export class UpdateUser {
   @IsNotEmpty()
   @MaxLength(30)
   @Matches(/^[\w.-]+$/i)
+  @IsAlreadyRegister()
   readonly username?: string;
 
   @ValidateIf((object: UpdateUser) => typeof object.newPassword === 'string')
@@ -35,6 +40,7 @@ export class UpdateUser {
   @IsNotEmpty()
   @MinLength(8)
   @MaxLength(30)
+  @ValidateCredential()
   readonly password?: string;
 
   @IsOptional()

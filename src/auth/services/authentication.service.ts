@@ -4,6 +4,7 @@ import type { Repository } from 'typeorm';
 
 import { LoginUser } from '@/auth/dto/login-user.dto';
 import { RegisterUser } from '@/auth/dto/register-user.dto';
+import { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
 
@@ -32,5 +33,15 @@ export class AuthenticationService {
     return this.userRepository.findOne({
       where: { id: payload.sub },
     });
+  }
+
+  async update(user: User, changes: UpdateUser): Promise<User> {
+    this.userRepository.merge(user, changes);
+
+    if (changes.newPassword) {
+      user.password = changes.newPassword;
+    }
+
+    return this.userRepository.save(user);
   }
 }

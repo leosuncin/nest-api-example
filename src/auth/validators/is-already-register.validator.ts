@@ -7,7 +7,7 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
-import type { Repository } from 'typeorm';
+import { Not, Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
 
@@ -23,11 +23,12 @@ export class IsAlreadyRegisterConstraint
 
   async validate(
     value: string,
-    options: ValidationArguments,
+    { object, property }: ValidationArguments,
   ): Promise<boolean> {
     const count = await this.userRepository.count({
       where: {
-        [options.property]: value,
+        [property]: value,
+        ...(this.hasId(object) ? { id: Not(object.id) } : {}),
       },
     });
 
@@ -37,10 +38,17 @@ export class IsAlreadyRegisterConstraint
   defaultMessage(): string {
     return '$property «$value» is already registered';
   }
+
+  private hasId(
+    object: object,
+  ): object is { id: string; [key: string]: unknown } {
+    // @ts-expect-error object has an id property and it's defined
+    return object.hasOwnProperty('id') && object.id !== undefined;
+  }
 }
 
 export function IsAlreadyRegister(options?: ValidationOptions) {
-  return function (object: object, propertyName: string) {
+  return function (object: object, propertyName: 'username' | 'email') {
     registerDecorator({
       target: object.constructor,
       propertyName,

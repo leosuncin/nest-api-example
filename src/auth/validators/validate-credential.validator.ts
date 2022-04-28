@@ -9,7 +9,6 @@ import {
 } from 'class-validator';
 import type { Repository } from 'typeorm';
 
-import type { LoginUser } from '@/auth/dto/login-user.dto';
 import { User } from '@/auth/entities/user.entity';
 
 @Injectable()
@@ -29,7 +28,7 @@ export class ValidateCredentialConstraint
     if (!this.hasCredentials(object)) return false;
 
     const user = await this.userRepository.findOne(
-      { username: object.username },
+      object.id ? { id: object.id } : { username: object.username },
       { cache: true },
     );
 
@@ -44,7 +43,12 @@ export class ValidateCredentialConstraint
     return '$property is incorrect';
   }
 
-  private hasCredentials(object: object): object is LoginUser {
+  private hasCredentials(object: object): object is {
+    username: string;
+    password: string;
+    id?: string;
+    [key: string]: unknown;
+  } {
     return (
       object.hasOwnProperty('username') || object.hasOwnProperty('password')
     );
@@ -52,7 +56,7 @@ export class ValidateCredentialConstraint
 }
 
 export function ValidateCredential(options?: ValidationOptions) {
-  return function (object: object, propertyName: keyof LoginUser) {
+  return function (object: object, propertyName: 'username' | 'password') {
     registerDecorator({
       target: object.constructor,
       propertyName,
