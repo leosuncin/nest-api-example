@@ -5,6 +5,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  Patch,
   Post,
   UseGuards,
   UseInterceptors,
@@ -13,9 +14,12 @@ import {
 import { CurrentUser } from '@/auth/decorators/auth.decorator';
 import { LoginUser } from '@/auth/dto/login-user.dto';
 import { RegisterUser } from '@/auth/dto/register-user.dto';
+import { UpdateUser } from '@/auth/dto/update-user.dto';
 import type { User } from '@/auth/entities/user.entity';
 import { JWTAuthGuard } from '@/auth/guards/jwt-auth.guard';
+import { CurrentUserInterceptor } from '@/auth/interceptors/current-user.interceptor';
 import { TokenInterceptor } from '@/auth/interceptors/token.interceptor';
+import { StripIdPipe } from '@/auth/pipes/strip-id.pipe';
 import { AuthenticationService } from '@/auth/services/authentication.service';
 
 @Controller('auth')
@@ -40,5 +44,15 @@ export class AuthController {
   @UseGuards(JWTAuthGuard)
   currentUser(@CurrentUser() user: User): User {
     return user;
+  }
+
+  @Patch('/me')
+  @UseGuards(JWTAuthGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  updateUser(
+    @CurrentUser() user: User,
+    @Body(StripIdPipe) changes: UpdateUser,
+  ): Promise<User> {
+    return this.authenticationService.update(user, changes);
   }
 }
