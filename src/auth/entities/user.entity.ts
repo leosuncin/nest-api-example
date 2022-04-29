@@ -39,8 +39,7 @@ export class User {
   @UpdateDateColumn()
   updatedAt!: Date;
 
-  @Exclude()
-  private oldPassword: string | undefined;
+  #oldPassword: string | undefined;
 
   static fromPartial(data: DeepPartial<User>): User {
     return Object.assign(new User(), data);
@@ -59,19 +58,16 @@ export class User {
 
   @AfterLoad()
   protected setOldPassword() {
-    this.oldPassword = this.password;
+    this.#oldPassword = this.password;
   }
 
   @BeforeUpdate()
   async updatePassword() {
-    let salt = this.oldPassword?.slice(0, 29);
+    const bcryptRegex = /^\$(?:2a|2x|2y|2b)\$\d+\$/;
 
-    if (!salt || !/^\$(?:2a|2x|2y|2b)\$\d+\$/.test(salt)) {
-      // When `update` is called directly
-      salt = await bcrypt.genSalt();
+    if (!bcryptRegex.test(this.password)) {
+      const salt = this.#oldPassword?.slice(0, 29) ?? (await bcrypt.genSalt());
 
-      this.password = await bcrypt.hash(this.password, salt);
-    } else {
       this.password = await bcrypt.hash(this.password, salt);
     }
   }
