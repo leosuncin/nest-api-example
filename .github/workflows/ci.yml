@@ -33,7 +33,6 @@ jobs:
         uses: reviewdog/action-eslint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          eslint_flags: --ext .js,.ts .
           reporter: ${{ steps.reporter.outputs.value }}
       - name: Run ShellCheck 🐚
         uses: reviewdog/action-shellcheck@v1
@@ -42,7 +41,7 @@ jobs:
           reporter: ${{ steps.reporter.outputs.value }}
           shellcheck_flags: -e SC1091
           path: .husky
-          pattern: '*'
+          pattern: '*-*'
           exclude: '*/.gitignore'
 
   test:
