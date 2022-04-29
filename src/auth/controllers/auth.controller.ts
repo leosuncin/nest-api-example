@@ -19,8 +19,8 @@ import type { User } from '@/auth/entities/user.entity';
 import { JWTAuthGuard } from '@/auth/guards/jwt-auth.guard';
 import { CurrentUserInterceptor } from '@/auth/interceptors/current-user.interceptor';
 import { TokenInterceptor } from '@/auth/interceptors/token.interceptor';
-import { RemovePasswordPipe } from '@/auth/pipes/remove-password.pipe';
 import { StripIdPipe } from '@/auth/pipes/strip-id.pipe';
+import { SwapPasswordPipe } from '@/auth/pipes/swap-password.pipe';
 import { AuthenticationService } from '@/auth/services/authentication.service';
 
 @Controller('auth')
@@ -52,7 +52,7 @@ export class AuthController {
   @UseInterceptors(CurrentUserInterceptor)
   updateUser(
     @CurrentUser() user: User,
-    @Body(StripIdPipe, RemovePasswordPipe) changes: UpdateUser,
+    @Body(StripIdPipe, SwapPasswordPipe) changes: UpdateUser,
   ): Promise<User> {
     return this.authenticationService.update(user, changes);
   }
