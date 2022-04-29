@@ -12,6 +12,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+const bcryptRegex = /^\$(?:2a|2x|2y|2b)\$\d+\$/;
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -39,17 +41,18 @@ export class User {
   @UpdateDateColumn()
   updatedAt!: Date;
 
-  #oldPassword: string | undefined;
+  #salt: string | undefined;
 
   static fromPartial(data: DeepPartial<User>): User {
     return Object.assign(new User(), data);
   }
 
   @BeforeInsert()
+  @BeforeUpdate()
   async hashPassword() {
-    const salt = await bcrypt.genSalt();
-
-    this.password = await bcrypt.hash(this.password, salt);
+    if (!bcryptRegex.test(this.password)) {
+      this.password = await bcrypt.hash(this.password, this.#salt ?? 10);
+    }
   }
 
   checkPassword(plainPassword: string) {
@@ -58,17 +61,6 @@ export class User {
 
   @AfterLoad()
   protected setOldPassword() {
-    this.#oldPassword = this.password;
-  }
-
-  @BeforeUpdate()
-  async updatePassword() {
-    const bcryptRegex = /^\$(?:2a|2x|2y|2b)\$\d+\$/;
-
-    if (!bcryptRegex.test(this.password)) {
-      const salt = this.#oldPassword?.slice(0, 29) ?? (await bcrypt.genSalt());
-
-      this.password = await bcrypt.hash(this.password, salt);
-    }
+    this.#salt = this.password.slice(0, 29);
   }
 }
