@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: Release a new version 🚀
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Install PNPM 🧰
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Install Node.js LTS 📜
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+          cache: pnpm
+      - name: Install dependencies 📦
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
+      - name: Release 🚀
+        run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
