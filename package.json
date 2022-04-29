@@ -17,7 +17,7 @@
     "prepare": "husky install",
     "start": "nest start",
     "start:debug": "nest start --debug --watch",
-    "start:dev": "nest start --watch",
+    "start:dev": "NODE_OPTIONS='-r dotenv/config' nest start --watch",
     "start:prod": "node dist/main",
     "test": "jest --selectProjects 'Unit test'",
     "test:cov": "jest --selectProjects 'Unit test' --coverage",
