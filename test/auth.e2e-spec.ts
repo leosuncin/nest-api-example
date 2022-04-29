@@ -1,17 +1,31 @@
 import { HttpStatus } from '@nestjs/common';
 import { request, spec } from 'pactum';
 
-import { loginFixture, registerFixture } from '@/auth/fixtures/auth.fixture';
+import {
+  loginFixture,
+  registerFixture,
+  updateFixture,
+} from '@/auth/fixtures/auth.fixture';
 import { isoDateRegex, uuidRegex } from '@/common/test-helpers';
 
 describe('AuthController (e2e)', () => {
-  const user = {
+  const credentials = {
     email: 'john@doe.me',
     username: 'john-doe',
+    password: 'Th€Pa$$w0rd!',
   };
+  let tokenCookie: string;
 
   beforeAll(() => {
     request.setBaseUrl('http://localhost:3000');
+  });
+
+  beforeEach(async () => {
+    tokenCookie = await spec()
+      .post('/auth/login')
+      .withBody(credentials)
+      .returns(({ res }) => res.headers['set-cookie'])
+      .toss();
   });
 
   it('register a new user', async () => {
@@ -51,8 +65,8 @@ describe('AuthController (e2e)', () => {
 
   it('avoid to register a duplicate user', async () => {
     const data = await registerFixture({
-      email: user.email,
-      username: user.username,
+      email: credentials.email,
+      username: credentials.username,
     }).execute();
 
     await spec()
@@ -62,8 +76,8 @@ describe('AuthController (e2e)', () => {
       .expectJsonLike({
         statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
         message: [
-          `email «${user.email}» is already registered`,
-          `username «${user.username}» is already registered`,
+          `email «${credentials.email}» is already registered`,
+          `username «${credentials.username}» is already registered`,
         ],
         error: 'Unprocessable Entity',
       })
@@ -71,14 +85,9 @@ describe('AuthController (e2e)', () => {
   });
 
   it('login an existing user', async () => {
-    const data = {
-      username: user.username,
-      password: 'Th€Pa$$w0rd!',
-    };
-
     await spec()
       .post('/auth/login')
-      .withBody(data)
+      .withBody(credentials)
       .expectStatus(HttpStatus.OK)
       .expectCookiesLike({
         token: 'typeof $V === "string"',
@@ -87,8 +96,8 @@ describe('AuthController (e2e)', () => {
         SameSite: 'Strict',
       })
       .expectJsonLike({
-        email: user.email,
-        username: user.username,
+        email: credentials.email,
+        username: credentials.username,
         image: 'typeof $V === "string"',
         bio: 'typeof $V === "string"',
         id: uuidRegex,
@@ -109,7 +118,9 @@ describe('AuthController (e2e)', () => {
   });
 
   it('validate the login credentials', async () => {
-    const data = await loginFixture({ username: user.username }).execute();
+    const data = await loginFixture({
+      username: credentials.username,
+    }).execute();
 
     await spec()
       .post('/auth/login')
@@ -124,13 +135,6 @@ describe('AuthController (e2e)', () => {
   });
 
   it('get current authenticated user', async () => {
-    const tokenCookie = await spec()
-      .post('/auth/login')
-      .withBody({ username: user.username, password: 'Th€Pa$$w0rd!' })
-      .expectStatus(HttpStatus.OK)
-      .returns(({ res }) => res.headers['set-cookie'])
-      .toss();
-
     await spec()
       .get('/auth/me')
       .withHeaders('Cookie', tokenCookie)
@@ -139,8 +143,8 @@ describe('AuthController (e2e)', () => {
         expect(res.headers).not.toHaveProperty('set-cookie');
 
         expect(res.json).toMatchObject({
-          email: user.email,
-          username: user.username,
+          email: credentials.email,
+          username: credentials.username,
           image: expect.any(String),
           bio: expect.any(String),
           id: expect.stringMatching(uuidRegex),
@@ -154,6 +158,66 @@ describe('AuthController (e2e)', () => {
   it("fail to get current user when it's unauthenticated", async () => {
     await spec()
       .get('/auth/me')
+      .expectStatus(HttpStatus.UNAUTHORIZED)
+      .expectJson({
+        message: 'Unauthorized',
+        statusCode: HttpStatus.UNAUTHORIZED,
+      })
+      .toss();
+  });
+
+  it('update current user info', async () => {
+    const data = await updateFixture({
+      ...credentials,
+      newPassword: credentials.password,
+    }).execute();
+
+    await spec()
+      .patch('/auth/me')
+      .withHeaders('Cookie', tokenCookie)
+      .withBody(data)
+      .expectStatus(HttpStatus.OK)
+      .expect(({ res }) => {
+        expect(res.headers).not.toHaveProperty('set-cookie');
+
+        expect(res.body).toHaveProperty('bio', data.bio);
+        expect(res.body).toHaveProperty('image', data.image);
+        expect(res.body).not.toHaveProperty('password');
+      })
+      .toss();
+  });
+
+  it.each([
+    /* wrong current password */
+    { password: 'ji32k7au4a83' },
+    /* email is already used by another user */
+    { email: 'jane@doe.me' },
+    /* username is already used by another user */
+    { username: 'jane-doe' },
+    /* wrong url due its protocol */
+    { image: 'ftp://localhost/avatar.png' },
+  ])('validate the update of current user', async (override) => {
+    const data = await updateFixture(override).execute();
+
+    await spec()
+      .patch('/auth/me')
+      .withHeaders('Cookie', tokenCookie)
+      .withBody(data)
+      .expectStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+      .expectJsonLike({
+        error: 'Unprocessable Entity',
+        message: 'Array.isArray($V)',
+        statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+      })
+      .toss();
+  });
+
+  it("fail to update current user when it's unauthenticated", async () => {
+    const data = await updateFixture().execute();
+
+    await spec()
+      .patch('/auth/me')
+      .withBody(data)
       .expectStatus(HttpStatus.UNAUTHORIZED)
       .expectJson({
         message: 'Unauthorized',
