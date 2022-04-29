@@ -267,6 +267,52 @@ describe('Auth module', () => {
       });
   });
 
+  it("should not overrite user's password accidentally", async () => {
+    const data = {
+      image: 'https://thispersondoesnotexist.com/image',
+      password: 'ji32k7au4a83',
+    };
+    const client = agent(app.getHttpServer());
+
+    await client
+      .post('/auth/login')
+      .send({ username: user.username, password })
+      .expect(HttpStatus.OK)
+      .expect('set-cookie', /token=/);
+
+    await client
+      .patch('/auth/me')
+      .send(data)
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toHaveProperty('image', data.image);
+      });
+
+    await client
+      .post('/auth/login')
+      .send({ username: user.username, password: data.password })
+      .expect(HttpStatus.UNPROCESSABLE_ENTITY)
+      .expect(({ body }) => {
+        expect(body).toEqual({
+          error: 'Unprocessable Entity',
+          message: ['password is incorrect'],
+          statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+        });
+      });
+
+    await client
+      .post('/auth/login')
+      .send({ username: user.username, password })
+      .expect(HttpStatus.OK);
+
+    await client
+      .get('/auth/me')
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toHaveProperty('image', data.image);
+      });
+  });
+
   it("fail to update current user when it's unauthenticated", async () => {
     const data = await updateFixture().execute();
 
