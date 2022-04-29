@@ -38,10 +38,6 @@ export class AuthenticationService {
   async update(user: User, changes: UpdateUser): Promise<User> {
     this.userRepository.merge(user, changes);
 
-    if (changes.newPassword) {
-      user.password = changes.newPassword;
-    }
-
     return this.userRepository.save(user);
   }
 }

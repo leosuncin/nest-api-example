@@ -1,14 +1,30 @@
 import { ArgumentMetadata } from '@nestjs/common';
 
-import { RemovePasswordPipe } from '@/auth/pipes/remove-password.pipe';
+import { SwapPasswordPipe } from '@/auth/pipes/swap-password.pipe';
 
 describe('StripPasswordPipe', () => {
   it('should be defined', () => {
-    expect(new RemovePasswordPipe()).toBeDefined();
+    expect(new SwapPasswordPipe()).toBeDefined();
   });
 
   it("should remove the user's password", () => {
-    const pipe = new RemovePasswordPipe();
+    const pipe = new SwapPasswordPipe();
+    const value = {
+      image: 'https://thispersondoesnotexist.com/image',
+      username: 'john',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      email: 'johndoe@example.com',
+      password: 'Th€Pa$$w0rd!',
+    };
+    const metadata: ArgumentMetadata = {
+      type: 'body',
+    };
+
+    expect(pipe.transform(value, metadata)).not.toHaveProperty('password');
+  });
+
+  it('should swap the passwords', () => {
+    const pipe = new SwapPasswordPipe();
     const value = {
       image: 'https://thispersondoesnotexist.com/image',
       username: 'john',
@@ -20,12 +36,14 @@ describe('StripPasswordPipe', () => {
     const metadata: ArgumentMetadata = {
       type: 'body',
     };
+    const result = pipe.transform(value, metadata);
 
-    expect(pipe.transform(value, metadata)).not.toHaveProperty('password');
+    expect(result).toHaveProperty('password', 'ji32k7au4a83');
+    expect(result).not.toHaveProperty('newPassword');
   });
 
   it('should do nothing to types different than "body"', () => {
-    const pipe = new RemovePasswordPipe();
+    const pipe = new SwapPasswordPipe();
     const value = {
       image: 'https://thispersondoesnotexist.com/image',
       username: 'john',
