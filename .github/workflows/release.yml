@@ -29,3 +29,4 @@ jobs:
         run: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+          CI: true
