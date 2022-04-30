@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "prebuild": "rimraf dist",
     "prepare": "husky install",
-    "semantic-release": "semantic-release",
+    "release": "semantic-release",
     "start": "nest start",
     "start:debug": "nest start --debug --watch",
     "start:dev": "NODE_OPTIONS='-r dotenv/config' nest start --watch",

@@ -26,6 +26,6 @@ jobs:
       - name: Install dependencies 📦
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Release 🚀
-        run: npm run release
+        run: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
