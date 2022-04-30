@@ -3,7 +3,7 @@
 
 PATH=$(npm bin):$PATH
 
-if [[ -n "$CI" ]]; then
+if [ -n "$CI" ]; then
  exit 0
 fi
 
