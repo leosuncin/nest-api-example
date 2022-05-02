@@ -1,4 +1,9 @@
+import { Exclude } from 'class-transformer';
+import { randomUUID } from 'node:crypto';
+import shortUUID from 'short-uuid';
+import slugify from 'slugify';
 import {
+  BeforeInsert,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -11,6 +16,8 @@ import {
 
 import { User } from '@/auth/entities/user.entity';
 import { Comment } from '@/blog/entities/comment.entity';
+
+const translator = shortUUID(shortUUID.constants.flickrBase58);
 
 @Entity()
 export class Article {
@@ -33,6 +40,7 @@ export class Article {
   updatedAt!: Date;
 
   @DeleteDateColumn()
+  @Exclude()
   deletedAt?: Date;
 
   @ManyToOne(() => User, {
@@ -44,4 +52,14 @@ export class Article {
 
   @OneToMany(() => Comment, (comment) => comment.article)
   comments!: Comment[];
+
+  @BeforeInsert()
+  protected generateSlug() {
+    const slug = slugify(this.title, {
+      lower: true,
+      remove: /[*+~.()'"¡!:@,¿?]/u,
+    });
+    this.id ??= randomUUID();
+    this.slug = `${slug}-${translator.fromUUID(this.id)}`;
+  }
 }
