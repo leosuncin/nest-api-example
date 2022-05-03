@@ -17,4 +17,8 @@ export class ArticleService {
 
     return this.articleRepository.save(article);
   }
+
+  getById(id: Article['id']): Promise<Article | undefined> {
+    return this.articleRepository.findOne(id);
+  }
 }

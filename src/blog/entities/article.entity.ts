@@ -17,7 +17,7 @@ import {
 import { User } from '@/auth/entities/user.entity';
 import { Comment } from '@/blog/entities/comment.entity';
 
-const translator = shortUUID(shortUUID.constants.flickrBase58);
+export const translator = shortUUID(shortUUID.constants.flickrBase58);
 
 @Entity()
 export class Article {
@@ -47,6 +47,7 @@ export class Article {
     nullable: false,
     onDelete: 'RESTRICT',
     onUpdate: 'CASCADE',
+    eager: true,
   })
   author!: User;
 
