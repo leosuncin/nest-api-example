@@ -61,7 +61,7 @@ jobs:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Run tests 🧪
-        run: pnpm test:cov -- --ci --json --testLocationInResults --outputFile=result.json
+        run: pnpm test:cov --ci --json --testLocationInResults --outputFile=result.json
         env:
           SECRET: qui-eu-ad-excepteur-occaecat-id-ipsum-ex-minim
       - name: Report test results 📝
@@ -127,7 +127,7 @@ jobs:
           DATABASE_URL: postgres://armband:9HNtQV78T4MmBibJ@localhost:${{ job.services.postgres.ports[5432] }}/sharper
           NODE_ENV: production
       - name: Run tests 🧪
-        run: pnpm test:e2e -- --ci --json --testLocationInResults --outputFile=result.json
+        run: pnpm test:e2e --ci --json --testLocationInResults --outputFile=result.json
       - name: Report test results 📝
         uses: tanmen/jest-reporter@v1
         if: always()
