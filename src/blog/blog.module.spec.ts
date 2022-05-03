@@ -59,4 +59,37 @@ describe('AuthModule', () => {
         statusCode: HttpStatus.UNAUTHORIZED,
       });
   });
+
+  it.each([
+    'a832e632-0335-4191-8469-4d849bbb72be',
+    'however-wolfs-have-begun-to-rent-blueberries-over-the-past-few-months-specifically-for-lions-associated-with-their-puppies-mLDYhAjz213rjfHRJwqUES',
+    'mLDYhAjz213rjfHRJwqUES',
+  ])('get one article by id "%s"', async (id) => {
+    await request(app.getHttpServer())
+      .get(`/articles/${id}`)
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toMatchObject({
+          author: expect.anything(),
+          content: expect.any(String),
+          createdAt: expect.stringMatching(isoDateRegex),
+          id: 'a832e632-0335-4191-8469-4d849bbb72be',
+          slug: 'however-wolfs-have-begun-to-rent-blueberries-over-the-past-few-months-specifically-for-lions-associated-with-their-puppies-mLDYhAjz213rjfHRJwqUES',
+          title:
+            'However, wolfs have begun to rent blueberries over the past few months, specifically for lions associated with their puppies?',
+          updatedAt: expect.stringMatching(isoDateRegex),
+        });
+      });
+  });
+
+  it("fail to get an article when it doesn't exist", async () => {
+    await request(app.getHttpServer())
+      .get('/articles/not-exists-ert')
+      .expect(HttpStatus.NOT_FOUND)
+      .expect({
+        error: 'Not Found',
+        message: 'The article was not found',
+        statusCode: HttpStatus.NOT_FOUND,
+      });
+  });
 });

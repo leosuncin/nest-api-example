@@ -58,4 +58,12 @@ Nulla minim ea quis irure veniam laborum commodo non quis non ex eu.`,
     );
     expect(mockArticleRepository.save).toHaveBeenCalledTimes(1);
   });
+
+  it('should get an article by its id', async () => {
+    mockArticleRepository.findOne.mockResolvedValueOnce(new Article());
+
+    await expect(
+      service.getById('a832e632-0335-4191-8469-4d849bbb72be'),
+    ).resolves.toBeInstanceOf(Article);
+  });
 });

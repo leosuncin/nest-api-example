@@ -14,7 +14,7 @@ const { fixture } = fluse({
 
 export const createArticleFixture = fixture<
   CreateArticle,
-  Partial<Pick<CreateArticle, 'content' | 'title'>>
+  Partial<Pick<CreateArticle, 'content' | 'title'> & { author: string }>
 >({
   create({ txtgen }, override) {
     return plainToInstance(CreateArticle, {

@@ -54,4 +54,10 @@ Consequat ad velit elit.`,
     );
     expect(mockArticleService.create).toHaveBeenCalledWith(newArticle);
   });
+
+  it('should get one article', () => {
+    const article = new Article();
+
+    expect(controller.getOne(article)).toEqual(article);
+  });
 });
