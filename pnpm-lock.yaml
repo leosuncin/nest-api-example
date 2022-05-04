@@ -55,6 +55,7 @@ specifiers:
   jest-dev-server: ^6.0.3
   jest-mock-extended: ^2.0.5
   lint-staged: ^12.4.0
+  nestjs-typeorm-paginate: ~3.2.0
   node-mocks-http: ^1.11.0
   pactum: ^3.1.6
   passport: ^0.5.2
@@ -90,6 +91,7 @@ dependencies:
   class-transformer: 0.5.1
   class-validator: 0.13.2
   cookie-parser: 1.4.6
+  nestjs-typeorm-paginate: 3.2.1_zpntupq7wjdlmxbaokdouvqhxe
   passport: 0.5.2
   passport-jwt: 4.0.0
   pg: 8.7.3
@@ -6896,6 +6898,16 @@ packages:
   /nerf-dart/1.0.0:
     resolution: {integrity: sha1-5tq3/r9a2Bbqgc9cYpxaDr3nLBo=}
     dev: true
+
+  /nestjs-typeorm-paginate/3.2.1_zpntupq7wjdlmxbaokdouvqhxe:
+    resolution: {integrity: sha512-AwmGQ4nncmVzK/T0Woaa/GOeUIAqUx63I+oz5moUe1ax8JWJfkF4iaZ32reiE72KOFhIMKqe8rL7MjJiz+Ed9A==}
+    peerDependencies:
+      '@nestjs/common': ^6.1.1 || ^5.6.2 || ^7.0.0 || ^8.0.0
+      typeorm: ^0.2.12 < 0.3.0
+    dependencies:
+      '@nestjs/common': 8.4.4_kgmvgmqc4iohdboj3f7yqhrie4
+      typeorm: 0.2.41_pg@8.7.3
+    dev: false
 
   /node-emoji/1.11.0:
     resolution: {integrity: sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==}

@@ -1,5 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import {
+  type IPaginationOptions,
+  type Pagination,
+  paginate,
+} from 'nestjs-typeorm-paginate';
 import type { Repository } from 'typeorm';
 
 import type { CreateArticle } from '@/blog/dto/create-article.dto';
@@ -20,5 +25,9 @@ export class ArticleService {
 
   getById(id: Article['id']): Promise<Article | undefined> {
     return this.articleRepository.findOne(id);
+  }
+
+  findBy(options: IPaginationOptions): Promise<Pagination<Article>> {
+    return paginate(this.articleRepository, options);
   }
 }
