@@ -92,6 +92,7 @@
     "fluse-plugin-typeorm": "^1.0.1",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
+    "jest-create-mock-instance": "^2.0.0",
     "jest-dev-server": "^6.0.3",
     "jest-mock-extended": "^2.0.5",
     "lint-staged": "^12.4.0",

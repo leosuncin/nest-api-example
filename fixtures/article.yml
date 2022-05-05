@@ -20,3 +20,11 @@ items:
       This is not to discredit the idea that however, alligators have begun to rent sharks over the past few months, specifically for sheeps associated with their monkeys.
       However, pomegranates have begun to rent sheeps over the past few months, specifically for apricots associated with their grapes.
     author: '@jane'
+  author_john{1..10}:
+    title: '{{company.catchPhrase}}'
+    content: '{{lorem.paragraphs}}'
+    author: '@john'
+  author_jane{1..10}:
+    title: '{{company.catchPhrase}}'
+    content: '{{lorem.paragraphs}}'
+    author: '@jane'

@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { mock, mockReset } from 'jest-mock-extended';
+import { createMockInstance } from 'jest-create-mock-instance';
 import { Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
@@ -10,7 +10,8 @@ import { ArticleService } from '@/blog/services/article.service';
 
 describe('ArticleService', () => {
   let service: ArticleService;
-  const mockArticleRepository = mock<Repository<Article>>();
+  const mockArticleRepository = createMockInstance(Repository);
+  Object.setPrototypeOf(mockArticleRepository, Repository.prototype);
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -33,7 +34,7 @@ describe('ArticleService', () => {
   });
 
   afterEach(() => {
-    mockReset(mockArticleRepository);
+    jest.resetAllMocks();
   });
 
   it('should be defined', () => {
@@ -65,5 +66,23 @@ Nulla minim ea quis irure veniam laborum commodo non quis non ex eu.`,
     await expect(
       service.getById('a832e632-0335-4191-8469-4d849bbb72be'),
     ).resolves.toBeInstanceOf(Article);
+  });
+
+  it('should find and paginate articles', async () => {
+    mockArticleRepository.find.mockResolvedValueOnce([new Article()]);
+    mockArticleRepository.count.mockResolvedValueOnce(1);
+
+    await expect(service.findBy({ limit: 10, page: 1 })).resolves.toMatchObject(
+      {
+        items: expect.arrayContaining([expect.any(Article)]),
+        meta: {
+          currentPage: 1,
+          itemCount: 1,
+          itemsPerPage: 10,
+          totalItems: 1,
+          totalPages: 1,
+        },
+      },
+    );
   });
 });

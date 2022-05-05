@@ -60,4 +60,30 @@ Consequat ad velit elit.`,
 
     expect(controller.getOne(article)).toEqual(article);
   });
+
+  it('should get all articles by page', async () => {
+    mockArticleService.findBy.mockResolvedValue({
+      items: [new Article()],
+      meta: {
+        currentPage: 1,
+        itemCount: 1,
+        itemsPerPage: 10,
+        totalItems: 1,
+        totalPages: 1,
+      },
+    });
+
+    await expect(
+      controller.getAll({ limit: 10, page: 1 }),
+    ).resolves.toMatchObject({
+      items: expect.arrayContaining([expect.any(Article)]),
+      meta: {
+        currentPage: 1,
+        itemCount: 1,
+        itemsPerPage: 10,
+        totalItems: 1,
+        totalPages: 1,
+      },
+    });
+  });
 });
