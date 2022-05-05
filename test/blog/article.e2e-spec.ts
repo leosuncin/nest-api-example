@@ -90,4 +90,52 @@ describe('ArticleController (e2e)', () => {
       })
       .toss();
   });
+
+  it.each([
+    { limit: 10, page: 1 },
+    { limit: 5, page: 3 },
+    { page: 2 },
+    { limit: 20 },
+  ])('paginate all of the articles by %O', async (query) => {
+    await spec()
+      .get('/articles')
+      .withQueryParams(query)
+      .expectStatus(HttpStatus.OK)
+      .expect(({ res: { body } }) => {
+        expect(body).toHaveProperty(
+          'items',
+          expect.arrayContaining([expect.any(Object)]),
+        );
+        expect(body).toHaveProperty(
+          'meta',
+          expect.objectContaining({
+            currentPage: query.page ?? 1,
+            itemCount: query.limit ?? 10,
+            itemsPerPage: query.limit ?? 10,
+            totalItems: expect.any(Number),
+            totalPages: expect.any(Number),
+          }),
+        );
+        expect((body as Record<'items' | 'meta', unknown>).items).toHaveLength(
+          query.limit ?? 10,
+        );
+      })
+      .toss();
+  });
+
+  it('validate the pagination query', async () => {
+    await spec()
+      .get('/articles')
+      .withQueryParams({ limit: -10, page: -2 })
+      .expectStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+      .expectJson({
+        error: 'Unprocessable Entity',
+        message: [
+          'limit must be a positive number',
+          'page must be a positive number',
+        ],
+        statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+      })
+      .toss();
+  });
 });
