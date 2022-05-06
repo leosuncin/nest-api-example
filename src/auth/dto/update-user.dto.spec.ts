@@ -66,14 +66,12 @@ describe('Update user validations', () => {
 
     await fc.assert(
       fc.asyncProperty(
-        fc
-          .oneof(fc.string(), fc.integer())
-          .map((email) =>
-            plainToInstance(UpdateUser, {
-              email,
-              id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-            }),
-          ),
+        fc.oneof(fc.string(), fc.integer()).map((email) =>
+          plainToInstance(UpdateUser, {
+            email,
+            id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+          }),
+        ),
         async (data) => {
           const errors = await validate(data);
 
@@ -91,14 +89,12 @@ describe('Update user validations', () => {
 
     await fc.assert(
       fc.asyncProperty(
-        fc
-          .oneof(fc.integer(), fc.string({ minLength: 30 }))
-          .map((username) =>
-            plainToInstance(UpdateUser, {
-              username,
-              id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-            }),
-          ),
+        fc.oneof(fc.integer(), fc.string({ minLength: 30 })).map((username) =>
+          plainToInstance(UpdateUser, {
+            username,
+            id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+          }),
+        ),
         async (data) => {
           const errors = await validate(data);
 
