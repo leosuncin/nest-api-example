@@ -114,6 +114,7 @@ describe('Update user validations', () => {
 
     const errors = await validate(
       plainToInstance(UpdateUser, {
+        /* cspell:disable-next-line */
         newPassword: 'Tλ3Pa55wθrd?',
         id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
       }),
