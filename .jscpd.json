@@ -1,0 +1,18 @@
+{
+  "threshold": 20,
+  "reporters": ["html", "markdown"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/.rbenv/**",
+    "**/.venv/**",
+    "**/*cache*/**",
+    "**/.github/**",
+    "**/.idea/**",
+    "**/report/**",
+    "**/*.svg",
+    "**/.pactum/**",
+    "**/dist/**",
+    "**/coverage/**"
+  ]
+}

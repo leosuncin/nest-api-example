@@ -1,0 +1,20 @@
+{
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/**",
+    ".vscode",
+    "megalinter",
+    ".gitignore",
+    "pnpm-lock.yaml",
+    "report",
+    "dist/**",
+    "**/coverage/**"
+  ],
+  "language": "en,es",
+  "noConfigSearch": true,
+  "allowCompoundWords": true,
+  "words": [],
+  "dictionaries": [],
+  "version": "0.2"
+}
