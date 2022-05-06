@@ -8,3 +8,4 @@ if [ -n "$CI" ]; then
 fi
 
 commitlint --edit "$1"
+cspell lint --no-summary --no-progress --no-must-find-files --language-id commit-msg "$1"

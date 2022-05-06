@@ -1,4 +1,5 @@
 {
   "*.{js,ts}": ["prettier --write", "eslint --fix"],
-  "*.{json,md,yml}": ["prettier --write"]
+  "*.{json,md,yml}": ["prettier --write"],
+  "*": ["cspell lint --no-summary --no-progress --no-must-find-files"]
 }
