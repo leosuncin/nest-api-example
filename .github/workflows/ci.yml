@@ -118,13 +118,13 @@ jobs:
           pnpm typeorm migration:run
           pnpm fixtures
         env:
-          DATABASE_URL: postgres://armband:9HNtQV78T4MmBibJ@localhost:${{ job.services.postgres.ports[5432] }}/sharper
+          DATABASE_URL: postgres://armband:9HNtQV78T4MmBibJ@localhost:${{ job.services.postgres.ports['5432'] }}/sharper
       - name: Run the server 🚀
         run: pnpm start:prod &
         env:
           PORT: 3000
           SECRET: quis-voluptate-quis-sit-incididunt-ullamco-reprehenderit-ut-magna-laborum-irure-eu-adipisicing
-          DATABASE_URL: postgres://armband:9HNtQV78T4MmBibJ@localhost:${{ job.services.postgres.ports[5432] }}/sharper
+          DATABASE_URL: postgres://armband:9HNtQV78T4MmBibJ@localhost:${{ job.services.postgres.ports['5432'] }}/sharper
           NODE_ENV: production
       - name: Run tests 🧪
         run: pnpm test:e2e -- --ci --json --testLocationInResults --outputFile=result.json
