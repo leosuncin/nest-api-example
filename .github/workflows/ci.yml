@@ -1,65 +1,34 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v3
-      - name: Install NPM dependencies 📦
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-      - name: Cache pnpm modules 🗂️
-        uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Check types 🧩
-        uses: icrawl/action-tsc@v1
-        with:
-          project: tsconfig.build.json
-      - name: Choose reporter for ReviewDog 🚦
-        uses: haya14busa/action-cond@v1
-        id: reporter
-        with:
-          cond: ${{ github.event_name == 'pull_request' }}
-          if_true: 'github-pr-review'
-          if_false: 'github-check'
-      - name: Run ESlint 🧹
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: ${{ steps.reporter.outputs.value }}
-      - name: Run ShellCheck 🐚
-        uses: reviewdog/action-shellcheck@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: ${{ steps.reporter.outputs.value }}
-          shellcheck_flags: -e SC1091
-          path: .husky
-          pattern: '*-*'
-          exclude: '*/.gitignore'
-
   test:
+    name: Run the unit tests 🧪
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip-ci')"
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
-      - name: Install NPM dependencies 📦
+      - name: Install PNPM 🧰
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: true
-      - name: Cache pnpm modules 🗂️
-        uses: actions/cache@v3
+      - name: Install Node.js LTS 📜
+        uses: actions/setup-node@v3
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
+          node-version: 'lts/*'
+          cache: pnpm
+      - name: Install dependencies 📦
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Run tests 🧪
         run: pnpm test:cov --ci --json --testLocationInResults --outputFile=result.json
         env:
@@ -85,8 +54,9 @@ jobs:
           path: coverage
 
   e2e:
-    if: "!contains(github.event.head_commit.message, 'skip-ci')"
+    name: Run the end to end tests 🚔
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip-ci')"
     services:
       postgres:
         image: postgres:14
@@ -101,16 +71,17 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
-      - name: Install NPM dependencies 📦
+      - name: Install PNPM 🧰
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: true
-      - name: Cache pnpm modules 🗂️
-        uses: actions/cache@v3
+      - name: Install Node.js LTS 📜
+        uses: actions/setup-node@v3
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-pkg-${{ hashFiles('**/pnpm-lock.yaml') }}
+          node-version: 'lts/*'
+          cache: pnpm
+      - name: Install dependencies 📦
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Build 🛠️
         run: pnpm build
       - name: Run migrations 🧰
