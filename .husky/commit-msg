@@ -4,7 +4,8 @@
 PATH=$(npm bin):$PATH
 
 if [ -n "$CI" ]; then
- exit 0
+  exit 0
 fi
 
 commitlint --edit "$1"
+cspell lint --no-summary --no-progress --no-must-find-files --language-id commit-msg "$1"

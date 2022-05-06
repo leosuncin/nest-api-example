@@ -66,7 +66,7 @@ describe('AuthController', () => {
     const newUser: RegisterUser = {
       email: 'john@doe.me',
       password: 'Th€Pa$$w0rd!',
-      username: 'jhon.doe',
+      username: 'john.doe',
     };
 
     await expect(controller.register(newUser)).resolves.toBeInstanceOf(User);
@@ -76,7 +76,7 @@ describe('AuthController', () => {
   it('should login an user', async () => {
     const credentials: LoginUser = {
       password: 'Th€Pa$$w0rd!',
-      username: 'jhon-doe',
+      username: 'john-doe',
     };
 
     await expect(controller.login(credentials)).resolves.toBeInstanceOf(User);

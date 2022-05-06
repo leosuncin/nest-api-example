@@ -24,7 +24,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  ignorePatterns: ['.eslintrc.js', 'dist/**', 'coverage/**'],
+  ignorePatterns: ['.eslintrc.js', 'dist/**', 'coverage/**', 'report/**'],
   rules: {
     'unicorn/prevent-abbreviations': ['error', { checkFilenames: false }],
     'unicorn/prefer-module': 'off',

@@ -58,7 +58,7 @@ describe('AuthenticationService', () => {
     const newUser: RegisterUser = {
       email: 'john@doe.me',
       password: 'Th€Pa$$w0rd!',
-      username: 'jhon.doe',
+      username: 'john.doe',
     };
 
     await expect(service.register(newUser)).resolves.toBeInstanceOf(User);
@@ -69,7 +69,7 @@ describe('AuthenticationService', () => {
   it('should login with an existing user without fail', async () => {
     const credentials: LoginUser = {
       password: 'Th€Pa$$w0rd!',
-      username: 'jhon-doe',
+      username: 'john-doe',
     };
     mockRepository.findOneOrFail.mockResolvedValueOnce(user);
 
