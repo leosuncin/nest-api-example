@@ -35,7 +35,7 @@ describe('TokenInterceptor', () => {
   it('should inject the token into the user', async () => {
     const user = User.fromPartial({
       id: '',
-      email: 'jhon@doe.me',
+      email: 'john@doe.me',
       username: 'john_doe',
       bio: '',
       image: '',
