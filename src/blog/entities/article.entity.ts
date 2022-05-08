@@ -1,9 +1,11 @@
 import { Exclude } from 'class-transformer';
+import { isUUID } from 'class-validator';
 import { randomUUID } from 'node:crypto';
 import shortUUID from 'short-uuid';
 import slugify from 'slugify';
 import {
   BeforeInsert,
+  BeforeUpdate,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -17,7 +19,7 @@ import {
 import { User } from '@/auth/entities/user.entity';
 import { Comment } from '@/blog/entities/comment.entity';
 
-export const translator = shortUUID(shortUUID.constants.flickrBase58);
+const translator = shortUUID(shortUUID.constants.flickrBase58);
 
 @Entity()
 export class Article {
@@ -55,12 +57,24 @@ export class Article {
   comments!: Comment[];
 
   @BeforeInsert()
+  @BeforeUpdate()
   protected generateSlug() {
     const slug = slugify(this.title, {
       lower: true,
       remove: /[*+~.()'"¡!:@,¿?]/u,
     });
     this.id ??= randomUUID();
-    this.slug = `${slug}-${translator.fromUUID(this.id)}`;
+    const shortId = translator.fromUUID(this.id);
+    this.slug = `${slug}-${shortId}`;
+  }
+
+  static extractId(idOrSlug: string): Article['id'] {
+    if (isUUID(idOrSlug)) {
+      return idOrSlug;
+    } else {
+      const shortId = idOrSlug.slice(idOrSlug.lastIndexOf('-') + 1);
+
+      return translator.toUUID(shortId);
+    }
   }
 }

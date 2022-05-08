@@ -8,6 +8,7 @@ import {
 import type { Repository } from 'typeorm';
 
 import type { CreateArticle } from '@/blog/dto/create-article.dto';
+import type { UpdateArticle } from '@/blog/dto/update-article.dto';
 import { Article } from '@/blog/entities/article.entity';
 
 @Injectable()
@@ -29,5 +30,11 @@ export class ArticleService {
 
   findBy(options: IPaginationOptions): Promise<Pagination<Article>> {
     return paginate(this.articleRepository, options);
+  }
+
+  update(article: Article, changes: UpdateArticle): Promise<Article> {
+    this.articleRepository.merge(article, changes);
+
+    return this.articleRepository.save(article);
   }
 }

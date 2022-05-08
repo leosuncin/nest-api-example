@@ -4,6 +4,7 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
   Query,
   UseGuards,
@@ -13,7 +14,9 @@ import type { Pagination } from 'nestjs-typeorm-paginate';
 
 import { JWTAuthGuard } from '@/auth/guards/jwt-auth.guard';
 import { CreateArticle } from '@/blog/dto/create-article.dto';
+import { UpdateArticle } from '@/blog/dto/update-article.dto';
 import { Article } from '@/blog/entities/article.entity';
+import { IsAuthorGuard } from '@/blog/guards/is-author.guard';
 import { SetAuthorInterceptor } from '@/blog/interceptors/set-author.interceptor';
 import { ArticlePipe } from '@/blog/pipes/article.pipe';
 import { ArticleService } from '@/blog/services/article.service';
@@ -39,5 +42,14 @@ export class ArticleController {
   @Get()
   getAll(@Query() query: Paginate): Promise<Pagination<Article>> {
     return this.articleService.findBy(query);
+  }
+
+  @Patch(':id')
+  @UseGuards(JWTAuthGuard, IsAuthorGuard)
+  update(
+    @Param('id', ArticlePipe) article: Article,
+    @Body() changes: UpdateArticle,
+  ): Promise<Article> {
+    return this.articleService.update(article, changes);
   }
 }
