@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
 import type { CreateArticle } from '@/blog/dto/create-article.dto';
+import { UpdateArticle } from '@/blog/dto/update-article.dto';
 import { Article } from '@/blog/entities/article.entity';
 import { ArticleService } from '@/blog/services/article.service';
 
@@ -47,7 +48,8 @@ describe('ArticleService', () => {
       content: `Eiusmod mollit officia est proident cillum amet quis elit exercitation.
 Exercitation fugiat cillum irure aute aliqua do quis mollit laboris deserunt fugiat aliquip esse aute proident.
 Et proident veniam dolore sunt qui ex laborum quis ut exercitation dolor est
-In magna sit qui et ut fugiat ex tempor id. Aute cillum voluptate ad ea cupidatat nostrud labore ad cillum adipisicing amet esse est nostrud irure.
+In magna sit qui et ut fugiat ex tempor id.
+Aute cillum voluptate ad ea cupidatat nostrud labore ad cillum adipisicing amet esse est nostrud irure.
 Nulla minim ea quis irure veniam laborum commodo non quis non ex eu.`,
       author: new User(),
     };
@@ -83,6 +85,29 @@ Nulla minim ea quis irure veniam laborum commodo non quis non ex eu.`,
           totalPages: 1,
         },
       },
+    );
+  });
+
+  it('should update one article', async () => {
+    const article = new Article();
+    const changes: UpdateArticle = {
+      content: `Minim ipsum qui non qui quis labore qui ipsum ut duis eiusmod.
+Duis ex sint eiusmod qui tempor deserunt voluptate do laboris exercitation quis officia labore.
+Laboris nostrud voluptate dolor occaecat consectetur laborum consectetur sit minim tempor laboris.
+Commodo ex reprehenderit labore in Lorem ea aliquip culpa occaecat ex velit ipsum laboris ex anim.
+Occaecat occaecat ex incididunt sit mollit ullamco fugiat velit veniam ut.
+Cillum esse esse sint officia velit dolore sint magna tempor sint.
+Est deserunt excepteur ut id qui excepteur eiusmod exercitation sint nulla ipsum.
+Nulla ipsum do id enim et ullamco cupidatat irure anim consectetur pariatur.`,
+    };
+
+    mockArticleRepository.merge.mockImplementation(
+      (article, changes) => Object.assign(article, changes) as Article,
+    );
+
+    await expect(service.update(article, changes)).resolves.toHaveProperty(
+      'content',
+      changes.content,
     );
   });
 });

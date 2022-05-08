@@ -4,6 +4,7 @@ import { mock, mockReset } from 'jest-mock-extended';
 import { User } from '@/auth/entities/user.entity';
 import { ArticleController } from '@/blog/controllers/article.controller';
 import { CreateArticle } from '@/blog/dto/create-article.dto';
+import { UpdateArticle } from '@/blog/dto/update-article.dto';
 import { Article } from '@/blog/entities/article.entity';
 import { ArticleService } from '@/blog/services/article.service';
 
@@ -85,5 +86,23 @@ Consequat ad velit elit.`,
         totalPages: 1,
       },
     });
+  });
+
+  it('should update an article', async () => {
+    const article = new Article();
+    const changes: UpdateArticle = {
+      content: `Commodo ea reprehenderit aliqua ea.
+Proident esse deserunt sint do eu ullamco aliquip reprehenderit qui et Lorem proident.
+Exercitation ut esse aute minim tempor non exercitation qui amet laborum incididunt est minim in.`,
+      title: 'Sint minim magna irure officia irure commodo.',
+    };
+
+    mockArticleService.update.mockImplementation((article, changes) =>
+      Promise.resolve(Object.assign(article, changes)),
+    );
+
+    await expect(controller.update(article, changes)).resolves.toBeInstanceOf(
+      Article,
+    );
   });
 });

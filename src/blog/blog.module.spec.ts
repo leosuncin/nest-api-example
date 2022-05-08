@@ -6,9 +6,13 @@ import request from 'supertest';
 
 import { AuthModule } from '@/auth/auth.module';
 import { BlogModule } from '@/blog/blog.module';
-import { createArticleFixture } from '@/blog/fixtures/article.fixture';
+import {
+  createArticleFixture,
+  updateArticleFixture,
+} from '@/blog/fixtures/article.fixture';
 import {
   buildTestApplication,
+  database,
   isoDateRegex,
   loadFixtures,
   uuidRegex,
@@ -136,6 +140,58 @@ describe('AuthModule', () => {
           'page must be a positive number',
         ],
         statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+      });
+  });
+
+  it.each([
+    '31a10506-c334-4841-97a6-144a55bf4ebb',
+    'though-we-assume-the-latter-however-blueberries-have-begun-to-rent-currants-over-the-past-few-months-specifically-for-eagles-associated-with-their-lemons-78rW4UUH2Ekokt36qUGxqP',
+    '78rW4UUH2Ekokt36qUGxqP',
+  ])('update one article by id %s', async (id) => {
+    const backup = database.backup();
+    const title = 'Proident officia do ea pariatur laborum';
+    const data = await updateArticleFixture({ title }).execute();
+
+    await request(app.getHttpServer())
+      .patch(`/articles/${id}`)
+      .set('Authorization', `Bearer ${jwt}`)
+      .send(data)
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        const slug: string = title.toLowerCase().replace(/\s+/g, '-');
+
+        expect(body).toHaveProperty('title', title);
+        expect(body).toHaveProperty('slug', expect.stringContaining(slug));
+      });
+
+    backup.restore();
+  });
+
+  it('require to be authenticated to update an article', async () => {
+    const data = await updateArticleFixture().execute();
+
+    await request(app.getHttpServer())
+      .patch('/articles/31a10506-c334-4841-97a6-144a55bf4ebb')
+      .send(data)
+      .expect(HttpStatus.UNAUTHORIZED)
+      .expect({
+        message: 'Unauthorized',
+        statusCode: HttpStatus.UNAUTHORIZED,
+      });
+  });
+
+  it('allow only the author to update an article', async () => {
+    const data = await updateArticleFixture().execute();
+
+    await request(app.getHttpServer())
+      .patch('/articles/a832e632-0335-4191-8469-4d849bbb72be')
+      .set('Authorization', `Bearer ${jwt}`)
+      .send(data)
+      .expect(HttpStatus.FORBIDDEN)
+      .expect({
+        error: 'Forbidden',
+        message: 'You are not the author of the article',
+        statusCode: HttpStatus.FORBIDDEN,
       });
   });
 });
