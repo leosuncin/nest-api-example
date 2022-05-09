@@ -1,7 +1,10 @@
 import { HttpStatus } from '@nestjs/common';
 import { request, spec } from 'pactum';
 
-import { createArticleFixture } from '@/blog/fixtures/article.fixture';
+import {
+  createArticleFixture,
+  updateArticleFixture,
+} from '@/blog/fixtures/article.fixture';
 import { isoDateRegex, uuidRegex } from '@/common/test-helpers';
 
 const credentials = {
@@ -41,6 +44,7 @@ describe('ArticleController (e2e)', () => {
         title: data.title,
         updatedAt: isoDateRegex,
       })
+      .stores('article', '.')
       .toss();
   });
 
@@ -135,6 +139,56 @@ describe('ArticleController (e2e)', () => {
           'page must be a positive number',
         ],
         statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+      })
+      .toss();
+  });
+
+  it.each(['id', 'slug'])('update one article by %s', async (property) => {
+    const title = 'Aute pariatur ad sit id nostrud qui est nulla consectetur';
+    const data = await updateArticleFixture({ title }).execute();
+    const slug: string = title.toLowerCase().replace(/\s+/g, '-');
+
+    await spec()
+      .patch('/articles/{id}')
+      .withPathParams('id', `$S{article.${property}}`)
+      .withHeaders('Cookie', tokenCookie)
+      .withBody(data)
+      .expectStatus(HttpStatus.OK)
+      .expect(({ res: { body } }) => {
+        expect(body).toHaveProperty('title', title);
+        expect(body).toHaveProperty('slug', expect.stringContaining(slug));
+      })
+      .stores('article', '.')
+      .toss();
+  });
+
+  it('require to be authenticated to update an article', async () => {
+    const data = await updateArticleFixture().execute();
+
+    await spec()
+      .patch('/articles/{slug}')
+      .withPathParams('slug', '$S{article.slug}')
+      .withBody(data)
+      .expectStatus(HttpStatus.UNAUTHORIZED)
+      .expectJson({
+        message: 'Unauthorized',
+        statusCode: HttpStatus.UNAUTHORIZED,
+      })
+      .toss();
+  });
+
+  it('allow only the author to update an article', async () => {
+    const data = await updateArticleFixture().execute();
+
+    await spec()
+      .patch('/articles/31a10506-c334-4841-97a6-144a55bf4ebb')
+      .withHeaders('Cookie', tokenCookie)
+      .withBody(data)
+      .expectStatus(HttpStatus.FORBIDDEN)
+      .expectJson({
+        error: 'Forbidden',
+        message: 'You are not the author of the article',
+        statusCode: HttpStatus.FORBIDDEN,
       })
       .toss();
   });
