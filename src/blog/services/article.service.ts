@@ -37,4 +37,8 @@ export class ArticleService {
 
     return this.articleRepository.save(article);
   }
+
+  remove(article: Article): Promise<Article> {
+    return this.articleRepository.softRemove(article);
+  }
 }

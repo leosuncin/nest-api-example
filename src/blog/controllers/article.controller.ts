@@ -2,7 +2,10 @@ import {
   Body,
   ClassSerializerInterceptor,
   Controller,
+  Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -51,5 +54,12 @@ export class ArticleController {
     @Body() changes: UpdateArticle,
   ): Promise<Article> {
     return this.articleService.update(article, changes);
+  }
+
+  @Delete(':id')
+  @UseGuards(JWTAuthGuard, IsAuthorGuard)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  remove(@Param('id', ArticlePipe) article: Article) {
+    return this.articleService.remove(article);
   }
 }
