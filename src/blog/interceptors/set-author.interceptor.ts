@@ -5,8 +5,8 @@ import {
   NestInterceptor,
 } from '@nestjs/common';
 import type { Request } from 'express';
-import { ok } from 'node:assert/strict';
 import { Observable } from 'rxjs';
+import invariant from 'tiny-invariant';
 
 @Injectable()
 export class SetAuthorInterceptor implements NestInterceptor {
@@ -17,8 +17,8 @@ export class SetAuthorInterceptor implements NestInterceptor {
         Request<unknown, unknown, Record<string, unknown> | undefined>
       >();
 
-    ok(request.body !== null && typeof request.body === 'object');
-    ok(request.user);
+    invariant(request.body !== null && typeof request.body === 'object');
+    invariant(request.user);
     Object.assign(request.body, { author: request.user });
 
     return next.handle();

@@ -49,6 +49,7 @@
     "rxjs": "^7.5.5",
     "short-uuid": "^4.2.0",
     "slugify": "^1.6.5",
+    "tiny-invariant": "^1.2.0",
     "typeorm": "^0.2.41"
   },
   "devDependencies": {

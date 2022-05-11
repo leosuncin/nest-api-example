@@ -5,6 +5,7 @@ import {
   Injectable,
 } from '@nestjs/common';
 import type { Request } from 'express';
+import invariant from 'tiny-invariant';
 
 import { Article } from '@/blog/entities/article.entity';
 import { ArticleService } from '@/blog/services/article.service';
@@ -22,8 +23,9 @@ export class IsAuthorGuard implements CanActivate {
     if (!article) return true;
 
     // The request.user is defined and checked by JWTAuthGuard
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    if (article.author.id !== request.user!.id) {
+    invariant(request.user, 'Must be logged in');
+
+    if (article.author.id !== request.user.id) {
       throw new ForbiddenException('You are not the author of the article');
     }
 
