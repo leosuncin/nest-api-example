@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { request, spec } from 'pactum';
+import { e2e, request, spec } from 'pactum';
 
 import {
   createArticleFixture,
@@ -7,12 +7,27 @@ import {
 } from '@/blog/fixtures/article.fixture';
 import { isoDateRegex, uuidRegex } from '@/common/test-helpers';
 
+const unauthorizedError = {
+  message: 'Unauthorized',
+  statusCode: HttpStatus.UNAUTHORIZED,
+};
+const notFoundError = {
+  error: 'Not Found',
+  message: 'The article was not found',
+  statusCode: HttpStatus.NOT_FOUND,
+};
+const forbiddenError = {
+  error: 'Forbidden',
+  message: 'You are not the author of the article',
+  statusCode: HttpStatus.FORBIDDEN,
+};
 const credentials = {
   username: 'john-doe',
   password: 'Th€Pa$$w0rd!',
 };
 
 describe('ArticleController (e2e)', () => {
+  const testCase = e2e('Article CRUD');
   let tokenCookie: string;
 
   beforeAll(() => {
@@ -27,13 +42,19 @@ describe('ArticleController (e2e)', () => {
       .toss();
   });
 
+  afterAll(async () => {
+    await testCase.cleanup();
+  });
+
   it('create a new article', async () => {
     const data = await createArticleFixture().execute();
 
-    await spec()
+    await testCase
+      .step('Create article')
+      .spec()
       .post('/articles')
       .withHeaders('Cookie', tokenCookie)
-      .withBody(data)
+      .withJson(data)
       .expectStatus(HttpStatus.CREATED)
       .expectJsonLike({
         author: 'typeof $V === "object"',
@@ -45,6 +66,11 @@ describe('ArticleController (e2e)', () => {
         updatedAt: isoDateRegex,
       })
       .stores('article', '.')
+      .clean()
+      .delete('/articles/{id}')
+      .withPathParams('id', '$S{article.id}')
+      .withHeaders('Cookie', tokenCookie)
+      .expectStatus(HttpStatus.NO_CONTENT)
       .toss();
   });
 
@@ -55,10 +81,7 @@ describe('ArticleController (e2e)', () => {
       .post('/articles')
       .withBody(data)
       .expectStatus(HttpStatus.UNAUTHORIZED)
-      .expectJson({
-        message: 'Unauthorized',
-        statusCode: HttpStatus.UNAUTHORIZED,
-      })
+      .expectJson(unauthorizedError)
       .toss();
   });
 
@@ -68,7 +91,8 @@ describe('ArticleController (e2e)', () => {
     'mLDYhAjz213rjfHRJwqUES',
   ])('get one article by id "%s"', async (id) => {
     await spec()
-      .get(`/articles/${id}`)
+      .get('/articles/{id}')
+      .withPathParams('id', id)
       .expectStatus(HttpStatus.OK)
       .expectJsonLike({
         author: 'typeof $V === "object"',
@@ -87,11 +111,7 @@ describe('ArticleController (e2e)', () => {
     await spec()
       .get('/articles/not-exists-ert')
       .expectStatus(HttpStatus.NOT_FOUND)
-      .expectJson({
-        error: 'Not Found',
-        message: 'The article was not found',
-        statusCode: HttpStatus.NOT_FOUND,
-      })
+      .expectJson(notFoundError)
       .toss();
   });
 
@@ -148,7 +168,9 @@ describe('ArticleController (e2e)', () => {
     const data = await updateArticleFixture({ title }).execute();
     const slug: string = title.toLowerCase().replace(/\s+/g, '-');
 
-    await spec()
+    await testCase
+      .step('Update article')
+      .spec()
       .patch('/articles/{id}')
       .withPathParams('id', `$S{article.${property}}`)
       .withHeaders('Cookie', tokenCookie)
@@ -170,10 +192,7 @@ describe('ArticleController (e2e)', () => {
       .withPathParams('slug', '$S{article.slug}')
       .withBody(data)
       .expectStatus(HttpStatus.UNAUTHORIZED)
-      .expectJson({
-        message: 'Unauthorized',
-        statusCode: HttpStatus.UNAUTHORIZED,
-      })
+      .expectJson(unauthorizedError)
       .toss();
   });
 
@@ -185,11 +204,25 @@ describe('ArticleController (e2e)', () => {
       .withHeaders('Cookie', tokenCookie)
       .withBody(data)
       .expectStatus(HttpStatus.FORBIDDEN)
-      .expectJson({
-        error: 'Forbidden',
-        message: 'You are not the author of the article',
-        statusCode: HttpStatus.FORBIDDEN,
-      })
+      .expectJson(forbiddenError)
+      .toss();
+  });
+
+  it('require to be authenticated to remove an article', async () => {
+    await spec()
+      .delete('/articles/{slug}')
+      .withPathParams('slug', '$S{article.slug}')
+      .expectStatus(HttpStatus.UNAUTHORIZED)
+      .expectJson(unauthorizedError)
+      .toss();
+  });
+
+  it('allow only the author to remove an article', async () => {
+    await spec()
+      .delete('/articles/31a10506-c334-4841-97a6-144a55bf4ebb')
+      .withHeaders('Cookie', tokenCookie)
+      .expectStatus(HttpStatus.FORBIDDEN)
+      .expectJson(forbiddenError)
       .toss();
   });
 });
