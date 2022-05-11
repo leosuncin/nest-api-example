@@ -18,6 +18,21 @@ import {
   uuidRegex,
 } from '@/common/test-helpers';
 
+const unauthorizedError = {
+  message: 'Unauthorized',
+  statusCode: HttpStatus.UNAUTHORIZED,
+};
+const notFoundError = {
+  error: 'Not Found',
+  message: 'The article was not found',
+  statusCode: HttpStatus.NOT_FOUND,
+};
+const forbiddenError = {
+  error: 'Forbidden',
+  message: 'You are not the author of the article',
+  statusCode: HttpStatus.FORBIDDEN,
+};
+
 describe('AuthModule', () => {
   let app: INestApplication;
   let jwt: string;
@@ -58,10 +73,7 @@ describe('AuthModule', () => {
       .post('/articles')
       .send(data)
       .expect(HttpStatus.UNAUTHORIZED)
-      .expect({
-        message: 'Unauthorized',
-        statusCode: HttpStatus.UNAUTHORIZED,
-      });
+      .expect(unauthorizedError);
   });
 
   it.each([
@@ -90,11 +102,7 @@ describe('AuthModule', () => {
     await request(app.getHttpServer())
       .get('/articles/not-exists-ert')
       .expect(HttpStatus.NOT_FOUND)
-      .expect({
-        error: 'Not Found',
-        message: 'The article was not found',
-        statusCode: HttpStatus.NOT_FOUND,
-      });
+      .expect(notFoundError);
   });
 
   it.each([
@@ -174,10 +182,7 @@ describe('AuthModule', () => {
       .patch('/articles/31a10506-c334-4841-97a6-144a55bf4ebb')
       .send(data)
       .expect(HttpStatus.UNAUTHORIZED)
-      .expect({
-        message: 'Unauthorized',
-        statusCode: HttpStatus.UNAUTHORIZED,
-      });
+      .expect(unauthorizedError);
   });
 
   it('allow only the author to update an article', async () => {
@@ -188,10 +193,39 @@ describe('AuthModule', () => {
       .set('Authorization', `Bearer ${jwt}`)
       .send(data)
       .expect(HttpStatus.FORBIDDEN)
-      .expect({
-        error: 'Forbidden',
-        message: 'You are not the author of the article',
-        statusCode: HttpStatus.FORBIDDEN,
+      .expect(forbiddenError);
+  });
+
+  it.each([
+    '31a10506-c334-4841-97a6-144a55bf4ebb',
+    'though-we-assume-the-latter-however-blueberries-have-begun-to-rent-currants-over-the-past-few-months-specifically-for-eagles-associated-with-their-lemons-78rW4UUH2Ekokt36qUGxqP',
+    '78rW4UUH2Ekokt36qUGxqP',
+  ])('remove one article by id %s', async (id) => {
+    const backup = database.backup();
+
+    await request(app.getHttpServer())
+      .delete(`/articles/${id}`)
+      .set('Authorization', `Bearer ${jwt}`)
+      .expect(HttpStatus.NO_CONTENT)
+      .expect(({ noContent }) => {
+        expect(noContent).toBe(true);
       });
+
+    backup.restore();
+  });
+
+  it('require to be authenticated to remove an article', async () => {
+    await request(app.getHttpServer())
+      .delete('/articles/31a10506-c334-4841-97a6-144a55bf4ebb')
+      .expect(HttpStatus.UNAUTHORIZED)
+      .expect(unauthorizedError);
+  });
+
+  it('allow only the author to remove an article', async () => {
+    await request(app.getHttpServer())
+      .delete('/articles/a832e632-0335-4191-8469-4d849bbb72be')
+      .set('Authorization', `Bearer ${jwt}`)
+      .expect(HttpStatus.FORBIDDEN)
+      .expect(forbiddenError);
   });
 });

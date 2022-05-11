@@ -110,4 +110,15 @@ Nulla ipsum do id enim et ullamco cupidatat irure anim consectetur pariatur.`,
       changes.content,
     );
   });
+
+  it('should soft remove one article', async () => {
+    const article = new Article();
+
+    mockArticleRepository.softRemove.mockImplementation((article) =>
+      Promise.resolve(Object.assign(article, { deletedAt: new Date() })),
+    );
+
+    await expect(service.remove(article)).resolves.toBeInstanceOf(Article);
+    expect(mockArticleRepository.softRemove).toHaveBeenCalledWith(article);
+  });
 });

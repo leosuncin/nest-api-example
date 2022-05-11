@@ -105,4 +105,15 @@ Exercitation ut esse aute minim tempor non exercitation qui amet laborum incidid
       Article,
     );
   });
+
+  it('should remove an article', async () => {
+    const article = new Article();
+
+    mockArticleService.remove.mockImplementation((article) =>
+      Promise.resolve(Object.assign(article, { deletedAt: new Date() })),
+    );
+
+    await expect(controller.remove(article)).resolves.toBeInstanceOf(Article);
+    expect(mockArticleService.remove).toHaveBeenCalledWith(article);
+  });
 });
