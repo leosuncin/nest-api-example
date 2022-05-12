@@ -121,4 +121,12 @@ Nulla ipsum do id enim et ullamco cupidatat irure anim consectetur pariatur.`,
     await expect(service.remove(article)).resolves.toBeInstanceOf(Article);
     expect(mockArticleRepository.softRemove).toHaveBeenCalledWith(article);
   });
+
+  it('should check if article with a given id exist', async () => {
+    mockArticleRepository.count.mockResolvedValueOnce(1);
+
+    await expect(
+      service.checkExist('a832e632-0335-4191-8469-4d849bbb72be'),
+    ).resolves.toBe(true);
+  });
 });

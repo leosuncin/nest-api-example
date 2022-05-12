@@ -16,6 +16,10 @@ export class ArticleExistConstraint implements ValidatorConstraintInterface {
   validate(value: string): Promise<boolean> {
     return this.articleService.checkExist(value);
   }
+
+  defaultMessage() {
+    return '$property with id «$value» does not exist';
+  }
 }
 
 export function ArticleExist(options?: ValidationOptions) {

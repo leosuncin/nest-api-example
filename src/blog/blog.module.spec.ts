@@ -10,6 +10,7 @@ import {
   createArticleFixture,
   updateArticleFixture,
 } from '@/blog/fixtures/article.fixture';
+import { createCommentFixture } from '@/blog/fixtures/comment.fixture';
 import {
   buildTestApplication,
   database,
@@ -227,5 +228,57 @@ describe('AuthModule', () => {
       .set('Authorization', `Bearer ${jwt}`)
       .expect(HttpStatus.FORBIDDEN)
       .expect(forbiddenError);
+  });
+
+  it('add a new comment to an article', async () => {
+    const data = await createCommentFixture().execute();
+
+    await request(app.getHttpServer())
+      .post('/articles/a832e632-0335-4191-8469-4d849bbb72be/comments')
+      .set('Authorization', `Bearer ${jwt}`)
+      .send(data)
+      .expect(HttpStatus.CREATED)
+      .expect(({ body }) => {
+        expect(body).toMatchObject({
+          article: expect.stringMatching(uuidRegex),
+          author: expect.anything(),
+          body: data.body,
+          createdAt: expect.stringMatching(isoDateRegex),
+          id: expect.stringMatching(uuidRegex),
+          updatedAt: expect.stringMatching(isoDateRegex),
+        });
+      });
+  });
+
+  it('validate the creation of a new comment', async () => {
+    const data = {};
+
+    await request(app.getHttpServer())
+      .post('/articles/00000000-0000-0000-0000-000000000000/comments')
+      .set('Authorization', `Bearer ${jwt}`)
+      .send(data)
+      .expect(HttpStatus.UNPROCESSABLE_ENTITY)
+      .expect(({ body }) => {
+        expect(body).toMatchObject({
+          error: 'Unprocessable Entity',
+          message: [
+            'body should not be null or undefined',
+            'body should not be empty',
+            'body must be a string',
+            'article with id «00000000-0000-0000-0000-000000000000» does not exist',
+          ],
+          statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+        });
+      });
+  });
+
+  it('require to be authenticated to add a new comment to an article', async () => {
+    const data = await createCommentFixture().execute();
+
+    await request(app.getHttpServer())
+      .post('/articles/a832e632-0335-4191-8469-4d849bbb72be/comments')
+      .send(data)
+      .expect(HttpStatus.UNAUTHORIZED)
+      .expect(unauthorizedError);
   });
 });
