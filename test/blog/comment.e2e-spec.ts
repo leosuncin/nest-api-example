@@ -85,4 +85,37 @@ describe('CommentController (e2e)', () => {
       .expectJson(unauthorizedError)
       .toss();
   });
+
+  it.each([
+    { limit: 10, page: 1 },
+    { limit: 5, page: 3 },
+    { page: 2 },
+    { limit: 20 },
+  ])('paginate all of the comment by %O', async (query) => {
+    const currentPage = query.page ?? 1;
+    const itemsPerPage = query.limit ?? 10;
+
+    await spec()
+      .get('/articles/{articleId}/comments')
+      .withPathParams('articleId', articleId)
+      .withQueryParams(query)
+      .expectStatus(HttpStatus.OK)
+      .expect(({ res: { body } }) => {
+        expect(body).toHaveProperty(
+          'items',
+          expect.arrayContaining([expect.any(Object)]),
+        );
+        expect(body).toHaveProperty(
+          'meta',
+          expect.objectContaining({
+            currentPage,
+            itemCount: expect.any(Number),
+            itemsPerPage,
+            totalItems: expect.any(Number),
+            totalPages: expect.any(Number),
+          }),
+        );
+      })
+      .toss();
+  });
 });
