@@ -41,4 +41,14 @@ export class ArticleService {
   remove(article: Article): Promise<Article> {
     return this.articleRepository.softRemove(article);
   }
+
+  async checkExist(articleId: Article['id']): Promise<boolean> {
+    const count = await this.articleRepository.count({
+      where: {
+        id: articleId,
+      },
+    });
+
+    return count > 0;
+  }
 }

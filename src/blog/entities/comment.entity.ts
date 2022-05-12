@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import {
   Column,
   CreateDateColumn,
@@ -26,6 +27,7 @@ export class Comment {
   updatedAt!: Date;
 
   @DeleteDateColumn()
+  @Exclude()
   deletedAt?: Date;
 
   @ManyToOne(() => Article, (post) => post.comments, {
