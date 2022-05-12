@@ -1,6 +1,7 @@
 import { ArgumentMetadata } from '@nestjs/common';
 
 import { StripIdPipe } from '@/auth/pipes/strip-id.pipe';
+import { credentials } from '@/common/test-helpers';
 
 describe('StripIdPipe', () => {
   it('should be defined', () => {
@@ -16,7 +17,7 @@ describe('StripIdPipe', () => {
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       email: 'johndoe@example.com',
       newPassword: 'ji32k7au4a83',
-      password: 'Th€Pa$$w0rd!',
+      password: credentials.password,
     };
     const metadata: ArgumentMetadata = {
       type: 'body',

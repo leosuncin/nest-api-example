@@ -1,6 +1,5 @@
 import { CallHandler } from '@nestjs/common';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
-import type { Request, Response } from 'express';
 import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
 
@@ -16,7 +15,7 @@ describe('SetArticleInterceptor', () => {
     'though-we-assume-the-latter-however-blueberries-have-begun-to-rent-currants-over-the-past-few-months-specifically-for-eagles-associated-with-their-lemons-78rW4UUH2Ekokt36qUGxqP',
     '78rW4UUH2Ekokt36qUGxqP',
   ])('should inject the article %s', async (articleId) => {
-    const { req, res } = createMocks<Request, Response>({
+    const { req, res } = createMocks({
       path: `/articles/${articleId}/comments`,
       params: { articleId },
       body: {

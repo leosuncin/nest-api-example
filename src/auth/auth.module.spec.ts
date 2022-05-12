@@ -14,6 +14,7 @@ import {
 import { userFixture } from '@/auth/fixtures/user.fixture';
 import {
   buildTestApplication,
+  credentials,
   database,
   isoDateRegex,
   loadFixtures,
@@ -21,7 +22,7 @@ import {
 } from '@/common/test-helpers';
 
 describe('Auth module', () => {
-  const password = 'Th€Pa$$w0rd!';
+  const password = credentials.password;
   let app: INestApplication;
   let user: User;
   let jwt: string;

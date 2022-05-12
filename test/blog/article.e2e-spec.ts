@@ -5,7 +5,7 @@ import {
   createArticleFixture,
   updateArticleFixture,
 } from '@/blog/fixtures/article.fixture';
-import { isoDateRegex, uuidRegex } from '@/common/test-helpers';
+import { credentials, isoDateRegex, uuidRegex } from '@/common/test-helpers';
 
 const unauthorizedError = {
   message: 'Unauthorized',
@@ -20,10 +20,6 @@ const forbiddenError = {
   error: 'Forbidden',
   message: 'You are not the author of the article',
   statusCode: HttpStatus.FORBIDDEN,
-};
-const credentials = {
-  username: 'john-doe',
-  password: 'Th€Pa$$w0rd!',
 };
 
 describe('ArticleController (e2e)', () => {

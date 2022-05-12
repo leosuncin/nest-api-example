@@ -22,6 +22,8 @@ import {
   Resolver,
 } from 'typeorm-fixtures-cli';
 
+import type { LoginUser } from '@/auth/dto/login-user.dto';
+
 // eslint-disable-next-line security/detect-unsafe-regex
 export const uuidRegex = /[\da-f]{8}(?:-[\da-f]{4}){3}-[\da-f]{12}/;
 
@@ -97,3 +99,8 @@ export async function loadFixtures(connection: Connection) {
     await connection.getRepository(entity.constructor.name).save(entity);
   }
 }
+
+export const credentials = Object.freeze<LoginUser>({
+  password: 'Th€Pa$$w0rd!',
+  username: 'john-doe',
+});

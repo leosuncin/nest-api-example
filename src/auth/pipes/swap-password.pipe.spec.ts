@@ -1,6 +1,7 @@
 import { ArgumentMetadata } from '@nestjs/common';
 
 import { SwapPasswordPipe } from '@/auth/pipes/swap-password.pipe';
+import { credentials } from '@/common/test-helpers';
 
 describe('StripPasswordPipe', () => {
   it('should be defined', () => {
@@ -14,7 +15,7 @@ describe('StripPasswordPipe', () => {
       username: 'john',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       email: 'johndoe@example.com',
-      password: 'Th€Pa$$w0rd!',
+      password: credentials.password,
     };
     const metadata: ArgumentMetadata = {
       type: 'body',
@@ -31,7 +32,7 @@ describe('StripPasswordPipe', () => {
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       email: 'johndoe@example.com',
       newPassword: 'ji32k7au4a83',
-      password: 'Th€Pa$$w0rd!',
+      password: credentials.password,
     };
     const metadata: ArgumentMetadata = {
       type: 'body',
@@ -50,7 +51,7 @@ describe('StripPasswordPipe', () => {
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       email: 'johndoe@example.com',
       newPassword: 'ji32k7au4a83',
-      password: 'Th€Pa$$w0rd!',
+      password: credentials.password,
     };
     const metadata: ArgumentMetadata = {
       type: 'custom',

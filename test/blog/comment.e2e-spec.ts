@@ -2,15 +2,11 @@ import { HttpStatus } from '@nestjs/common';
 import { e2e, request, spec } from 'pactum';
 
 import { createCommentFixture } from '@/blog/fixtures/comment.fixture';
-import { isoDateRegex, uuidRegex } from '@/common/test-helpers';
+import { credentials, isoDateRegex, uuidRegex } from '@/common/test-helpers';
 
 const unauthorizedError = {
   message: 'Unauthorized',
   statusCode: HttpStatus.UNAUTHORIZED,
-};
-const credentials = {
-  username: 'john-doe',
-  password: 'Th€Pa$$w0rd!',
 };
 
 describe('CommentController (e2e)', () => {

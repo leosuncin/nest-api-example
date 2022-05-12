@@ -11,6 +11,7 @@ import { User } from '@/auth/entities/user.entity';
 import { updateFixture } from '@/auth/fixtures/auth.fixture';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
+import { credentials } from '@/common/test-helpers';
 
 describe('Update user validations', () => {
   const mockUserRepository = mock<Repository<User>>();
@@ -48,7 +49,7 @@ describe('Update user validations', () => {
           .noShrink()
           .map((seed) =>
             updateFixture({
-              password: 'Th€Pa$$w0rd!',
+              password: credentials.password,
               id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
             }).execute({
               faker: { seed },

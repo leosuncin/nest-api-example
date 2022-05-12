@@ -1,7 +1,6 @@
 import { ForbiddenException } from '@nestjs/common';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { Test } from '@nestjs/testing';
-import type { Request, Response } from 'express';
 import { mock } from 'jest-mock-extended';
 import { createMocks } from 'node-mocks-http';
 
@@ -45,7 +44,7 @@ describe('IsAuthorGuard', () => {
   it.each([article.id, article.slug, 'mLDYhAjz213rjfHRJwqUES'])(
     'should authorize when the current user is the author of %s',
     async (id) => {
-      const { req, res } = createMocks<Request, Response>({
+      const { req, res } = createMocks({
         params: { id },
         user,
       });
@@ -60,7 +59,7 @@ describe('IsAuthorGuard', () => {
   );
 
   it('should authorize when the article not exist', async () => {
-    const { req, res } = createMocks<Request, Response>({
+    const { req, res } = createMocks({
       params: { id: '013cd55e-aed5-4201-a2cd-1458b0c9523b' },
       user,
     });
@@ -72,7 +71,7 @@ describe('IsAuthorGuard', () => {
   });
 
   it('should throw when the current user is not the author', async () => {
-    const { req, res } = createMocks<Request, Response>({
+    const { req, res } = createMocks({
       user: User.fromPartial({ id: '63770485-6ee9-4a59-b374-3f194091e2e1' }),
       params: { id: article.id },
     });

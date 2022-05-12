@@ -9,6 +9,7 @@ import {
   ValidateCredential,
   ValidateCredentialConstraint,
 } from '@/auth/validators/validate-credential.validator';
+import { credentials } from '@/common/test-helpers';
 
 class DTO {
   @ValidateCredential()
@@ -37,8 +38,7 @@ class Update {
 const user = User.fromPartial({
   id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
   email: 'john@doe.me',
-  password: 'Th€Pa$$w0rd!',
-  username: 'john-doe',
+  ...credentials,
   checkPassword(plainPassword) {
     return Promise.resolve(plainPassword === this.password);
   },
@@ -79,11 +79,11 @@ describe('ValidateCredential', () => {
     {},
     { username: undefined, password: undefined },
     { username: 42, password: false },
-    { username: 'jane-doe', password: 'Th€Pa$$w0rd!' },
-    { username: 'john-doe', password: 'MiContraseña' },
-    { password: 'Th€Pa$$w0rd!' },
-    { username: 'john-doe' },
-    { usuario: 'john-doe', contraseña: 'Th€Pa$$w0rd!' },
+    { username: 'jane-doe', password: credentials.password },
+    { username: credentials.username, password: 'MiContraseña' },
+    { password: credentials.password },
+    { username: credentials.username },
+    { usuario: credentials.username, contraseña: credentials.password },
   ])('should fail with invalid credentials: %o', async (data) => {
     const dto = DTO.from(data);
     mockRepository.findOne.mockResolvedValue(void 0);
