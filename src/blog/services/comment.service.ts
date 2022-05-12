@@ -5,7 +5,7 @@ import {
   type Pagination,
   paginate,
 } from 'nestjs-typeorm-paginate';
-import type { Repository } from 'typeorm';
+import type { FindConditions, Repository } from 'typeorm';
 
 import { CreateComment } from '@/blog/dto/create-comment';
 import { Comment } from '@/blog/entities/comment.entity';
@@ -23,9 +23,15 @@ export class CommentService {
     return this.commentRepository.save(comment);
   }
 
-  findBy(options: IPaginationOptions): Promise<Pagination<Comment>> {
-    return paginate(this.commentRepository, options, {
-      order: { createdAt: 'DESC' },
-    });
+  findBy(
+    options: IPaginationOptions,
+    search: FindConditions<Comment>,
+  ): Promise<Pagination<Comment>> {
+    const query = this.commentRepository
+      .createQueryBuilder('c')
+      .where(search)
+      .orderBy('c.createdAt', 'DESC');
+
+    return paginate(query, options);
   }
 }

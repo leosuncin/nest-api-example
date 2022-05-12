@@ -34,6 +34,7 @@ export class Comment {
     nullable: false,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
+    deferrable: 'INITIALLY DEFERRED',
   })
   article!: Article;
 
@@ -41,6 +42,7 @@ export class Comment {
     nullable: false,
     onDelete: 'RESTRICT',
     onUpdate: 'CASCADE',
+    eager: true,
   })
   author!: User;
 }
