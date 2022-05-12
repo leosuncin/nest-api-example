@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { createMockInstance } from 'jest-create-mock-instance';
-import { Repository } from 'typeorm';
+import { Repository, SelectQueryBuilder } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
 import { CreateComment } from '@/blog/dto/create-comment';
@@ -55,5 +55,46 @@ describe('CommentService', () => {
     await expect(service.create(newComment)).resolves.toBeInstanceOf(Comment);
     expect(mockCommentRepository.create).toHaveBeenCalledWith(newComment);
     expect(mockCommentRepository.save).toHaveBeenCalledTimes(1);
+  });
+
+  it('should paginate the comments', async () => {
+    const queryBuilder = createMockInstance(SelectQueryBuilder);
+    const article = Object.assign(new Article(), {
+      id: 'a832e632-0335-4191-8469-4d849bbb72be',
+    });
+
+    queryBuilder.where.mockReturnThis();
+    queryBuilder.orderBy.mockReturnThis();
+    queryBuilder.limit.mockReturnThis();
+    queryBuilder.offset.mockReturnThis();
+    queryBuilder.skip.mockReturnThis();
+    queryBuilder.take.mockReturnThis();
+    queryBuilder.cache.mockReturnThis();
+    queryBuilder.select.mockReturnThis();
+    queryBuilder.from.mockReturnThis();
+    queryBuilder.setParameters.mockReturnThis();
+    queryBuilder.clone.mockReturnValue(queryBuilder);
+    queryBuilder.getMany.mockResolvedValue([new Comment()]);
+    queryBuilder.getRawOne.mockResolvedValue({ value: '1' });
+    // @ts-expect-error mock connection
+    queryBuilder.connection = {
+      createQueryBuilder: jest.fn().mockReturnValue(queryBuilder),
+    };
+    mockCommentRepository.createQueryBuilder.mockReturnValue(
+      queryBuilder as SelectQueryBuilder<Comment>,
+    );
+
+    await expect(
+      service.findBy({ limit: 10, page: 1 }, { article }),
+    ).resolves.toMatchObject({
+      items: expect.arrayContaining([expect.any(Comment)]),
+      meta: {
+        currentPage: 1,
+        itemCount: 1,
+        itemsPerPage: 10,
+        totalItems: 1,
+        totalPages: 1,
+      },
+    });
   });
 });

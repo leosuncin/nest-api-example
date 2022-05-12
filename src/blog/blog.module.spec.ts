@@ -281,4 +281,38 @@ describe('AuthModule', () => {
       .expect(HttpStatus.UNAUTHORIZED)
       .expect(unauthorizedError);
   });
+
+  it.each([
+    { limit: 10, page: 1 },
+    { limit: 5, page: 3 },
+    { page: 2 },
+    { limit: 20 },
+  ])('paginate all of the comment by %O', async (query) => {
+    const defaultLimit = 10;
+    const totalItems = 15;
+    const currentPage = query.page ?? 1;
+    const itemsPerPage = query.limit ?? defaultLimit;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    await request(app.getHttpServer())
+      .get('/articles/31a10506-c334-4841-97a6-144a55bf4ebb/comments')
+      .query(query)
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toHaveProperty(
+          'items',
+          expect.arrayContaining([expect.any(Object)]),
+        );
+        expect(body).toHaveProperty(
+          'meta',
+          expect.objectContaining({
+            currentPage,
+            itemCount: expect.any(Number),
+            itemsPerPage,
+            totalItems,
+            totalPages,
+          }),
+        );
+      });
+  });
 });

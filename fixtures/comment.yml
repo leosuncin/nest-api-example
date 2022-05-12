@@ -1,0 +1,14 @@
+entity: Comment
+items:
+  article1_{1..15}:
+    body: '{{lorem.paragraph}}'
+    article: '@article1'
+    author: '@jane'
+    createdAt: '{{date.past}}'
+    updatedAt: '{{date.past}}'
+  article2_{1..15}:
+    body: '{{lorem.paragraph}}'
+    article: '@article2'
+    author: '@john'
+    createdAt: '{{date.past}}'
+    updatedAt: '{{date.past}}'
