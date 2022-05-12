@@ -1,5 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import {
+  type IPaginationOptions,
+  type Pagination,
+  paginate,
+} from 'nestjs-typeorm-paginate';
 import type { Repository } from 'typeorm';
 
 import { CreateComment } from '@/blog/dto/create-comment';
@@ -16,5 +21,11 @@ export class CommentService {
     const comment = this.commentRepository.create(newComment);
 
     return this.commentRepository.save(comment);
+  }
+
+  findBy(options: IPaginationOptions): Promise<Pagination<Comment>> {
+    return paginate(this.commentRepository, options, {
+      order: { createdAt: 'DESC' },
+    });
   }
 }
