@@ -8,6 +8,11 @@ const unauthorizedError = {
   message: 'Unauthorized',
   statusCode: HttpStatus.UNAUTHORIZED,
 };
+const forbiddenError = {
+  error: 'Forbidden',
+  message: 'You are not the author of the comment',
+  statusCode: HttpStatus.FORBIDDEN,
+};
 
 describe('CommentController (e2e)', () => {
   const testCase = e2e('Comment CRUD');
@@ -50,6 +55,12 @@ describe('CommentController (e2e)', () => {
         updatedAt: isoDateRegex,
       })
       .stores('comment', '.')
+      .clean()
+      .delete('/articles/{articleId}/comments/{commentId}')
+      .withPathParams('articleId', articleId)
+      .withPathParams('commentId', '$S{comment.id}')
+      .withHeaders('Cookie', tokenCookie)
+      .expectStatus(HttpStatus.NO_CONTENT)
       .toss();
   });
 
@@ -116,6 +127,29 @@ describe('CommentController (e2e)', () => {
           }),
         );
       })
+      .toss();
+  });
+
+  it('require to be authenticated to remove a comment from an article', async () => {
+    await spec()
+      .delete(
+        '/articles/{articleId}/comments/2cce7079-b434-42fb-85e3-8d1aadd7bb8a',
+      )
+      .withPathParams('articleId', articleId)
+      .expectStatus(HttpStatus.UNAUTHORIZED)
+      .expectJson(unauthorizedError)
+      .toss();
+  });
+
+  it('allow only the author to remove a comment from an article', async () => {
+    await spec()
+      .delete(
+        '/articles/{articleId}/comments/9395e782-367b-4487-a048-242e37169109',
+      )
+      .withPathParams('articleId', articleId)
+      .withHeaders('Cookie', tokenCookie)
+      .expectStatus(HttpStatus.FORBIDDEN)
+      .expectJson(forbiddenError)
       .toss();
   });
 });
