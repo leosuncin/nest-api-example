@@ -1,12 +1,26 @@
 entity: Comment
 items:
-  article1_{1..15}:
+  article1_{1..14}:
     body: '{{lorem.paragraph}}'
     article: '@article1'
     author: '@jane'
     createdAt: '{{date.past}}'
     updatedAt: '{{date.past}}'
-  article2_{1..15}:
+  article2_{1..14}:
+    body: '{{lorem.paragraph}}'
+    article: '@article2'
+    author: '@john'
+    createdAt: '{{date.past}}'
+    updatedAt: '{{date.past}}'
+  article1_comment1:
+    id: 9395e782-367b-4487-a048-242e37169109
+    body: '{{lorem.paragraph}}'
+    article: '@article1'
+    author: '@jane'
+    createdAt: '{{date.past}}'
+    updatedAt: '{{date.past}}'
+  article2_comment1:
+    id: 2cce7079-b434-42fb-85e3-8d1aadd7bb8a
     body: '{{lorem.paragraph}}'
     article: '@article2'
     author: '@john'

@@ -97,4 +97,17 @@ describe('CommentService', () => {
       },
     });
   });
+
+  it('should soft remove one comment', async () => {
+    const id = 'a832e632-0335-4191-8469-4d849bbb72be';
+
+    mockCommentRepository.softDelete.mockResolvedValueOnce({
+      generatedMaps: [],
+      raw: [],
+      affected: 1,
+    });
+
+    await expect(service.remove(id)).resolves.toBeDefined();
+    expect(mockCommentRepository.softDelete).toHaveBeenCalledWith({ id });
+  });
 });

@@ -1,13 +1,17 @@
-import { ForbiddenException } from '@nestjs/common';
+import { ForbiddenException, InjectionToken } from '@nestjs/common';
+import { ModuleRef, Reflector } from '@nestjs/core';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { Test } from '@nestjs/testing';
 import { mock } from 'jest-mock-extended';
 import { createMocks } from 'node-mocks-http';
 
 import { User } from '@/auth/entities/user.entity';
+import { Entities } from '@/blog/constants/entity.enum';
 import { Article } from '@/blog/entities/article.entity';
+import { Comment } from '@/blog/entities/comment.entity';
 import { IsAuthorGuard } from '@/blog/guards/is-author.guard';
 import { ArticleService } from '@/blog/services/article.service';
+import { CommentService } from '@/blog/services/comment.service';
 
 const user = User.fromPartial({ id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5' });
 const article: Article = Object.create(Article.prototype, {
@@ -18,17 +22,48 @@ const article: Article = Object.create(Article.prototype, {
   },
   author: { value: user },
 });
+const comment: Comment = Object.create(Comment.prototype, {
+  id: { value: '9395e782-367b-4487-a048-242e37169109' },
+  article: { value: article },
+  author: { value: user },
+});
 
 describe('IsAuthorGuard', () => {
-  const mockArticleService = mock<ArticleService>();
+  const mockReflector = mock<Reflector>();
   let guard: IsAuthorGuard;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         {
-          provide: ArticleService,
-          useValue: mockArticleService,
+          provide: ModuleRef,
+          useValue: {
+            get(token: InjectionToken) {
+              if (Object.is(token, ArticleService)) {
+                const mockArticleService = mock<ArticleService>();
+
+                mockArticleService.getById
+                  .calledWith(article.id)
+                  .mockResolvedValue(article);
+
+                return mockArticleService;
+              }
+
+              if (Object.is(token, CommentService)) {
+                const mockCommentService = mock<CommentService>();
+
+                mockCommentService.getById
+                  .calledWith(comment.id)
+                  .mockResolvedValue(comment);
+
+                return mockCommentService;
+              }
+            },
+          },
+        },
+        {
+          provide: Reflector,
+          useValue: mockReflector,
         },
         IsAuthorGuard,
       ],
@@ -41,46 +76,58 @@ describe('IsAuthorGuard', () => {
     expect(guard).toBeDefined();
   });
 
-  it.each([article.id, article.slug, 'mLDYhAjz213rjfHRJwqUES'])(
-    'should authorize when the current user is the author of %s',
-    async (id) => {
+  it.each([
+    [article.id, Entities.ARTICLE],
+    [article.slug, Entities.ARTICLE],
+    ['mLDYhAjz213rjfHRJwqUES', Entities.ARTICLE],
+    [comment.id, Entities.COMMENT],
+  ])(
+    'should authorize when the current user is the author of %s %s',
+    async (id, entity) => {
       const { req, res } = createMocks({
         params: { id },
         user,
       });
       const context = new ExecutionContextHost([req, res]);
 
-      mockArticleService.getById
-        .calledWith(article.id)
-        .mockResolvedValueOnce(article);
+      mockReflector.get.mockReturnValueOnce(entity);
 
       await expect(guard.canActivate(context)).resolves.toBe(true);
     },
   );
 
-  it('should authorize when the article not exist', async () => {
+  it.each([
+    ['013cd55e-aed5-4201-a2cd-1458b0c9523b', Entities.ARTICLE],
+    ['188580f8-e3ff-43d8-ac37-f3063477db53', Entities.COMMENT],
+  ])('should authorize when %s %s not exist', async (id, entity) => {
     const { req, res } = createMocks({
-      params: { id: '013cd55e-aed5-4201-a2cd-1458b0c9523b' },
+      params: { id },
       user,
     });
     const context = new ExecutionContextHost([req, res]);
 
-    mockArticleService.getById.mockResolvedValueOnce(void 0);
+    mockReflector.get.mockReturnValueOnce(entity);
 
     await expect(guard.canActivate(context)).resolves.toBe(true);
   });
 
-  it('should throw when the current user is not the author', async () => {
-    const { req, res } = createMocks({
-      user: User.fromPartial({ id: '63770485-6ee9-4a59-b374-3f194091e2e1' }),
-      params: { id: article.id },
-    });
-    const context = new ExecutionContextHost([req, res]);
+  it.each([
+    [article.id, Entities.ARTICLE],
+    [comment.id, Entities.COMMENT],
+  ])(
+    'should throw when the current user is not the author of %s %s',
+    async (id, entity) => {
+      const { req, res } = createMocks({
+        user: User.fromPartial({ id: '63770485-6ee9-4a59-b374-3f194091e2e1' }),
+        params: { id },
+      });
+      const context = new ExecutionContextHost([req, res]);
 
-    mockArticleService.getById.mockResolvedValueOnce(article);
+      mockReflector.get.mockReturnValueOnce(entity);
 
-    await expect(guard.canActivate(context)).rejects.toThrow(
-      ForbiddenException,
-    );
-  });
+      await expect(guard.canActivate(context)).rejects.toThrow(
+        ForbiddenException,
+      );
+    },
+  );
 });

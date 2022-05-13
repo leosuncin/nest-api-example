@@ -315,4 +315,48 @@ describe('AuthModule', () => {
         );
       });
   });
+
+  it('remove a comment from an article', async () => {
+    const backup = database.backup();
+
+    await request(app.getHttpServer())
+      .delete(
+        '/articles/a832e632-0335-4191-8469-4d849bbb72be/comments/9395e782-367b-4487-a048-242e37169109',
+      )
+      .set('Authorization', `Bearer ${jwt}`)
+      .expect(HttpStatus.NO_CONTENT);
+
+    backup.restore();
+  });
+
+  it('require to be authenticated to remove a comment from an article', async () => {
+    const backup = database.backup();
+
+    await request(app.getHttpServer())
+      .delete(
+        '/articles/a832e632-0335-4191-8469-4d849bbb72be/comments/9395e782-367b-4487-a048-242e37169109',
+      )
+      .expect(HttpStatus.UNAUTHORIZED)
+      .expect(unauthorizedError);
+
+    backup.restore();
+  });
+
+  it('allow only the author to remove a comment from an article', async () => {
+    const backup = database.backup();
+
+    await request(app.getHttpServer())
+      .delete(
+        '/articles/a832e632-0335-4191-8469-4d849bbb72be/comments/2cce7079-b434-42fb-85e3-8d1aadd7bb8a',
+      )
+      .set('Authorization', `Bearer ${jwt}`)
+      .expect(HttpStatus.FORBIDDEN)
+      .expect({
+        error: 'Forbidden',
+        message: 'You are not the author of the comment',
+        statusCode: HttpStatus.FORBIDDEN,
+      });
+
+    backup.restore();
+  });
 });

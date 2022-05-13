@@ -85,4 +85,17 @@ describe('CommentController', () => {
       },
     });
   });
+
+  it('should soft remove one comment', async () => {
+    const commentId = 'a832e632-0335-4191-8469-4d849bbb72be';
+
+    mockCommentService.remove.mockResolvedValueOnce({
+      generatedMaps: [],
+      raw: [],
+      affected: 1,
+    });
+
+    await expect(controller.remove(commentId)).resolves.toBeDefined();
+    expect(mockCommentService.remove).toHaveBeenCalledWith(commentId);
+  });
 });
