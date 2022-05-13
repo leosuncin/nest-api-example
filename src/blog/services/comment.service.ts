@@ -34,4 +34,12 @@ export class CommentService {
 
     return paginate(query, options);
   }
+
+  getById(id: Comment['id']): Promise<Comment | undefined> {
+    return this.commentRepository.findOne(id);
+  }
+
+  remove(id: Comment['id']) {
+    return this.commentRepository.softDelete({ id });
+  }
 }

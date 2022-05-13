@@ -16,6 +16,7 @@ import {
 import type { Pagination } from 'nestjs-typeorm-paginate';
 
 import { JWTAuthGuard } from '@/auth/guards/jwt-auth.guard';
+import { IsArticle } from '@/blog/decorators/is-entity.decorator';
 import { CreateArticle } from '@/blog/dto/create-article.dto';
 import { UpdateArticle } from '@/blog/dto/update-article.dto';
 import { Article } from '@/blog/entities/article.entity';
@@ -48,6 +49,7 @@ export class ArticleController {
   }
 
   @Patch(':id')
+  @IsArticle()
   @UseGuards(JWTAuthGuard, IsAuthorGuard)
   update(
     @Param('id', ArticlePipe) article: Article,
@@ -57,6 +59,7 @@ export class ArticleController {
   }
 
   @Delete(':id')
+  @IsArticle()
   @UseGuards(JWTAuthGuard, IsAuthorGuard)
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id', ArticlePipe) article: Article) {
