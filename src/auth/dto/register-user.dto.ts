@@ -1,4 +1,3 @@
-import { Transform } from 'class-transformer';
 import {
   IsDefined,
   IsEmail,
@@ -10,11 +9,10 @@ import {
 } from 'class-validator';
 
 import { IsAlreadyRegister } from '@/auth/validators/is-already-register.validator';
+import { Trim } from '@/common/decorators/trim.decorator';
 
 export class RegisterUser {
-  @Transform(({ value }): string =>
-    typeof value === 'string' ? value.trim() : value,
-  )
+  @Trim()
   @IsDefined()
   @IsString()
   @IsNotEmpty()
@@ -29,9 +27,7 @@ export class RegisterUser {
   @MaxLength(30)
   readonly password!: string;
 
-  @Transform(({ value }): string =>
-    typeof value === 'string' ? value.trim() : value,
-  )
+  @Trim()
   @IsDefined()
   @IsString()
   @IsNotEmpty()
