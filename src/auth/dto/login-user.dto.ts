@@ -1,4 +1,3 @@
-import { Transform } from 'class-transformer';
 import {
   IsDefined,
   IsNotEmpty,
@@ -9,6 +8,7 @@ import {
 } from 'class-validator';
 
 import { ValidateCredential } from '@/auth/validators/validate-credential.validator';
+import { Trim } from '@/common/decorators/trim.decorator';
 
 export class LoginUser {
   @IsDefined()
@@ -19,9 +19,7 @@ export class LoginUser {
   @ValidateCredential()
   readonly password!: string;
 
-  @Transform(({ value }): string =>
-    typeof value === 'string' ? value.trim() : value,
-  )
+  @Trim()
   @IsDefined()
   @IsString()
   @IsNotEmpty()
