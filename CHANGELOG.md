@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/leosuncin/nest-api-example/compare/v1.0.0...v1.1.0) (2022-05-16)
+
+### Bug Fixes
+
+- **blog:** amend pagination of comments ([d2b9b11](https://github.com/leosuncin/nest-api-example/commit/d2b9b110b01fc9e226a6ac2311416c5fd3961c4e))
+
+### Features
+
+- **blog:** add blog module ([f4d469e](https://github.com/leosuncin/nest-api-example/commit/f4d469e174f9dd54de3c3b9106389248084a4399))
+- **blog:** create a new article ([b5b8b45](https://github.com/leosuncin/nest-api-example/commit/b5b8b456e0520204082efd073065c751b0312e5f))
+- **blog:** create a new article ([ea56b7f](https://github.com/leosuncin/nest-api-example/commit/ea56b7f56fcb741f403e498e18e02093a0a7108f))
+- **blog:** get one article by id or slug ([28b30f5](https://github.com/leosuncin/nest-api-example/commit/28b30f55dd51f4a2b1f954e654a0e87ee0eee501))
+- **blog:** list and paginate articles ([4482786](https://github.com/leosuncin/nest-api-example/commit/44827861b3c0ea870de5de666bd9560bf7e07ad9))
+- **blog:** list and paginate comments ([12fcd8c](https://github.com/leosuncin/nest-api-example/commit/12fcd8c7c035f13e3e0d97652ba2df441ec845ad))
+- **blog:** remove one article ([f5a3d64](https://github.com/leosuncin/nest-api-example/commit/f5a3d647276ed826c0fabdaad9bff816d1865cbe))
+- **blog:** remove one comment ([7a81ee9](https://github.com/leosuncin/nest-api-example/commit/7a81ee9d8bfe471db59ca6e08b9937732ab72374))
+- **blog:** update one article ([9ee4ef2](https://github.com/leosuncin/nest-api-example/commit/9ee4ef26108421c162efe2d6a3a1a6ded7b4d601))
+
 # 1.0.0 (2022-04-30)
 
 ### Bug Fixes
