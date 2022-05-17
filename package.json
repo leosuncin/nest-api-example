@@ -41,6 +41,7 @@
     "class-validator": "^0.13.2",
     "cookie-parser": "^1.4.6",
     "nestjs-typeorm-paginate": "~3.2.0",
+    "normalize-email": "^1.1.1",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
     "pg": "^8.7.3",

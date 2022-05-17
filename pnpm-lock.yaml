@@ -60,6 +60,7 @@ specifiers:
   lint-staged: ^12.4.0
   nestjs-typeorm-paginate: ~3.2.0
   node-mocks-http: ^1.11.0
+  normalize-email: ^1.1.1
   pactum: ^3.1.6
   passport: ^0.5.2
   passport-jwt: ^4.0.0
@@ -97,6 +98,7 @@ dependencies:
   class-validator: 0.13.2
   cookie-parser: 1.4.6
   nestjs-typeorm-paginate: 3.2.1_zpntupq7wjdlmxbaokdouvqhxe
+  normalize-email: 1.1.1
   passport: 0.5.2
   passport-jwt: 4.0.0
   pg: 8.7.3
@@ -7223,6 +7225,10 @@ packages:
   /node-releases/2.0.1:
     resolution: {integrity: sha512-CqyzN6z7Q6aMeF/ktcMVTzhAHCEpf8SOarwpzpf8pNBY2k5/oM34UHldUwp8VKI7uxct2HxSRdJjBaZeESzcxA==}
     dev: true
+
+  /normalize-email/1.1.1:
+    resolution: {integrity: sha512-d5gghFO3BceKeZ+csXTsw2/qnuqZa5rHabXTtLg6XYEqlm25G7g0TNrPlB72+6qXFitSTHf+lHcJhm6bQurC+Q==}
+    dev: false
 
   /normalize-package-data/2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
