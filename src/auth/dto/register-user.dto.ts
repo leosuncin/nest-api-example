@@ -8,11 +8,13 @@ import {
   MinLength,
 } from 'class-validator';
 
+import { NormalizeEmail } from '@/auth/decorators/normalize-email.decorator';
 import { IsAlreadyRegister } from '@/auth/validators/is-already-register.validator';
 import { Trim } from '@/common/decorators/trim.decorator';
 
 export class RegisterUser {
   @Trim()
+  @NormalizeEmail()
   @IsDefined()
   @IsString()
   @IsNotEmpty()
