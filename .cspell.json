@@ -46,7 +46,8 @@
     "stefanzweifel",
     "typeorm",
     "usuario",
-    "venv"
+    "venv",
+    "hibp"
   ],
   "dictionaries": [
     "en_US",
