@@ -30,6 +30,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.20.0
   '@typescript-eslint/parser': ^5.20.0
   bcryptjs: ^2.4.3
+  cached-lookup: ^4.0.3
   class-transformer: ^0.5.1
   class-validator: ^0.13.2
   cookie-parser: ^1.4.6
@@ -52,6 +53,7 @@ specifiers:
   fast-check: ^2.24.0
   fluse: ^1.1.0
   fluse-plugin-typeorm: ^1.0.1
+  hibp: ^11.1.0
   husky: ^8.0.1
   jest: ^28.1.0
   jest-create-mock-instance: ^2.0.0
@@ -94,9 +96,11 @@ dependencies:
   '@nestjs/platform-express': 8.4.4_u6bxr3c7htwmhq2t5wi3k6ht4y
   '@nestjs/typeorm': 8.0.3_44vv3x7rmys45yuoynd52xefo4
   bcryptjs: 2.4.3
+  cached-lookup: 4.0.3
   class-transformer: 0.5.1
   class-validator: 0.13.2
   cookie-parser: 1.4.6
+  hibp: 11.1.0
   nestjs-typeorm-paginate: 3.2.1_zpntupq7wjdlmxbaokdouvqhxe
   normalize-email: 1.1.1
   passport: 0.5.2
@@ -1499,6 +1503,8 @@ packages:
       rxjs: 7.5.5
       tslib: 2.3.1
       uuid: 8.3.2
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@nestjs/jwt/8.0.0_@nestjs+common@8.4.4:
@@ -1650,7 +1656,9 @@ packages:
     dependencies:
       chalk: 4.1.2
       consola: 2.15.3
-      node-fetch: 2.6.6
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@octokit/auth-token/2.5.0:
@@ -3052,6 +3060,10 @@ packages:
       union-value: 1.0.1
       unset-value: 1.0.0
     dev: true
+
+  /cached-lookup/4.0.3:
+    resolution: {integrity: sha512-Tb0Aff1TbbnxxSQBlR5IidxM0kRhZoMaeGFmw/Z0LDoITZfz0mdo2+fYpveiWtiVXlV+Q9xiyMVDAz2JZBoK2w==}
+    dev: false
 
   /call-bind/1.0.2:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
@@ -5215,7 +5227,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.15.4
+      uglify-js: 3.15.5
     dev: true
 
   /hard-rejection/2.1.0:
@@ -5293,6 +5305,16 @@ packages:
     resolution: {integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==}
     engines: {node: '>=8'}
     dev: true
+
+  /hibp/11.1.0:
+    resolution: {integrity: sha512-JrFGDFbtHhPl6zHe6iyOd89ICuNXM4Om1Vnv9krVpUbfPPF5mrudQBz4pztHlNofeHlGGQJSHDtTUQWQOfmp7Q==}
+    engines: {node: '>= 12.16'}
+    dependencies:
+      isomorphic-unfetch: 3.1.0
+      jssha: 3.2.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /highlight.js/10.7.3:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
@@ -5835,6 +5857,15 @@ packages:
     resolution: {integrity: sha1-TkMekrEalzFjaqH5yNHMvP2reN8=}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /isomorphic-unfetch/3.1.0:
+    resolution: {integrity: sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==}
+    dependencies:
+      node-fetch: 2.6.7
+      unfetch: 4.2.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /issue-parser/6.0.0:
     resolution: {integrity: sha512-zKa/Dxq2lGsBIXQ7CUZWTHfvxPC2ej0KfO7fIPqLlHB9J2hJ7rGhZ5rilhuufylr4RXYPzJUeFjKxz305OsNlA==}
@@ -6510,6 +6541,10 @@ packages:
       semver: 5.7.1
     dev: false
 
+  /jssha/3.2.0:
+    resolution: {integrity: sha512-QuruyBENDWdN4tZwJbQq7/eAK85FqrI4oDbXjy5IBhYD+2pTJyBUWZe8ctWaCkrV0gy6AaelgOZZBMeswEa/6Q==}
+    dev: false
+
   /jwa/1.4.1:
     resolution: {integrity: sha512-qiLX/xhEEFKUAJ6FiBMbes3w9ATzyk5W7Hvzpa/SLYdxNtng+gcurvrI7TbACjIXlsJyr05/S1oUhZrc63evQA==}
     dependencies:
@@ -7183,13 +7218,6 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /node-fetch/2.6.6:
-    resolution: {integrity: sha512-Z8/6vRlTUChSdIgMa51jxQ4lrw/Jy5SOW10ObaA47/RElsAN2c5Pn8bTgFGWn/ibwzXTE8qwr1Yzx28vsecXEA==}
-    engines: {node: 4.x || >=6.0.0}
-    dependencies:
-      whatwg-url: 5.0.0
-    dev: false
-
   /node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
     engines: {node: 4.x || >=6.0.0}
@@ -7200,7 +7228,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: true
 
   /node-int64/0.4.0:
     resolution: {integrity: sha1-h6kGXNs1XTGC2PlM4RGIuCXGijs=}
@@ -9556,8 +9583,8 @@ packages:
     hasBin: true
     dev: true
 
-  /uglify-js/3.15.4:
-    resolution: {integrity: sha512-vMOPGDuvXecPs34V74qDKk4iJ/SN4vL3Ow/23ixafENYvtrNvtbcgUeugTcUGRGsOF/5fU8/NYSL5Hyb3l1OJA==}
+  /uglify-js/3.15.5:
+    resolution: {integrity: sha512-hNM5q5GbBRB5xB+PMqVRcgYe4c8jbyZ1pzZhS6jbq54/4F2gFK869ZheiE5A8/t+W5jtTNpWef/5Q9zk639FNQ==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
@@ -9577,6 +9604,10 @@ packages:
     resolution: {integrity: sha1-5z3T17DXxe2G+6xrCufYxqadUPo=}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /unfetch/4.2.0:
+    resolution: {integrity: sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==}
+    dev: false
 
   /union-value/1.0.1:
     resolution: {integrity: sha512-tJfXmxMeWYnczCVs7XAEvIV7ieppALdyepWMkHkwciRpZraG/xwT+s2JN8+pr1+8jCRf80FFzvr+MpQeeoF4Xg==}

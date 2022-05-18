@@ -10,6 +10,7 @@ import {
 
 import { NormalizeEmail } from '@/auth/decorators/normalize-email.decorator';
 import { IsAlreadyRegister } from '@/auth/validators/is-already-register.validator';
+import { IsNotVulnerable } from '@/auth/validators/is-not-vulnerable.validator';
 import { Trim } from '@/common/decorators/trim.decorator';
 
 export class RegisterUser {
@@ -27,6 +28,7 @@ export class RegisterUser {
   @IsNotEmpty()
   @MinLength(8)
   @MaxLength(30)
+  @IsNotVulnerable()
   readonly password!: string;
 
   @Trim()
