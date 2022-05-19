@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/leosuncin/nest-api-example/compare/v1.2.0...v1.3.0) (2022-05-19)
+
+### Features
+
+- **auth:** validate that the password is not exposed in haveibeenpwned.com ([381461f](https://github.com/leosuncin/nest-api-example/commit/381461f59a1fab6bc4bdb9cc13014d97cde15fbf))
+
 # [1.2.0](https://github.com/leosuncin/nest-api-example/compare/v1.1.0...v1.2.0) (2022-05-17)
 
 ### Features
