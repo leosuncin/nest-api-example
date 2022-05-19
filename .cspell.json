@@ -47,7 +47,8 @@
     "typeorm",
     "usuario",
     "venv",
-    "hibp"
+    "hibp",
+    "haveibeenpwned"
   ],
   "dictionaries": [
     "en_US",
