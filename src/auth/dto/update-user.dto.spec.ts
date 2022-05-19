@@ -1,9 +1,11 @@
+import { HttpStatus } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
 import { mock, mockReset } from 'jest-mock-extended';
+import nock, { cleanAll, enableNetConnect } from 'nock';
 import { Repository } from 'typeorm';
 
 import { UpdateUser } from '@/auth/dto/update-user.dto';
@@ -11,7 +13,7 @@ import { User } from '@/auth/entities/user.entity';
 import { updateFixture } from '@/auth/fixtures/auth.fixture';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
-import { credentials } from '@/common/test-helpers';
+import { credentials, PASSWORD_HASHES } from '@/common/test-helpers';
 
 describe('Update user validations', () => {
   const mockUserRepository = mock<Repository<User>>();
@@ -29,10 +31,21 @@ describe('Update user validations', () => {
     }).compile();
 
     useContainer(module, { fallbackOnErrors: true });
+
+    nock('https://api.pwnedpasswords.com')
+      .persist()
+      .replyDate()
+      .get(/range\/\w{5}/)
+      .reply(HttpStatus.OK, PASSWORD_HASHES);
   });
 
   beforeEach(() => {
     mockReset(mockUserRepository);
+  });
+
+  afterAll(() => {
+    cleanAll();
+    enableNetConnect();
   });
 
   it('should pass with valid data', async () => {
