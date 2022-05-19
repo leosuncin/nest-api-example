@@ -1,13 +1,16 @@
+import { HttpStatus } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
+import nock, { cleanAll, enableNetConnect } from 'nock';
 
 import { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import { registerFixture } from '@/auth/fixtures/auth.fixture';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
+import { PASSWORD_HASHES } from '@/common/test-helpers';
 
 describe('Register user validations', () => {
   beforeAll(async () => {
@@ -24,6 +27,17 @@ describe('Register user validations', () => {
     }).compile();
 
     useContainer(module, { fallbackOnErrors: true });
+
+    nock('https://api.pwnedpasswords.com')
+      .persist()
+      .replyDate()
+      .get(/range\/\w{5}/)
+      .reply(HttpStatus.OK, PASSWORD_HASHES);
+  });
+
+  afterAll(() => {
+    cleanAll();
+    enableNetConnect();
   });
 
   it('should be validated', async () => {
@@ -81,6 +95,7 @@ describe('Register user validations', () => {
                 fc.nat(),
                 fc.string({ maxLength: 7 }),
                 fc.string({ minLength: 31 }),
+                fc.constant('password'),
               ),
               username: fc.constant('john.doe'),
             },

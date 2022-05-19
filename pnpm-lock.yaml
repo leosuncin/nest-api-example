@@ -61,6 +61,7 @@ specifiers:
   jest-mock-extended: ^2.0.5
   lint-staged: ^12.4.0
   nestjs-typeorm-paginate: ~3.2.0
+  nock: ^13.2.4
   node-mocks-http: ^1.11.0
   normalize-email: ^1.1.1
   pactum: ^3.1.6
@@ -161,6 +162,7 @@ devDependencies:
   jest-dev-server: 6.0.3
   jest-mock-extended: 2.0.5_ilrymeawktwkpkx7wxflul236a
   lint-staged: 12.4.0
+  nock: 13.2.4
   node-mocks-http: 1.11.0
   pactum: 3.1.6
   pg-mem: 2.3.5_typeorm@0.2.41
@@ -6513,7 +6515,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.8
     dev: true
 
   /jsonify/0.0.0:
@@ -6805,6 +6807,10 @@ packages:
   /lodash.once/4.1.1:
     resolution: {integrity: sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=}
     dev: false
+
+  /lodash.set/4.3.2:
+    resolution: {integrity: sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=}
+    dev: true
 
   /lodash.uniqby/4.7.0:
     resolution: {integrity: sha1-2ZwHpmnp5tJOE2Lf4mbGdhavEwI=}
@@ -7211,6 +7217,18 @@ packages:
       '@nestjs/common': 8.4.4_kgmvgmqc4iohdboj3f7yqhrie4
       typeorm: 0.2.41_pg@8.7.3
     dev: false
+
+  /nock/13.2.4:
+    resolution: {integrity: sha512-8GPznwxcPNCH/h8B+XZcKjYPXnUV5clOKCjAqyjsiqA++MpNx9E9+t8YPp0MbThO+KauRo7aZJ1WuIZmOrT2Ug==}
+    engines: {node: '>= 10.13'}
+    dependencies:
+      debug: 4.3.4
+      json-stringify-safe: 5.0.1
+      lodash.set: 4.3.2
+      propagate: 2.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /node-emoji/1.11.0:
     resolution: {integrity: sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==}
@@ -8074,6 +8092,11 @@ packages:
     dependencies:
       kleur: 3.0.3
       sisteransi: 1.0.5
+    dev: true
+
+  /propagate/2.0.1:
+    resolution: {integrity: sha512-vGrhOavPSTz4QVNuBNdcNXePNdNMaO1xj9yBeH1ScQPjk/rhg9sSlCXPhMkFuaNNW/syTvYqsnbIJxMBfRbbag==}
+    engines: {node: '>= 8'}
     dev: true
 
   /proxy-addr/2.0.7:
