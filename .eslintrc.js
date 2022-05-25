@@ -4,7 +4,7 @@ module.exports = {
     project: 'tsconfig.json',
     sourceType: 'module',
   },
-  plugins: ['switch-case', 'simple-import-sort'],
+  plugins: ['switch-case', 'simple-import-sort', 'deprecation'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
@@ -42,6 +42,7 @@ module.exports = {
     'import/first': 'error',
     'import/newline-after-import': 'error',
     'import/no-duplicates': 'error',
+    'deprecation/deprecation': 'warn',
   },
   overrides: [
     {
