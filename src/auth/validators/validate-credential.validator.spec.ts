@@ -39,7 +39,7 @@ const user = User.fromPartial({
   id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
   email: 'john@doe.me',
   ...credentials,
-  checkPassword(plainPassword) {
+  checkPassword(plainPassword: string) {
     return Promise.resolve(plainPassword === this.password);
   },
 });
