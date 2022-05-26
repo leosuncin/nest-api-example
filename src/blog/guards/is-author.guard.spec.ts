@@ -76,14 +76,17 @@ describe('IsAuthorGuard', () => {
     expect(guard).toBeDefined();
   });
 
-  it.each([
-    [article.id, Entities.ARTICLE],
-    [article.slug, Entities.ARTICLE],
-    ['mLDYhAjz213rjfHRJwqUES', Entities.ARTICLE],
-    [comment.id, Entities.COMMENT],
-  ])(
-    'should authorize when the current user is the author of %s %s',
-    async (id, entity) => {
+  it.each`
+    id                                        | entity              | description
+    ${article.id}                             | ${Entities.ARTICLE} | ${'article by id exist'}
+    ${article.slug}                           | ${Entities.ARTICLE} | ${'article by slug exist'}
+    ${'mLDYhAjz213rjfHRJwqUES'}               | ${Entities.ARTICLE} | ${'article by short id exist'}
+    ${comment.id}                             | ${Entities.COMMENT} | ${'comment by id exist'}
+    ${'013cd55e-aed5-4201-a2cd-1458b0c9523b'} | ${Entities.ARTICLE} | ${'article by id not exist'}
+    ${'188580f8-e3ff-43d8-ac37-f3063477db53'} | ${Entities.COMMENT} | ${'comment by id not exist'}
+  `(
+    'should authorize when $description',
+    async function ({ id, entity }: { id: string; entity: Entities }) {
       const { req, res } = createMocks({
         params: { id },
         user,
@@ -97,26 +100,11 @@ describe('IsAuthorGuard', () => {
   );
 
   it.each([
-    ['013cd55e-aed5-4201-a2cd-1458b0c9523b', Entities.ARTICLE],
-    ['188580f8-e3ff-43d8-ac37-f3063477db53', Entities.COMMENT],
-  ])('should authorize when %s %s not exist', async (id, entity) => {
-    const { req, res } = createMocks({
-      params: { id },
-      user,
-    });
-    const context = new ExecutionContextHost([req, res]);
-
-    mockReflector.get.mockReturnValueOnce(entity);
-
-    await expect(guard.canActivate(context)).resolves.toBe(true);
-  });
-
-  it.each([
-    [article.id, Entities.ARTICLE],
-    [comment.id, Entities.COMMENT],
+    { id: article.id, entity: Entities.ARTICLE },
+    { id: comment.id, entity: Entities.COMMENT },
   ])(
-    'should throw when the current user is not the author of %s %s',
-    async (id, entity) => {
+    'should throw when the current user is not the author of the $entity',
+    async ({ id, entity }) => {
       const { req, res } = createMocks({
         user: User.fromPartial({ id: '63770485-6ee9-4a59-b374-3f194091e2e1' }),
         params: { id },

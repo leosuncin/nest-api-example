@@ -21,6 +21,12 @@ import {
   uuidRegex,
 } from '@/common/test-helpers';
 
+const unprocessableError = {
+  error: 'Unprocessable Entity',
+  message: expect.arrayContaining([expect.any(String)]),
+  statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+};
+
 describe('Auth module', () => {
   const password = credentials.password;
   let app: INestApplication;
@@ -65,11 +71,7 @@ describe('Auth module', () => {
       .send(data)
       .expect(HttpStatus.UNPROCESSABLE_ENTITY)
       .expect(({ body }) => {
-        expect(body).toMatchObject({
-          error: 'Unprocessable Entity',
-          message: expect.arrayContaining([expect.any(String)]),
-          statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
-        });
+        expect(body).toMatchObject(unprocessableError);
       });
   });
 
@@ -127,11 +129,7 @@ describe('Auth module', () => {
       .send(data)
       .expect(HttpStatus.UNPROCESSABLE_ENTITY)
       .expect(({ body }) => {
-        expect(body).toMatchObject({
-          error: 'Unprocessable Entity',
-          message: expect.arrayContaining([expect.any(String)]),
-          statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
-        });
+        expect(body).toMatchObject(unprocessableError);
       });
   });
 
@@ -143,11 +141,7 @@ describe('Auth module', () => {
       .send(data)
       .expect(HttpStatus.UNPROCESSABLE_ENTITY)
       .expect(({ body }) => {
-        expect(body).toMatchObject({
-          error: 'Unprocessable Entity',
-          message: expect.arrayContaining([expect.any(String)]),
-          statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
-        });
+        expect(body).toMatchObject(unprocessableError);
       });
   });
 
@@ -260,11 +254,7 @@ describe('Auth module', () => {
       .send(data)
       .expect(HttpStatus.UNPROCESSABLE_ENTITY)
       .expect(({ body }) => {
-        expect(body).toMatchObject({
-          error: 'Unprocessable Entity',
-          message: expect.arrayContaining([expect.any(String)]),
-          statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
-        });
+        expect(body).toMatchObject(unprocessableError);
       });
   });
 

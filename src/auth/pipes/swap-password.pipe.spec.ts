@@ -3,6 +3,15 @@ import { ArgumentMetadata } from '@nestjs/common';
 import { SwapPasswordPipe } from '@/auth/pipes/swap-password.pipe';
 import { credentials } from '@/common/test-helpers';
 
+const value = {
+  image: 'https://thispersondoesnotexist.com/image',
+  username: 'john',
+  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  email: 'johndoe@example.com',
+  newPassword: 'ji32k7au4a83',
+  password: credentials.password,
+};
+
 describe('StripPasswordPipe', () => {
   it('should be defined', () => {
     expect(new SwapPasswordPipe()).toBeDefined();
@@ -26,14 +35,6 @@ describe('StripPasswordPipe', () => {
 
   it('should swap the passwords', () => {
     const pipe = new SwapPasswordPipe();
-    const value = {
-      image: 'https://thispersondoesnotexist.com/image',
-      username: 'john',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      email: 'johndoe@example.com',
-      newPassword: 'ji32k7au4a83',
-      password: credentials.password,
-    };
     const metadata: ArgumentMetadata = {
       type: 'body',
     };
@@ -45,14 +46,6 @@ describe('StripPasswordPipe', () => {
 
   it('should do nothing to types different than "body"', () => {
     const pipe = new SwapPasswordPipe();
-    const value = {
-      image: 'https://thispersondoesnotexist.com/image',
-      username: 'john',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      email: 'johndoe@example.com',
-      newPassword: 'ji32k7au4a83',
-      password: credentials.password,
-    };
     const metadata: ArgumentMetadata = {
       type: 'custom',
     };
