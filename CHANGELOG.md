@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file. See
 
 - reduce duplicate code in tests ([9525bdc](https://github.com/leosuncin/nest-api-example/commit/9525bdcb1c852214bba22a85f29bfe04292f7ba9))
 
+## [1.3.1](https://github.com/leosuncin/nest-api-example/compare/v1.3.0...v1.3.1) (2022-05-26)
+
+### Performance Improvements
+
+- reduce duplicate code in tests ([9525bdc](https://github.com/leosuncin/nest-api-example/commit/9525bdcb1c852214bba22a85f29bfe04292f7ba9))
+
 # [1.3.0](https://github.com/leosuncin/nest-api-example/compare/v1.2.0...v1.3.0) (2022-05-19)
 
 ### Features
