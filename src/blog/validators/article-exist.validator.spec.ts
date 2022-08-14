@@ -27,7 +27,7 @@ describe('ArticleExist', () => {
     })
       .useMocker((token) => {
         if (Object.is(token, ArticleService)) {
-          return mock(ArticleService);
+          return mock<ArticleService>();
         }
       })
       .compile();
