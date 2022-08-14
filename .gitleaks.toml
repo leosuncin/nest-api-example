@@ -1,0 +1,26 @@
+title = "nest-api-example config"
+
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true
+
+[allowlist]
+description = "Allowlisted files"
+paths = [
+  '''.automation/test''',
+  '''megalinter-reports''',
+  '''.github/linters''',
+  '''node_modules''',
+  '''dist''',
+  '''coverage''',
+  '''.mypy_cache''',
+  '''(.*?)gitleaks\.toml$''',
+  '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
+  '''(go.mod|go.sum)$'''
+]
+commits = [
+  "870814cc194ee724b8ca8efff2a697b0a8a6964c",
+  "c9e7b0c66264bb2cf810bd22b736e6c979588e14",
+  "161ed9567ad63c4a3a54d198dd6acc35918e54d1"
+]
