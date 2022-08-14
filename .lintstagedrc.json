@@ -1,6 +1,6 @@
 {
   "*.{js,ts}": ["prettier --write", "eslint --fix"],
-  "*.{json,md,yml}": ["prettier --write"],
+  "*.{json,md,yml,toml}": ["prettier --write"],
   "package.json": ["sort-package-json"],
   "*": ["cspell lint --no-summary --no-progress --no-must-find-files"]
 }
