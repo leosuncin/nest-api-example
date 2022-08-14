@@ -6,6 +6,7 @@
     "email should not be empty",
     "email must be a string",
     "password should not be null or undefined",
+    "password must be different than username",
     "password must be shorter than or equal to 30 characters",
     "password must be longer than or equal to 8 characters",
     "password should not be empty",

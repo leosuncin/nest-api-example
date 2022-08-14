@@ -19,6 +19,7 @@ Array [
     "constraints": Object {
       "isDefined": "password should not be null or undefined",
       "isNotEmpty": "password should not be empty",
+      "isNotTheSame": "password must be different than username",
       "isString": "password must be a string",
       "maxLength": "password must be shorter than or equal to 30 characters",
       "minLength": "password must be longer than or equal to 8 characters",
