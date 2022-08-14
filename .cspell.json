@@ -48,7 +48,9 @@
     "usuario",
     "venv",
     "hibp",
-    "haveibeenpwned"
+    "haveibeenpwned",
+    "sslmode",
+    "txtgen"
   ],
   "dictionaries": [
     "en_US",
