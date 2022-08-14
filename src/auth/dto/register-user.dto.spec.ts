@@ -130,6 +130,7 @@ describe('Register user validations', () => {
           )
           .map((plain) => plainToInstance(RegisterUser, plain)),
         async (data) => {
+          fc.pre(data.username?.length > 30);
           const errors = await validate(data);
 
           expect(errors).toHaveLength(1);
