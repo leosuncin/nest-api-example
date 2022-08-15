@@ -1,28 +1,28 @@
 import type { CallHandler } from '@nestjs/common';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { JwtService } from '@nestjs/jwt';
-import { Test, TestingModule } from '@nestjs/testing';
-import { anyObject, mock, MockProxy } from 'jest-mock-extended';
+import { Test } from '@nestjs/testing';
 import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
+import { createMock } from 'ts-auto-mock';
 
 import { User } from '@/auth/entities/user.entity';
 import { TokenInterceptor } from '@/auth/interceptors/token.interceptor';
 
 describe('TokenInterceptor', () => {
   let interceptor: TokenInterceptor;
-  let jwtService: MockProxy<JwtService>;
+  let jwtService: jest.Mocked<JwtService>;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        {
-          provide: JwtService,
-          useValue: mock<JwtService>(),
-        },
-        TokenInterceptor,
-      ],
-    }).compile();
+    const module = await Test.createTestingModule({
+      providers: [TokenInterceptor],
+    })
+      .useMocker((token) => {
+        if (token === JwtService) {
+          return createMock<JwtService>();
+        }
+      })
+      .compile();
 
     interceptor = module.get(TokenInterceptor);
     jwtService = module.get(JwtService);
@@ -33,20 +33,17 @@ describe('TokenInterceptor', () => {
   });
 
   it('should inject the token into the user', async () => {
-    const user = User.fromPartial({
-      id: '',
+    const user = createMock<User>({
       email: 'john@doe.me',
       username: 'john_doe',
-      bio: '',
-      image: '',
     });
     const { req, res } = createMocks();
     const testContext = new ExecutionContextHost([req, res]);
-    const nextSpy: jest.Mocked<CallHandler<User>> = mock({
+    const nextSpy: CallHandler<User> = {
       handle: () => of(user),
-    });
+    };
 
-    jwtService.sign.calledWith(anyObject()).mockReturnValue('j.w.t');
+    jwtService.sign.mockReturnValueOnce('j.w.t');
 
     await expect(
       lastValueFrom(interceptor.intercept(testContext, nextSpy)),

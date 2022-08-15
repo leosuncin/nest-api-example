@@ -1,8 +1,9 @@
 import { JwtService } from '@nestjs/jwt';
-import { Test, TestingModule } from '@nestjs/testing';
-import { type MockProxy, mock } from 'jest-mock-extended';
+import { Test } from '@nestjs/testing';
+import { createMock } from 'ts-auto-mock';
 
 import { AuthController } from '@/auth/controllers/auth.controller';
+import { LoginUser } from '@/auth/dto/login-user.dto';
 import type { RegisterUser } from '@/auth/dto/register-user.dto';
 import type { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
@@ -11,51 +12,50 @@ import { credentials } from '@/common/test-helpers';
 
 describe('AuthController', () => {
   let controller: AuthController;
-  let mockAuthenticationService: MockProxy<AuthenticationService>;
+  let mockAuthenticationService: jest.Mocked<AuthenticationService>;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       controllers: [AuthController],
     })
       .useMocker((token) => {
-        if (Object.is(token, JwtService)) {
-          return mock<JwtService>();
+        if (token === JwtService) {
+          return createMock<JwtService>();
         }
 
-        if (Object.is(token, AuthenticationService)) {
-          const mockService = mock<AuthenticationService>();
-
-          mockService.register.mockImplementation((dto) =>
-            Promise.resolve(
-              User.fromPartial({
-                ...dto,
-                id: '',
-                createdAt: new Date(),
-                updatedAt: new Date(),
-              }),
+        if (token === AuthenticationService) {
+          return createMock<AuthenticationService>({
+            register: jest.fn().mockImplementation((dto: RegisterUser) =>
+              Promise.resolve(
+                User.fromPartial({
+                  ...dto,
+                  id: '',
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                }),
+              ),
             ),
-          );
-          mockService.login.mockImplementation((credentials) =>
-            Promise.resolve(User.fromPartial(credentials)),
-          );
-          mockService.update.mockImplementation((user, changes) =>
-            Promise.resolve(User.fromPartial({ ...user, ...changes })),
-          );
-
-          return mockService;
+            login: jest
+              .fn()
+              .mockImplementation((credentials: LoginUser) =>
+                Promise.resolve(User.fromPartial(credentials)),
+              ),
+            update: jest
+              .fn()
+              .mockImplementation((user: User, changes: UpdateUser) =>
+                Promise.resolve(User.fromPartial({ ...user, ...changes })),
+              ),
+          });
         }
       })
       .compile();
 
-    controller = module.get<AuthController>(AuthController);
-    mockAuthenticationService = module.get<
-      AuthenticationService,
-      MockProxy<AuthenticationService>
-    >(AuthenticationService);
+    controller = module.get(AuthController);
+    mockAuthenticationService = module.get(AuthenticationService);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  it('should be instanceOf AuthController', () => {
+    expect(controller).toBeInstanceOf(AuthController);
   });
 
   it('should register a new user', async () => {
