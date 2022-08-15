@@ -1,6 +1,6 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { type MockProxy, mock } from 'jest-mock-extended';
+import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
 
 import type { RegisterUser } from '@/auth/dto/register-user.dto';
@@ -17,20 +17,21 @@ const user = User.fromPartial({
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
-  let mockRepository: MockProxy<Repository<User>>;
+  let mockedUserRepository: jest.Mocked<Repository<User>>;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        {
-          provide: getRepositoryToken(User),
-          useFactory: () => {
-            const mockRepository = mock<Repository<User>>();
-
-            mockRepository.create.mockImplementation((dto) =>
-              User.fromPartial(dto),
-            );
-            mockRepository.save.mockImplementation((entity) =>
+    const module = await Test.createTestingModule({
+      providers: [AuthenticationService],
+    })
+      .useMocker((token) => {
+        if (token === getRepositoryToken(User)) {
+          return createMock<Repository<User>>({
+            create: jest
+              .fn()
+              .mockImplementation((dto: Partial<User>) =>
+                User.fromPartial(dto),
+              ),
+            save: jest.fn().mockImplementation((entity: User) =>
               Promise.resolve(
                 User.fromPartial({
                   ...entity,
@@ -39,22 +40,15 @@ describe('AuthenticationService', () => {
                   updatedAt: new Date(),
                 }),
               ),
-            );
-            mockRepository.merge.mockImplementation((entity, entityLike) =>
-              Object.assign(entity, entityLike),
-            );
+            ),
+            merge: jest.fn().mockImplementation(Object.assign),
+          });
+        }
+      })
+      .compile();
 
-            return mockRepository;
-          },
-        },
-        AuthenticationService,
-      ],
-    }).compile();
-
-    service = module.get<AuthenticationService>(AuthenticationService);
-    mockRepository = module.get<Repository<User>, MockProxy<Repository<User>>>(
-      getRepositoryToken(User),
-    );
+    service = module.get(AuthenticationService);
+    mockedUserRepository = module.get(getRepositoryToken(User));
   });
 
   it('should be defined', () => {
@@ -68,18 +62,18 @@ describe('AuthenticationService', () => {
     };
 
     await expect(service.register(newUser)).resolves.toBeInstanceOf(User);
-    expect(mockRepository.create).toHaveBeenCalledWith(newUser);
-    expect(mockRepository.save).toHaveBeenCalledTimes(1);
+    expect(mockedUserRepository.create).toHaveBeenCalledWith(newUser);
+    expect(mockedUserRepository.save).toHaveBeenCalledTimes(1);
   });
 
   it('should login with an existing user without fail', async () => {
-    mockRepository.findOneOrFail.mockResolvedValueOnce(user);
+    mockedUserRepository.findOneOrFail.mockResolvedValueOnce(user);
 
     await expect(service.login(credentials)).resolves.toBeInstanceOf(User);
-    expect(mockRepository.findOneOrFail).toHaveBeenCalledWith({
+    expect(mockedUserRepository.findOneOrFail).toHaveBeenCalledWith({
       where: { username: credentials.username },
     });
-    expect(mockRepository.findOneOrFail).toHaveBeenCalledTimes(1);
+    expect(mockedUserRepository.findOneOrFail).toHaveBeenCalledTimes(1);
   });
 
   it('should find a user from the payload', async () => {
@@ -88,13 +82,13 @@ describe('AuthenticationService', () => {
       iat: Date.now(),
       exp: Date.now() + 3600,
     };
-    mockRepository.findOne.mockResolvedValueOnce(user);
+    mockedUserRepository.findOne.mockResolvedValueOnce(user);
 
     await expect(service.verifyPayload(payload)).resolves.toBeInstanceOf(User);
-    expect(mockRepository.findOne).toHaveBeenCalledWith({
+    expect(mockedUserRepository.findOne).toHaveBeenCalledWith({
       where: { id: payload.sub },
     });
-    expect(mockRepository.findOne).toHaveBeenCalledTimes(1);
+    expect(mockedUserRepository.findOne).toHaveBeenCalledTimes(1);
   });
 
   it('should update a user', async () => {
@@ -108,7 +102,7 @@ describe('AuthenticationService', () => {
     };
 
     await expect(service.update(user, changes)).resolves.toBeInstanceOf(User);
-    expect(mockRepository.merge).toHaveBeenCalledWith(user, changes);
-    expect(mockRepository.save).toHaveBeenCalledTimes(1);
+    expect(mockedUserRepository.merge).toHaveBeenCalledWith(user, changes);
+    expect(mockedUserRepository.save).toHaveBeenCalledTimes(1);
   });
 });

@@ -3,6 +3,8 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
+import { createMock } from 'ts-auto-mock';
+import type { Repository } from 'typeorm';
 
 import { LoginUser } from '@/auth/dto/login-user.dto';
 import { User } from '@/auth/entities/user.entity';
@@ -12,21 +14,20 @@ import { ValidateCredentialConstraint } from '@/auth/validators/validate-credent
 describe('Login user validations', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        {
-          provide: getRepositoryToken(User),
-          useValue: {
-            findOne: () =>
-              Promise.resolve(
-                User.fromPartial({
-                  checkPassword: () => Promise.resolve(true),
-                }),
-              ),
-          },
-        },
-        ValidateCredentialConstraint,
-      ],
-    }).compile();
+      providers: [ValidateCredentialConstraint],
+    })
+      .useMocker((token) => {
+        if (token === getRepositoryToken(User)) {
+          return createMock<Repository<User>>({
+            findOne: jest.fn().mockResolvedValue(
+              createMock<User>({
+                checkPassword: jest.fn().mockResolvedValue(true),
+              }),
+            ),
+          });
+        }
+      })
+      .compile();
 
     useContainer(module, { fallbackOnErrors: true });
   });

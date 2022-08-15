@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { useContainer, validate } from 'class-validator';
-import { anyObject, mock, mockReset } from 'jest-mock-extended';
+import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
@@ -45,33 +45,33 @@ const user = User.fromPartial({
 });
 
 describe('ValidateCredential', () => {
-  const mockRepository = mock<Repository<User>>();
+  let mockedUserRepository: jest.Mocked<Repository<User>>;
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        {
-          provide: getRepositoryToken(User),
-          useValue: mockRepository,
-        },
-        ValidateCredentialConstraint,
-      ],
-    }).compile();
+      providers: [ValidateCredentialConstraint],
+    })
+      .useMocker((token) => {
+        if (token === getRepositoryToken(User)) {
+          return createMock<Repository<User>>();
+        }
+      })
+      .compile();
 
     useContainer(module, { fallbackOnErrors: true });
-    mockReset(mockRepository);
+    mockedUserRepository = module.get(getRepositoryToken(User));
   });
 
   it('should pass with the correct credentials', async () => {
     const dto = new DTO(user.username, user.password);
-    mockRepository.findOne.mockResolvedValue(user);
+    mockedUserRepository.findOne.mockResolvedValue(user);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockRepository.findOne).toHaveBeenCalledWith(
+    expect(mockedUserRepository.findOne).toHaveBeenCalledWith(
       { username: dto.username },
-      anyObject(),
+      { cache: true },
     );
   });
 
@@ -83,10 +83,9 @@ describe('ValidateCredential', () => {
     { username: credentials.username, password: 'MiContraseña' },
     { password: credentials.password },
     { username: credentials.username },
-    { usuario: credentials.username, contraseña: credentials.password },
+    { usuario: credentials.username, contrasena: credentials.password },
   ])('should fail with invalid credentials: %o', async (data) => {
     const dto = DTO.from(data);
-    mockRepository.findOne.mockResolvedValue(void 0);
 
     const errors = await validate(dto);
 
@@ -95,27 +94,27 @@ describe('ValidateCredential', () => {
 
   it('should pass with the correct current password', async () => {
     const dto = new Update(user.password, user.id);
-    mockRepository.findOne.mockResolvedValue(user);
+    mockedUserRepository.findOne.mockResolvedValue(user);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockRepository.findOne).toHaveBeenCalledWith(
+    expect(mockedUserRepository.findOne).toHaveBeenCalledWith(
       { id: dto.id },
-      anyObject(),
+      { cache: true },
     );
   });
 
   it('should fail with the incorrect current password', async () => {
     const dto = new Update('ji32k7au4a83', user.id);
-    mockRepository.findOne.mockResolvedValue(user);
+    mockedUserRepository.findOne.mockResolvedValue(user);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
-    expect(mockRepository.findOne).toHaveBeenCalledWith(
+    expect(mockedUserRepository.findOne).toHaveBeenCalledWith(
       { id: dto.id },
-      anyObject(),
+      { cache: true },
     );
   });
 });

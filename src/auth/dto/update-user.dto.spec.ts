@@ -4,9 +4,9 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
-import { mock, mockReset } from 'jest-mock-extended';
 import nock, { cleanAll, enableNetConnect } from 'nock';
-import { Repository } from 'typeorm';
+import { createMock } from 'ts-auto-mock';
+import type { Repository } from 'typeorm';
 
 import { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
@@ -16,19 +16,18 @@ import { ValidateCredentialConstraint } from '@/auth/validators/validate-credent
 import { credentials, PASSWORD_HASHES } from '@/common/test-helpers';
 
 describe('Update user validations', () => {
-  const mockUserRepository = mock<Repository<User>>();
+  let mockUserRepository: jest.Mocked<Repository<User>>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        {
-          provide: getRepositoryToken(User),
-          useValue: mockUserRepository,
-        },
-        IsAlreadyRegisterConstraint,
-        ValidateCredentialConstraint,
-      ],
-    }).compile();
+      providers: [IsAlreadyRegisterConstraint, ValidateCredentialConstraint],
+    })
+      .useMocker((token) => {
+        if (token === getRepositoryToken(User)) {
+          return createMock<Repository<User>>();
+        }
+      })
+      .compile();
 
     useContainer(module, { fallbackOnErrors: true });
 
@@ -37,10 +36,8 @@ describe('Update user validations', () => {
       .replyDate()
       .get(/range\/\w{5}/)
       .reply(HttpStatus.OK, PASSWORD_HASHES);
-  });
 
-  beforeEach(() => {
-    mockReset(mockUserRepository);
+    mockUserRepository = module.get(getRepositoryToken(User));
   });
 
   afterAll(() => {
@@ -49,9 +46,8 @@ describe('Update user validations', () => {
   });
 
   it('should pass with valid data', async () => {
-    mockUserRepository.count.mockResolvedValue(0);
     mockUserRepository.findOne.mockResolvedValue(
-      User.fromPartial({ checkPassword: () => Promise.resolve(true) }),
+      createMock<User>({ checkPassword: jest.fn().mockResolvedValue(true) }),
     );
 
     await fc.assert(
@@ -76,7 +72,7 @@ describe('Update user validations', () => {
   });
 
   it('should validate the email', async () => {
-    mockUserRepository.count.mockResolvedValue(1);
+    mockUserRepository.count.mockResolvedValueOnce(1);
 
     await fc.assert(
       fc.asyncProperty(
@@ -99,7 +95,7 @@ describe('Update user validations', () => {
   });
 
   it('should validate the username', async () => {
-    mockUserRepository.count.mockResolvedValue(1);
+    mockUserRepository.count.mockResolvedValueOnce(1);
 
     await fc.assert(
       fc.asyncProperty(
@@ -122,10 +118,6 @@ describe('Update user validations', () => {
   });
 
   it('should validate that new password requires the current password', async () => {
-    mockUserRepository.findOne.mockResolvedValue(
-      User.fromPartial({ checkPassword: () => Promise.resolve(false) }),
-    );
-
     const errors = await validate(
       plainToInstance(UpdateUser, {
         /* cspell:disable-next-line */

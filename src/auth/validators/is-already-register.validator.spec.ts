@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { useContainer, validate } from 'class-validator';
-import { mock, mockReset } from 'jest-mock-extended';
+import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
@@ -28,33 +28,33 @@ class WithUsername {
 }
 
 describe('IsAlreadyRegister', () => {
-  const mockRepository = mock<Repository<User>>();
+  let mockedUserRepository: jest.Mocked<Repository<User>>;
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        {
-          provide: getRepositoryToken(User),
-          useValue: mockRepository,
-        },
-        IsAlreadyRegisterConstraint,
-      ],
-    }).compile();
+      providers: [IsAlreadyRegisterConstraint],
+    })
+      .useMocker((token) => {
+        if (token === getRepositoryToken(User)) {
+          return createMock<Repository<User>>();
+        }
+      })
+      .compile();
 
     useContainer(module, { fallbackOnErrors: true });
-    mockReset(mockRepository);
+    mockedUserRepository = module.get(getRepositoryToken(User));
   });
 
   it('should fail when an user already exists with the same email', async () => {
     const dto = new WithEmail('john@doe.me');
 
-    mockRepository.count.mockResolvedValueOnce(1);
+    mockedUserRepository.count.mockResolvedValueOnce(1);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'email');
-    expect(mockRepository.count).toHaveBeenCalledWith({
+    expect(mockedUserRepository.count).toHaveBeenCalledWith({
       where: { email: 'john@doe.me' },
     });
   });
@@ -62,13 +62,13 @@ describe('IsAlreadyRegister', () => {
   it('should fail when an user already exists with the same username', async () => {
     const dto = new WithUsername('john-doe');
 
-    mockRepository.count.mockResolvedValueOnce(1);
+    mockedUserRepository.count.mockResolvedValueOnce(1);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'username');
-    expect(mockRepository.count).toHaveBeenCalledWith({
+    expect(mockedUserRepository.count).toHaveBeenCalledWith({
       where: { username: 'john-doe' },
     });
   });
@@ -76,12 +76,12 @@ describe('IsAlreadyRegister', () => {
   it('should pass when no user exists with the email', async () => {
     const dto = new WithEmail('jane@doe.me');
 
-    mockRepository.count.mockResolvedValueOnce(0);
+    mockedUserRepository.count.mockResolvedValueOnce(0);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockRepository.count).toHaveBeenCalledWith({
+    expect(mockedUserRepository.count).toHaveBeenCalledWith({
       where: { email: 'jane@doe.me' },
     });
   });
@@ -89,12 +89,12 @@ describe('IsAlreadyRegister', () => {
   it('should pass when no user exists with the username', async () => {
     const dto = new WithUsername('jane.doe');
 
-    mockRepository.count.mockResolvedValueOnce(0);
+    mockedUserRepository.count.mockResolvedValueOnce(0);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockRepository.count).toHaveBeenCalledWith({
+    expect(mockedUserRepository.count).toHaveBeenCalledWith({
       where: { username: 'jane.doe' },
     });
   });
@@ -105,12 +105,12 @@ describe('IsAlreadyRegister', () => {
       '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
     );
 
-    mockRepository.count.mockResolvedValueOnce(0);
+    mockedUserRepository.count.mockResolvedValueOnce(0);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockRepository.count).toHaveBeenCalledWith({
+    expect(mockedUserRepository.count).toHaveBeenCalledWith({
       where: { email: 'johndoe@example.com', id: expect.anything() },
     });
   });
@@ -121,12 +121,12 @@ describe('IsAlreadyRegister', () => {
       '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
     );
 
-    mockRepository.count.mockResolvedValueOnce(1);
+    mockedUserRepository.count.mockResolvedValueOnce(1);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
-    expect(mockRepository.count).toHaveBeenCalledWith({
+    expect(mockedUserRepository.count).toHaveBeenCalledWith({
       where: { email: 'jane@doe.me', id: expect.anything() },
     });
   });
@@ -137,12 +137,12 @@ describe('IsAlreadyRegister', () => {
       '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
     );
 
-    mockRepository.count.mockResolvedValueOnce(0);
+    mockedUserRepository.count.mockResolvedValueOnce(0);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockRepository.count).toHaveBeenCalledWith({
+    expect(mockedUserRepository.count).toHaveBeenCalledWith({
       where: { username: 'johndoe', id: expect.anything() },
     });
   });
@@ -153,12 +153,12 @@ describe('IsAlreadyRegister', () => {
       '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
     );
 
-    mockRepository.count.mockResolvedValueOnce(1);
+    mockedUserRepository.count.mockResolvedValueOnce(1);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
-    expect(mockRepository.count).toHaveBeenCalledWith({
+    expect(mockedUserRepository.count).toHaveBeenCalledWith({
       where: { username: 'jane-doe', id: expect.anything() },
     });
   });

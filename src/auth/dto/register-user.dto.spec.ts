@@ -5,6 +5,8 @@ import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
 import nock, { cleanAll, enableNetConnect } from 'nock';
+import { createMock } from 'ts-auto-mock';
+import type { Repository } from 'typeorm';
 
 import { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
@@ -15,16 +17,14 @@ import { PASSWORD_HASHES } from '@/common/test-helpers';
 describe('Register user validations', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        {
-          provide: getRepositoryToken(User),
-          useValue: {
-            count: () => Promise.resolve(0),
-          },
-        },
-        IsAlreadyRegisterConstraint,
-      ],
-    }).compile();
+      providers: [IsAlreadyRegisterConstraint],
+    })
+      .useMocker((token) => {
+        if (token === getRepositoryToken(User)) {
+          return createMock<Repository<User>>();
+        }
+      })
+      .compile();
 
     useContainer(module, { fallbackOnErrors: true });
 
