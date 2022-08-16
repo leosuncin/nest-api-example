@@ -66,6 +66,7 @@ module.exports = {
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/unbound-method': 'off',
         'jest/unbound-method': 'error',
+        'security/detect-possible-timing-attacks': 'off',
       },
     },
   ],
