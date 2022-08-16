@@ -1,5 +1,5 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { type MockProxy, mock } from 'jest-mock-extended';
+import { Test } from '@nestjs/testing';
+import { createMock } from 'ts-auto-mock';
 
 import { User } from '@/auth/entities/user.entity';
 import { CommentController } from '@/blog/controllers/comment.controller';
@@ -10,34 +10,26 @@ import { ArticleService } from '@/blog/services/article.service';
 import { CommentService } from '@/blog/services/comment.service';
 
 describe('CommentController', () => {
-  let mockCommentService: MockProxy<CommentService>;
+  let mockCommentService: jest.Mocked<CommentService>;
   let controller: CommentController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       controllers: [CommentController],
-      providers: [
-        {
-          provide: CommentService,
-          useValue: mockCommentService,
-        },
-      ],
     })
       .useMocker((token) => {
-        if (Object.is(token, CommentService)) {
-          return mock<CommentService>();
+        if (token === CommentService) {
+          return createMock<CommentService>();
         }
 
-        if (Object.is(token, ArticleService)) {
-          return mock<ArticleService>();
+        if (token === ArticleService) {
+          return createMock<ArticleService>();
         }
       })
       .compile();
 
-    controller = module.get<CommentController>(CommentController);
-    mockCommentService = module.get<CommentService, MockProxy<CommentService>>(
-      CommentService,
-    );
+    controller = module.get(CommentController);
+    mockCommentService = module.get(CommentService);
   });
 
   it('should be defined', () => {
@@ -51,8 +43,8 @@ describe('CommentController', () => {
       author: new User(),
     };
 
-    mockCommentService.create.mockImplementation((dto) =>
-      Promise.resolve(Object.assign(new Comment(), dto)),
+    mockCommentService.create.mockResolvedValue(
+      Object.assign(new Comment(), newComment),
     );
 
     await expect(controller.create(newComment)).resolves.toBeInstanceOf(
@@ -89,7 +81,7 @@ describe('CommentController', () => {
   it('should soft remove one comment', async () => {
     const commentId = 'a832e632-0335-4191-8469-4d849bbb72be';
 
-    mockCommentService.remove.mockResolvedValueOnce({
+    mockCommentService.remove.mockResolvedValue({
       generatedMaps: [],
       raw: [],
       affected: 1,

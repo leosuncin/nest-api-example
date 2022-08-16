@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { createMockInstance } from 'jest-create-mock-instance';
+import { createMock } from 'ts-auto-mock';
 import { Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
@@ -11,27 +11,37 @@ import { ArticleService } from '@/blog/services/article.service';
 
 describe('ArticleService', () => {
   let service: ArticleService;
-  const mockArticleRepository = createMockInstance(Repository);
-  Object.setPrototypeOf(mockArticleRepository, Repository.prototype);
+  let mockedArticleRepository: jest.Mocked<Repository<Article>>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        ArticleService,
-        {
-          provide: getRepositoryToken(Article),
-          useValue: mockArticleRepository,
-        },
-      ],
-    }).compile();
-    mockArticleRepository.create.mockImplementation((dto) =>
-      Object.assign(new Article(), dto),
-    );
-    mockArticleRepository.save.mockImplementation((article) =>
-      Promise.resolve(article as Article),
-    );
+      providers: [ArticleService],
+    })
+      .useMocker((token) => {
+        if (token === getRepositoryToken(Article)) {
+          const mock = createMock<Repository<Article>>({
+            create: jest
+              .fn()
+              .mockImplementation((dto: CreateArticle) =>
+                Object.assign(new Article(), dto),
+              ),
+            save: jest
+              .fn()
+              .mockImplementation((article: Article) =>
+                Promise.resolve(article),
+              ),
+            merge: jest.fn().mockImplementation(Object.assign),
+          });
+
+          Object.setPrototypeOf(mock, Repository.prototype);
+
+          return mock;
+        }
+      })
+      .compile();
 
     service = module.get<ArticleService>(ArticleService);
+    mockedArticleRepository = module.get(getRepositoryToken(Article));
   });
 
   afterEach(() => {
@@ -55,15 +65,15 @@ Nulla minim ea quis irure veniam laborum commodo non quis non ex eu.`,
     };
 
     await expect(service.create(newArticle)).resolves.toBeInstanceOf(Article);
-    expect(mockArticleRepository.create).toHaveBeenCalledWith(newArticle);
-    expect(mockArticleRepository.save).toHaveBeenCalledWith(
+    expect(mockedArticleRepository.create).toHaveBeenCalledWith(newArticle);
+    expect(mockedArticleRepository.save).toHaveBeenCalledWith(
       expect.any(Article),
     );
-    expect(mockArticleRepository.save).toHaveBeenCalledTimes(1);
+    expect(mockedArticleRepository.save).toHaveBeenCalledTimes(1);
   });
 
   it('should get an article by its id', async () => {
-    mockArticleRepository.findOne.mockResolvedValueOnce(new Article());
+    mockedArticleRepository.findOne.mockResolvedValueOnce(new Article());
 
     await expect(
       service.getById('a832e632-0335-4191-8469-4d849bbb72be'),
@@ -71,8 +81,8 @@ Nulla minim ea quis irure veniam laborum commodo non quis non ex eu.`,
   });
 
   it('should find and paginate articles', async () => {
-    mockArticleRepository.find.mockResolvedValueOnce([new Article()]);
-    mockArticleRepository.count.mockResolvedValueOnce(1);
+    mockedArticleRepository.find.mockResolvedValueOnce([new Article()]);
+    mockedArticleRepository.count.mockResolvedValueOnce(1);
 
     await expect(service.findBy({ limit: 10, page: 1 })).resolves.toMatchObject(
       {
@@ -101,10 +111,6 @@ Est deserunt excepteur ut id qui excepteur eiusmod exercitation sint nulla ipsum
 Nulla ipsum do id enim et ullamco cupidatat irure anim consectetur pariatur.`,
     };
 
-    mockArticleRepository.merge.mockImplementation(
-      (article, changes) => Object.assign(article, changes) as Article,
-    );
-
     await expect(service.update(article, changes)).resolves.toHaveProperty(
       'content',
       changes.content,
@@ -114,16 +120,16 @@ Nulla ipsum do id enim et ullamco cupidatat irure anim consectetur pariatur.`,
   it('should soft remove one article', async () => {
     const article = new Article();
 
-    mockArticleRepository.softRemove.mockImplementation((article) =>
-      Promise.resolve(Object.assign(article, { deletedAt: new Date() })),
+    mockedArticleRepository.softRemove.mockResolvedValueOnce(
+      Object.assign(article, { deletedAt: new Date() }),
     );
 
     await expect(service.remove(article)).resolves.toBeInstanceOf(Article);
-    expect(mockArticleRepository.softRemove).toHaveBeenCalledWith(article);
+    expect(mockedArticleRepository.softRemove).toHaveBeenCalledWith(article);
   });
 
   it('should check if article with a given id exist', async () => {
-    mockArticleRepository.count.mockResolvedValueOnce(1);
+    mockedArticleRepository.count.mockResolvedValueOnce(1);
 
     await expect(
       service.checkExist('a832e632-0335-4191-8469-4d849bbb72be'),

@@ -2,6 +2,7 @@ import { Test } from '@nestjs/testing';
 import { plainToInstance } from 'class-transformer';
 import { isUUID, useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
+import { createMock } from 'ts-auto-mock';
 
 import { CreateComment } from '@/blog/dto/create-comment';
 import { ArticleService } from '@/blog/services/article.service';
@@ -13,11 +14,14 @@ describe('CreateComment DTO', () => {
       providers: [ArticleExistConstraint],
     })
       .useMocker((token) => {
-        if (Object.is(token, ArticleService)) {
-          return {
-            checkExist: (articleId: string) =>
-              Promise.resolve(isUUID(articleId)),
-          };
+        if (token === ArticleService) {
+          return createMock<ArticleService>({
+            checkExist: jest
+              .fn()
+              .mockImplementation((articleId: string) =>
+                Promise.resolve(isUUID(articleId)),
+              ),
+          });
         }
       })
       .compile();

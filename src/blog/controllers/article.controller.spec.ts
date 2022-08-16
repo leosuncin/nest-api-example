@@ -1,5 +1,5 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { mock, mockReset } from 'jest-mock-extended';
+import { Test } from '@nestjs/testing';
+import { createMock } from 'ts-auto-mock';
 
 import { User } from '@/auth/entities/user.entity';
 import { ArticleController } from '@/blog/controllers/article.controller';
@@ -10,24 +10,21 @@ import { ArticleService } from '@/blog/services/article.service';
 
 describe('ArticleController', () => {
   let controller: ArticleController;
-  const mockArticleService = mock<ArticleService>();
+  let mockedArticleService: jest.Mocked<ArticleService>;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       controllers: [ArticleController],
-      providers: [
-        {
-          provide: ArticleService,
-          useValue: mockArticleService,
-        },
-      ],
-    }).compile();
+    })
+      .useMocker((token) => {
+        if (token === ArticleService) {
+          return createMock<ArticleService>();
+        }
+      })
+      .compile();
 
-    controller = module.get<ArticleController>(ArticleController);
-  });
-
-  afterEach(() => {
-    mockReset(mockArticleService);
+    controller = module.get(ArticleController);
+    mockedArticleService = module.get(ArticleService);
   });
 
   it('should be defined', () => {
@@ -46,14 +43,14 @@ Irure velit sunt voluptate et amet nisi.
 Consequat ad velit elit.`,
       author: new User(),
     };
-    mockArticleService.create.mockImplementation((newArticle) =>
-      Promise.resolve(Object.assign(new Article(), newArticle)),
+    mockedArticleService.create.mockResolvedValue(
+      Object.assign(new Article(), newArticle),
     );
 
     await expect(controller.create(newArticle)).resolves.toBeInstanceOf(
       Article,
     );
-    expect(mockArticleService.create).toHaveBeenCalledWith(newArticle);
+    expect(mockedArticleService.create).toHaveBeenCalledWith(newArticle);
   });
 
   it('should get one article', () => {
@@ -63,7 +60,7 @@ Consequat ad velit elit.`,
   });
 
   it('should get all articles by page', async () => {
-    mockArticleService.findBy.mockResolvedValue({
+    mockedArticleService.findBy.mockResolvedValue({
       items: [new Article()],
       meta: {
         currentPage: 1,
@@ -97,8 +94,8 @@ Exercitation ut esse aute minim tempor non exercitation qui amet laborum incidid
       title: 'Sint minim magna irure officia irure commodo.',
     };
 
-    mockArticleService.update.mockImplementation((article, changes) =>
-      Promise.resolve(Object.assign(article, changes)),
+    mockedArticleService.update.mockResolvedValue(
+      Object.assign(article, changes),
     );
 
     await expect(controller.update(article, changes)).resolves.toBeInstanceOf(
@@ -109,11 +106,11 @@ Exercitation ut esse aute minim tempor non exercitation qui amet laborum incidid
   it('should remove an article', async () => {
     const article = new Article();
 
-    mockArticleService.remove.mockImplementation((article) =>
-      Promise.resolve(Object.assign(article, { deletedAt: new Date() })),
+    mockedArticleService.remove.mockResolvedValue(
+      Object.assign(article, { deletedAt: new Date() }),
     );
 
     await expect(controller.remove(article)).resolves.toBeInstanceOf(Article);
-    expect(mockArticleService.remove).toHaveBeenCalledWith(article);
+    expect(mockedArticleService.remove).toHaveBeenCalledWith(article);
   });
 });
