@@ -1,7 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { createMockInstance } from 'jest-create-mock-instance';
-import { Repository, SelectQueryBuilder } from 'typeorm';
+import { createMock } from 'ts-auto-mock';
+import { type SelectQueryBuilder,Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
 import { CreateComment } from '@/blog/dto/create-comment';
@@ -10,35 +10,37 @@ import { Comment } from '@/blog/entities/comment.entity';
 import { CommentService } from '@/blog/services/comment.service';
 
 describe('CommentService', () => {
-  let mockCommentRepository: jest.Mocked<Repository<Comment>>;
+  let mockedCommentRepository: jest.Mocked<Repository<Comment>>;
   let service: CommentService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [CommentService],
     })
-      .useMocker(() => {
-        const mock: jest.Mocked<Repository<Comment>> = Object.assign(
-          Object.create(Repository.prototype),
-          createMockInstance(Repository),
-        );
+      .useMocker((token) => {
+        if (token === getRepositoryToken(Comment)) {
+          const mock = createMock<Repository<Comment>>({
+            create: jest
+              .fn()
+              .mockImplementation((dto: CreateComment) =>
+                Object.assign(new Comment(), dto),
+              ),
+            save: jest
+              .fn()
+              .mockImplementation((comment: Comment) =>
+                Promise.resolve(comment),
+              ),
+          });
 
-        mock.create.mockImplementation((dto) =>
-          Object.assign(new Comment(), dto),
-        );
-        mock.save.mockImplementation((comment) =>
-          Promise.resolve(comment as Comment),
-        );
+          Object.setPrototypeOf(mock, Repository.prototype);
 
-        return mock;
+          return mock;
+        }
       })
       .compile();
 
-    mockCommentRepository = module.get<
-      Repository<Comment>,
-      jest.Mocked<Repository<Comment>>
-    >(getRepositoryToken(Comment));
-    service = module.get<CommentService>(CommentService);
+    service = module.get(CommentService);
+    mockedCommentRepository = module.get(getRepositoryToken(Comment));
   });
 
   it('should be defined', () => {
@@ -53,34 +55,36 @@ describe('CommentService', () => {
     };
 
     await expect(service.create(newComment)).resolves.toBeInstanceOf(Comment);
-    expect(mockCommentRepository.create).toHaveBeenCalledWith(newComment);
-    expect(mockCommentRepository.save).toHaveBeenCalledTimes(1);
+    expect(mockedCommentRepository.create).toHaveBeenCalledWith(newComment);
+    expect(mockedCommentRepository.save).toHaveBeenCalledTimes(1);
   });
 
   it('should paginate the comments', async () => {
-    const queryBuilder = createMockInstance(SelectQueryBuilder);
+    const queryBuilder = createMock<SelectQueryBuilder<Article>>({
+      where: jest.fn().mockReturnThis(),
+      orderBy: jest.fn().mockReturnThis(),
+      limit: jest.fn().mockReturnThis(),
+      offset: jest.fn().mockReturnThis(),
+      skip: jest.fn().mockReturnThis(),
+      take: jest.fn().mockReturnThis(),
+      cache: jest.fn().mockReturnThis(),
+      select: jest.fn().mockReturnThis(),
+      from: jest.fn().mockReturnThis(),
+      setParameters: jest.fn().mockReturnThis(),
+      clone: jest.fn().mockReturnThis(),
+      getMany: jest.fn().mockResolvedValue([new Comment()]),
+      getRawOne: jest.fn().mockResolvedValue({ value: '1' }),
+    }) as unknown as jest.Mocked<SelectQueryBuilder<Comment>>;
     const article = Object.assign(new Article(), {
       id: 'a832e632-0335-4191-8469-4d849bbb72be',
     });
 
-    queryBuilder.where.mockReturnThis();
-    queryBuilder.orderBy.mockReturnThis();
-    queryBuilder.limit.mockReturnThis();
-    queryBuilder.offset.mockReturnThis();
-    queryBuilder.skip.mockReturnThis();
-    queryBuilder.take.mockReturnThis();
-    queryBuilder.cache.mockReturnThis();
-    queryBuilder.select.mockReturnThis();
-    queryBuilder.from.mockReturnThis();
-    queryBuilder.setParameters.mockReturnThis();
     queryBuilder.clone.mockReturnValue(queryBuilder);
-    queryBuilder.getMany.mockResolvedValue([new Comment()]);
-    queryBuilder.getRawOne.mockResolvedValue({ value: '1' });
     // @ts-expect-error mock connection
     queryBuilder.connection = {
       createQueryBuilder: jest.fn().mockReturnValue(queryBuilder),
     };
-    mockCommentRepository.createQueryBuilder.mockReturnValue(
+    mockedCommentRepository.createQueryBuilder.mockReturnValue(
       queryBuilder as SelectQueryBuilder<Comment>,
     );
 
@@ -101,13 +105,13 @@ describe('CommentService', () => {
   it('should soft remove one comment', async () => {
     const id = 'a832e632-0335-4191-8469-4d849bbb72be';
 
-    mockCommentRepository.softDelete.mockResolvedValueOnce({
+    mockedCommentRepository.softDelete.mockResolvedValueOnce({
       generatedMaps: [],
       raw: [],
       affected: 1,
     });
 
     await expect(service.remove(id)).resolves.toBeDefined();
-    expect(mockCommentRepository.softDelete).toHaveBeenCalledWith({ id });
+    expect(mockedCommentRepository.softDelete).toHaveBeenCalledWith({ id });
   });
 });

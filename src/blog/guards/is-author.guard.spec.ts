@@ -2,8 +2,8 @@ import { ForbiddenException, InjectionToken } from '@nestjs/common';
 import { ModuleRef, Reflector } from '@nestjs/core';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { Test } from '@nestjs/testing';
-import { mock } from 'jest-mock-extended';
 import { createMocks } from 'node-mocks-http';
+import { createMock } from 'ts-auto-mock';
 
 import { User } from '@/auth/entities/user.entity';
 import { Entities } from '@/blog/constants/entity.enum';
@@ -29,7 +29,7 @@ const comment: Comment = Object.create(Comment.prototype, {
 });
 
 describe('IsAuthorGuard', () => {
-  const mockReflector = mock<Reflector>();
+  let mockedReflector: jest.Mocked<Reflector>;
   let guard: IsAuthorGuard;
 
   beforeAll(async () => {
@@ -37,39 +37,40 @@ describe('IsAuthorGuard', () => {
       providers: [
         {
           provide: ModuleRef,
-          useValue: {
-            get(token: InjectionToken) {
-              if (Object.is(token, ArticleService)) {
-                const mockArticleService = mock<ArticleService>();
-
-                mockArticleService.getById
-                  .calledWith(article.id)
-                  .mockResolvedValue(article);
-
-                return mockArticleService;
+          useValue: createMock<ModuleRef>({
+            get: jest.fn().mockImplementation((typeOrToken: InjectionToken) => {
+              if (typeOrToken === ArticleService) {
+                return createMock<ArticleService>({
+                  getById: jest
+                    .fn()
+                    .mockImplementation((id: Article['id']) =>
+                      id === article.id ? article : undefined,
+                    ),
+                });
               }
 
-              if (Object.is(token, CommentService)) {
-                const mockCommentService = mock<CommentService>();
-
-                mockCommentService.getById
-                  .calledWith(comment.id)
-                  .mockResolvedValue(comment);
-
-                return mockCommentService;
+              if (typeOrToken === CommentService) {
+                return createMock<CommentService>({
+                  getById: jest
+                    .fn()
+                    .mockImplementation((id: Comment['id']) =>
+                      id === comment.id ? comment : undefined,
+                    ),
+                });
               }
-            },
-          },
+            }),
+          }),
         },
         {
           provide: Reflector,
-          useValue: mockReflector,
+          useValue: createMock<Reflector>(),
         },
         IsAuthorGuard,
       ],
     }).compile();
 
-    guard = module.get<IsAuthorGuard>(IsAuthorGuard);
+    guard = module.get(IsAuthorGuard);
+    mockedReflector = module.get(Reflector);
   });
 
   it('should be defined', () => {
@@ -93,7 +94,7 @@ describe('IsAuthorGuard', () => {
       });
       const context = new ExecutionContextHost([req, res]);
 
-      mockReflector.get.mockReturnValueOnce(entity);
+      mockedReflector.get.mockReturnValueOnce(entity);
 
       await expect(guard.canActivate(context)).resolves.toBe(true);
     },
@@ -111,7 +112,7 @@ describe('IsAuthorGuard', () => {
       });
       const context = new ExecutionContextHost([req, res]);
 
-      mockReflector.get.mockReturnValueOnce(entity);
+      mockedReflector.get.mockReturnValueOnce(entity);
 
       await expect(guard.canActivate(context)).rejects.toThrow(
         ForbiddenException,
