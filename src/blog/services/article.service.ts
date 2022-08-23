@@ -24,8 +24,8 @@ export class ArticleService {
     return this.articleRepository.save(article);
   }
 
-  getById(id: Article['id']): Promise<Article | undefined> {
-    return this.articleRepository.findOne(id);
+  getById(id: Article['id']): Promise<Article | null> {
+    return this.articleRepository.findOne({ where: { id } });
   }
 
   findBy(options: IPaginationOptions): Promise<Pagination<Article>> {

@@ -1,7 +1,7 @@
 import type { INestApplication } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { getConnectionToken } from '@nestjs/typeorm';
+import { getDataSourceToken } from '@nestjs/typeorm';
 import request from 'supertest';
 
 import { AuthModule } from '@/auth/auth.module';
@@ -41,9 +41,9 @@ describe('AuthModule', () => {
   beforeAll(async () => {
     app = await buildTestApplication(AuthModule, BlogModule);
     const jwtService = app.get(JwtService);
-    const connection = app.get(getConnectionToken());
+    const dataSource = app.get(getDataSourceToken());
     jwt = jwtService.sign({ sub: '63770485-6ee9-4a59-b374-3f194091e2e1' });
-    await loadFixtures(connection);
+    await loadFixtures(dataSource);
   });
 
   it('create a new article', async () => {

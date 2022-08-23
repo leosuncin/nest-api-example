@@ -41,21 +41,19 @@ describe('IsAuthorGuard', () => {
             get: jest.fn().mockImplementation((typeOrToken: InjectionToken) => {
               if (typeOrToken === ArticleService) {
                 return createMock<ArticleService>({
-                  getById: jest
-                    .fn()
-                    .mockImplementation((id: Article['id']) =>
-                      id === article.id ? article : undefined,
-                    ),
+                  getById: jest.fn().mockImplementation((id: Article['id']) =>
+                    // eslint-disable-next-line unicorn/no-null
+                    id === article.id ? article : null,
+                  ),
                 });
               }
 
               if (typeOrToken === CommentService) {
                 return createMock<CommentService>({
-                  getById: jest
-                    .fn()
-                    .mockImplementation((id: Comment['id']) =>
-                      id === comment.id ? comment : undefined,
-                    ),
+                  getById: jest.fn().mockImplementation((id: Comment['id']) =>
+                    // eslint-disable-next-line unicorn/no-null
+                    id === comment.id ? comment : null,
+                  ),
                 });
               }
             }),

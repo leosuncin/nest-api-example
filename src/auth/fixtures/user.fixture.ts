@@ -1,15 +1,15 @@
 import { fluse } from 'fluse';
-import typeormPlugin from 'fluse-plugin-typeorm';
 import normalizeEmail from 'normalize-email';
 
 import { User } from '@/auth/entities/user.entity';
 import { fakerPlugin } from '@/common/fluse-plugin-faker';
+import { typeORMPlugin } from '@/common/fluse-plugin-typeorm';
 import { credentials } from '@/common/test-helpers';
 
 const { fixture } = fluse({
   plugins: {
     faker: fakerPlugin(),
-    orm: typeormPlugin(),
+    orm: typeORMPlugin(),
   },
 });
 

@@ -3,6 +3,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { useContainer, validate } from 'class-validator';
 import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
+import { Equal, Not } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
 import {
@@ -55,7 +56,7 @@ describe('IsAlreadyRegister', () => {
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'email');
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { email: 'john@doe.me' },
+      where: { email: Equal('john@doe.me') },
     });
   });
 
@@ -69,7 +70,7 @@ describe('IsAlreadyRegister', () => {
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'username');
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { username: 'john-doe' },
+      where: { username: Equal('john-doe') },
     });
   });
 
@@ -82,7 +83,7 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(0);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { email: 'jane@doe.me' },
+      where: { email: Equal('jane@doe.me') },
     });
   });
 
@@ -95,7 +96,7 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(0);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { username: 'jane.doe' },
+      where: { username: Equal('jane.doe') },
     });
   });
 
@@ -111,7 +112,7 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(0);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { email: 'johndoe@example.com', id: expect.anything() },
+      where: { email: Equal('johndoe@example.com'), id: Not(dto.id) },
     });
   });
 
@@ -127,7 +128,7 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(1);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { email: 'jane@doe.me', id: expect.anything() },
+      where: { email: Equal('jane@doe.me'), id: Not(dto.id) },
     });
   });
 
@@ -143,7 +144,7 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(0);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { username: 'johndoe', id: expect.anything() },
+      where: { username: Equal('johndoe'), id: Not(dto.id) },
     });
   });
 
@@ -159,7 +160,7 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(1);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { username: 'jane-doe', id: expect.anything() },
+      where: { username: Equal('jane-doe'), id: Not(dto.id) },
     });
   });
 });

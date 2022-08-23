@@ -27,10 +27,12 @@ export class ValidateCredentialConstraint
   ): Promise<boolean> {
     if (!this.hasCredentials(object)) return false;
 
-    const user = await this.userRepository.findOne(
-      object.id ? { id: object.id } : { username: object.username },
-      { cache: true },
-    );
+    const user = await this.userRepository.findOne({
+      where: {
+        ...(object.id ? { id: object.id } : { username: object.username }),
+      },
+      cache: true,
+    });
 
     if (!user) return false;
 

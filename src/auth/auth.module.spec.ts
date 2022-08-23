@@ -1,7 +1,7 @@
 import type { INestApplication } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { getConnectionToken } from '@nestjs/typeorm';
+import { getDataSourceToken } from '@nestjs/typeorm';
 import request, { agent } from 'supertest';
 
 import { AuthModule } from '@/auth/auth.module';
@@ -36,10 +36,12 @@ describe('Auth module', () => {
   beforeAll(async () => {
     app = await buildTestApplication(AuthModule);
     const jwtService = app.get(JwtService);
-    const connection = app.get(getConnectionToken());
-    user = await userFixture({ password }).execute({ orm: { connection } });
+    const dataSource = app.get(getDataSourceToken());
+    user = await userFixture({ password }).execute({
+      orm: { dataSource },
+    });
     jwt = jwtService.sign({ sub: user.id });
-    await loadFixtures(connection);
+    await loadFixtures(dataSource);
   });
 
   it('register a new user', async () => {

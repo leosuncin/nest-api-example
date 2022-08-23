@@ -29,7 +29,7 @@ export class AuthenticationService {
     });
   }
 
-  verifyPayload(payload: JwtPayload): Promise<User | undefined> {
+  verifyPayload(payload: JwtPayload): Promise<User | null> {
     return this.userRepository.findOne({
       where: { id: payload.sub },
     });
