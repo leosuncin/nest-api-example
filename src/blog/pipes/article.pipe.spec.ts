@@ -16,15 +16,14 @@ describe('ArticlePipe', () => {
       .useMocker((token) => {
         if (token === ArticleService) {
           return createMock<ArticleService>({
-            getById: jest
-              .fn()
-              .mockImplementation((id: Article['id']) =>
-                Promise.resolve(
-                  id === 'abdb39f4-5659-44d2-842b-7fde9d82c6a4'
-                    ? new Article()
-                    : undefined,
-                ),
+            getById: jest.fn().mockImplementation((id: Article['id']) =>
+              Promise.resolve(
+                id === 'abdb39f4-5659-44d2-842b-7fde9d82c6a4'
+                  ? new Article()
+                  : // eslint-disable-next-line unicorn/no-null
+                    null,
               ),
+            ),
           });
         }
       })

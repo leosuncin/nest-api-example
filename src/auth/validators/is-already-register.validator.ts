@@ -7,7 +7,7 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
-import { Not, Repository } from 'typeorm';
+import { Equal, Not, Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
 
@@ -27,7 +27,7 @@ export class IsAlreadyRegisterConstraint
   ): Promise<boolean> {
     const count = await this.userRepository.count({
       where: {
-        [property]: value,
+        [property]: Equal(value),
         ...(this.hasId(object) ? { id: Not(object.id) } : {}),
       },
     });

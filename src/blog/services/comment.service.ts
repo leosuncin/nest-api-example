@@ -5,7 +5,7 @@ import {
   type Pagination,
   paginate,
 } from 'nestjs-typeorm-paginate';
-import type { FindConditions, Repository } from 'typeorm';
+import type { Repository } from 'typeorm';
 
 import { CreateComment } from '@/blog/dto/create-comment';
 import { Comment } from '@/blog/entities/comment.entity';
@@ -25,7 +25,7 @@ export class CommentService {
 
   findBy(
     options: IPaginationOptions,
-    search: FindConditions<Comment>,
+    search: Partial<Comment>,
   ): Promise<Pagination<Comment>> {
     const query = this.commentRepository
       .createQueryBuilder('c')
@@ -35,8 +35,8 @@ export class CommentService {
     return paginate(query, options);
   }
 
-  getById(id: Comment['id']): Promise<Comment | undefined> {
-    return this.commentRepository.findOne(id);
+  getById(id: Comment['id']): Promise<Comment | null> {
+    return this.commentRepository.findOne({ where: { id } });
   }
 
   remove(id: Comment['id']) {

@@ -33,7 +33,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, JWT) {
     });
   }
 
-  validate(payload: JwtPayload): Promise<User | undefined> {
+  validate(payload: JwtPayload): Promise<User | null> {
     return this.authenticationService.verifyPayload(payload);
   }
 }

@@ -13,7 +13,7 @@ import cookieParser from 'cookie-parser';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { DataType, newDb } from 'pg-mem';
-import type { Connection } from 'typeorm';
+import type { DataSource } from 'typeorm';
 import {
   Builder,
   fixturesIterator,
@@ -23,6 +23,11 @@ import {
 } from 'typeorm-fixtures-cli';
 
 import type { LoginUser } from '@/auth/dto/login-user.dto';
+import { User } from '@/auth/entities/user.entity';
+import { Article } from '@/blog/entities/article.entity';
+import { Comment } from '@/blog/entities/comment.entity';
+import { CreateUser1637703183543 } from '@/migrations/1637703183543-create-user';
+import { CreateArticleComment1651517018946 } from '@/migrations/1651517018946-create-article-comment';
 
 // eslint-disable-next-line security/detect-unsafe-regex
 export const uuidRegex = /[\da-f]{8}(?:-[\da-f]{4}){3}-[\da-f]{12}/;
@@ -54,17 +59,23 @@ export async function buildTestApplication(
       TypeOrmModule.forRootAsync({
         useFactory: () => ({
           type: 'postgres',
-          migrations: ['src/migrations/*.ts'],
-          entities: ['src/**/*.entity.ts'],
+          migrations: [
+            CreateUser1637703183543,
+            CreateArticleComment1651517018946,
+          ],
+          entities: [User, Article, Comment],
+          migrationsRun: true,
+          autoLoadEntities: true,
         }),
-        connectionFactory: async (options) => {
-          const connection = (await database.adapters.createTypeormConnection(
+        dataSourceFactory: async (options) => {
+          const dataSource = (await database.adapters.createTypeormDataSource(
             options,
-          )) as Connection;
+          )) as DataSource;
 
-          await connection.runMigrations();
+          // await  dataSource.initialize();
+          // await dataSource.runMigrations();
 
-          return connection;
+          return dataSource;
         },
       }),
       ...modules,
@@ -85,18 +96,18 @@ export async function buildTestApplication(
   return app.init();
 }
 
-export async function loadFixtures(connection: Connection) {
+export async function loadFixtures(dataSource: DataSource) {
   const loader = new Loader();
   const resolver = new Resolver();
 
   loader.load(path.resolve(process.cwd(), 'fixtures'));
 
   const fixtures = resolver.resolve(loader.fixtureConfigs);
-  const builder = new Builder(connection, new Parser());
+  const builder = new Builder(dataSource, new Parser(), true);
 
   for (const fixture of fixturesIterator(fixtures)) {
     const entity = await builder.build(fixture);
-    await connection.getRepository(entity.constructor.name).save(entity);
+    await dataSource.getRepository(entity.constructor.name).save(entity);
   }
 }
 

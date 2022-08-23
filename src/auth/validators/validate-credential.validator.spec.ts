@@ -69,10 +69,12 @@ describe('ValidateCredential', () => {
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockedUserRepository.findOne).toHaveBeenCalledWith(
-      { username: dto.username },
-      { cache: true },
-    );
+    expect(mockedUserRepository.findOne).toHaveBeenCalledWith({
+      where: {
+        username: dto.username,
+      },
+      cache: true,
+    });
   });
 
   it.each([
@@ -99,10 +101,12 @@ describe('ValidateCredential', () => {
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockedUserRepository.findOne).toHaveBeenCalledWith(
-      { id: dto.id },
-      { cache: true },
-    );
+    expect(mockedUserRepository.findOne).toHaveBeenCalledWith({
+      where: {
+        id: dto.id,
+      },
+      cache: true,
+    });
   });
 
   it('should fail with the incorrect current password', async () => {
@@ -112,9 +116,11 @@ describe('ValidateCredential', () => {
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
-    expect(mockedUserRepository.findOne).toHaveBeenCalledWith(
-      { id: dto.id },
-      { cache: true },
-    );
+    expect(mockedUserRepository.findOne).toHaveBeenCalledWith({
+      where: {
+        id: dto.id,
+      },
+      cache: true,
+    });
   });
 });

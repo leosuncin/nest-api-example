@@ -7,7 +7,16 @@ import { AuthModule } from '@/auth/auth.module';
 import { BlogModule } from '@/blog/blog.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), AuthModule, BlogModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
+      synchronize: false,
+      autoLoadEntities: true,
+    }),
+    AuthModule,
+    BlogModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
