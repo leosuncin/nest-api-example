@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/leosuncin/nest-api-example/compare/v1.4.1...v1.5.0) (2022-08-23)
+
+### Features
+
+- upgrade to Nest.js v9 & TypeORM v0.3.x ([18d1174](https://github.com/leosuncin/nest-api-example/commit/18d11749cf192f1afca1438eb62e0abd78233751))
+
 ## [1.4.1](https://github.com/leosuncin/nest-api-example/compare/v1.4.0...v1.4.1) (2022-08-14)
 
 # [1.4.0](https://github.com/leosuncin/nest-api-example/compare/v1.3.1...v1.4.0) (2022-08-14)
