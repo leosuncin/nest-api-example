@@ -87,6 +87,7 @@ specifiers:
   ttypescript: ^1.5.13
   txtgen: 3.0.2
   typeorm: ^0.3.7
+  typeorm-extension: ^2.1.9
   typeorm-fixtures-cli: ^3.0.0
   typescript: ^4.7.4
 
@@ -179,6 +180,7 @@ devDependencies:
   tsconfig-paths: 4.1.0
   ttypescript: 1.5.13_6oasmw356qmm23djlsjgkwvrtm
   txtgen: 3.0.2
+  typeorm-extension: 2.1.9_typeorm@0.3.7
   typeorm-fixtures-cli: 3.0.1_typeorm@0.3.7
   typescript: 4.7.4
 
@@ -6877,6 +6879,12 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /locter/0.2.2:
+    resolution: {integrity: sha512-S6An32Oni1Skov1S1oSs8C8uN+jGlY9feXrBhWGZ5bu+XPt9ZF1wxwL6oWEkGw9e+aN3DfcH3v1o/imRITQUlA==}
+    dependencies:
+      glob: 8.0.3
+    dev: true
+
   /lodash-es/4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: true
@@ -8294,6 +8302,12 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
+  /rapiq/0.0.4:
+    resolution: {integrity: sha512-dfz9OvptBQT2CnPXqs3+BhGSp18zRXp1G7llN3jzQd6ePx03j8nppCv4o5P4m3WEG3aA0fpOteyZQ4vhyNWtvQ==}
+    dependencies:
+      minimatch: 5.1.0
+    dev: true
+
   /raw-body/2.5.1:
     resolution: {integrity: sha512-qqJBtEyVgS0ZmPGdCFPWJ3FreoqvG4MVQln/kCgF7Olq95IbOp0/BWyMwbdtn4VTvkM8Y7khCQ2Xgk/tcrCXig==}
     engines: {node: '>= 0.8'}
@@ -9641,6 +9655,20 @@ packages:
 
   /typedarray/0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
+
+  /typeorm-extension/2.1.9_typeorm@0.3.7:
+    resolution: {integrity: sha512-Ghxpf0aNnIAPMqa6ck2SrtHH2lt9OFc012oBRofqxiTJcvWArF0yYpFiv30RoJ0mOZuwKE3zdXSohYkuZ461aA==}
+    hasBin: true
+    peerDependencies:
+      typeorm: ~0.3.0
+    dependencies:
+      '@faker-js/faker': 7.4.0
+      locter: 0.2.2
+      rapiq: 0.0.4
+      reflect-metadata: 0.1.13
+      typeorm: 0.3.7_pg@8.7.3+ts-node@10.9.1
+      yargs: 17.5.1
+    dev: true
 
   /typeorm-fixtures-cli/3.0.1_typeorm@0.3.7:
     resolution: {integrity: sha512-TBP8zECQ7J6+A6+zvFWccwvo58YXwNMay4rKc2UBmS0032BOs+fE9vgdf23q6btnDJN/lklhD3vIt3IM+kcgAw==}

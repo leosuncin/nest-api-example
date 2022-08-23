@@ -53,7 +53,8 @@
     "txtgen",
     "oxsecurity",
     "mypy",
-    "ttypescript"
+    "ttypescript",
+    "postgres"
   ],
   "dictionaries": [
     "en_US",
