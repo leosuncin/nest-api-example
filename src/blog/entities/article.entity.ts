@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 import shortUUID from 'short-uuid';
 import slugify from 'slugify';
 import {
+  type DeepPartial,
   BeforeInsert,
   BeforeUpdate,
   Column,
@@ -76,5 +77,9 @@ export class Article {
 
       return translator.toUUID(shortId);
     }
+  }
+
+  static fromPartial(data: DeepPartial<Article>): Article {
+    return Object.assign(new Article(), data);
   }
 }

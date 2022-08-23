@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
 import {
+  type DeepPartial,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -45,4 +46,8 @@ export class Comment {
     eager: true,
   })
   author!: User;
+
+  static fromPartial(data: DeepPartial<Comment>): Comment {
+    return Object.assign(new Comment(), data);
+  }
 }
