@@ -11,16 +11,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { useContainer } from 'class-validator';
 import cookieParser from 'cookie-parser';
 import { randomUUID } from 'node:crypto';
-import path from 'node:path';
 import { DataType, newDb } from 'pg-mem';
 import type { DataSource } from 'typeorm';
-import {
-  Builder,
-  fixturesIterator,
-  Loader,
-  Parser,
-  Resolver,
-} from 'typeorm-fixtures-cli';
 
 import type { LoginUser } from '@/auth/dto/login-user.dto';
 import { dataSourceOptions } from '@/data-source';
@@ -80,21 +72,6 @@ export async function buildTestApplication(
   useContainer(module, { fallbackOnErrors: true });
 
   return app.init();
-}
-
-export async function loadFixtures(dataSource: DataSource) {
-  const loader = new Loader();
-  const resolver = new Resolver();
-
-  loader.load(path.resolve(process.cwd(), 'fixtures'));
-
-  const fixtures = resolver.resolve(loader.fixtureConfigs);
-  const builder = new Builder(dataSource, new Parser(), true);
-
-  for (const fixture of fixturesIterator(fixtures)) {
-    const entity = await builder.build(fixture);
-    await dataSource.getRepository(entity.constructor.name).save(entity);
-  }
 }
 
 export const credentials = Object.freeze<LoginUser>({
