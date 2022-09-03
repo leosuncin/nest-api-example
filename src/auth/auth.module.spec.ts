@@ -3,6 +3,7 @@ import { HttpStatus } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { getDataSourceToken } from '@nestjs/typeorm';
 import request, { agent } from 'supertest';
+import { runSeeders } from 'typeorm-extension';
 
 import { AuthModule } from '@/auth/auth.module';
 import type { User } from '@/auth/entities/user.entity';
@@ -17,7 +18,6 @@ import {
   credentials,
   database,
   isoDateRegex,
-  loadFixtures,
   uuidRegex,
 } from '@/common/test-helpers';
 
@@ -41,7 +41,7 @@ describe('Auth module', () => {
       orm: { dataSource },
     });
     jwt = jwtService.sign({ sub: user.id });
-    await loadFixtures(dataSource);
+    await runSeeders(dataSource);
   });
 
   it('register a new user', async () => {

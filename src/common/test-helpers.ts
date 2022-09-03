@@ -23,11 +23,7 @@ import {
 } from 'typeorm-fixtures-cli';
 
 import type { LoginUser } from '@/auth/dto/login-user.dto';
-import { User } from '@/auth/entities/user.entity';
-import { Article } from '@/blog/entities/article.entity';
-import { Comment } from '@/blog/entities/comment.entity';
-import { CreateUser1637703183543 } from '@/migrations/1637703183543-create-user';
-import { CreateArticleComment1651517018946 } from '@/migrations/1651517018946-create-article-comment';
+import { dataSourceOptions } from '@/data-source';
 
 // eslint-disable-next-line security/detect-unsafe-regex
 export const uuidRegex = /[\da-f]{8}(?:-[\da-f]{4}){3}-[\da-f]{12}/;
@@ -58,25 +54,15 @@ export async function buildTestApplication(
     imports: [
       TypeOrmModule.forRootAsync({
         useFactory: () => ({
-          type: 'postgres',
-          migrations: [
-            CreateUser1637703183543,
-            CreateArticleComment1651517018946,
-          ],
-          entities: [User, Article, Comment],
+          ...dataSourceOptions,
+          url: undefined,
           migrationsRun: true,
           autoLoadEntities: true,
         }),
-        dataSourceFactory: async (options) => {
-          const dataSource = (await database.adapters.createTypeormDataSource(
+        dataSourceFactory: (options): Promise<DataSource> =>
+          database.adapters.createTypeormDataSource(
             options,
-          )) as DataSource;
-
-          // await  dataSource.initialize();
-          // await dataSource.runMigrations();
-
-          return dataSource;
-        },
+          ) as Promise<DataSource>,
       }),
       ...modules,
     ],

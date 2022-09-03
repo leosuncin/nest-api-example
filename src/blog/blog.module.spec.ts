@@ -3,6 +3,7 @@ import { HttpStatus } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { getDataSourceToken } from '@nestjs/typeorm';
 import request from 'supertest';
+import { runSeeders } from 'typeorm-extension';
 
 import { AuthModule } from '@/auth/auth.module';
 import { BlogModule } from '@/blog/blog.module';
@@ -15,7 +16,6 @@ import {
   buildTestApplication,
   database,
   isoDateRegex,
-  loadFixtures,
   uuidRegex,
 } from '@/common/test-helpers';
 
@@ -43,7 +43,7 @@ describe('AuthModule', () => {
     const jwtService = app.get(JwtService);
     const dataSource = app.get(getDataSourceToken());
     jwt = jwtService.sign({ sub: '63770485-6ee9-4a59-b374-3f194091e2e1' });
-    await loadFixtures(dataSource);
+    await runSeeders(dataSource);
   });
 
   it('create a new article', async () => {
