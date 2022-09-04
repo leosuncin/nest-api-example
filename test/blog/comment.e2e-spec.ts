@@ -3,6 +3,11 @@ import { e2e, request, spec } from 'pactum';
 
 import { login as credentials } from '@/auth/fixtures/credentials';
 import { createCommentFactory } from '@/blog/factories/create-comment.factory';
+import { articleByJohn } from '@/blog/fixtures/articles';
+import {
+  commentByJaneOnArticleByJohn,
+  commentByJohnOnArticleByJane,
+} from '@/blog/fixtures/comments';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 const unauthorizedError = {
@@ -17,7 +22,7 @@ const forbiddenError = {
 
 describe('CommentController (e2e)', () => {
   const testCase = e2e('Comment CRUD');
-  const articleId = 'a832e632-0335-4191-8469-4d849bbb72be';
+  const articleId = articleByJohn.id;
   let tokenCookie: string;
 
   beforeAll(() => {
@@ -134,9 +139,8 @@ describe('CommentController (e2e)', () => {
   it('require to be authenticated to remove a comment from an article', async () => {
     await spec()
       .delete(
-        '/articles/{articleId}/comments/2cce7079-b434-42fb-85e3-8d1aadd7bb8a',
+        `/articles/${articleId}/comments/${commentByJohnOnArticleByJane.id}`,
       )
-      .withPathParams('articleId', articleId)
       .expectStatus(HttpStatus.UNAUTHORIZED)
       .expectJson(unauthorizedError)
       .toss();
@@ -145,9 +149,8 @@ describe('CommentController (e2e)', () => {
   it('allow only the author to remove a comment from an article', async () => {
     await spec()
       .delete(
-        '/articles/{articleId}/comments/9395e782-367b-4487-a048-242e37169109',
+        `/articles/${articleId}/comments/${commentByJaneOnArticleByJohn.id}`,
       )
-      .withPathParams('articleId', articleId)
       .withHeaders('Cookie', tokenCookie)
       .expectStatus(HttpStatus.FORBIDDEN)
       .expectJson(forbiddenError)

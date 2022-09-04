@@ -3,7 +3,7 @@ import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-hos
 import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
 
-import { User } from '@/auth/entities/user.entity';
+import { john as user } from '@/auth/fixtures/users';
 import { SetAuthorInterceptor } from '@/blog/interceptors/set-author.interceptor';
 
 describe('SetAuthorInterceptor', () => {
@@ -13,17 +13,19 @@ describe('SetAuthorInterceptor', () => {
 
   it("should inject the user's id", async () => {
     const { req, res } = createMocks({
-      user: User.fromPartial({
-        id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-        email: 'john@doe.me',
-        username: 'john-doe',
-      }),
+      user,
       body: {
-        image: 'https://thispersondoesnotexist.com/image',
-        username: 'john.doe',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        email: 'johndoe@example.com',
-        password: 'ji32k7au4a83',
+        title: 'Lorem est pariatur aute veniam non duis.',
+        content: `Quis eu officia eiusmod.
+Amet ea labore aliquip mollit duis laborum dolore non ad.
+Occaecat labore laborum consectetur mollit cupidatat exercitation sunt amet quis ex consequat.
+Duis laborum est laborum ut enim dolor duis aliqua cillum.
+
+Nostrud culpa ullamco occaecat.
+In ad labore amet id exercitation velit tempor.
+Exercitation tempor ea incididunt velit laboris commodo eiusmod consectetur non aute nostrud veniam irure.
+Irure fugiat ad ex pariatur ipsum Lorem esse sit labore occaecat.
+Fugiat ipsum dolor nostrud deserunt ut minim commodo ut dolore aliqua Lorem commodo exercitation laborum adipisicing.`,
       },
     });
     const context = new ExecutionContextHost([req, res]);
