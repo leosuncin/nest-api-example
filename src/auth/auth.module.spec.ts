@@ -7,12 +7,10 @@ import { runSeeders } from 'typeorm-extension';
 
 import { AuthModule } from '@/auth/auth.module';
 import type { User } from '@/auth/entities/user.entity';
-import {
-  loginFixture,
-  registerFixture,
-  updateFixture,
-} from '@/auth/fixtures/auth.fixture';
-import { userFixture } from '@/auth/fixtures/user.fixture';
+import { loginUserFactory } from '@/auth/factories/login-user.factory';
+import { registerUserFactory } from '@/auth/factories/register-user.factory';
+import { updateUserFactory } from '@/auth/factories/update-user.factory';
+import { AuthenticationService } from '@/auth/services/authentication.service';
 import { buildTestApplication } from '@/common/build-test-application';
 import { database } from '@/common/database';
 import { credentials } from '@/common/fixtures/credentials';
@@ -33,16 +31,17 @@ describe('Auth module', () => {
   beforeAll(async () => {
     app = await buildTestApplication(AuthModule);
     const jwtService = app.get(JwtService);
+    const authenticationService = app.get(AuthenticationService);
     const dataSource = app.get(getDataSourceToken());
-    user = await userFixture({ password }).execute({
-      orm: { dataSource },
-    });
+    user = await authenticationService.register(
+      registerUserFactory.buildOne({ password }),
+    );
     jwt = jwtService.sign({ sub: user.id });
     await runSeeders(dataSource);
   });
 
   it('register a new user', async () => {
-    const data = await registerFixture().execute();
+    const data = registerUserFactory.buildOne();
 
     await request(app.getHttpServer())
       .post('/auth/register')
@@ -75,10 +74,10 @@ describe('Auth module', () => {
   });
 
   it('avoid to register a duplicate user', async () => {
-    const data = await registerFixture({
+    const data = registerUserFactory.buildOne({
       email: user.email,
       username: user.username,
-    }).execute();
+    });
 
     await request(app.getHttpServer())
       .post('/auth/register')
@@ -121,7 +120,7 @@ describe('Auth module', () => {
   });
 
   it('validate the login data', async () => {
-    const data = await loginFixture().execute();
+    const data = loginUserFactory.buildOne();
 
     await request(app.getHttpServer())
       .post('/auth/login')
@@ -133,7 +132,7 @@ describe('Auth module', () => {
   });
 
   it('validate the login credentials', async () => {
-    const data = await loginFixture({ username: user.username }).execute();
+    const data = loginUserFactory.buildOne({ username: user.username });
 
     await request(app.getHttpServer())
       .post('/auth/login')
@@ -214,7 +213,7 @@ describe('Auth module', () => {
   });
 
   it('update current user info', async () => {
-    const data = await updateFixture({ password }).execute();
+    const data = updateUserFactory.buildOne({ password });
     const backup = database.backup();
 
     await request(app.getHttpServer())
@@ -245,7 +244,7 @@ describe('Auth module', () => {
     /* wrong url due its protocol */
     { image: 'ftp://localhost/avatar.png' },
   ])('validate the update of current user', async (override) => {
-    const data = await updateFixture(override).execute();
+    const data = updateUserFactory.buildOne(override);
 
     await request(app.getHttpServer())
       .patch('/auth/me')
@@ -304,7 +303,7 @@ describe('Auth module', () => {
   });
 
   it("fail to update current user when it's unauthenticated", async () => {
-    const data = await updateFixture().execute();
+    const data = updateUserFactory.buildOne();
 
     await request(app.getHttpServer())
       .patch('/auth/me')

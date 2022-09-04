@@ -1,11 +1,9 @@
 import { HttpStatus } from '@nestjs/common';
 import { request, spec } from 'pactum';
 
-import {
-  loginFixture,
-  registerFixture,
-  updateFixture,
-} from '@/auth/fixtures/auth.fixture';
+import { loginUserFactory } from '@/auth/factories/login-user.factory';
+import { registerUserFactory } from '@/auth/factories/register-user.factory';
+import { updateUserFactory } from '@/auth/factories/update-user.factory';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 describe('AuthController (e2e)', () => {
@@ -29,7 +27,7 @@ describe('AuthController (e2e)', () => {
   });
 
   it('register a new user', async () => {
-    const data = await registerFixture().execute();
+    const data = registerUserFactory.buildOne();
 
     await spec()
       .post('/auth/register')
@@ -64,10 +62,10 @@ describe('AuthController (e2e)', () => {
   });
 
   it('avoid to register a duplicate user', async () => {
-    const data = await registerFixture({
+    const data = registerUserFactory.buildOne({
       email: credentials.email,
       username: credentials.username,
-    }).execute();
+    });
 
     await spec()
       .post('/auth/register')
@@ -118,9 +116,9 @@ describe('AuthController (e2e)', () => {
   });
 
   it('validate the login credentials', async () => {
-    const data = await loginFixture({
+    const data = loginUserFactory.buildOne({
       username: credentials.username,
-    }).execute();
+    });
 
     await spec()
       .post('/auth/login')
@@ -167,10 +165,10 @@ describe('AuthController (e2e)', () => {
   });
 
   it('update current user info', async () => {
-    const data = await updateFixture({
+    const data = updateUserFactory.buildOne({
       ...credentials,
       newPassword: credentials.password,
-    }).execute();
+    });
 
     await spec()
       .patch('/auth/me')
@@ -197,7 +195,7 @@ describe('AuthController (e2e)', () => {
     /* wrong url due its protocol */
     { image: 'ftp://localhost/avatar.png' },
   ])('validate the update of current user', async (override) => {
-    const data = await updateFixture(override).execute();
+    const data = updateUserFactory.buildOne(override);
 
     await spec()
       .patch('/auth/me')
@@ -213,7 +211,7 @@ describe('AuthController (e2e)', () => {
   });
 
   it("fail to update current user when it's unauthenticated", async () => {
-    const data = await updateFixture().execute();
+    const data = updateUserFactory.buildOne();
 
     await spec()
       .patch('/auth/me')

@@ -52,6 +52,7 @@ specifiers:
   eslint-plugin-simple-import-sort: ^7.0.0
   eslint-plugin-switch-case: ^1.1.2
   eslint-plugin-unicorn: ^43.0.2
+  factory.io: ^0.1.4
   fast-check: ^3.1.1
   fluse: ^1.1.0
   hibp: ^11.1.0
@@ -158,6 +159,7 @@ devDependencies:
   eslint-plugin-simple-import-sort: 7.0.0_eslint@8.22.0
   eslint-plugin-switch-case: 1.1.2
   eslint-plugin-unicorn: 43.0.2_eslint@8.22.0
+  factory.io: 0.1.4
   fast-check: 3.1.1
   fluse: 1.1.0
   husky: 8.0.1
@@ -2170,6 +2172,16 @@ packages:
     resolution: {integrity: sha512-zm6xBQpFDIDM6o9r6HSgDeIcLy82TKWctCXEPbJJcXb5AKmi5BNNdLXneixK4lplX3PqIVcwLBCGE/kAGnlD4A==}
     dependencies:
       '@types/node': 18.7.11
+
+  /@types/lodash.assignin/4.2.7:
+    resolution: {integrity: sha512-XvENIWy921M29eEFAZy7jcjN05l/O8pdXPW00/aUMlWD3q6FhWAhERnKuFyNTHeamqZWff7YUtxXoSGKdAehig==}
+    dependencies:
+      '@types/lodash': 4.14.184
+    dev: true
+
+  /@types/lodash/4.14.184:
+    resolution: {integrity: sha512-RoZphVtHbxPZizt4IcILciSWiC6dcn+eZ8oX9IWEYfDMcocdd42f7NPI6fQj+6zI8y4E0L7gu2pcZKLGTRaV9Q==}
+    dev: true
 
   /@types/mime/3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
@@ -4681,6 +4693,13 @@ packages:
       - supports-color
     dev: true
 
+  /factory.io/0.1.4:
+    resolution: {integrity: sha512-HitBeYkQhdK7BKThgj62jDsB4GdASzEhwH9YigSsYRHfr7FJwHzilZeqWy0GTfw52A1HXPWCy0xecQEXFGlV9w==}
+    dependencies:
+      '@types/lodash.assignin': 4.2.7
+      lodash.assignin: 4.2.0
+    dev: true
+
   /fast-check/3.1.1:
     resolution: {integrity: sha512-3vtXinVyuUKCKFKYcwXhGE6NtGWkqF8Yh3rvMZNzmwz8EPrgoc/v4pDdLHyLnCyCI5MZpZZkDEwFyXyEONOxpA==}
     engines: {node: '>=8.0.0'}
@@ -6827,6 +6846,10 @@ packages:
 
   /lodash-es/4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: true
+
+  /lodash.assignin/4.2.0:
+    resolution: {integrity: sha512-yX/rx6d/UTVh7sSVWVSIMjfnz95evAgDFdb1ZozC35I9mSFCkmzptOzevxjgbQUsc78NR44LVHWjsoMQXy9FDg==}
     dev: true
 
   /lodash.capitalize/4.2.1:

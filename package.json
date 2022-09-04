@@ -99,6 +99,7 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-switch-case": "^1.1.2",
     "eslint-plugin-unicorn": "^43.0.2",
+    "factory.io": "^0.1.4",
     "fast-check": "^3.1.1",
     "fluse": "^1.1.0",
     "husky": "^8.0.1",

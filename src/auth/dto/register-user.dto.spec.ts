@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { HttpStatus } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
@@ -10,7 +11,7 @@ import type { Repository } from 'typeorm';
 
 import { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
-import { registerFixture } from '@/auth/fixtures/auth.fixture';
+import { registerUserFactory } from '@/auth/factories/register-user.factory';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 import { PASSWORD_HASHES } from '@/common/fixtures/password-hashes';
 
@@ -49,9 +50,13 @@ describe('Register user validations', () => {
           .integer()
           .noBias()
           .noShrink()
-          .map((seed) => registerFixture().execute({ faker: { seed } })),
+          .map((seed) => {
+            faker.seed(seed);
+
+            return registerUserFactory.buildOne();
+          }),
         async (data) => {
-          const errors = await validate(await data);
+          const errors = await validate(data);
 
           expect(errors).toHaveLength(0);
         },
