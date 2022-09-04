@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { HttpStatus } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
@@ -10,7 +11,7 @@ import type { Repository } from 'typeorm';
 
 import { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
-import { updateFixture } from '@/auth/fixtures/auth.fixture';
+import { updateUserFactory } from '@/auth/factories/update-user.factory';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
 import { credentials } from '@/common/fixtures/credentials';
@@ -59,16 +60,16 @@ describe('Update user validations', () => {
           .integer()
           .noBias()
           .noShrink()
-          .map((seed) =>
-            updateFixture({
+          .map((seed) => {
+            faker.seed(seed);
+
+            return updateUserFactory.buildOne({
               password: credentials.password,
               id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-            }).execute({
-              faker: { seed },
-            }),
-          ),
+            });
+          }),
         async (data) => {
-          await expect(validate(await data)).resolves.toHaveLength(0);
+          await expect(validate(data)).resolves.toHaveLength(0);
         },
       ),
     );

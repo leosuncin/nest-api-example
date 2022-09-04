@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
@@ -8,7 +9,7 @@ import type { Repository } from 'typeorm';
 
 import { LoginUser } from '@/auth/dto/login-user.dto';
 import { User } from '@/auth/entities/user.entity';
-import { loginFixture } from '@/auth/fixtures/auth.fixture';
+import { loginUserFactory } from '@/auth/factories/login-user.factory';
 import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
 
 describe('Login user validations', () => {
@@ -41,9 +42,13 @@ describe('Login user validations', () => {
           .integer()
           .noBias()
           .noShrink()
-          .map((seed) => loginFixture().execute({ faker: { seed } })),
+          .map((seed) => {
+            faker.seed(seed);
+
+            return loginUserFactory.buildOne();
+          }),
         async (data) => {
-          const errors = await validate(await data);
+          const errors = await validate(data);
 
           expect(errors).toHaveLength(0);
         },
