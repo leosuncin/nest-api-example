@@ -15,6 +15,8 @@ import { registerUserFactory } from '@/auth/factories/register-user.factory';
 import { PASSWORD_HASHES } from '@/auth/fixtures/password-hashes';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 
+import { register } from '../fixtures/credentials';
+
 describe('Register user validations', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -75,8 +77,8 @@ describe('Register user validations', () => {
           .record(
             {
               email: fc.oneof(fc.nat(), fc.string()),
-              password: fc.constant('ThePassword!'),
-              username: fc.constant('john.doe'),
+              password: fc.constant(register.password),
+              username: fc.constant(register.username),
             },
             { requiredKeys: ['password', 'username'] },
           )
@@ -97,14 +99,14 @@ describe('Register user validations', () => {
         fc
           .record(
             {
-              email: fc.constant('john@doe.me'),
+              email: fc.constant(register.email),
               password: fc.oneof(
                 fc.nat(),
                 fc.string({ maxLength: 7 }),
                 fc.string({ minLength: 31 }),
                 fc.constant('password'),
               ),
-              username: fc.constant('john.doe'),
+              username: fc.constant(register.username),
             },
             { requiredKeys: ['email', 'username'] },
           )
@@ -125,8 +127,8 @@ describe('Register user validations', () => {
         fc
           .record(
             {
-              email: fc.constant('john@doe.me'),
-              password: fc.constant('ThePassword!'),
+              email: fc.constant(register.email),
+              password: fc.constant(register.password),
               username: fc.oneof(
                 fc.nat(),
                 fc.constant(''),

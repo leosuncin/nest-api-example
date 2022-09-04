@@ -6,6 +6,7 @@ import type { Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
 import { login as credentials } from '@/auth/fixtures/credentials';
+import { john as user } from '@/auth/fixtures/users';
 import {
   ValidateCredential,
   ValidateCredentialConstraint,
@@ -35,14 +36,6 @@ class Update {
     this.password = password;
   }
 }
-const user = User.fromPartial({
-  id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-  email: 'john@doe.me',
-  ...credentials,
-  checkPassword(plainPassword: string) {
-    return Promise.resolve(plainPassword === this.password);
-  },
-});
 
 describe('ValidateCredential', () => {
   let mockedUserRepository: jest.Mocked<Repository<User>>;

@@ -3,17 +3,15 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
 
-import type { RegisterUser } from '@/auth/dto/register-user.dto';
 import type { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
-import { login as credentials } from '@/auth/fixtures/credentials';
+import {
+  login as credentials,
+  register as newUser,
+} from '@/auth/fixtures/credentials';
+import { john as user } from '@/auth/fixtures/users';
 import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
 import { AuthenticationService } from '@/auth/services/authentication.service';
-
-const user = User.fromPartial({
-  email: 'john@doe.me',
-  ...credentials,
-});
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
@@ -58,11 +56,6 @@ describe('AuthenticationService', () => {
   });
 
   it('should save the new user when register', async () => {
-    const newUser: RegisterUser = {
-      email: 'john@doe.me',
-      ...credentials,
-    };
-
     await expect(service.register(newUser)).resolves.toBeInstanceOf(User);
     expect(mockedUserRepository.create).toHaveBeenCalledWith(newUser);
     expect(mockedUserRepository.save).toHaveBeenCalledTimes(1);

@@ -3,14 +3,8 @@ import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-hos
 import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
 
-import { User } from '@/auth/entities/user.entity';
+import { john as user } from '@/auth/fixtures/users';
 import { CurrentUserInterceptor } from '@/auth/interceptors/current-user.interceptor';
-
-const user = User.fromPartial({
-  id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-  email: 'john@doe.me',
-  username: 'john-doe',
-});
 
 describe('UserInterceptor', () => {
   it('should be defined', () => {

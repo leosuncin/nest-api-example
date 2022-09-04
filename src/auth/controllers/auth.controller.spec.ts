@@ -7,7 +7,7 @@ import type { LoginUser } from '@/auth/dto/login-user.dto';
 import type { RegisterUser } from '@/auth/dto/register-user.dto';
 import type { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
-import { login as credentials } from '@/auth/fixtures/credentials';
+import { login, register } from '@/auth/fixtures/credentials';
 import { AuthenticationService } from '@/auth/services/authentication.service';
 
 describe('AuthController', () => {
@@ -61,18 +61,13 @@ describe('AuthController', () => {
   });
 
   it('should register a new user', async () => {
-    const newUser: RegisterUser = {
-      email: 'john@doe.me',
-      ...credentials,
-    };
-
-    await expect(controller.register(newUser)).resolves.toBeInstanceOf(User);
-    expect(mockAuthenticationService.register).toHaveBeenCalledWith(newUser);
+    await expect(controller.register(register)).resolves.toBeInstanceOf(User);
+    expect(mockAuthenticationService.register).toHaveBeenCalledWith(register);
   });
 
   it('should login an user', async () => {
-    await expect(controller.login(credentials)).resolves.toBeInstanceOf(User);
-    expect(mockAuthenticationService.login).toHaveBeenCalledWith(credentials);
+    await expect(controller.login(login)).resolves.toBeInstanceOf(User);
+    expect(mockAuthenticationService.login).toHaveBeenCalledWith(login);
   });
 
   it('should get the current user', () => {
@@ -89,7 +84,7 @@ describe('AuthController', () => {
       bio: 'Aute culpa quis nostrud ipsum.',
       email: 'johndoe@example.com',
       newPassword: 'ji32k7au4a83',
-      password: credentials.password,
+      password: login.password,
     };
 
     await expect(controller.updateUser(user, changes)).resolves.toBeInstanceOf(

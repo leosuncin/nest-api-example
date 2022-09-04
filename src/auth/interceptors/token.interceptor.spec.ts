@@ -7,6 +7,7 @@ import { lastValueFrom, of } from 'rxjs';
 import { createMock } from 'ts-auto-mock';
 
 import type { User } from '@/auth/entities/user.entity';
+import { john as user } from '@/auth/fixtures/users';
 import { TokenInterceptor } from '@/auth/interceptors/token.interceptor';
 
 describe('TokenInterceptor', () => {
@@ -35,10 +36,6 @@ describe('TokenInterceptor', () => {
   });
 
   it('should inject the token into the user', async () => {
-    const user = createMock<User>({
-      email: 'john@doe.me',
-      username: 'john_doe',
-    });
     const { req, res } = createMocks();
     const testContext = new ExecutionContextHost([req, res]);
     const nextSpy: CallHandler<User> = {

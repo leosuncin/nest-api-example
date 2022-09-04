@@ -10,6 +10,7 @@ import type { Repository } from 'typeorm';
 import { LoginUser } from '@/auth/dto/login-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import { loginUserFactory } from '@/auth/factories/login-user.factory';
+import { login } from '@/auth/fixtures/credentials';
 import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
 
 describe('Login user validations', () => {
@@ -71,7 +72,7 @@ describe('Login user validations', () => {
                 fc.string({ maxLength: 7 }),
                 fc.string({ minLength: 31 }),
               ),
-              username: fc.constant('john.doe'),
+              username: fc.constant(login.username),
             },
             { requiredKeys: ['username'] },
           )
@@ -92,7 +93,7 @@ describe('Login user validations', () => {
         fc
           .record(
             {
-              password: fc.constant('ThePassword!'),
+              password: fc.constant(login.password),
               username: fc.oneof(
                 fc.nat(),
                 fc.constant(''),
