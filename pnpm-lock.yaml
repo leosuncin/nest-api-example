@@ -54,7 +54,6 @@ specifiers:
   eslint-plugin-unicorn: ^43.0.2
   factory.io: ^0.1.4
   fast-check: ^3.1.1
-  fluse: ^1.1.0
   hibp: ^11.1.0
   husky: ^8.0.1
   jest: ^28.1.0
@@ -161,7 +160,6 @@ devDependencies:
   eslint-plugin-unicorn: 43.0.2_eslint@8.22.0
   factory.io: 0.1.4
   fast-check: 3.1.1
-  fluse: 1.1.0
   husky: 8.0.1
   jest: 28.1.3_j25ao5kxszbarqr2orvxxixgai
   jest-dev-server: 6.1.1
@@ -4901,13 +4899,6 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /fluse/1.1.0:
-    resolution: {integrity: sha512-SFDy0klR1cO045GqaLWHQHBI7xQzaSOT3xLuxehLw1sl4KlxhyHXEx+WwyZ4YR7p6+dQfJtdONlWvaxz2izXdg==}
-    dependencies:
-      lodash: 4.17.21
-      semver: 7.3.5
-    dev: true
-
   /fn.name/1.1.0:
     resolution: {integrity: sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==}
     dev: true
@@ -8616,14 +8607,6 @@ packages:
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
-    dev: true
-
-  /semver/7.3.5:
-    resolution: {integrity: sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      lru-cache: 6.0.0
     dev: true
 
   /semver/7.3.7:
