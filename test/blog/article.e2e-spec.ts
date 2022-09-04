@@ -1,10 +1,8 @@
 import { HttpStatus } from '@nestjs/common';
 import { e2e, request, spec } from 'pactum';
 
-import {
-  createArticleFixture,
-  updateArticleFixture,
-} from '@/blog/fixtures/article.fixture';
+import { createArticleFactory } from '@/blog/factories/create-article.factory';
+import { updateArticleFactory } from '@/blog/factories/update-article.factory';
 import { credentials } from '@/common/fixtures/credentials';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
@@ -44,7 +42,7 @@ describe('ArticleController (e2e)', () => {
   });
 
   it('create a new article', async () => {
-    const data = await createArticleFixture().execute();
+    const data = createArticleFactory.buildOne();
 
     await testCase
       .step('Create article')
@@ -72,7 +70,7 @@ describe('ArticleController (e2e)', () => {
   });
 
   it('require to be authenticated to create a new article', async () => {
-    const data = await createArticleFixture().execute();
+    const data = createArticleFactory.buildOne();
 
     await spec()
       .post('/articles')
@@ -162,7 +160,7 @@ describe('ArticleController (e2e)', () => {
 
   it.each(['id', 'slug'])('update one article by %s', async (property) => {
     const title = 'Aute pariatur ad sit id nostrud qui est nulla consectetur';
-    const data = await updateArticleFixture({ title }).execute();
+    const data = updateArticleFactory.buildOne({ title });
     const slug: string = title.toLowerCase().replace(/\s+/g, '-');
 
     await testCase
@@ -182,7 +180,7 @@ describe('ArticleController (e2e)', () => {
   });
 
   it('require to be authenticated to update an article', async () => {
-    const data = await updateArticleFixture().execute();
+    const data = updateArticleFactory.buildOne();
 
     await spec()
       .patch('/articles/{slug}')
@@ -194,7 +192,7 @@ describe('ArticleController (e2e)', () => {
   });
 
   it('allow only the author to update an article', async () => {
-    const data = await updateArticleFixture().execute();
+    const data = updateArticleFactory.buildOne();
 
     await spec()
       .patch('/articles/31a10506-c334-4841-97a6-144a55bf4ebb')

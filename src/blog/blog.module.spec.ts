@@ -7,11 +7,9 @@ import { runSeeders } from 'typeorm-extension';
 
 import { AuthModule } from '@/auth/auth.module';
 import { BlogModule } from '@/blog/blog.module';
-import {
-  createArticleFixture,
-  updateArticleFixture,
-} from '@/blog/fixtures/article.fixture';
-import { createCommentFixture } from '@/blog/fixtures/comment.fixture';
+import { createArticleFactory } from '@/blog/factories/create-article.factory';
+import { createCommentFactory } from '@/blog/factories/create-comment.factory';
+import { updateArticleFactory } from '@/blog/factories/update-article.factory';
 import { buildTestApplication } from '@/common/build-test-application';
 import { database } from '@/common/database';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
@@ -44,7 +42,7 @@ describe('AuthModule', () => {
   });
 
   it('create a new article', async () => {
-    const data = await createArticleFixture().execute();
+    const data = createArticleFactory.buildOne();
 
     await request(app.getHttpServer())
       .post('/articles')
@@ -65,7 +63,7 @@ describe('AuthModule', () => {
   });
 
   it('require to be authenticated to create a new article', async () => {
-    const data = await createArticleFixture().execute();
+    const data = createArticleFactory.buildOne();
 
     await request(app.getHttpServer())
       .post('/articles')
@@ -156,7 +154,7 @@ describe('AuthModule', () => {
   ])('update one article by id %s', async (id) => {
     const backup = database.backup();
     const title = 'Proident officia do ea pariatur laborum';
-    const data = await updateArticleFixture({ title }).execute();
+    const data = updateArticleFactory.buildOne({ title });
 
     await request(app.getHttpServer())
       .patch(`/articles/${id}`)
@@ -174,7 +172,7 @@ describe('AuthModule', () => {
   });
 
   it('require to be authenticated to update an article', async () => {
-    const data = await updateArticleFixture().execute();
+    const data = updateArticleFactory.buildOne();
 
     await request(app.getHttpServer())
       .patch('/articles/31a10506-c334-4841-97a6-144a55bf4ebb')
@@ -184,7 +182,7 @@ describe('AuthModule', () => {
   });
 
   it('allow only the author to update an article', async () => {
-    const data = await updateArticleFixture().execute();
+    const data = updateArticleFactory.buildOne();
 
     await request(app.getHttpServer())
       .patch('/articles/a832e632-0335-4191-8469-4d849bbb72be')
@@ -228,7 +226,7 @@ describe('AuthModule', () => {
   });
 
   it('add a new comment to an article', async () => {
-    const data = await createCommentFixture().execute();
+    const data = createCommentFactory.buildOne();
 
     await request(app.getHttpServer())
       .post('/articles/a832e632-0335-4191-8469-4d849bbb72be/comments')
@@ -270,7 +268,7 @@ describe('AuthModule', () => {
   });
 
   it('require to be authenticated to add a new comment to an article', async () => {
-    const data = await createCommentFixture().execute();
+    const data = createCommentFactory.buildOne();
 
     await request(app.getHttpServer())
       .post('/articles/a832e632-0335-4191-8469-4d849bbb72be/comments')

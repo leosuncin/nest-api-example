@@ -1,7 +1,7 @@
 import { HttpStatus } from '@nestjs/common';
 import { e2e, request, spec } from 'pactum';
 
-import { createCommentFixture } from '@/blog/fixtures/comment.fixture';
+import { createCommentFactory } from '@/blog/factories/create-comment.factory';
 import { credentials } from '@/common/fixtures/credentials';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
@@ -37,7 +37,7 @@ describe('CommentController (e2e)', () => {
   });
 
   it('add a new comment to an article', async () => {
-    const data = await createCommentFixture().execute();
+    const data = createCommentFactory.buildOne();
 
     await testCase
       .step('Create comment')
@@ -87,7 +87,7 @@ describe('CommentController (e2e)', () => {
   });
 
   it('require to be authenticated to add a new comment to an article', async () => {
-    const data = await createCommentFixture().execute();
+    const data = createCommentFactory.buildOne();
 
     await spec()
       .post('/articles/{articleId}/comments')
