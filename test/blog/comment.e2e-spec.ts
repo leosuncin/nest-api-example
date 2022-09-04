@@ -1,8 +1,8 @@
 import { HttpStatus } from '@nestjs/common';
 import { e2e, request, spec } from 'pactum';
 
+import { login as credentials } from '@/auth/fixtures/credentials';
 import { createCommentFactory } from '@/blog/factories/create-comment.factory';
-import { credentials } from '@/common/fixtures/credentials';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 const unauthorizedError = {

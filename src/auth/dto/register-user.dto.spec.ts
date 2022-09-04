@@ -12,8 +12,8 @@ import type { Repository } from 'typeorm';
 import { RegisterUser } from '@/auth/dto/register-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import { registerUserFactory } from '@/auth/factories/register-user.factory';
+import { PASSWORD_HASHES } from '@/auth/fixtures/password-hashes';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
-import { PASSWORD_HASHES } from '@/common/fixtures/password-hashes';
 
 describe('Register user validations', () => {
   beforeAll(async () => {

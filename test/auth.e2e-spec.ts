@@ -4,14 +4,10 @@ import { request, spec } from 'pactum';
 import { loginUserFactory } from '@/auth/factories/login-user.factory';
 import { registerUserFactory } from '@/auth/factories/register-user.factory';
 import { updateUserFactory } from '@/auth/factories/update-user.factory';
+import { register as credentials } from '@/auth/fixtures/credentials';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 describe('AuthController (e2e)', () => {
-  const credentials = {
-    email: 'john@doe.me',
-    username: 'john-doe',
-    password: 'Th€Pa$$w0rd!',
-  };
   let tokenCookie: string;
 
   beforeAll(() => {
