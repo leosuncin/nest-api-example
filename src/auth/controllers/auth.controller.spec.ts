@@ -8,7 +8,7 @@ import type { RegisterUser } from '@/auth/dto/register-user.dto';
 import type { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import { AuthenticationService } from '@/auth/services/authentication.service';
-import { credentials } from '@/common/test-helpers';
+import { credentials } from '@/common/fixtures/credentials';
 
 describe('AuthController', () => {
   let controller: AuthController;

@@ -2,7 +2,8 @@ import { HttpStatus } from '@nestjs/common';
 import { e2e, request, spec } from 'pactum';
 
 import { createCommentFixture } from '@/blog/fixtures/comment.fixture';
-import { credentials, isoDateRegex, uuidRegex } from '@/common/test-helpers';
+import { credentials } from '@/common/fixtures/credentials';
+import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 const unauthorizedError = {
   message: 'Unauthorized',

@@ -13,7 +13,8 @@ import { User } from '@/auth/entities/user.entity';
 import { updateFixture } from '@/auth/fixtures/auth.fixture';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
-import { credentials, PASSWORD_HASHES } from '@/common/test-helpers';
+import { credentials } from '@/common/fixtures/credentials';
+import { PASSWORD_HASHES } from '@/common/fixtures/password-hashes';
 
 describe('Update user validations', () => {
   let mockUserRepository: jest.Mocked<Repository<User>>;

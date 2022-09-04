@@ -1,7 +1,7 @@
 import type { ArgumentMetadata } from '@nestjs/common';
 
 import { StripIdPipe } from '@/auth/pipes/strip-id.pipe';
-import { credentials } from '@/common/test-helpers';
+import { credentials } from '@/common/fixtures/credentials';
 
 describe('StripIdPipe', () => {
   it('should be defined', () => {
