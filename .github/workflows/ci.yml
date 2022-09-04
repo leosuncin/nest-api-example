@@ -84,10 +84,11 @@ jobs:
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Build 🛠️
         run: pnpm build
-      - name: Run migrations 🧰
+      - name: Prepare the DB 🐘
         run: |
+          pnpm db:create
           pnpm typeorm migration:run
-          pnpm fixtures
+          pnpm db:seed
         env:
           DATABASE_URL: postgres://armband:9HNtQV78T4MmBibJ@localhost:${{ job.services.postgres.ports['5432'] }}/sharper
       - name: Run the server 🚀
@@ -99,6 +100,8 @@ jobs:
           NODE_ENV: production
       - name: Run tests 🧪
         run: pnpm test:e2e --ci --json --testLocationInResults --outputFile=result.json
+        env:
+          PACTUM_REQUEST_BASE_URL: 'http://localhost:3000'
       - name: Report test results 📝
         uses: tanmen/jest-reporter@v1
         if: always()
