@@ -12,10 +12,10 @@ import type { Repository } from 'typeorm';
 import { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import { updateUserFactory } from '@/auth/factories/update-user.factory';
+import { login as credentials } from '@/auth/fixtures/credentials';
+import { PASSWORD_HASHES } from '@/auth/fixtures/password-hashes';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
-import { credentials } from '@/common/fixtures/credentials';
-import { PASSWORD_HASHES } from '@/common/fixtures/password-hashes';
 
 describe('Update user validations', () => {
   let mockUserRepository: jest.Mocked<Repository<User>>;

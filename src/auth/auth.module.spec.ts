@@ -10,10 +10,10 @@ import type { User } from '@/auth/entities/user.entity';
 import { loginUserFactory } from '@/auth/factories/login-user.factory';
 import { registerUserFactory } from '@/auth/factories/register-user.factory';
 import { updateUserFactory } from '@/auth/factories/update-user.factory';
+import { login as credentials } from '@/auth/fixtures/credentials';
 import { AuthenticationService } from '@/auth/services/authentication.service';
 import { buildTestApplication } from '@/common/build-test-application';
 import { database } from '@/common/database';
-import { credentials } from '@/common/fixtures/credentials';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 const unprocessableError = {

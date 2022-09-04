@@ -5,11 +5,11 @@ import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
+import { login as credentials } from '@/auth/fixtures/credentials';
 import {
   ValidateCredential,
   ValidateCredentialConstraint,
 } from '@/auth/validators/validate-credential.validator';
-import { credentials } from '@/common/fixtures/credentials';
 
 class DTO {
   @ValidateCredential()
