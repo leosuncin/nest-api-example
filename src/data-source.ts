@@ -1,3 +1,4 @@
+import invariant from 'tiny-invariant';
 import { type DataSourceOptions, DataSource } from 'typeorm';
 import type { SeederOptions } from 'typeorm-extension';
 
@@ -13,9 +14,11 @@ import { CommentSeeder } from '@/blog/seeders/comment.seeder';
 import { CreateUser1637703183543 } from '@/migrations/1637703183543-create-user';
 import { CreateArticleComment1651517018946 } from '@/migrations/1651517018946-create-article-comment';
 
+invariant(process.env['DATABASE_URL'], 'DATABASE_URL is missing');
+
 export const dataSourceOptions: DataSourceOptions & SeederOptions = {
   type: 'postgres',
-  url: process.env['DATABASE_URL']!,
+  url: process.env['DATABASE_URL'],
   synchronize: false,
   entities: [User, Article, Comment],
   migrations: [CreateUser1637703183543, CreateArticleComment1651517018946],
