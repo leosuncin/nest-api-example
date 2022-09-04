@@ -6,10 +6,12 @@ import request from 'supertest';
 import { runSeeders } from 'typeorm-extension';
 
 import { AuthModule } from '@/auth/auth.module';
+import { jane } from '@/auth/fixtures/users';
 import { BlogModule } from '@/blog/blog.module';
 import { createArticleFactory } from '@/blog/factories/create-article.factory';
 import { createCommentFactory } from '@/blog/factories/create-comment.factory';
 import { updateArticleFactory } from '@/blog/factories/update-article.factory';
+import { articleByJane, articleByJohn } from '@/blog/fixtures/articles';
 import { buildTestApplication } from '@/common/build-test-application';
 import { database } from '@/common/database';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
@@ -37,7 +39,7 @@ describe('AuthModule', () => {
     app = await buildTestApplication(AuthModule, BlogModule);
     const jwtService = app.get(JwtService);
     const dataSource = app.get(getDataSourceToken());
-    jwt = jwtService.sign({ sub: '63770485-6ee9-4a59-b374-3f194091e2e1' });
+    jwt = jwtService.sign({ sub: jane.id });
     await runSeeders(dataSource);
   });
 
@@ -72,27 +74,25 @@ describe('AuthModule', () => {
       .expect(unauthorizedError);
   });
 
-  it.each([
-    'a832e632-0335-4191-8469-4d849bbb72be',
-    'however-wolfs-have-begun-to-rent-blueberries-over-the-past-few-months-specifically-for-lions-associated-with-their-puppies-mLDYhAjz213rjfHRJwqUES',
-    'mLDYhAjz213rjfHRJwqUES',
-  ])('get one article by id "%s"', async (id) => {
-    await request(app.getHttpServer())
-      .get(`/articles/${id}`)
-      .expect(HttpStatus.OK)
-      .expect(({ body }) => {
-        expect(body).toMatchObject({
-          author: expect.anything(),
-          content: expect.any(String),
-          createdAt: expect.stringMatching(isoDateRegex),
-          id: 'a832e632-0335-4191-8469-4d849bbb72be',
-          slug: 'however-wolfs-have-begun-to-rent-blueberries-over-the-past-few-months-specifically-for-lions-associated-with-their-puppies-mLDYhAjz213rjfHRJwqUES',
-          title:
-            'However, wolfs have begun to rent blueberries over the past few months, specifically for lions associated with their puppies?',
-          updatedAt: expect.stringMatching(isoDateRegex),
+  it.each([articleByJohn.id, articleByJohn.slug, 'mLDYhAjz213rjfHRJwqUES'])(
+    'get one article by id "%s"',
+    async (id) => {
+      await request(app.getHttpServer())
+        .get(`/articles/${id}`)
+        .expect(HttpStatus.OK)
+        .expect(({ body }) => {
+          expect(body).toMatchObject({
+            author: expect.anything(),
+            content: expect.any(String),
+            createdAt: expect.stringMatching(isoDateRegex),
+            id: articleByJohn.id,
+            slug: articleByJohn.slug,
+            title: articleByJohn.title,
+            updatedAt: expect.stringMatching(isoDateRegex),
+          });
         });
-      });
-  });
+    },
+  );
 
   it("fail to get an article when it doesn't exist", async () => {
     await request(app.getHttpServer())
@@ -147,29 +147,28 @@ describe('AuthModule', () => {
       });
   });
 
-  it.each([
-    '31a10506-c334-4841-97a6-144a55bf4ebb',
-    'though-we-assume-the-latter-however-blueberries-have-begun-to-rent-currants-over-the-past-few-months-specifically-for-eagles-associated-with-their-lemons-78rW4UUH2Ekokt36qUGxqP',
-    '78rW4UUH2Ekokt36qUGxqP',
-  ])('update one article by id %s', async (id) => {
-    const backup = database.backup();
-    const title = 'Proident officia do ea pariatur laborum';
-    const data = updateArticleFactory.buildOne({ title });
+  it.each([articleByJane.id, articleByJane.slug, '78rW4UUH2Ekokt36qUGxqP'])(
+    'update one article by id %s',
+    async (id) => {
+      const backup = database.backup();
+      const title = 'Proident officia do ea pariatur laborum';
+      const data = updateArticleFactory.buildOne({ title });
 
-    await request(app.getHttpServer())
-      .patch(`/articles/${id}`)
-      .set('Authorization', `Bearer ${jwt}`)
-      .send(data)
-      .expect(HttpStatus.OK)
-      .expect(({ body }) => {
-        const slug: string = title.toLowerCase().replace(/\s+/g, '-');
+      await request(app.getHttpServer())
+        .patch(`/articles/${id}`)
+        .set('Authorization', `Bearer ${jwt}`)
+        .send(data)
+        .expect(HttpStatus.OK)
+        .expect(({ body }) => {
+          const slug: string = title.toLowerCase().replace(/\s+/g, '-');
 
-        expect(body).toHaveProperty('title', title);
-        expect(body).toHaveProperty('slug', expect.stringContaining(slug));
-      });
+          expect(body).toHaveProperty('title', title);
+          expect(body).toHaveProperty('slug', expect.stringContaining(slug));
+        });
 
-    backup.restore();
-  });
+      backup.restore();
+    },
+  );
 
   it('require to be authenticated to update an article', async () => {
     const data = updateArticleFactory.buildOne();
@@ -192,23 +191,22 @@ describe('AuthModule', () => {
       .expect(forbiddenError);
   });
 
-  it.each([
-    '31a10506-c334-4841-97a6-144a55bf4ebb',
-    'though-we-assume-the-latter-however-blueberries-have-begun-to-rent-currants-over-the-past-few-months-specifically-for-eagles-associated-with-their-lemons-78rW4UUH2Ekokt36qUGxqP',
-    '78rW4UUH2Ekokt36qUGxqP',
-  ])('remove one article by id %s', async (id) => {
-    const backup = database.backup();
+  it.each([articleByJane.id, articleByJane.slug, '78rW4UUH2Ekokt36qUGxqP'])(
+    'remove one article by id %s',
+    async (id) => {
+      const backup = database.backup();
 
-    await request(app.getHttpServer())
-      .delete(`/articles/${id}`)
-      .set('Authorization', `Bearer ${jwt}`)
-      .expect(HttpStatus.NO_CONTENT)
-      .expect(({ noContent }) => {
-        expect(noContent).toBe(true);
-      });
+      await request(app.getHttpServer())
+        .delete(`/articles/${id}`)
+        .set('Authorization', `Bearer ${jwt}`)
+        .expect(HttpStatus.NO_CONTENT)
+        .expect(({ noContent }) => {
+          expect(noContent).toBe(true);
+        });
 
-    backup.restore();
-  });
+      backup.restore();
+    },
+  );
 
   it('require to be authenticated to remove an article', async () => {
     await request(app.getHttpServer())

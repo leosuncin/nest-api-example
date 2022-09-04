@@ -78,7 +78,7 @@ Nulla minim ea quis irure veniam laborum commodo non quis non ex eu.`,
     mockedArticleRepository.findOne.mockResolvedValueOnce(new Article());
 
     await expect(
-      service.getById('a832e632-0335-4191-8469-4d849bbb72be'),
+      service.getById('abdb39f4-5659-44d2-842b-7fde9d82c6a4'),
     ).resolves.toBeInstanceOf(Article);
   });
 
@@ -134,7 +134,7 @@ Nulla ipsum do id enim et ullamco cupidatat irure anim consectetur pariatur.`,
     mockedArticleRepository.count.mockResolvedValueOnce(1);
 
     await expect(
-      service.checkExist('a832e632-0335-4191-8469-4d849bbb72be'),
+      service.checkExist('abdb39f4-5659-44d2-842b-7fde9d82c6a4'),
     ).resolves.toBe(true);
   });
 });

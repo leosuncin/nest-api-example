@@ -6,27 +6,15 @@ import { createMocks } from 'node-mocks-http';
 import { createMock } from 'ts-auto-mock';
 
 import { User } from '@/auth/entities/user.entity';
+import { john as user } from '@/auth/fixtures/users';
 import { Entities } from '@/blog/constants/entity.enum';
-import { Article } from '@/blog/entities/article.entity';
-import { Comment } from '@/blog/entities/comment.entity';
+import type { Article } from '@/blog/entities/article.entity';
+import type { Comment } from '@/blog/entities/comment.entity';
+import { articleByJohn as article } from '@/blog/fixtures/articles';
+import { commentByJaneOnArticleByJohn as comment } from '@/blog/fixtures/comments';
 import { IsAuthorGuard } from '@/blog/guards/is-author.guard';
 import { ArticleService } from '@/blog/services/article.service';
 import { CommentService } from '@/blog/services/comment.service';
-
-const user = User.fromPartial({ id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5' });
-const article: Article = Object.create(Article.prototype, {
-  id: { value: 'a832e632-0335-4191-8469-4d849bbb72be' },
-  slug: {
-    value:
-      'however-wolfs-have-begun-to-rent-blueberries-over-the-past-few-months-specifically-for-lions-associated-with-their-puppies-mLDYhAjz213rjfHRJwqUES',
-  },
-  author: { value: user },
-});
-const comment: Comment = Object.create(Comment.prototype, {
-  id: { value: '9395e782-367b-4487-a048-242e37169109' },
-  article: { value: article },
-  author: { value: user },
-});
 
 describe('IsAuthorGuard', () => {
   let mockedReflector: jest.Mocked<Reflector>;
@@ -71,6 +59,7 @@ describe('IsAuthorGuard', () => {
 
     guard = module.get(IsAuthorGuard);
     mockedReflector = module.get(Reflector);
+    comment.author = user;
   });
 
   it('should be defined', () => {

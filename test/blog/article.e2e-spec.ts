@@ -4,6 +4,7 @@ import { e2e, request, spec } from 'pactum';
 import { login as credentials } from '@/auth/fixtures/credentials';
 import { createArticleFactory } from '@/blog/factories/create-article.factory';
 import { updateArticleFactory } from '@/blog/factories/update-article.factory';
+import { articleByJane, articleByJohn } from '@/blog/fixtures/articles';
 import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 const unauthorizedError = {
@@ -80,27 +81,25 @@ describe('ArticleController (e2e)', () => {
       .toss();
   });
 
-  it.each([
-    'a832e632-0335-4191-8469-4d849bbb72be',
-    'however-wolfs-have-begun-to-rent-blueberries-over-the-past-few-months-specifically-for-lions-associated-with-their-puppies-mLDYhAjz213rjfHRJwqUES',
-    'mLDYhAjz213rjfHRJwqUES',
-  ])('get one article by id "%s"', async (id) => {
-    await spec()
-      .get('/articles/{id}')
-      .withPathParams('id', id)
-      .expectStatus(HttpStatus.OK)
-      .expectJsonLike({
-        author: 'typeof $V === "object"',
-        content: 'typeof $V === "string"',
-        createdAt: isoDateRegex,
-        id: 'a832e632-0335-4191-8469-4d849bbb72be',
-        slug: 'however-wolfs-have-begun-to-rent-blueberries-over-the-past-few-months-specifically-for-lions-associated-with-their-puppies-mLDYhAjz213rjfHRJwqUES',
-        title:
-          'However, wolfs have begun to rent blueberries over the past few months, specifically for lions associated with their puppies?',
-        updatedAt: isoDateRegex,
-      })
-      .toss();
-  });
+  it.each([articleByJohn.id, articleByJohn.slug, 'mLDYhAjz213rjfHRJwqUES'])(
+    'get one article by id "%s"',
+    async (id) => {
+      await spec()
+        .get('/articles/{id}')
+        .withPathParams('id', id)
+        .expectStatus(HttpStatus.OK)
+        .expectJsonLike({
+          author: 'typeof $V === "object"',
+          content: 'typeof $V === "string"',
+          createdAt: isoDateRegex,
+          id: articleByJohn.id,
+          slug: articleByJohn.slug,
+          title: articleByJohn.title,
+          updatedAt: isoDateRegex,
+        })
+        .toss();
+    },
+  );
 
   it("fail to get an article when it doesn't exist", async () => {
     await spec()
@@ -195,7 +194,7 @@ describe('ArticleController (e2e)', () => {
     const data = updateArticleFactory.buildOne();
 
     await spec()
-      .patch('/articles/31a10506-c334-4841-97a6-144a55bf4ebb')
+      .patch(`/articles/${articleByJane.id}`)
       .withHeaders('Cookie', tokenCookie)
       .withBody(data)
       .expectStatus(HttpStatus.FORBIDDEN)
@@ -214,7 +213,7 @@ describe('ArticleController (e2e)', () => {
 
   it('allow only the author to remove an article', async () => {
     await spec()
-      .delete('/articles/31a10506-c334-4841-97a6-144a55bf4ebb')
+      .delete(`/articles/${articleByJane.id}`)
       .withHeaders('Cookie', tokenCookie)
       .expectStatus(HttpStatus.FORBIDDEN)
       .expectJson(forbiddenError)
