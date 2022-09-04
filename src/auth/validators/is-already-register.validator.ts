@@ -47,7 +47,7 @@ export class IsAlreadyRegisterConstraint
   }
 }
 
-export function IsAlreadyRegister(options?: ValidationOptions) {
+export function IsAlreadyRegister(options: ValidationOptions = {}) {
   return function (object: object, propertyName: 'username' | 'email') {
     registerDecorator({
       target: object.constructor,

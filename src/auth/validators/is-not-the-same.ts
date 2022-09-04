@@ -25,7 +25,7 @@ export class IsNotTheSameConstraint implements ValidatorConstraintInterface {
 
 export function IsNotTheSame<Type>(
   property: keyof Type,
-  validationOptions?: ValidationOptions,
+  validationOptions: ValidationOptions = {},
 ) {
   return (object: object, propertyName: string) => {
     registerDecorator({

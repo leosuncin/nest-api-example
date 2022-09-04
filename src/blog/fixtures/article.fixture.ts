@@ -2,7 +2,7 @@ import { plainToInstance } from 'class-transformer';
 import { fluse } from 'fluse';
 
 import { CreateArticle } from '@/blog/dto/create-article.dto';
-import { UpdateArticle } from '@/blog/dto/update-article.dto';
+import type { UpdateArticle } from '@/blog/dto/update-article.dto';
 import { fakerPlugin } from '@/common/fluse-plugin-faker';
 import { txtgenPlugin } from '@/common/fluse-plugin-txtgen';
 

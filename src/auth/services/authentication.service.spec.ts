@@ -44,6 +44,8 @@ describe('AuthenticationService', () => {
             merge: jest.fn().mockImplementation(Object.assign),
           });
         }
+
+        return;
       })
       .compile();
 

@@ -23,6 +23,8 @@ describe('CreateComment DTO', () => {
               ),
           });
         }
+
+        return;
       })
       .compile();
 

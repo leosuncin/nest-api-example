@@ -26,6 +26,8 @@ describe('Update user validations', () => {
         if (token === getRepositoryToken(User)) {
           return createMock<Repository<User>>();
         }
+
+        return;
       })
       .compile();
 

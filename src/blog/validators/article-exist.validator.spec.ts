@@ -35,6 +35,8 @@ describe('ArticleExist', () => {
               ),
           });
         }
+
+        return;
       })
       .compile();
 

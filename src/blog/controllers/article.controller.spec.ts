@@ -3,8 +3,8 @@ import { createMock } from 'ts-auto-mock';
 
 import { User } from '@/auth/entities/user.entity';
 import { ArticleController } from '@/blog/controllers/article.controller';
-import { CreateArticle } from '@/blog/dto/create-article.dto';
-import { UpdateArticle } from '@/blog/dto/update-article.dto';
+import type { CreateArticle } from '@/blog/dto/create-article.dto';
+import type { UpdateArticle } from '@/blog/dto/update-article.dto';
 import { Article } from '@/blog/entities/article.entity';
 import { ArticleService } from '@/blog/services/article.service';
 
@@ -20,6 +20,8 @@ describe('ArticleController', () => {
         if (token === ArticleService) {
           return createMock<ArticleService>();
         }
+
+        return;
       })
       .compile();
 

@@ -35,7 +35,7 @@ class IsNotVulnerableConstraint implements ValidatorConstraintInterface {
   }
 }
 
-export function IsNotVulnerable(options?: ValidationOptions) {
+export function IsNotVulnerable(options: ValidationOptions = {}) {
   return function (object: object, propertyName: string) {
     registerDecorator({
       target: object.constructor,

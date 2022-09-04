@@ -45,6 +45,7 @@ export async function buildTestApplication(
   const module = await Test.createTestingModule({
     imports: [
       TypeOrmModule.forRootAsync({
+        // @ts-expect-error for testing purpose only
         useFactory: () => ({
           ...dataSourceOptions,
           url: undefined,
@@ -68,7 +69,7 @@ export async function buildTestApplication(
       errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
     }),
   );
-  app.use(cookieParser(process.env.SECRET));
+  app.use(cookieParser(process.env['SECRET']));
   useContainer(module, { fallbackOnErrors: true });
 
   return app.init();

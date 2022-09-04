@@ -29,7 +29,7 @@ describe('IsNotTheSame', () => {
     const errors = validateSync(dto);
 
     expect(errors).toHaveLength(1);
-    expect(errors[0].constraints).toMatchObject({
+    expect(errors[0]!.constraints).toMatchObject({
       isNotTheSame: 'password must be different than username',
     });
   });

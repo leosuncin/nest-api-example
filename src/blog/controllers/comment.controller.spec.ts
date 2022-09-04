@@ -3,7 +3,7 @@ import { createMock } from 'ts-auto-mock';
 
 import { User } from '@/auth/entities/user.entity';
 import { CommentController } from '@/blog/controllers/comment.controller';
-import { CreateComment } from '@/blog/dto/create-comment';
+import type { CreateComment } from '@/blog/dto/create-comment';
 import { Article } from '@/blog/entities/article.entity';
 import { Comment } from '@/blog/entities/comment.entity';
 import { ArticleService } from '@/blog/services/article.service';
@@ -25,6 +25,8 @@ describe('CommentController', () => {
         if (token === ArticleService) {
           return createMock<ArticleService>();
         }
+
+        return;
       })
       .compile();
 

@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 
 import { User } from '@/auth/entities/user.entity';
 import type { CreateArticle } from '@/blog/dto/create-article.dto';
-import { UpdateArticle } from '@/blog/dto/update-article.dto';
+import type { UpdateArticle } from '@/blog/dto/update-article.dto';
 import { Article } from '@/blog/entities/article.entity';
 import { ArticleService } from '@/blog/services/article.service';
 
@@ -37,6 +37,8 @@ describe('ArticleService', () => {
 
           return mock;
         }
+
+        return;
       })
       .compile();
 

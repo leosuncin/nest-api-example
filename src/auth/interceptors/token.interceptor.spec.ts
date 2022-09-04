@@ -6,7 +6,7 @@ import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
 import { createMock } from 'ts-auto-mock';
 
-import { User } from '@/auth/entities/user.entity';
+import type { User } from '@/auth/entities/user.entity';
 import { TokenInterceptor } from '@/auth/interceptors/token.interceptor';
 
 describe('TokenInterceptor', () => {
@@ -21,6 +21,8 @@ describe('TokenInterceptor', () => {
         if (token === JwtService) {
           return createMock<JwtService>();
         }
+
+        return;
       })
       .compile();
 

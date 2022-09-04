@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { createMock } from 'ts-auto-mock';
 
 import { AuthController } from '@/auth/controllers/auth.controller';
-import { LoginUser } from '@/auth/dto/login-user.dto';
+import type { LoginUser } from '@/auth/dto/login-user.dto';
 import type { RegisterUser } from '@/auth/dto/register-user.dto';
 import type { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
@@ -47,6 +47,8 @@ describe('AuthController', () => {
               ),
           });
         }
+
+        return;
       })
       .compile();
 
