@@ -13,13 +13,10 @@ import {
   updateFixture,
 } from '@/auth/fixtures/auth.fixture';
 import { userFixture } from '@/auth/fixtures/user.fixture';
-import {
-  buildTestApplication,
-  credentials,
-  database,
-  isoDateRegex,
-  uuidRegex,
-} from '@/common/test-helpers';
+import { buildTestApplication } from '@/common/build-test-application';
+import { database } from '@/common/database';
+import { credentials } from '@/common/fixtures/credentials';
+import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 const unprocessableError = {
   error: 'Unprocessable Entity',

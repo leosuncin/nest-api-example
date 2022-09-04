@@ -6,7 +6,7 @@ import {
   registerFixture,
   updateFixture,
 } from '@/auth/fixtures/auth.fixture';
-import { isoDateRegex, uuidRegex } from '@/common/test-helpers';
+import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 describe('AuthController (e2e)', () => {
   const credentials = {

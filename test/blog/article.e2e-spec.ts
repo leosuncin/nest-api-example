@@ -5,7 +5,8 @@ import {
   createArticleFixture,
   updateArticleFixture,
 } from '@/blog/fixtures/article.fixture';
-import { credentials, isoDateRegex, uuidRegex } from '@/common/test-helpers';
+import { credentials } from '@/common/fixtures/credentials';
+import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 const unauthorizedError = {
   message: 'Unauthorized',

@@ -8,7 +8,7 @@ import type { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
 import { AuthenticationService } from '@/auth/services/authentication.service';
-import { credentials } from '@/common/test-helpers';
+import { credentials } from '@/common/fixtures/credentials';
 
 const user = User.fromPartial({
   email: 'john@doe.me',

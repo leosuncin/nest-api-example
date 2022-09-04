@@ -12,12 +12,9 @@ import {
   updateArticleFixture,
 } from '@/blog/fixtures/article.fixture';
 import { createCommentFixture } from '@/blog/fixtures/comment.fixture';
-import {
-  buildTestApplication,
-  database,
-  isoDateRegex,
-  uuidRegex,
-} from '@/common/test-helpers';
+import { buildTestApplication } from '@/common/build-test-application';
+import { database } from '@/common/database';
+import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
 
 const unauthorizedError = {
   message: 'Unauthorized',

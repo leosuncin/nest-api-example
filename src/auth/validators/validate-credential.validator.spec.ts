@@ -9,7 +9,7 @@ import {
   ValidateCredential,
   ValidateCredentialConstraint,
 } from '@/auth/validators/validate-credential.validator';
-import { credentials } from '@/common/test-helpers';
+import { credentials } from '@/common/fixtures/credentials';
 
 class DTO {
   @ValidateCredential()
