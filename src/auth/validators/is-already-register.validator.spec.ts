@@ -11,6 +11,8 @@ import {
   IsAlreadyRegisterConstraint,
 } from '@/auth/validators/is-already-register.validator';
 
+import { jane, john } from '../fixtures/users';
+
 class WithEmail {
   @IsAlreadyRegister()
   readonly email!: string;
@@ -49,7 +51,7 @@ describe('IsAlreadyRegister', () => {
   });
 
   it('should fail when an user already exists with the same email', async () => {
-    const dto = new WithEmail('john@doe.me');
+    const dto = new WithEmail(john.email);
 
     mockedUserRepository.count.mockResolvedValueOnce(1);
 
@@ -58,12 +60,12 @@ describe('IsAlreadyRegister', () => {
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'email');
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { email: Equal('john@doe.me') },
+      where: { email: Equal(john.email) },
     });
   });
 
   it('should fail when an user already exists with the same username', async () => {
-    const dto = new WithUsername('john-doe');
+    const dto = new WithUsername(john.username);
 
     mockedUserRepository.count.mockResolvedValueOnce(1);
 
@@ -72,12 +74,12 @@ describe('IsAlreadyRegister', () => {
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'username');
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { username: Equal('john-doe') },
+      where: { username: Equal(john.username) },
     });
   });
 
   it('should pass when no user exists with the email', async () => {
-    const dto = new WithEmail('jane@doe.me');
+    const dto = new WithEmail(jane.email);
 
     mockedUserRepository.count.mockResolvedValueOnce(0);
 
@@ -85,12 +87,12 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(0);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { email: Equal('jane@doe.me') },
+      where: { email: Equal(jane.email) },
     });
   });
 
   it('should pass when no user exists with the username', async () => {
-    const dto = new WithUsername('jane.doe');
+    const dto = new WithUsername(jane.username);
 
     mockedUserRepository.count.mockResolvedValueOnce(0);
 
@@ -98,15 +100,12 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(0);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { username: Equal('jane.doe') },
+      where: { username: Equal(jane.username) },
     });
   });
 
   it('should pass when the email is not used by another user', async () => {
-    const dto = new WithEmail(
-      'johndoe@example.com',
-      '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-    );
+    const dto = new WithEmail('johndoe@example.com', john.id);
 
     mockedUserRepository.count.mockResolvedValueOnce(0);
 
@@ -119,10 +118,7 @@ describe('IsAlreadyRegister', () => {
   });
 
   it('should fail when the email is already used by another user', async () => {
-    const dto = new WithEmail(
-      'jane@doe.me',
-      '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-    );
+    const dto = new WithEmail(jane.email, john.id);
 
     mockedUserRepository.count.mockResolvedValueOnce(1);
 
@@ -130,15 +126,12 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(1);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { email: Equal('jane@doe.me'), id: Not(dto.id) },
+      where: { email: Equal(jane.email), id: Not(dto.id) },
     });
   });
 
   it('should pass when the username is not used by another user', async () => {
-    const dto = new WithUsername(
-      'johndoe',
-      '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-    );
+    const dto = new WithUsername('johndoe', john.id);
 
     mockedUserRepository.count.mockResolvedValueOnce(0);
 
@@ -151,10 +144,7 @@ describe('IsAlreadyRegister', () => {
   });
 
   it('should fail when the username is already used by another user', async () => {
-    const dto = new WithUsername(
-      'jane-doe',
-      '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-    );
+    const dto = new WithUsername(jane.username, john.id);
 
     mockedUserRepository.count.mockResolvedValueOnce(1);
 
@@ -162,7 +152,7 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(1);
     expect(mockedUserRepository.count).toHaveBeenCalledWith({
-      where: { username: Equal('jane-doe'), id: Not(dto.id) },
+      where: { username: Equal(jane.username), id: Not(dto.id) },
     });
   });
 });

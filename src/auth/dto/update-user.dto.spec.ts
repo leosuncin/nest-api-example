@@ -12,8 +12,8 @@ import type { Repository } from 'typeorm';
 import { UpdateUser } from '@/auth/dto/update-user.dto';
 import { User } from '@/auth/entities/user.entity';
 import { updateUserFactory } from '@/auth/factories/update-user.factory';
-import { login as credentials } from '@/auth/fixtures/credentials';
 import { PASSWORD_HASHES } from '@/auth/fixtures/password-hashes';
+import { john as user } from '@/auth/fixtures/users';
 import { IsAlreadyRegisterConstraint } from '@/auth/validators/is-already-register.validator';
 import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
 
@@ -64,8 +64,8 @@ describe('Update user validations', () => {
             faker.seed(seed);
 
             return updateUserFactory.buildOne({
-              password: credentials.password,
-              id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+              password: user.password,
+              id: user.id,
             });
           }),
         async (data) => {
@@ -83,7 +83,7 @@ describe('Update user validations', () => {
         fc.oneof(fc.string(), fc.integer()).map((email) =>
           plainToInstance(UpdateUser, {
             email,
-            id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+            id: user.id,
           }),
         ),
         async (data) => {
@@ -106,7 +106,7 @@ describe('Update user validations', () => {
         fc.oneof(fc.integer(), fc.string({ minLength: 30 })).map((username) =>
           plainToInstance(UpdateUser, {
             username,
-            id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+            id: user.id,
           }),
         ),
         async (data) => {
@@ -126,7 +126,7 @@ describe('Update user validations', () => {
       plainToInstance(UpdateUser, {
         /* cspell:disable-next-line */
         newPassword: 'Tλ3Pa55wθrd?',
-        id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+        id: user.id,
       }),
     );
 

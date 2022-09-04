@@ -1,6 +1,6 @@
 import type { ArgumentMetadata } from '@nestjs/common';
 
-import { login as credentials } from '@/auth/fixtures/credentials';
+import { john as user } from '@/auth/fixtures/users';
 import { StripIdPipe } from '@/auth/pipes/strip-id.pipe';
 
 describe('StripIdPipe', () => {
@@ -11,13 +11,12 @@ describe('StripIdPipe', () => {
   it("should remove the user's id", () => {
     const pipe = new StripIdPipe();
     const value = {
-      id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+      ...user,
       image: 'https://thispersondoesnotexist.com/image',
       username: 'john',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       email: 'johndoe@example.com',
       newPassword: 'ji32k7au4a83',
-      password: credentials.password,
     };
     const metadata: ArgumentMetadata = {
       type: 'body',
@@ -29,7 +28,7 @@ describe('StripIdPipe', () => {
   it('should do nothing to types different than "body"', () => {
     const pipe = new StripIdPipe();
     const value = {
-      id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+      id: user.id,
       username: 'john',
       email: 'johndoe@example.com',
     };
