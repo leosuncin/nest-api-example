@@ -30,21 +30,21 @@ export class CommentSeeder implements Seeder {
     await Promise.allSettled([
       commentFactory.save({
         id: '9395e782-367b-4487-a048-242e37169109',
-        article: article1,
-        author: jane,
+        article: article1!,
+        author: jane!,
       }),
       commentFactory.saveMany(14, {
-        article: article1,
-        author: jane,
+        article: article1!,
+        author: jane!,
       }),
       commentFactory.save({
         id: '2cce7079-b434-42fb-85e3-8d1aadd7bb8a',
-        article: article2,
-        author: john,
+        article: article2!,
+        author: john!,
       }),
       commentFactory.saveMany(14, {
-        article: article2,
-        author: john,
+        article: article2!,
+        author: john!,
       }),
     ]);
   }

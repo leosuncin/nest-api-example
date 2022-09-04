@@ -26,6 +26,8 @@ describe('ArticlePipe', () => {
             ),
           });
         }
+
+        return;
       })
       .compile();
 

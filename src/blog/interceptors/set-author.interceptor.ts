@@ -5,7 +5,7 @@ import {
   NestInterceptor,
 } from '@nestjs/common';
 import type { Request } from 'express';
-import { Observable } from 'rxjs';
+import type { Observable } from 'rxjs';
 import invariant from 'tiny-invariant';
 
 @Injectable()

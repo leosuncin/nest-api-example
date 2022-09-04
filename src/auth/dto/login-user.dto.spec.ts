@@ -26,6 +26,8 @@ describe('Login user validations', () => {
             ),
           });
         }
+
+        return;
       })
       .compile();
 

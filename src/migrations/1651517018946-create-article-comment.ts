@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner } from 'typeorm';
+import type { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class CreateArticleComment1651517018946 implements MigrationInterface {
   name = 'CreateArticleComment1651517018946';

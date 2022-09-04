@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, JwtFromRequestFunction, Strategy } from 'passport-jwt';
 
-import { User } from '@/auth/entities/user.entity';
-import { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
+import type { User } from '@/auth/entities/user.entity';
+import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
 import { AuthenticationService } from '@/auth/services/authentication.service';
 
 declare module 'express' {
@@ -16,7 +16,7 @@ declare module 'express' {
 export const JWT = 'jwt' as const;
 
 const extractJwtFromCookie: JwtFromRequestFunction = (request) => {
-  return request.signedCookies.token;
+  return request.signedCookies['token']!;
 };
 
 @Injectable()

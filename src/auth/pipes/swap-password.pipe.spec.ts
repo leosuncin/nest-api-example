@@ -1,4 +1,4 @@
-import { ArgumentMetadata } from '@nestjs/common';
+import type { ArgumentMetadata } from '@nestjs/common';
 
 import { SwapPasswordPipe } from '@/auth/pipes/swap-password.pipe';
 import { credentials } from '@/common/test-helpers';

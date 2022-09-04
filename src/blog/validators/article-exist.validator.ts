@@ -22,7 +22,7 @@ export class ArticleExistConstraint implements ValidatorConstraintInterface {
   }
 }
 
-export function ArticleExist(options?: ValidationOptions) {
+export function ArticleExist(options: ValidationOptions = {}) {
   return (object: object, propertyName: string) =>
     registerDecorator({
       target: object.constructor,

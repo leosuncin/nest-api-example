@@ -1,4 +1,4 @@
-import { CallHandler } from '@nestjs/common';
+import type { CallHandler } from '@nestjs/common';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
@@ -42,8 +42,8 @@ describe('UserInterceptor', () => {
   it("should not inject the user's id when there is no request's body", async () => {
     const { req, res } = createMocks({
       user,
-      body: undefined,
     });
+    delete req.body;
     const context = new ExecutionContextHost([req, res]);
     const next: CallHandler = {
       handle: () => of({}),

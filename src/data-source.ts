@@ -15,7 +15,7 @@ import { CreateArticleComment1651517018946 } from '@/migrations/1651517018946-cr
 
 export const dataSourceOptions: DataSourceOptions & SeederOptions = {
   type: 'postgres',
-  url: process.env.DATABASE_URL,
+  url: process.env['DATABASE_URL']!,
   synchronize: false,
   entities: [User, Article, Comment],
   migrations: [CreateUser1637703183543, CreateArticleComment1651517018946],

@@ -1,4 +1,4 @@
-import { CallHandler } from '@nestjs/common';
+import type { CallHandler } from '@nestjs/common';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';

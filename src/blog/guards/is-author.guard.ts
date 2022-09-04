@@ -21,7 +21,9 @@ export class IsAuthorGuard implements CanActivate {
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const request = context.switchToHttp().getRequest<Request>();
+    const request = context
+      .switchToHttp()
+      .getRequest<Request<{ id: string }>>();
     const kindOf = this.reflector.get<Entities>(
       ENTITY_METADATA_KEY,
       context.getHandler(),

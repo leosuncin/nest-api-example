@@ -57,7 +57,7 @@ export class ValidateCredentialConstraint
   }
 }
 
-export function ValidateCredential(options?: ValidationOptions) {
+export function ValidateCredential(options: ValidationOptions = {}) {
   return function (object: object, propertyName: 'username' | 'password') {
     registerDecorator({
       target: object.constructor,

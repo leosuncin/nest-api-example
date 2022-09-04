@@ -1,4 +1,4 @@
-import { ArgumentMetadata } from '@nestjs/common';
+import type { ArgumentMetadata } from '@nestjs/common';
 
 import { StripIdPipe } from '@/auth/pipes/strip-id.pipe';
 import { credentials } from '@/common/test-helpers';

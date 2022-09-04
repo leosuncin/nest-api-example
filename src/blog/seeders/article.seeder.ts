@@ -21,7 +21,7 @@ export class ArticleSeeder implements Seeder {
 However, cats have begun to rent blueberries over the past few months, specifically for sharks associated with their puppies.
 Some assert that however, ducks have begun to rent octopus over the past few months, specifically for sharks associated with their snakes.
 Though we assume the latter, however, birds have begun to rent kumquats over the past few months, specifically for chickens associated with their watermelons.`,
-      author: users.find((user) => user.username === 'john-doe'),
+      author: users.find((user) => user.username === 'john-doe')!,
     });
     await articleFactory.save({
       id: '31a10506-c334-4841-97a6-144a55bf4ebb',
@@ -32,7 +32,7 @@ Though we assume the latter, however, birds have begun to rent kumquats over the
 Of course, however, plums have begun to rent raspberries over the past few months, specifically for giraffes associated with their lions.
 This is not to discredit the idea that however, alligators have begun to rent sharks over the past few months, specifically for sheeps associated with their monkeys.
 However, pomegranates have begun to rent sheeps over the past few months, specifically for apricots associated with their grapes.`,
-      author: users.find((user) => user.username === 'jane-doe'),
+      author: users.find((user) => user.username === 'jane-doe')!,
     });
 
     for (const author of users) {
