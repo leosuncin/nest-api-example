@@ -17,8 +17,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { User } from '@/auth/entities/user.entity';
-import { Comment } from '@/blog/entities/comment.entity';
+import { User } from '~auth/entities/user.entity';
+import { Comment } from '~blog/entities/comment.entity';
 
 const translator = shortUUID(shortUUID.constants.flickrBase58);
 

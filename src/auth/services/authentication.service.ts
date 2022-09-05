@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import type { Repository } from 'typeorm';
 
-import type { LoginUser } from '@/auth/dto/login-user.dto';
-import type { RegisterUser } from '@/auth/dto/register-user.dto';
-import type { UpdateUser } from '@/auth/dto/update-user.dto';
-import { User } from '@/auth/entities/user.entity';
-import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
+import type { LoginUser } from '~auth/dto/login-user.dto';
+import type { RegisterUser } from '~auth/dto/register-user.dto';
+import type { UpdateUser } from '~auth/dto/update-user.dto';
+import { User } from '~auth/entities/user.entity';
+import type { JwtPayload } from '~auth/interfaces/jwt-payload.interface';
 
 @Injectable()
 export class AuthenticationService {

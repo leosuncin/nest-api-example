@@ -1,6 +1,6 @@
 import { validateSync } from 'class-validator';
 
-import { IsNotTheSame } from '@/auth/validators/is-not-the-same';
+import { IsNotTheSame } from '~auth/validators/is-not-the-same';
 
 describe('IsNotTheSame', () => {
   class DTO {

@@ -2,7 +2,7 @@ import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import fc from 'fast-check';
 
-import { UpdateArticle } from '@/blog/dto/update-article.dto';
+import { UpdateArticle } from '~blog/dto/update-article.dto';
 
 describe('UpdateArticle', () => {
   it('should fail with invalid data', async () => {

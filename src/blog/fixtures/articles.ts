@@ -1,5 +1,5 @@
-import { jane, john } from '@/auth/fixtures/users';
-import { Article } from '@/blog/entities/article.entity';
+import { jane, john } from '~auth/fixtures/users';
+import { Article } from '~blog/entities/article.entity';
 
 export const articleByJohn = Article.fromPartial({
   id: 'a832e632-0335-4191-8469-4d849bbb72be',

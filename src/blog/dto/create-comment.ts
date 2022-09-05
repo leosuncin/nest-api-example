@@ -6,9 +6,9 @@ import {
   IsUUID,
 } from 'class-validator';
 
-import { User } from '@/auth/entities/user.entity';
-import { Article } from '@/blog/entities/article.entity';
-import { ArticleExist } from '@/blog/validators/article-exist.validator';
+import { User } from '~auth/entities/user.entity';
+import { Article } from '~blog/entities/article.entity';
+import { ArticleExist } from '~blog/validators/article-exist.validator';
 
 export class CreateComment {
   @IsDefined()

@@ -6,7 +6,7 @@ import {
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-import { ArticleService } from '@/blog/services/article.service';
+import { ArticleService } from '~blog/services/article.service';
 
 @Injectable()
 @ValidatorConstraint({ name: 'articleExist', async: true })

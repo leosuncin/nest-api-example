@@ -1,5 +1,5 @@
-import { User } from '@/auth/entities/user.entity';
-import { register as credentials } from '@/auth/fixtures/credentials';
+import { User } from '~auth/entities/user.entity';
+import { register as credentials } from '~auth/fixtures/credentials';
 
 export const john = User.fromPartial({
   ...credentials,

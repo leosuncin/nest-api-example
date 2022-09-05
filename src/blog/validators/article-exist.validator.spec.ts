@@ -3,11 +3,11 @@ import { Test } from '@nestjs/testing';
 import { useContainer, validate } from 'class-validator';
 import { createMock } from 'ts-auto-mock';
 
-import { ArticleService } from '@/blog/services/article.service';
+import { ArticleService } from '~blog/services/article.service';
 import {
   ArticleExist,
   ArticleExistConstraint,
-} from '@/blog/validators/article-exist.validator';
+} from '~blog/validators/article-exist.validator';
 
 class DTO {
   @ArticleExist()

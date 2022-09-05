@@ -1,7 +1,7 @@
 import { ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common';
 import invariant from 'tiny-invariant';
 
-import type { UpdateUser } from '@/auth/dto/update-user.dto';
+import type { UpdateUser } from '~auth/dto/update-user.dto';
 
 type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 

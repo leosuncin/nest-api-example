@@ -1,14 +1,14 @@
 import { HttpStatus } from '@nestjs/common';
 import { e2e, request, spec } from 'pactum';
 
-import { login as credentials } from '@/auth/fixtures/credentials';
-import { createCommentFactory } from '@/blog/factories/create-comment.factory';
-import { articleByJohn } from '@/blog/fixtures/articles';
+import { login as credentials } from '~auth/fixtures/credentials';
+import { createCommentFactory } from '~blog/factories/create-comment.factory';
+import { articleByJohn } from '~blog/fixtures/articles';
 import {
   commentByJaneOnArticleByJohn,
   commentByJohnOnArticleByJane,
-} from '@/blog/fixtures/comments';
-import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
+} from '~blog/fixtures/comments';
+import { isoDateRegex, uuidRegex } from '~common/test-matchers';
 
 const unauthorizedError = {
   message: 'Unauthorized',

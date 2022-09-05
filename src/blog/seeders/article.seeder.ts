@@ -1,9 +1,9 @@
 import type { DataSource } from 'typeorm';
 import type { Seeder, SeederFactoryManager } from 'typeorm-extension';
 
-import { User } from '@/auth/entities/user.entity';
-import { Article } from '@/blog/entities/article.entity';
-import { articleByJane, articleByJohn } from '@/blog/fixtures/articles';
+import { User } from '~auth/entities/user.entity';
+import { Article } from '~blog/entities/article.entity';
+import { articleByJane, articleByJohn } from '~blog/fixtures/articles';
 
 export class ArticleSeeder implements Seeder {
   async run(

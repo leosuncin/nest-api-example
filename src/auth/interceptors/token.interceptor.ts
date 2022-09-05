@@ -9,7 +9,7 @@ import type { Response } from 'express';
 import type { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import type { User } from '@/auth/entities/user.entity';
+import type { User } from '~auth/entities/user.entity';
 
 @Injectable()
 export class TokenInterceptor implements NestInterceptor {

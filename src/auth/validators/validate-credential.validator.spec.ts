@@ -4,13 +4,13 @@ import { useContainer, validate } from 'class-validator';
 import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
 
-import { User } from '@/auth/entities/user.entity';
-import { login as credentials } from '@/auth/fixtures/credentials';
-import { john as user } from '@/auth/fixtures/users';
+import { User } from '~auth/entities/user.entity';
+import { login as credentials } from '~auth/fixtures/credentials';
+import { john as user } from '~auth/fixtures/users';
 import {
   ValidateCredential,
   ValidateCredentialConstraint,
-} from '@/auth/validators/validate-credential.validator';
+} from '~auth/validators/validate-credential.validator';
 
 class DTO {
   @ValidateCredential()

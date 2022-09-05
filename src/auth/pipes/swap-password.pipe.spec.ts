@@ -1,7 +1,7 @@
 import type { ArgumentMetadata } from '@nestjs/common';
 
-import { login as credentials } from '@/auth/fixtures/credentials';
-import { SwapPasswordPipe } from '@/auth/pipes/swap-password.pipe';
+import { login as credentials } from '~auth/fixtures/credentials';
+import { SwapPasswordPipe } from '~auth/pipes/swap-password.pipe';
 
 const value = {
   image: 'https://thispersondoesnotexist.com/image',

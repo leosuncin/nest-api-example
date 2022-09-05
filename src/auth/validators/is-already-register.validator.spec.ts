@@ -5,11 +5,11 @@ import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
 import { Equal, Not } from 'typeorm';
 
-import { User } from '@/auth/entities/user.entity';
+import { User } from '~auth/entities/user.entity';
 import {
   IsAlreadyRegister,
   IsAlreadyRegisterConstraint,
-} from '@/auth/validators/is-already-register.validator';
+} from '~auth/validators/is-already-register.validator';
 
 import { jane, john } from '../fixtures/users';
 

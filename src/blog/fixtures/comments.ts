@@ -1,6 +1,6 @@
-import { jane, john } from '@/auth/fixtures/users';
-import { Comment } from '@/blog/entities/comment.entity';
-import { articleByJane, articleByJohn } from '@/blog/fixtures/articles';
+import { jane, john } from '~auth/fixtures/users';
+import { Comment } from '~blog/entities/comment.entity';
+import { articleByJane, articleByJohn } from '~blog/fixtures/articles';
 
 export const commentByJaneOnArticleByJohn = Comment.fromPartial({
   article: articleByJohn,

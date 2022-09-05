@@ -3,8 +3,8 @@ import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-hos
 import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
 
-import { john as user } from '@/auth/fixtures/users';
-import { SetAuthorInterceptor } from '@/blog/interceptors/set-author.interceptor';
+import { john as user } from '~auth/fixtures/users';
+import { SetAuthorInterceptor } from '~blog/interceptors/set-author.interceptor';
 
 describe('SetAuthorInterceptor', () => {
   it('should be defined', () => {

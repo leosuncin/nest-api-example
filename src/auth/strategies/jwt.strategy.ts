@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, JwtFromRequestFunction, Strategy } from 'passport-jwt';
 
-import type { User } from '@/auth/entities/user.entity';
-import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
-import { AuthenticationService } from '@/auth/services/authentication.service';
+import type { User } from '~auth/entities/user.entity';
+import type { JwtPayload } from '~auth/interfaces/jwt-payload.interface';
+import { AuthenticationService } from '~auth/services/authentication.service';
 
 declare module 'express' {
   interface Request {
