@@ -1,6 +1,7 @@
 import { HttpStatus } from '@nestjs/common';
 import { request, spec } from 'pactum';
 
+import { TOKEN_COOKIE_NAME } from '~auth/constants';
 import { loginUserFactory } from '~auth/factories/login-user.factory';
 import { registerUserFactory } from '~auth/factories/register-user.factory';
 import { updateUserFactory } from '~auth/factories/update-user.factory';
@@ -30,7 +31,7 @@ describe('AuthController (e2e)', () => {
       .withBody(data)
       .expectStatus(HttpStatus.CREATED)
       .expectCookiesLike({
-        token: 'typeof $V === "string"',
+        [TOKEN_COOKIE_NAME]: 'typeof $V === "string"',
         // eslint-disable-next-line unicorn/no-null
         HttpOnly: null,
         SameSite: 'Strict',
@@ -84,7 +85,7 @@ describe('AuthController (e2e)', () => {
       .withBody(credentials)
       .expectStatus(HttpStatus.OK)
       .expectCookiesLike({
-        token: 'typeof $V === "string"',
+        [TOKEN_COOKIE_NAME]: 'typeof $V === "string"',
         // eslint-disable-next-line unicorn/no-null
         HttpOnly: null,
         SameSite: 'Strict',

@@ -6,6 +6,7 @@ import request, { agent } from 'supertest';
 import { runSeeders } from 'typeorm-extension';
 
 import { AuthModule } from '~auth/auth.module';
+import { TOKEN_COOKIE_NAME } from '~auth/constants';
 import type { User } from '~auth/entities/user.entity';
 import { loginUserFactory } from '~auth/factories/login-user.factory';
 import { registerUserFactory } from '~auth/factories/register-user.factory';
@@ -21,6 +22,8 @@ const unprocessableError = {
   message: expect.arrayContaining([expect.any(String)]),
   statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
 };
+// eslint-disable-next-line security/detect-non-literal-regexp
+const cookieRegex = new RegExp(`${TOKEN_COOKIE_NAME}=`, 'iu');
 
 describe('Auth module', () => {
   const password = credentials.password;
@@ -47,7 +50,7 @@ describe('Auth module', () => {
       .post('/auth/register')
       .send(data)
       .expect(HttpStatus.CREATED)
-      .expect('set-cookie', /token=/)
+      .expect('set-cookie', cookieRegex)
       .expect(({ body }) => {
         expect(body).toMatchObject({
           email: data.email,
@@ -105,7 +108,7 @@ describe('Auth module', () => {
       .post('/auth/login')
       .send(data)
       .expect(HttpStatus.OK)
-      .expect('set-cookie', /token=/)
+      .expect('set-cookie', cookieRegex)
       .expect(({ body }) => {
         expect(body).toMatchObject({
           email: user.email,
@@ -150,7 +153,7 @@ describe('Auth module', () => {
       .post('/auth/login')
       .send({ username: user.username, password })
       .expect(HttpStatus.OK)
-      .expect('set-cookie', /token=/);
+      .expect('set-cookie', cookieRegex);
 
     await client
       .get('/auth/me')
@@ -267,7 +270,7 @@ describe('Auth module', () => {
       .post('/auth/login')
       .send({ username: user.username, password })
       .expect(HttpStatus.OK)
-      .expect('set-cookie', /token=/);
+      .expect('set-cookie', cookieRegex);
 
     await client
       .patch('/auth/me')

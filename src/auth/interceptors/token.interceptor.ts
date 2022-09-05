@@ -11,6 +11,7 @@ import type { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import type { AuthConfig } from '~auth/config/auth';
+import { TOKEN_COOKIE_NAME } from '~auth/constants/index';
 import type { User } from '~auth/entities/user.entity';
 
 @Injectable()
@@ -34,7 +35,7 @@ export class TokenInterceptor implements NestInterceptor {
       map((user) => {
         const token = this.generateToken(user);
 
-        response.cookie('token', token, this.options);
+        response.cookie(TOKEN_COOKIE_NAME, token, this.options);
 
         return user;
       }),
