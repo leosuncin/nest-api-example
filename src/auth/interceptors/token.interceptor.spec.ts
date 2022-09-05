@@ -8,6 +8,7 @@ import { lastValueFrom, of } from 'rxjs';
 import { createMock } from 'ts-auto-mock';
 
 import { type AuthConfig, auth } from '~auth/config/auth';
+import { TOKEN_COOKIE_NAME } from '~auth/constants';
 import type { User } from '~auth/entities/user.entity';
 import { john as user } from '~auth/fixtures/users';
 import { TokenInterceptor } from '~auth/interceptors/token.interceptor';
@@ -58,6 +59,6 @@ describe('TokenInterceptor', () => {
     await expect(
       lastValueFrom(interceptor.intercept(testContext, nextSpy)),
     ).resolves.toEqual(user);
-    expect(res.cookies).toHaveProperty('token');
+    expect(res.cookies).toHaveProperty(TOKEN_COOKIE_NAME);
   });
 });
