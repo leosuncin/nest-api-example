@@ -17,6 +17,7 @@
       "~auth/*": ["src/auth/*"],
       "~blog/*": ["src/blog/*"],
       "~common/*": ["src/common/*"],
+      "~config/*": ["src/config/*"],
       "~migrations/*": ["src/migrations/*"]
     }
   }
