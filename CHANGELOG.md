@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/leosuncin/nest-api-example/compare/v1.5.1...v1.6.0) (2022-09-05)
+
+### Bug Fixes
+
+- **auth:** use constants to name the token's cookie ([e6b60ba](https://github.com/leosuncin/nest-api-example/commit/e6b60baaa3b83b93860124d72cedc70522360c54))
+
+### Features
+
+- config auth module ([0fb2001](https://github.com/leosuncin/nest-api-example/commit/0fb2001862e77fbac19490ce91921e138d666bd7))
+- config typeorm in a single file ([2d7dd11](https://github.com/leosuncin/nest-api-example/commit/2d7dd11a88805545d903af7420e2eaacb58bba90))
+- config validation pipe ([2250718](https://github.com/leosuncin/nest-api-example/commit/225071847e5d7b9fe8aaed60d89e6b6184d11d7f))
+- setup config module ([3c2e617](https://github.com/leosuncin/nest-api-example/commit/3c2e617abdd4b360e993654a42aec2d2ff418fd6))
+
 ## [1.5.1](https://github.com/leosuncin/nest-api-example/compare/v1.5.0...v1.5.1) (2022-09-05)
 
 ### Bug Fixes
