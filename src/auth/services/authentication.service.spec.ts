@@ -3,15 +3,15 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
 
-import type { UpdateUser } from '@/auth/dto/update-user.dto';
-import { User } from '@/auth/entities/user.entity';
+import type { UpdateUser } from '~auth/dto/update-user.dto';
+import { User } from '~auth/entities/user.entity';
 import {
   login as credentials,
   register as newUser,
-} from '@/auth/fixtures/credentials';
-import { john as user } from '@/auth/fixtures/users';
-import type { JwtPayload } from '@/auth/interfaces/jwt-payload.interface';
-import { AuthenticationService } from '@/auth/services/authentication.service';
+} from '~auth/fixtures/credentials';
+import { john as user } from '~auth/fixtures/users';
+import type { JwtPayload } from '~auth/interfaces/jwt-payload.interface';
+import { AuthenticationService } from '~auth/services/authentication.service';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;

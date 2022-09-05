@@ -7,8 +7,8 @@ import {
   MinLength,
 } from 'class-validator';
 
-import { ValidateCredential } from '@/auth/validators/validate-credential.validator';
-import { Trim } from '@/common/decorators/trim.decorator';
+import { ValidateCredential } from '~auth/validators/validate-credential.validator';
+import { Trim } from '~common/decorators/trim.decorator';
 
 export class LoginUser {
   @IsDefined()

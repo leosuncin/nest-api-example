@@ -7,8 +7,8 @@ import nock, {
 } from 'nock';
 import { resolve } from 'node:path';
 
-import { login as credentials } from '@/auth/fixtures/credentials';
-import { IsNotVulnerable } from '@/auth/validators/is-not-vulnerable.validator';
+import { login as credentials } from '~auth/fixtures/credentials';
+import { IsNotVulnerable } from '~auth/validators/is-not-vulnerable.validator';
 
 class DTO {
   @IsNotVulnerable()

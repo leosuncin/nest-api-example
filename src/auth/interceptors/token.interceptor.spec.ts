@@ -6,9 +6,9 @@ import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
 import { createMock } from 'ts-auto-mock';
 
-import type { User } from '@/auth/entities/user.entity';
-import { john as user } from '@/auth/fixtures/users';
-import { TokenInterceptor } from '@/auth/interceptors/token.interceptor';
+import type { User } from '~auth/entities/user.entity';
+import { john as user } from '~auth/fixtures/users';
+import { TokenInterceptor } from '~auth/interceptors/token.interceptor';
 
 describe('TokenInterceptor', () => {
   let interceptor: TokenInterceptor;

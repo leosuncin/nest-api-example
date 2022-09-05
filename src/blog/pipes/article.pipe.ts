@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, PipeTransform } from '@nestjs/common';
 
-import { Article } from '@/blog/entities/article.entity';
-import { ArticleService } from '@/blog/services/article.service';
+import { Article } from '~blog/entities/article.entity';
+import { ArticleService } from '~blog/services/article.service';
 
 @Injectable()
 export class ArticlePipe implements PipeTransform<string, Promise<Article>> {

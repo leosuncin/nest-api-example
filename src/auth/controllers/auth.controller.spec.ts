@@ -2,13 +2,13 @@ import { JwtService } from '@nestjs/jwt';
 import { Test } from '@nestjs/testing';
 import { createMock } from 'ts-auto-mock';
 
-import { AuthController } from '@/auth/controllers/auth.controller';
-import type { LoginUser } from '@/auth/dto/login-user.dto';
-import type { RegisterUser } from '@/auth/dto/register-user.dto';
-import type { UpdateUser } from '@/auth/dto/update-user.dto';
-import { User } from '@/auth/entities/user.entity';
-import { login, register } from '@/auth/fixtures/credentials';
-import { AuthenticationService } from '@/auth/services/authentication.service';
+import { AuthController } from '~auth/controllers/auth.controller';
+import type { LoginUser } from '~auth/dto/login-user.dto';
+import type { RegisterUser } from '~auth/dto/register-user.dto';
+import type { UpdateUser } from '~auth/dto/update-user.dto';
+import { User } from '~auth/entities/user.entity';
+import { login, register } from '~auth/fixtures/credentials';
+import { AuthenticationService } from '~auth/services/authentication.service';
 
 describe('AuthController', () => {
   let controller: AuthController;

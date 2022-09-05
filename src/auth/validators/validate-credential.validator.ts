@@ -9,7 +9,7 @@ import {
 } from 'class-validator';
 import type { Repository } from 'typeorm';
 
-import { User } from '@/auth/entities/user.entity';
+import { User } from '~auth/entities/user.entity';
 
 @Injectable()
 @ValidatorConstraint({ name: 'credential', async: true })

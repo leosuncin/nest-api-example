@@ -7,8 +7,8 @@ import {
 } from 'nestjs-typeorm-paginate';
 import type { Repository } from 'typeorm';
 
-import type { CreateComment } from '@/blog/dto/create-comment';
-import { Comment } from '@/blog/entities/comment.entity';
+import type { CreateComment } from '~blog/dto/create-comment';
+import { Comment } from '~blog/entities/comment.entity';
 
 @Injectable()
 export class CommentService {

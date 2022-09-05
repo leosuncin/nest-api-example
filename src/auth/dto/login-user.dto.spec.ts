@@ -7,11 +7,11 @@ import fc from 'fast-check';
 import { createMock } from 'ts-auto-mock';
 import type { Repository } from 'typeorm';
 
-import { LoginUser } from '@/auth/dto/login-user.dto';
-import { User } from '@/auth/entities/user.entity';
-import { loginUserFactory } from '@/auth/factories/login-user.factory';
-import { login } from '@/auth/fixtures/credentials';
-import { ValidateCredentialConstraint } from '@/auth/validators/validate-credential.validator';
+import { LoginUser } from '~auth/dto/login-user.dto';
+import { User } from '~auth/entities/user.entity';
+import { loginUserFactory } from '~auth/factories/login-user.factory';
+import { login } from '~auth/fixtures/credentials';
+import { ValidateCredentialConstraint } from '~auth/validators/validate-credential.validator';
 
 describe('Login user validations', () => {
   beforeAll(async () => {

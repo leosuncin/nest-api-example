@@ -5,16 +5,16 @@ import { getDataSourceToken } from '@nestjs/typeorm';
 import request from 'supertest';
 import { runSeeders } from 'typeorm-extension';
 
-import { AuthModule } from '@/auth/auth.module';
-import { jane } from '@/auth/fixtures/users';
-import { BlogModule } from '@/blog/blog.module';
-import { createArticleFactory } from '@/blog/factories/create-article.factory';
-import { createCommentFactory } from '@/blog/factories/create-comment.factory';
-import { updateArticleFactory } from '@/blog/factories/update-article.factory';
-import { articleByJane, articleByJohn } from '@/blog/fixtures/articles';
-import { buildTestApplication } from '@/common/build-test-application';
-import { database } from '@/common/database';
-import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
+import { AuthModule } from '~auth/auth.module';
+import { jane } from '~auth/fixtures/users';
+import { BlogModule } from '~blog/blog.module';
+import { createArticleFactory } from '~blog/factories/create-article.factory';
+import { createCommentFactory } from '~blog/factories/create-comment.factory';
+import { updateArticleFactory } from '~blog/factories/update-article.factory';
+import { articleByJane, articleByJohn } from '~blog/fixtures/articles';
+import { buildTestApplication } from '~common/build-test-application';
+import { database } from '~common/database';
+import { isoDateRegex, uuidRegex } from '~common/test-matchers';
 
 const unauthorizedError = {
   message: 'Unauthorized',

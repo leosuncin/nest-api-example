@@ -13,7 +13,11 @@
     "incremental": true,
     "resolveJsonModule": true,
     "paths": {
-      "@/*": ["src/*"]
+      "~app/*": ["src/*"],
+      "~auth/*": ["src/auth/*"],
+      "~blog/*": ["src/blog/*"],
+      "~common/*": ["src/common/*"],
+      "~migrations/*": ["src/migrations/*"]
     }
   }
 }

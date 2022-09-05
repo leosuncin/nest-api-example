@@ -1,6 +1,6 @@
 import { plainToInstance } from 'class-transformer';
 
-import { NormalizeEmail } from '@/auth/decorators/normalize-email.decorator';
+import { NormalizeEmail } from '~auth/decorators/normalize-email.decorator';
 
 class Example {
   @NormalizeEmail()

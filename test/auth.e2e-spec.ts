@@ -1,11 +1,11 @@
 import { HttpStatus } from '@nestjs/common';
 import { request, spec } from 'pactum';
 
-import { loginUserFactory } from '@/auth/factories/login-user.factory';
-import { registerUserFactory } from '@/auth/factories/register-user.factory';
-import { updateUserFactory } from '@/auth/factories/update-user.factory';
-import { register as credentials } from '@/auth/fixtures/credentials';
-import { isoDateRegex, uuidRegex } from '@/common/test-matchers';
+import { loginUserFactory } from '~auth/factories/login-user.factory';
+import { registerUserFactory } from '~auth/factories/register-user.factory';
+import { updateUserFactory } from '~auth/factories/update-user.factory';
+import { register as credentials } from '~auth/fixtures/credentials';
+import { isoDateRegex, uuidRegex } from '~common/test-matchers';
 
 describe('AuthController (e2e)', () => {
   let tokenCookie: string;

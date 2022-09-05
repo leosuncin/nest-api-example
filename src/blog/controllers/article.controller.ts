@@ -15,16 +15,16 @@ import {
 } from '@nestjs/common';
 import type { Pagination } from 'nestjs-typeorm-paginate';
 
-import { JWTAuthGuard } from '@/auth/guards/jwt-auth.guard';
-import { IsArticle } from '@/blog/decorators/is-entity.decorator';
-import { CreateArticle } from '@/blog/dto/create-article.dto';
-import { UpdateArticle } from '@/blog/dto/update-article.dto';
-import { Article } from '@/blog/entities/article.entity';
-import { IsAuthorGuard } from '@/blog/guards/is-author.guard';
-import { SetAuthorInterceptor } from '@/blog/interceptors/set-author.interceptor';
-import { ArticlePipe } from '@/blog/pipes/article.pipe';
-import { ArticleService } from '@/blog/services/article.service';
-import { Paginate } from '@/common/dto/paginate.dto';
+import { JWTAuthGuard } from '~auth/guards/jwt-auth.guard';
+import { IsArticle } from '~blog/decorators/is-entity.decorator';
+import { CreateArticle } from '~blog/dto/create-article.dto';
+import { UpdateArticle } from '~blog/dto/update-article.dto';
+import { Article } from '~blog/entities/article.entity';
+import { IsAuthorGuard } from '~blog/guards/is-author.guard';
+import { SetAuthorInterceptor } from '~blog/interceptors/set-author.interceptor';
+import { ArticlePipe } from '~blog/pipes/article.pipe';
+import { ArticleService } from '~blog/services/article.service';
+import { Paginate } from '~common/dto/paginate.dto';
 
 @Controller('articles')
 @UseInterceptors(ClassSerializerInterceptor)

@@ -4,9 +4,9 @@ import { isUUID, useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
 import { createMock } from 'ts-auto-mock';
 
-import { CreateComment } from '@/blog/dto/create-comment';
-import { ArticleService } from '@/blog/services/article.service';
-import { ArticleExistConstraint } from '@/blog/validators/article-exist.validator';
+import { CreateComment } from '~blog/dto/create-comment';
+import { ArticleService } from '~blog/services/article.service';
+import { ArticleExistConstraint } from '~blog/validators/article-exist.validator';
 
 describe('CreateComment DTO', () => {
   beforeEach(async () => {

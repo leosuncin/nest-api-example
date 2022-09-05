@@ -5,16 +5,16 @@ import { Test } from '@nestjs/testing';
 import { createMocks } from 'node-mocks-http';
 import { createMock } from 'ts-auto-mock';
 
-import { User } from '@/auth/entities/user.entity';
-import { john as user } from '@/auth/fixtures/users';
-import { Entities } from '@/blog/constants/entity.enum';
-import type { Article } from '@/blog/entities/article.entity';
-import type { Comment } from '@/blog/entities/comment.entity';
-import { articleByJohn as article } from '@/blog/fixtures/articles';
-import { commentByJaneOnArticleByJohn as comment } from '@/blog/fixtures/comments';
-import { IsAuthorGuard } from '@/blog/guards/is-author.guard';
-import { ArticleService } from '@/blog/services/article.service';
-import { CommentService } from '@/blog/services/comment.service';
+import { User } from '~auth/entities/user.entity';
+import { john as user } from '~auth/fixtures/users';
+import { Entities } from '~blog/constants/entity.enum';
+import type { Article } from '~blog/entities/article.entity';
+import type { Comment } from '~blog/entities/comment.entity';
+import { articleByJohn as article } from '~blog/fixtures/articles';
+import { commentByJaneOnArticleByJohn as comment } from '~blog/fixtures/comments';
+import { IsAuthorGuard } from '~blog/guards/is-author.guard';
+import { ArticleService } from '~blog/services/article.service';
+import { CommentService } from '~blog/services/comment.service';
 
 describe('IsAuthorGuard', () => {
   let mockedReflector: jest.Mocked<Reflector>;

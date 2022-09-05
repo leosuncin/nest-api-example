@@ -2,10 +2,10 @@ import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { createMock } from 'ts-auto-mock';
 
-import { Article } from '@/blog/entities/article.entity';
-import { articleByJohn } from '@/blog/fixtures/articles';
-import { ArticlePipe } from '@/blog/pipes/article.pipe';
-import { ArticleService } from '@/blog/services/article.service';
+import { Article } from '~blog/entities/article.entity';
+import { articleByJohn } from '~blog/fixtures/articles';
+import { ArticlePipe } from '~blog/pipes/article.pipe';
+import { ArticleService } from '~blog/services/article.service';
 
 describe('ArticlePipe', () => {
   let pipe: ArticlePipe;

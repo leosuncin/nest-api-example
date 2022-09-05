@@ -3,11 +3,11 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { createMock } from 'ts-auto-mock';
 import { type SelectQueryBuilder, Repository } from 'typeorm';
 
-import { User } from '@/auth/entities/user.entity';
-import type { CreateComment } from '@/blog/dto/create-comment';
-import { Article } from '@/blog/entities/article.entity';
-import { Comment } from '@/blog/entities/comment.entity';
-import { CommentService } from '@/blog/services/comment.service';
+import { User } from '~auth/entities/user.entity';
+import type { CreateComment } from '~blog/dto/create-comment';
+import { Article } from '~blog/entities/article.entity';
+import { Comment } from '~blog/entities/comment.entity';
+import { CommentService } from '~blog/services/comment.service';
 
 describe('CommentService', () => {
   let mockedCommentRepository: jest.Mocked<Repository<Comment>>;
