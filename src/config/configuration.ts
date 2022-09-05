@@ -1,3 +1,4 @@
+import { type ValidationPipeOptions, HttpStatus } from '@nestjs/common';
 import invariant from 'tiny-invariant';
 
 export type ConfigObject = ReturnType<typeof configuration>;
@@ -8,5 +9,10 @@ export function configuration() {
   return {
     port: Number.parseInt(process.env.PORT, 10) || 3000,
     secret: process.env.SECRET,
+    validation: {
+      transform: true,
+      whitelist: true,
+      errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+    } as ValidationPipeOptions,
   };
 }

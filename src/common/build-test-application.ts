@@ -3,7 +3,6 @@ import {
   type ForwardReference,
   type INestApplication,
   type Type,
-  HttpStatus,
   ValidationPipe,
 } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -14,7 +13,7 @@ import cookieParser from 'cookie-parser';
 import type { DataSource } from 'typeorm';
 
 import { database } from '~common/database';
-import { configuration } from '~config/configuration';
+import { type ConfigObject, configuration } from '~config/configuration';
 import { dataSource } from '~config/data-source';
 
 export async function buildTestApplication(
@@ -44,15 +43,9 @@ export async function buildTestApplication(
     ],
   }).compile();
   const app = module.createNestApplication();
-  const config = app.get(ConfigService);
+  const config = app.get<ConfigService<ConfigObject>>(ConfigService);
 
-  app.useGlobalPipes(
-    new ValidationPipe({
-      transform: true,
-      whitelist: true,
-      errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
-    }),
-  );
+  app.useGlobalPipes(new ValidationPipe(config.get('validation')));
   app.use(cookieParser(config.get('secret', 's€cr3to')));
   useContainer(module, { fallbackOnErrors: true });
 
