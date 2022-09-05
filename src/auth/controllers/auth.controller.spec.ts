@@ -1,3 +1,4 @@
+import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Test } from '@nestjs/testing';
 import { createMock } from 'ts-auto-mock';
@@ -46,6 +47,10 @@ describe('AuthController', () => {
                 Promise.resolve(User.fromPartial({ ...user, ...changes })),
               ),
           });
+        }
+
+        if (token === ConfigService) {
+          return createMock<ConfigService>();
         }
 
         return;

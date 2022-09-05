@@ -1,4 +1,5 @@
 import type { CallHandler } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { JwtService } from '@nestjs/jwt';
 import { Test } from '@nestjs/testing';
@@ -6,6 +7,7 @@ import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
 import { createMock } from 'ts-auto-mock';
 
+import { type AuthConfig, auth } from '~auth/config/auth';
 import type { User } from '~auth/entities/user.entity';
 import { john as user } from '~auth/fixtures/users';
 import { TokenInterceptor } from '~auth/interceptors/token.interceptor';
@@ -21,6 +23,15 @@ describe('TokenInterceptor', () => {
       .useMocker((token) => {
         if (token === JwtService) {
           return createMock<JwtService>();
+        }
+
+        if (token === ConfigService) {
+          return createMock<ConfigService>({
+            getOrThrow(propertyPath: keyof AuthConfig) {
+              // eslint-disable-next-line security/detect-object-injection
+              return auth()[propertyPath];
+            },
+          });
         }
 
         return;

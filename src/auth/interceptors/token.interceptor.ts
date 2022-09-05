@@ -4,16 +4,25 @@ import {
   Injectable,
   NestInterceptor,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import type { Response } from 'express';
+import type { CookieOptions, Response } from 'express';
 import type { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import type { AuthConfig } from '~auth/config/auth';
 import type { User } from '~auth/entities/user.entity';
 
 @Injectable()
 export class TokenInterceptor implements NestInterceptor {
-  constructor(private readonly jwtService: JwtService) {}
+  private options: CookieOptions;
+
+  constructor(
+    private readonly jwtService: JwtService,
+    config: ConfigService<AuthConfig, true>,
+  ) {
+    this.options = config.get('cookie');
+  }
 
   intercept(
     context: ExecutionContext,
@@ -25,12 +34,7 @@ export class TokenInterceptor implements NestInterceptor {
       map((user) => {
         const token = this.generateToken(user);
 
-        response.cookie('token', token, {
-          httpOnly: true,
-          sameSite: 'strict',
-          signed: true,
-          secure: process.env.NODE_ENV === 'production',
-        });
+        response.cookie('token', token, this.options);
 
         return user;
       }),
