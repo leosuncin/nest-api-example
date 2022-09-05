@@ -12,9 +12,9 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "db:create": "ts-node -r dotenv/config -r tsconfig-paths/register node_modules/typeorm-extension/dist/cli/index.js db:create -r src --synchronize=no --initialDatabase=postgres",
-    "db:drop": "ts-node -r dotenv/config -r tsconfig-paths/register node_modules/typeorm-extension/dist/cli/index.js db:drop -r src --initialDatabase=postgres",
-    "db:seed": "ts-node -r dotenv/config -r tsconfig-paths/register node_modules/typeorm-extension/dist/cli/index.js seed -r src",
+    "db:create": "ts-node -r dotenv/config -r tsconfig-paths/register node_modules/typeorm-extension/dist/cli/index.js db:create -r src/config --synchronize=no --initialDatabase=postgres",
+    "db:drop": "ts-node -r dotenv/config -r tsconfig-paths/register node_modules/typeorm-extension/dist/cli/index.js db:drop -r src/config --initialDatabase=postgres",
+    "db:seed": "ts-node -r dotenv/config -r tsconfig-paths/register node_modules/typeorm-extension/dist/cli/index.js seed -r src/config",
     "format": "prettier --write \"{src,apps,libs,test}/**/*.ts\"",
     "lint": "eslint .",
     "prepare": "husky install",
@@ -30,7 +30,7 @@
     "test:e2e": "jest --selectProjects 'E2E test'",
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit --noErrorTruncation --pretty false --incremental false -p tsconfig.build.json",
-    "typeorm": "NODE_OPTIONS='-r dotenv/config -r tsconfig-paths/register' typeorm-ts-node-commonjs -d src/data-source"
+    "typeorm": "NODE_OPTIONS='-r dotenv/config -r tsconfig-paths/register' typeorm-ts-node-commonjs -d src/config/data-source"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
