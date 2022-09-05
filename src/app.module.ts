@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from '~app/app.controller';
@@ -7,6 +7,7 @@ import { AppService } from '~app/app.service';
 import { AuthModule } from '~auth/auth.module';
 import { BlogModule } from '~blog/blog.module';
 import { configuration } from '~config/configuration';
+import { dataSource } from '~config/data-source';
 
 @Module({
   imports: [
@@ -15,11 +16,12 @@ import { configuration } from '~config/configuration';
       expandVariables: true,
       load: [configuration],
     }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      synchronize: false,
-      autoLoadEntities: true,
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule.forFeature(dataSource)],
+      inject: [ConfigService],
+      useFactory(config: ConfigService) {
+        return config.getOrThrow('data-source');
+      },
     }),
     AuthModule,
     BlogModule,
