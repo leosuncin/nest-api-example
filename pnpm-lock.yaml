@@ -50,7 +50,7 @@ specifiers:
   eslint-plugin-node: ^11.1.0
   eslint-plugin-optimize-regex: ^1.2.1
   eslint-plugin-security: ^1.5.0
-  eslint-plugin-simple-import-sort: ^7.0.0
+  eslint-plugin-simple-import-sort: ^8.0.0
   eslint-plugin-switch-case: ^1.1.2
   eslint-plugin-unicorn: ^43.0.2
   factory.io: ^0.1.4
@@ -157,7 +157,7 @@ devDependencies:
   eslint-plugin-node: 11.1.0_eslint@8.22.0
   eslint-plugin-optimize-regex: 1.2.1
   eslint-plugin-security: 1.5.0
-  eslint-plugin-simple-import-sort: 7.0.0_eslint@8.22.0
+  eslint-plugin-simple-import-sort: 8.0.0_eslint@8.22.0
   eslint-plugin-switch-case: 1.1.2
   eslint-plugin-unicorn: 43.0.2_eslint@8.22.0
   factory.io: 0.1.4
@@ -4427,8 +4427,8 @@ packages:
       safe-regex: 2.1.1
     dev: true
 
-  /eslint-plugin-simple-import-sort/7.0.0_eslint@8.22.0:
-    resolution: {integrity: sha512-U3vEDB5zhYPNfxT5TYR7u01dboFZp+HNpnGhkDB2g/2E4wZ/g1Q9Ton8UwCLfRV9yAKyYqDh62oHOamvkFxsvw==}
+  /eslint-plugin-simple-import-sort/8.0.0_eslint@8.22.0:
+    resolution: {integrity: sha512-bXgJQ+lqhtQBCuWY/FUWdB27j4+lqcvXv5rUARkzbeWLwea+S5eBZEQrhnO+WgX3ZoJHVj0cn943iyXwByHHQw==}
     peerDependencies:
       eslint: '>=5.0.0'
     dependencies:
