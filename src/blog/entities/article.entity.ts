@@ -1,6 +1,7 @@
+import { randomUUID } from 'node:crypto';
+
 import { Exclude } from 'class-transformer';
 import { isUUID } from 'class-validator';
-import { randomUUID } from 'node:crypto';
 import shortUUID from 'short-uuid';
 import slugify from 'slugify';
 import {

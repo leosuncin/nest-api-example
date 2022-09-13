@@ -1,3 +1,5 @@
+import { resolve } from 'node:path';
+
 import { validate } from 'class-validator';
 import nock, {
   back as nockBack,
@@ -5,7 +7,6 @@ import nock, {
   enableNetConnect,
   restore,
 } from 'nock';
-import { resolve } from 'node:path';
 
 import { login as credentials } from '~auth/fixtures/credentials';
 import { IsNotVulnerable } from '~auth/validators/is-not-vulnerable.validator';
