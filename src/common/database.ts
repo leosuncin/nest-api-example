@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+
 import { DataType, newDb } from 'pg-mem';
 
 export const database = newDb({
