@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Login user validations should require all properties 1`] = `
-Array [
+[
   ValidationError {
-    "children": Array [],
-    "constraints": Object {
+    "children": [],
+    "constraints": {
       "credential": "password is incorrect",
       "isDefined": "password should not be null or undefined",
       "isNotEmpty": "password should not be empty",
@@ -17,13 +17,13 @@ Array [
     "value": undefined,
   },
   ValidationError {
-    "children": Array [],
-    "constraints": Object {
+    "children": [],
+    "constraints": {
       "credential": "username is incorrect",
       "isDefined": "username should not be null or undefined",
       "isNotEmpty": "username should not be empty",
       "isString": "username must be a string",
-      "matches": "username must match /^[\\\\w.-]+$/i regular expression",
+      "matches": "username must match /^[\\w.-]+$/i regular expression",
       "maxLength": "username must be shorter than or equal to 30 characters",
     },
     "property": "username",

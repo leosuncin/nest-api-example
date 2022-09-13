@@ -6,18 +6,20 @@ export default {
   projects: [
     {
       displayName: 'Unit test',
-      preset: 'ts-jest',
       testEnvironment: 'node',
       rootDir: 'src',
       testRegex: '\\.spec\\.ts$',
       moduleDirectories: ['node_modules', __dirname],
       moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
       setupFilesAfterEnv: ['jest-ts-auto-mock', 'dotenv/config'],
-      globals: {
-        'ts-jest': {
-          compiler: 'ttypescript',
-          tsconfig: 'tsconfig.test.json',
-        },
+      transform: {
+        '^.+\\.ts$': [
+          'ts-jest',
+          {
+            compiler: 'ttypescript',
+            tsconfig: 'tsconfig.test.json',
+          },
+        ],
       },
     },
     {
