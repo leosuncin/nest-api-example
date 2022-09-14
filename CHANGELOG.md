@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/leosuncin/nest-api-example/compare/v1.6.0...v1.7.0) (2022-09-14)
+
+### Features
+
+- **health:** add health controller ([ed93a8b](https://github.com/leosuncin/nest-api-example/commit/ed93a8b76844c2511cbc4db976c429a76b5dbbbc))
+- **health:** install terminus module ([23458c4](https://github.com/leosuncin/nest-api-example/commit/23458c45622affe1b7661df1fa4ad9f222d6bd3b))
+
 # [1.6.0](https://github.com/leosuncin/nest-api-example/compare/v1.5.1...v1.6.0) (2022-09-05)
 
 ### Bug Fixes
