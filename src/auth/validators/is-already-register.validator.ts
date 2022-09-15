@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import {
   registerDecorator,
   ValidationArguments,
@@ -7,43 +6,36 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
-import { Equal, Not, Repository } from 'typeorm';
 
-import { User } from '~auth/entities/user.entity';
+import type { User } from '~auth/entities/user.entity';
+import { AuthenticationService } from '~auth/services/authentication.service';
 
 @Injectable()
 @ValidatorConstraint({ name: 'isAlreadyRegister', async: true })
 export class IsAlreadyRegisterConstraint
   implements ValidatorConstraintInterface
 {
-  constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
-  ) {}
+  constructor(private readonly authenticationService: AuthenticationService) {}
 
-  async validate(
-    value: string,
-    { object, property }: ValidationArguments,
-  ): Promise<boolean> {
-    const count = await this.userRepository.count({
-      where: {
-        [property]: Equal(value),
-        ...(this.hasId(object) ? { id: Not(object.id) } : {}),
-      },
-    });
+  validate(value: string, { object, property }: ValidationArguments) {
+    if (!this.isValidProperty(property)) return false;
 
-    return count === 0;
+    return this.authenticationService.userNotExistWith(
+      property,
+      value,
+      // @ts-expect-error object has an id property and it's defined
+      object.id as unknown,
+    );
   }
 
   defaultMessage(): string {
     return '$property «$value» is already registered';
   }
 
-  private hasId(
-    object: object,
-  ): object is { id: string; [key: string]: unknown } {
-    // @ts-expect-error object has an id property and it's defined
-    return object.hasOwnProperty('id') && object.id !== undefined;
+  private isValidProperty(
+    property: string,
+  ): property is keyof Pick<User, 'email' | 'username'> {
+    return property === 'email' || property === 'username';
   }
 }
 

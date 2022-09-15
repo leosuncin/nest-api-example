@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import type { Repository } from 'typeorm';
+import { Equal, Not, Repository } from 'typeorm';
 
 import type { LoginUser } from '~auth/dto/login-user.dto';
 import type { RegisterUser } from '~auth/dto/register-user.dto';
@@ -39,5 +39,22 @@ export class AuthenticationService {
     this.userRepository.merge(user, changes);
 
     return this.userRepository.save(user);
+  }
+
+  async userNotExistWith<
+    Property extends keyof Pick<User, 'username' | 'email'>,
+  >(
+    property: Property,
+    value: User[Property],
+    id?: User['id'],
+  ): Promise<boolean> {
+    const count = await this.userRepository.count({
+      where: {
+        [property]: Equal(value),
+        ...(id ? { id: Not(id) } : {}),
+      },
+    });
+
+    return count === 0;
   }
 }

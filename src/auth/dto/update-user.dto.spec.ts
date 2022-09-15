@@ -14,6 +14,7 @@ import { User } from '~auth/entities/user.entity';
 import { updateUserFactory } from '~auth/factories/update-user.factory';
 import { PASSWORD_HASHES } from '~auth/fixtures/password-hashes';
 import { john as user } from '~auth/fixtures/users';
+import { AuthenticationService } from '~auth/services/authentication.service';
 import { IsAlreadyRegisterConstraint } from '~auth/validators/is-already-register.validator';
 import { ValidateCredentialConstraint } from '~auth/validators/validate-credential.validator';
 
@@ -27,6 +28,12 @@ describe('Update user validations', () => {
       .useMocker((token) => {
         if (token === getRepositoryToken(User)) {
           return createMock<Repository<User>>();
+        }
+
+        if (token === AuthenticationService) {
+          return createMock<AuthenticationService>({
+            userNotExistWith: jest.fn().mockResolvedValue(true),
+          });
         }
 
         return;
@@ -76,8 +83,6 @@ describe('Update user validations', () => {
   });
 
   it('should validate the email', async () => {
-    mockUserRepository.count.mockResolvedValueOnce(1);
-
     await fc.assert(
       fc.asyncProperty(
         fc.oneof(fc.string(), fc.integer()).map((email) =>
@@ -99,8 +104,6 @@ describe('Update user validations', () => {
   });
 
   it('should validate the username', async () => {
-    mockUserRepository.count.mockResolvedValueOnce(1);
-
     await fc.assert(
       fc.asyncProperty(
         fc.oneof(fc.integer(), fc.string({ minLength: 30 })).map((username) =>

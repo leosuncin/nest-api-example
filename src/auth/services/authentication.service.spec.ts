@@ -100,4 +100,30 @@ describe('AuthenticationService', () => {
     expect(mockedUserRepository.merge).toHaveBeenCalledWith(user, changes);
     expect(mockedUserRepository.save).toHaveBeenCalledTimes(1);
   });
+
+  it.each([
+    ['email' as const, user.email, undefined],
+    ['username' as const, user.username, undefined],
+    ['email' as const, user.email, user.id],
+    ['username' as const, user.username, user.id],
+  ])('should check if a user exist', async (property, value, id) => {
+    mockedUserRepository.count.mockResolvedValueOnce(1);
+
+    await expect(service.userNotExistWith(property, value, id)).resolves.toBe(
+      false,
+    );
+  });
+
+  it.each([
+    ['email' as const, 'johndoe@example.com', undefined],
+    ['username' as const, 'john', undefined],
+    ['email' as const, 'johndoe@example.com', user.id],
+    ['username' as const, 'john', user.id],
+  ])('should check if a user not exist', async (property, value, id) => {
+    mockedUserRepository.count.mockResolvedValueOnce(0);
+
+    await expect(service.userNotExistWith(property, value, id)).resolves.toBe(
+      true,
+    );
+  });
 });
