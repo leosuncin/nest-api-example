@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Equal, Not, Repository } from 'typeorm';
+import { type FindOptionsWhere, type Repository, Equal, Not } from 'typeorm';
 
 import type { LoginUser } from '~auth/dto/login-user.dto';
 import type { RegisterUser } from '~auth/dto/register-user.dto';
@@ -41,20 +41,20 @@ export class AuthenticationService {
     return this.userRepository.save(user);
   }
 
-  async userNotExistWith<
-    Property extends keyof Pick<User, 'username' | 'email'>,
-  >(
-    property: Property,
-    value: User[Property],
-    id?: User['id'],
+  async isRegistered(
+    partial: Partial<Pick<User, 'email' | 'id' | 'username'>>,
   ): Promise<boolean> {
-    const count = await this.userRepository.count({
-      where: {
-        [property]: Equal(value),
-        ...(id ? { id: Not(id) } : {}),
-      },
-    });
+    const where: FindOptionsWhere<User> = {};
 
-    return count === 0;
+    for (const [property, value] of Object.entries(partial)) {
+      if (value) {
+        where[property as keyof typeof partial] =
+          property === 'id' ? Not(value) : Equal(value);
+      }
+    }
+
+    const count = await this.userRepository.countBy(where);
+
+    return count >= 1;
   }
 }
