@@ -2,13 +2,12 @@ import { Test } from '@nestjs/testing';
 import { useContainer, validate } from 'class-validator';
 import { createMock } from 'ts-auto-mock';
 
+import { jane, john } from '~auth/fixtures/users';
 import { AuthenticationService } from '~auth/services/authentication.service';
 import {
   IsAlreadyRegister,
   IsAlreadyRegisterConstraint,
 } from '~auth/validators/is-already-register.validator';
-
-import { jane, john } from '../fixtures/users';
 
 class WithEmail {
   @IsAlreadyRegister()
@@ -50,122 +49,114 @@ describe('IsAlreadyRegister', () => {
   it('should fail when an user already exists with the same email', async () => {
     const dto = new WithEmail(john.email);
 
-    mockedAuthenticationService.userNotExistWith.mockResolvedValueOnce(false);
+    mockedAuthenticationService.isRegistered.mockResolvedValueOnce(true);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'email');
-    expect(mockedAuthenticationService.userNotExistWith).toHaveBeenCalledWith(
-      'email',
-      john.email,
-      undefined,
-    );
+    expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
+      email: john.email,
+      id: undefined,
+    });
   });
 
   it('should fail when an user already exists with the same username', async () => {
     const dto = new WithUsername(john.username);
 
-    mockedAuthenticationService.userNotExistWith.mockResolvedValueOnce(false);
+    mockedAuthenticationService.isRegistered.mockResolvedValueOnce(true);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'username');
-    expect(mockedAuthenticationService.userNotExistWith).toHaveBeenCalledWith(
-      'username',
-      john.username,
+    expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
+      username: john.username,
       undefined,
-    );
+    });
   });
 
   it('should pass when no user exists with the email', async () => {
     const dto = new WithEmail(jane.email);
 
-    mockedAuthenticationService.userNotExistWith.mockResolvedValueOnce(true);
+    mockedAuthenticationService.isRegistered.mockResolvedValueOnce(false);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockedAuthenticationService.userNotExistWith).toHaveBeenCalledWith(
-      'email',
-      jane.email,
-      undefined,
-    );
+    expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
+      email: jane.email,
+      id: undefined,
+    });
   });
 
   it('should pass when no user exists with the username', async () => {
     const dto = new WithUsername(jane.username);
 
-    mockedAuthenticationService.userNotExistWith.mockResolvedValueOnce(true);
+    mockedAuthenticationService.isRegistered.mockResolvedValueOnce(false);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockedAuthenticationService.userNotExistWith).toHaveBeenCalledWith(
-      'username',
-      jane.username,
-      undefined,
-    );
+    expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
+      username: jane.username,
+      id: undefined,
+    });
   });
 
   it('should pass when the email is not used by another user', async () => {
     const dto = new WithEmail('johndoe@example.com', john.id);
 
-    mockedAuthenticationService.userNotExistWith.mockResolvedValueOnce(true);
+    mockedAuthenticationService.isRegistered.mockResolvedValueOnce(false);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockedAuthenticationService.userNotExistWith).toHaveBeenCalledWith(
-      'email',
-      'johndoe@example.com',
-      dto.id,
-    );
+    expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
+      email: 'johndoe@example.com',
+      id: dto.id,
+    });
   });
 
   it('should fail when the email is already used by another user', async () => {
     const dto = new WithEmail(jane.email, john.id);
 
-    mockedAuthenticationService.userNotExistWith.mockResolvedValueOnce(false);
+    mockedAuthenticationService.isRegistered.mockResolvedValueOnce(true);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
-    expect(mockedAuthenticationService.userNotExistWith).toHaveBeenCalledWith(
-      'email',
-      jane.email,
-      dto.id,
-    );
+    expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
+      email: jane.email,
+      id: dto.id,
+    });
   });
 
   it('should pass when the username is not used by another user', async () => {
     const dto = new WithUsername('johndoe', john.id);
 
-    mockedAuthenticationService.userNotExistWith.mockResolvedValueOnce(true);
+    mockedAuthenticationService.isRegistered.mockResolvedValueOnce(false);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-    expect(mockedAuthenticationService.userNotExistWith).toHaveBeenCalledWith(
-      'username',
-      'johndoe',
-      dto.id,
-    );
+    expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
+      username: 'johndoe',
+      id: dto.id,
+    });
   });
 
   it('should fail when the username is already used by another user', async () => {
     const dto = new WithUsername(jane.username, john.id);
 
-    mockedAuthenticationService.userNotExistWith.mockResolvedValueOnce(false);
+    mockedAuthenticationService.isRegistered.mockResolvedValueOnce(true);
 
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
-    expect(mockedAuthenticationService.userNotExistWith).toHaveBeenCalledWith(
-      'username',
-      jane.username,
-      dto.id,
-    );
+    expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
+      username: jane.username,
+      id: dto.id,
+    });
   });
 });

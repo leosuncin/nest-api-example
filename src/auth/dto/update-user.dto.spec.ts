@@ -32,7 +32,7 @@ describe('Update user validations', () => {
 
         if (token === AuthenticationService) {
           return createMock<AuthenticationService>({
-            userNotExistWith: jest.fn().mockResolvedValue(true),
+            isRegistered: jest.fn().mockResolvedValue(false),
           });
         }
 

@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { createMock } from 'ts-auto-mock';
-import type { Repository } from 'typeorm';
+import { type FindOptionsWhere, type Repository, Equal, Not } from 'typeorm';
 
 import type { UpdateUser } from '~auth/dto/update-user.dto';
 import { User } from '~auth/entities/user.entity';
@@ -102,28 +102,51 @@ describe('AuthenticationService', () => {
   });
 
   it.each([
-    ['email' as const, user.email, undefined],
-    ['username' as const, user.username, undefined],
-    ['email' as const, user.email, user.id],
-    ['username' as const, user.username, user.id],
-  ])('should check if a user exist', async (property, value, id) => {
-    mockedUserRepository.count.mockResolvedValueOnce(1);
+    [{ email: user.email }, { email: Equal(user.email) }],
+    [{ id: user.id }, { id: Not(user.id) }],
+    [{ username: user.username }, { username: Equal(user.username) }],
+    [
+      { id: user.id, username: 'nostrud' },
+      { id: Not(user.id), username: Equal('nostrud') },
+    ],
+    [
+      { id: user.id, email: 'magna@pariatur.do' },
+      { id: Not(user.id), email: Equal('magna@pariatur.do') },
+    ],
+    [
+      // eslint-disable-next-line unicorn/no-null
+      { email: user.email, username: null, id: undefined },
+      { email: Equal(user.email) },
+    ],
+  ])(
+    'should check if it is registered with %j',
+    async (partial, where: FindOptionsWhere<User>) => {
+      mockedUserRepository.countBy.mockResolvedValueOnce(1);
 
-    await expect(service.userNotExistWith(property, value, id)).resolves.toBe(
-      false,
-    );
-  });
+      // @ts-expect-error mocked value
+      await expect(service.isRegistered(partial)).resolves.toBe(true);
+      expect(mockedUserRepository.countBy).toHaveBeenCalledWith(where);
+    },
+  );
 
   it.each([
-    ['email' as const, 'johndoe@example.com', undefined],
-    ['username' as const, 'john', undefined],
-    ['email' as const, 'johndoe@example.com', user.id],
-    ['username' as const, 'john', user.id],
-  ])('should check if a user not exist', async (property, value, id) => {
-    mockedUserRepository.count.mockResolvedValueOnce(0);
+    [{ email: 'johndoe@example.com' }, { email: Equal('johndoe@example.com') }],
+    [{ username: 'john' }, { username: Equal('john') }],
+    [
+      { email: 'johndoe@example.com', id: user.id },
+      { email: Equal('johndoe@example.com'), id: Not(user.id) },
+    ],
+    [
+      { username: 'john', id: user.id },
+      { username: Equal('john'), id: Not(user.id) },
+    ],
+  ])(
+    'should check if it is not registered with %j',
+    async (partial, where: FindOptionsWhere<User>) => {
+      mockedUserRepository.countBy.mockResolvedValueOnce(0);
 
-    await expect(service.userNotExistWith(property, value, id)).resolves.toBe(
-      true,
-    );
-  });
+      await expect(service.isRegistered(partial)).resolves.toBe(false);
+      expect(mockedUserRepository.countBy).toHaveBeenCalledWith(where);
+    },
+  );
 });

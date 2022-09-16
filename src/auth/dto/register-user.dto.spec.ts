@@ -22,7 +22,7 @@ describe('Register user validations', () => {
       .useMocker((token) => {
         if (token === AuthenticationService) {
           return createMock<AuthenticationService>({
-            userNotExistWith: jest.fn().mockResolvedValue(true),
+            isRegistered: jest.fn().mockResolvedValue(false),
           });
         }
 

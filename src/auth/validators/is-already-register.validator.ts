@@ -7,7 +7,6 @@ import {
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-import type { User } from '~auth/entities/user.entity';
 import { AuthenticationService } from '~auth/services/authentication.service';
 
 @Injectable()
@@ -17,25 +16,18 @@ export class IsAlreadyRegisterConstraint
 {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
-  validate(value: string, { object, property }: ValidationArguments) {
-    if (!this.isValidProperty(property)) return false;
-
-    return this.authenticationService.userNotExistWith(
-      property,
-      value,
+  async validate(value: string, { object, property }: ValidationArguments) {
+    const userExist = await this.authenticationService.isRegistered({
+      [property]: value,
       // @ts-expect-error object has an id property and it's defined
-      object.id as unknown,
-    );
+      id: object.id as unknown,
+    });
+
+    return !userExist;
   }
 
   defaultMessage(): string {
     return '$property «$value» is already registered';
-  }
-
-  private isValidProperty(
-    property: string,
-  ): property is keyof Pick<User, 'email' | 'username'> {
-    return property === 'email' || property === 'username';
   }
 }
 
