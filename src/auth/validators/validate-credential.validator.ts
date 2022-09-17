@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import {
   registerDecorator,
   ValidationArguments,
@@ -7,38 +6,20 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
-import type { Repository } from 'typeorm';
 
-import { User } from '~auth/entities/user.entity';
+import { AuthenticationService } from '~auth/services/authentication.service';
 
 @Injectable()
 @ValidatorConstraint({ name: 'credential', async: true })
 export class ValidateCredentialConstraint
   implements ValidatorConstraintInterface
 {
-  constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
-  ) {}
+  constructor(private readonly authenticationService: AuthenticationService) {}
 
-  async validate(
-    value: string,
-    { object, property }: ValidationArguments,
-  ): Promise<boolean> {
+  validate(_: unknown, { object, property }: ValidationArguments) {
     if (!this.hasCredentials(object)) return false;
 
-    const user = await this.userRepository.findOne({
-      where: {
-        ...(object.id ? { id: object.id } : { username: object.username }),
-      },
-      cache: true,
-    });
-
-    if (!user) return false;
-
-    if (property !== 'password') return true;
-
-    return user.checkPassword(value);
+    return this.authenticationService.verifyCredentials(object, property);
   }
 
   defaultMessage(): string {

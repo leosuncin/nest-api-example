@@ -149,4 +149,31 @@ describe('AuthenticationService', () => {
       expect(mockedUserRepository.countBy).toHaveBeenCalledWith(where);
     },
   );
+
+  it.each([
+    [credentials, 'username', true],
+    [credentials, 'password', true],
+    [user, 'username', true],
+    [user, 'password', true],
+    [{ id: user.id, password: 'password' }, 'password', false],
+    [{ username: '' }, 'username', false],
+  ])(
+    'should verify the credentials %j',
+    async (credentials, property, expected) => {
+      mockedUserRepository.findOneBy.mockResolvedValueOnce(
+        // eslint-disable-next-line unicorn/no-null
+        Object.keys(credentials).length > 1 ? user : null,
+      );
+
+      await expect(
+        // @ts-expect-error mocked value
+        service.verifyCredentials(credentials, property),
+      ).resolves.toBe(expected);
+      expect(mockedUserRepository.findOneBy).toHaveBeenCalledWith(
+        'id' in credentials
+          ? { id: credentials.id }
+          : { username: credentials.username },
+      );
+    },
+  );
 });
