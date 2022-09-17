@@ -1,16 +1,14 @@
 import { faker } from '@faker-js/faker';
 import { Test } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
 import { createMock } from 'ts-auto-mock';
-import type { Repository } from 'typeorm';
 
 import { LoginUser } from '~auth/dto/login-user.dto';
-import { User } from '~auth/entities/user.entity';
 import { loginUserFactory } from '~auth/factories/login-user.factory';
 import { login } from '~auth/fixtures/credentials';
+import { AuthenticationService } from '~auth/services/authentication.service';
 import { ValidateCredentialConstraint } from '~auth/validators/validate-credential.validator';
 
 describe('Login user validations', () => {
@@ -19,13 +17,9 @@ describe('Login user validations', () => {
       providers: [ValidateCredentialConstraint],
     })
       .useMocker((token) => {
-        if (token === getRepositoryToken(User)) {
-          return createMock<Repository<User>>({
-            findOne: jest.fn().mockResolvedValue(
-              createMock<User>({
-                checkPassword: jest.fn().mockResolvedValue(true),
-              }),
-            ),
+        if (token === AuthenticationService) {
+          return createMock<AuthenticationService>({
+            verifyCredentials: jest.fn().mockResolvedValue(true),
           });
         }
 

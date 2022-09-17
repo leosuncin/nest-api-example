@@ -1,16 +1,13 @@
 import { faker } from '@faker-js/faker';
 import { HttpStatus } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
 import nock, { cleanAll, enableNetConnect } from 'nock';
 import { createMock } from 'ts-auto-mock';
-import type { Repository } from 'typeorm';
 
 import { UpdateUser } from '~auth/dto/update-user.dto';
-import { User } from '~auth/entities/user.entity';
 import { updateUserFactory } from '~auth/factories/update-user.factory';
 import { PASSWORD_HASHES } from '~auth/fixtures/password-hashes';
 import { john as user } from '~auth/fixtures/users';
@@ -19,20 +16,15 @@ import { IsAlreadyRegisterConstraint } from '~auth/validators/is-already-registe
 import { ValidateCredentialConstraint } from '~auth/validators/validate-credential.validator';
 
 describe('Update user validations', () => {
-  let mockUserRepository: jest.Mocked<Repository<User>>;
-
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [IsAlreadyRegisterConstraint, ValidateCredentialConstraint],
     })
       .useMocker((token) => {
-        if (token === getRepositoryToken(User)) {
-          return createMock<Repository<User>>();
-        }
-
         if (token === AuthenticationService) {
           return createMock<AuthenticationService>({
             isRegistered: jest.fn().mockResolvedValue(false),
+            verifyCredentials: jest.fn().mockResolvedValue(true),
           });
         }
 
@@ -47,8 +39,6 @@ describe('Update user validations', () => {
       .replyDate()
       .get(/range\/\w{5}/)
       .reply(HttpStatus.OK, PASSWORD_HASHES);
-
-    mockUserRepository = module.get(getRepositoryToken(User));
   });
 
   afterAll(() => {
@@ -57,10 +47,6 @@ describe('Update user validations', () => {
   });
 
   it('should pass with valid data', async () => {
-    mockUserRepository.findOne.mockResolvedValue(
-      createMock<User>({ checkPassword: jest.fn().mockResolvedValue(true) }),
-    );
-
     await fc.assert(
       fc.asyncProperty(
         fc

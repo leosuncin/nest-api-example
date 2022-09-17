@@ -57,4 +57,25 @@ export class AuthenticationService {
 
     return count >= 1;
   }
+
+  async verifyCredentials(
+    credentials: Required<LoginUser | UpdateUser>,
+    property: string,
+  ): Promise<boolean> {
+    const where: FindOptionsWhere<User> = {};
+
+    if ('id' in credentials) {
+      where['id'] = credentials.id;
+    } else {
+      where['username'] = credentials.username;
+    }
+
+    const user = await this.userRepository.findOneBy(where);
+
+    if (!user) return false;
+
+    if (property !== 'password') return true;
+
+    return user.checkPassword(credentials.password);
+  }
 }
