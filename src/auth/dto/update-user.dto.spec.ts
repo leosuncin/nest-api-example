@@ -92,7 +92,7 @@ describe('Update user validations', () => {
   it('should validate the username', async () => {
     await fc.assert(
       fc.asyncProperty(
-        fc.oneof(fc.integer(), fc.string({ minLength: 30 })).map((username) =>
+        fc.oneof(fc.integer(), fc.string({ minLength: 31 })).map((username) =>
           plainToInstance(UpdateUser, {
             username,
             id: user.id,
