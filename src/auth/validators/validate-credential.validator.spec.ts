@@ -64,29 +64,27 @@ describe('ValidateCredential', () => {
     mockedAuthenticationService = module.get(AuthenticationService);
   });
 
-  it('should pass with the correct credentials', async () => {
-    const dto = new DTO(user.username, user.password);
+  it.each([credentials, { id: user.id, password: user.password }])(
+    'should pass with the correct credentials',
+    async (data) => {
+      const dto = DTO.from(data);
 
-    const errors = await validate(dto);
+      const errors = await validate(dto);
 
-    expect(errors).toHaveLength(0);
-    expect(
-      mockedAuthenticationService.verifyCredentials,
-    ).toHaveBeenNthCalledWith(1, dto, 'username');
-    expect(
-      mockedAuthenticationService.verifyCredentials,
-    ).toHaveBeenNthCalledWith(2, dto, 'password');
-  });
+      expect(errors).toHaveLength(0);
+      expect(
+        mockedAuthenticationService.verifyCredentials,
+      ).toHaveBeenNthCalledWith(1, dto, 'username');
+      expect(
+        mockedAuthenticationService.verifyCredentials,
+      ).toHaveBeenNthCalledWith(2, dto, 'password');
+    },
+  );
 
   it.each([
-    {},
-    { username: undefined, password: undefined },
-    { username: 42, password: false },
     { username: 'jane-doe', password: credentials.password },
     { username: credentials.username, password: 'MiContraseña' },
-    { password: credentials.password },
-    { username: credentials.username },
-    { usuario: credentials.username, contrasena: credentials.password },
+    { id: user.id, password: 'Anim ex fugiat sunt ut culpa.' },
   ])('should fail with invalid credentials: %o', async (data) => {
     const dto = DTO.from(data);
 

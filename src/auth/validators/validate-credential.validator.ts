@@ -1,5 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import {
+  isString,
+  isUUID,
+  matches,
+  maxLength,
+  minLength,
   registerDecorator,
   ValidationArguments,
   ValidationOptions,
@@ -17,7 +22,7 @@ export class ValidateCredentialConstraint
   constructor(private readonly authenticationService: AuthenticationService) {}
 
   validate(_: unknown, { object, property }: ValidationArguments) {
-    if (!this.hasCredentials(object)) return false;
+    if (!this.hasCredentials(object)) return true;
 
     return this.authenticationService.verifyCredentials(object, property);
   }
@@ -32,9 +37,19 @@ export class ValidateCredentialConstraint
     id?: string;
     [key: string]: unknown;
   } {
-    return (
-      object.hasOwnProperty('username') || object.hasOwnProperty('password')
-    );
+    const { id, password, username } = object as Record<string, unknown>;
+    const isValidId = isString(id) && isUUID(id, '4');
+    const isValidPassword =
+      isString(password) && minLength(password, 8) && maxLength(password, 30);
+    const isValidUsername =
+      isString(username) &&
+      maxLength(username, 30) &&
+      matches(username, /^[\w.-]+$/i);
+
+    if (isValidId && isValidPassword) return true;
+    if (isValidPassword && isValidUsername) return true;
+
+    return false;
   }
 }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {
+  isEmpty,
   registerDecorator,
   ValidationArguments,
   ValidationOptions,
@@ -17,6 +18,8 @@ export class IsAlreadyRegisterConstraint
   constructor(private readonly authenticationService: AuthenticationService) {}
 
   async validate(value: string, { object, property }: ValidationArguments) {
+    if (isEmpty(value)) return true;
+
     const userExist = await this.authenticationService.isRegistered({
       [property]: value,
       // @ts-expect-error object has an id property and it's defined
