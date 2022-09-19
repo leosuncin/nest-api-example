@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/leosuncin/nest-api-example/compare/v1.7.0...v1.7.1) (2022-09-19)
+
+### Bug Fixes
+
+- **auth:** amend custom validators ([495048c](https://github.com/leosuncin/nest-api-example/commit/495048c8679e0bf6630d2f4d832bbb378c3d6747))
+
+### Performance Improvements
+
+- **auth:** improve check whether the user is registered ([072ac1f](https://github.com/leosuncin/nest-api-example/commit/072ac1f862c5b57ec01a2d0f48cc47feb5a9a43b))
+
 # [1.7.0](https://github.com/leosuncin/nest-api-example/compare/v1.6.0...v1.7.0) (2022-09-14)
 
 ### Features
