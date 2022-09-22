@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { e2e, request, spec } from 'pactum';
+import { e2e, spec } from 'pactum';
 
 import { login as credentials } from '~auth/fixtures/credentials';
 import { createCommentFactory } from '~blog/factories/create-comment.factory';
@@ -24,10 +24,6 @@ describe('CommentController (e2e)', () => {
   const testCase = e2e('Comment CRUD');
   const articleId = articleByJohn.id;
   let tokenCookie: string;
-
-  beforeAll(() => {
-    request.setBaseUrl('http://localhost:3000');
-  });
 
   beforeEach(async () => {
     tokenCookie = await spec()

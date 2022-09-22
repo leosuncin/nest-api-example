@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { request, spec } from 'pactum';
+import { spec } from 'pactum';
 
 import { TOKEN_COOKIE_NAME } from '~auth/constants';
 import { loginUserFactory } from '~auth/factories/login-user.factory';
@@ -10,10 +10,6 @@ import { isoDateRegex, uuidRegex } from '~common/test-matchers';
 
 describe('AuthController (e2e)', () => {
   let tokenCookie: string;
-
-  beforeAll(() => {
-    request.setBaseUrl('http://localhost:3000');
-  });
 
   beforeEach(async () => {
     tokenCookie = await spec()

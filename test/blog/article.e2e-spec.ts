@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { e2e, request, spec } from 'pactum';
+import { e2e, spec } from 'pactum';
 
 import { login as credentials } from '~auth/fixtures/credentials';
 import { createArticleFactory } from '~blog/factories/create-article.factory';
@@ -25,10 +25,6 @@ const forbiddenError = {
 describe('ArticleController (e2e)', () => {
   const testCase = e2e('Article CRUD');
   let tokenCookie: string;
-
-  beforeAll(() => {
-    request.setBaseUrl('http://localhost:3000');
-  });
 
   beforeEach(async () => {
     tokenCookie = await spec()
