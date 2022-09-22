@@ -1,11 +1,7 @@
 import { HttpStatus } from '@nestjs/common';
-import { request, spec } from 'pactum';
+import { spec } from 'pactum';
 
 describe('HealthController (e2e)', () => {
-  beforeAll(() => {
-    request.setBaseUrl('http://localhost:3000');
-  });
-
   it('/health (GET)', async () => {
     await spec()
       .get('/health')
