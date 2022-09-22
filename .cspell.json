@@ -53,7 +53,8 @@
     "oxsecurity",
     "mypy",
     "ttypescript",
-    "postgres"
+    "postgres",
+    "httpie"
   ],
   "dictionaries": [
     "en_US",
