@@ -59,7 +59,6 @@ specifiers:
   hibp: ^11.1.0
   husky: ^8.0.1
   jest: ^29.0.0
-  jest-dev-server: ^6.1.1
   jest-ts-auto-mock: ^2.1.0
   lint-staged: ^13.0.3
   nestjs-typeorm-paginate: ^4.0.1
@@ -166,7 +165,6 @@ devDependencies:
   fast-check: 3.1.1
   husky: 8.0.1
   jest: 29.0.3_j25ao5kxszbarqr2orvxxixgai
-  jest-dev-server: 6.1.1
   jest-ts-auto-mock: 2.1.0_ts-auto-mock@3.6.2
   lint-staged: 13.0.3
   nock: 13.2.9
@@ -1043,16 +1041,6 @@ packages:
   /@faker-js/faker/7.5.0:
     resolution: {integrity: sha512-8wNUCCUHvfvI0gQpDUho/3gPzABffnCn5um65F8dzQ86zz6dlt4+nmAA7PQUc8L+eH+9RgR/qzy5N/8kN0Ozdw==}
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
-    dev: true
-
-  /@hapi/hoek/9.3.0:
-    resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}
-    dev: true
-
-  /@hapi/topo/5.1.0:
-    resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
-    dependencies:
-      '@hapi/hoek': 9.3.0
     dev: true
 
   /@humanwhocodes/config-array/0.10.4:
@@ -2008,20 +1996,6 @@ packages:
       - supports-color
     dev: true
 
-  /@sideway/address/4.1.4:
-    resolution: {integrity: sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==}
-    dependencies:
-      '@hapi/hoek': 9.3.0
-    dev: true
-
-  /@sideway/formula/3.0.0:
-    resolution: {integrity: sha512-vHe7wZ4NOXVfkoRb8T5otiENVlT7a3IAiw7H5M2+GO+9CDgcVUUsX1zalAztCmwyOr2RUTGJdgB+ZvSVqmdHmg==}
-    dev: true
-
-  /@sideway/pinpoint/2.0.0:
-    resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==}
-    dev: true
-
   /@sinclair/typebox/0.24.41:
     resolution: {integrity: sha512-TJCgQurls4FipFvHeC+gfAzb+GGstL0TDwYJKQVtTeSvJIznWzP7g3bAd5gEBlr8+bIxqnWS9VGVWREDhmE8jA==}
     dev: true
@@ -2957,14 +2931,6 @@ packages:
     hasBin: true
     dev: true
 
-  /axios/0.25.0:
-    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
-    dependencies:
-      follow-redirects: 1.15.1
-    transitivePeerDependencies:
-      - debug
-    dev: true
-
   /babel-jest/29.0.3_@babel+core@7.19.0:
     resolution: {integrity: sha512-ApPyHSOhS/sVzwUOQIWJmdvDhBsMG01HX9z7ogtkp1TToHGGUWFlnXJUIzCgKPSfiYLn3ibipCYzsKSURHEwLg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -3555,11 +3521,6 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /commander/5.1.0:
-    resolution: {integrity: sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==}
-    engines: {node: '>= 6'}
-    dev: true
-
   /commander/6.2.1:
     resolution: {integrity: sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==}
     engines: {node: '>= 6'}
@@ -3868,14 +3829,6 @@ packages:
       vscode-uri: 3.0.3
     transitivePeerDependencies:
       - encoding
-    dev: true
-
-  /cwd/0.10.0:
-    resolution: {integrity: sha512-YGZxdTTL9lmLkCUTpg4j0zQ7IhRB5ZmqNBbGCl3Tg6MP/d5/6sY7L5mmTjzbc6JKgVZYiqTQTNhPFsbXNGlRaA==}
-    engines: {node: '>=0.8'}
-    dependencies:
-      find-pkg: 0.1.2
-      fs-exists-sync: 0.1.0
     dev: true
 
   /dargs/7.0.0:
@@ -4738,13 +4691,6 @@ packages:
       - supports-color
     dev: true
 
-  /expand-tilde/1.2.2:
-    resolution: {integrity: sha512-rtmc+cjLZqnu9dSYosX9EWmSJhTwpACgJQTfj4hgg2JjOD/6SIQalZrt4a3aQeh++oNxkazcaxrhPUj6+g5G/Q==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      os-homedir: 1.0.2
-    dev: true
-
   /expand-tilde/2.0.2:
     resolution: {integrity: sha512-A5EmesHW6rfnZ9ysHQjPdJRni0SRar0tjtG5MNtm9n5TUvsYU8oozprtRD4AqHxcZWWlVuAmQo2nWKfN9oyjTw==}
     engines: {node: '>=0.10.0'}
@@ -4957,32 +4903,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /find-file-up/0.1.3:
-    resolution: {integrity: sha512-mBxmNbVyjg1LQIIpgO8hN+ybWBgDQK8qjht+EbrTCGmmPV/sc7RF1i9stPTD6bpvXZywBdrwRYxhSdJv867L6A==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      fs-exists-sync: 0.1.0
-      resolve-dir: 0.1.1
-    dev: true
-
-  /find-pkg/0.1.2:
-    resolution: {integrity: sha512-0rnQWcFwZr7eO0513HahrWafsc3CTFioEB7DRiEYCUM/70QXSY8f3mCST17HXLcPvEhzH/Ty/Bxd72ZZsr/yvw==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      find-file-up: 0.1.3
-    dev: true
-
-  /find-process/1.4.7:
-    resolution: {integrity: sha512-/U4CYp1214Xrp3u3Fqr9yNynUrr5Le4y0SsJh2lMDDSbpwYSz3M2SMWQC+wqcx79cN8PQtHQIL8KnuY9M66fdg==}
-    hasBin: true
-    dependencies:
-      chalk: 4.1.2
-      commander: 5.1.0
-      debug: 4.3.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /find-up/2.1.0:
     resolution: {integrity: sha512-NWzkk0jSJtTt08+FBFMvXoeZnOJD+jTtsRmBYbAIzJdX6l7dLgR7CTubCM5/eDdPUBvLCeVasP1brfVR/9/EZQ==}
     engines: {node: '>=4'}
@@ -5055,16 +4975,6 @@ packages:
 
   /fn.name/1.1.0:
     resolution: {integrity: sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==}
-    dev: true
-
-  /follow-redirects/1.15.1:
-    resolution: {integrity: sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
     dev: true
 
   /for-in/1.0.2:
@@ -5164,11 +5074,6 @@ packages:
 
   /fromentries/1.3.2:
     resolution: {integrity: sha512-cHEpEQHUg0f8XdtZCc2ZAhrHzKzT0MrFUTcvx+hfxYu7rGMDc5SKoXFh+n4YigxsHXRzc6OrCshdR1bWH6HHyg==}
-    dev: true
-
-  /fs-exists-sync/0.1.0:
-    resolution: {integrity: sha512-cR/vflFyPZtrN6b38ZyWxpWdhlXrzZEBawlpBQMq7033xVY7/kg0GDMBK5jg8lDYQckdJ5x/YC88lM3C7VMsLg==}
-    engines: {node: '>=0.10.0'}
     dev: true
 
   /fs-extra/10.1.0:
@@ -5363,14 +5268,6 @@ packages:
       ini: 1.3.8
     dev: true
 
-  /global-modules/0.2.3:
-    resolution: {integrity: sha512-JeXuCbvYzYXcwE6acL9V2bAOeSIGl4dD+iwLY9iUx2VBJJ80R18HCn+JCwHM9Oegdfya3lEkGCdaRkSyc10hDA==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      global-prefix: 0.1.5
-      is-windows: 0.2.0
-    dev: true
-
   /global-modules/1.0.0:
     resolution: {integrity: sha512-sKzpEkf11GpOFuw0Zzjzmt4B4UZwjOcG757PPvrfhxcLFbq0wpsgpOqxpxtxFiCG4DtG93M6XRVbF2oGdev7bg==}
     engines: {node: '>=0.10.0'}
@@ -5378,16 +5275,6 @@ packages:
       global-prefix: 1.0.2
       is-windows: 1.0.2
       resolve-dir: 1.0.1
-    dev: true
-
-  /global-prefix/0.1.5:
-    resolution: {integrity: sha512-gOPiyxcD9dJGCEArAhF4Hd0BAqvAe/JzERP7tYumE4yIkmIedPUVXcJFWbV3/p/ovIIvKjkrTk+f1UVkq7vvbw==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      homedir-polyfill: 1.0.3
-      ini: 1.3.8
-      is-windows: 0.2.0
-      which: 1.3.1
     dev: true
 
   /global-prefix/1.0.2:
@@ -6095,11 +5982,6 @@ packages:
       call-bind: 1.0.2
     dev: true
 
-  /is-windows/0.2.0:
-    resolution: {integrity: sha512-n67eJYmXbniZB7RF4I/FTjK1s6RPOCTxhYrVYLRaCt3lF0mpWZPKr3T2LSZAqyjQsxR2qMmGYXXzK0YWwcPM1Q==}
-    engines: {node: '>=0.10.0'}
-    dev: true
-
   /is-windows/1.0.2:
     resolution: {integrity: sha512-eXK1UInq2bPmjyX6e3VHIzMLobc4J94i4AWn+Hpq3OU5KkrRC96OAcR3PRJ/pGu6m8TRnBHP9dkXQVsT/COVIA==}
     engines: {node: '>=0.10.0'}
@@ -6346,21 +6228,6 @@ packages:
       strip-json-comments: 3.1.1
       ts-node: 10.9.1_rtei3hyedbk3midmyqq6n7ag5m
     transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /jest-dev-server/6.1.1:
-    resolution: {integrity: sha512-z5LnaGDvlIkdMv/rppSO4+rq+GyQKf1xI9oiBxf9/2EBeN2hxRaWiMvaLNDnHPZj2PAhBXsycrKslDDoZO2Xtw==}
-    dependencies:
-      chalk: 4.1.2
-      cwd: 0.10.0
-      find-process: 1.4.7
-      prompts: 2.4.2
-      spawnd: 6.0.2
-      tree-kill: 1.2.2
-      wait-on: 6.0.1
-    transitivePeerDependencies:
-      - debug
       - supports-color
     dev: true
 
@@ -6684,16 +6551,6 @@ packages:
       - '@types/node'
       - supports-color
       - ts-node
-    dev: true
-
-  /joi/17.6.0:
-    resolution: {integrity: sha512-OX5dG6DTbcr/kbMFj0KGYxuew69HPcAE3K/sZpEV2nP6e/j/C0HV+HNiBPCASxdx5T7DMoa0s8UeHWMnb6n2zw==}
-    dependencies:
-      '@hapi/hoek': 9.3.0
-      '@hapi/topo': 5.1.0
-      '@sideway/address': 4.1.4
-      '@sideway/formula': 3.0.0
-      '@sideway/pinpoint': 2.0.0
     dev: true
 
   /js-sdsl/4.1.4:
@@ -7817,11 +7674,6 @@ packages:
       wcwidth: 1.0.1
     dev: true
 
-  /os-homedir/1.0.2:
-    resolution: {integrity: sha512-B5JU3cabzk8c67mRRd3ECmROafjYMXbuzlwtqdM8IbS8ktlTix8aFGb2bAGKrSRIlnfKwovGUUr72JUPyOb6kQ==}
-    engines: {node: '>=0.10.0'}
-    dev: true
-
   /os-name/4.0.1:
     resolution: {integrity: sha512-xl9MAoU97MH1Xt5K9ERft2YfCAoaO6msy1OBA0ozxEC0x0TmIoE6K3QvgJMMZA9yKGLmHXNY/YZoDbiGDj4zYw==}
     engines: {node: '>=10'}
@@ -8601,14 +8453,6 @@ packages:
       resolve-from: 5.0.0
     dev: true
 
-  /resolve-dir/0.1.1:
-    resolution: {integrity: sha512-QxMPqI6le2u0dCLyiGzgy92kjkkL6zO0XyvHzjdTNH3zM6e5Hz3BwG6+aEyNgiQ5Xz6PwTwgQEj3U50dByPKIA==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      expand-tilde: 1.2.2
-      global-modules: 0.2.3
-    dev: true
-
   /resolve-dir/1.0.1:
     resolution: {integrity: sha512-R7uiTjECzvOsWSfdM0QKFNBVFcK27aHOUwdvK53BcW8zqnGdYp0Fbj82cy54+2A4P2tFM22J5kRfe1R+lM/1yg==}
     engines: {node: '>=0.10.0'}
@@ -9071,14 +8915,6 @@ packages:
 
   /spawn-error-forwarder/1.0.0:
     resolution: {integrity: sha512-gRjMgK5uFjbCvdibeGJuy3I5OYz6VLoVdsOJdA6wV0WlfQVLFueoqMxwwYD9RODdgb6oUIvlRlsyFSiQkMKu0g==}
-    dev: true
-
-  /spawnd/6.0.2:
-    resolution: {integrity: sha512-+YJtx0dvy2wt304MrHD//tASc84zinBUYU1jacPBzrjhZUd7RsDo25krxr4HUHAQzEQFuMAs4/p+yLYU5ciZ1w==}
-    dependencies:
-      exit: 0.1.2
-      signal-exit: 3.0.7
-      tree-kill: 1.2.2
     dev: true
 
   /spdx-correct/3.1.1:
@@ -10042,20 +9878,6 @@ packages:
 
   /vscode-uri/3.0.3:
     resolution: {integrity: sha512-EcswR2S8bpR7fD0YPeS7r2xXExrScVMxg4MedACaWHEtx9ftCF/qHG1xGkolzTPcEmjTavCQgbVzHUIdTMzFGA==}
-    dev: true
-
-  /wait-on/6.0.1:
-    resolution: {integrity: sha512-zht+KASY3usTY5u2LgaNqn/Cd8MukxLGjdcZxT2ns5QzDmTFc4XoWBgC+C/na+sMRZTuVygQoMYwdcVjHnYIVw==}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
-    dependencies:
-      axios: 0.25.0
-      joi: 17.6.0
-      lodash: 4.17.21
-      minimist: 1.2.6
-      rxjs: 7.5.6
-    transitivePeerDependencies:
-      - debug
     dev: true
 
   /walker/1.0.8:

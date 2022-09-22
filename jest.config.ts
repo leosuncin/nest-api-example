@@ -31,8 +31,6 @@ export default {
       moduleDirectories: ['node_modules', __dirname],
       moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
       setupFilesAfterEnv: ['dotenv/config'],
-      globalSetup: '<rootDir>/global-setup.ts',
-      globalTeardown: '<rootDir>/global-teardown.ts',
     },
   ],
 };
