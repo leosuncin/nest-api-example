@@ -105,7 +105,6 @@
     "fast-check": "^3.1.1",
     "husky": "^8.0.1",
     "jest": "^29.0.0",
-    "jest-dev-server": "^6.1.1",
     "jest-ts-auto-mock": "^2.1.0",
     "lint-staged": "^13.0.3",
     "nock": "^13.2.4",
