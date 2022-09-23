@@ -1,0 +1,127 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start",
+      "problemMatcher": ["$tsc"],
+      "label": "Start the Nest.js application",
+      "detail": "nest start",
+      "isBackground": true
+    },
+    {
+      "type": "shell",
+      "command": "rm",
+      "args": ["-rf", "dist"],
+      "problemMatcher": [],
+      "hide": true,
+      "label": "Clean «dist» folder",
+      "detail": "rm -rf dist"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "problemMatcher": ["$tsc"],
+      "group": "build",
+      "dependsOn": ["Clean «dist» folder"],
+      "label": "Build the Nest.js application",
+      "detail": "nest build"
+    },
+    {
+      "type": "npm",
+      "script": "start:debug",
+      "problemMatcher": ["$tsc-watch"],
+      "isBackground": true,
+      "label": "Start the Nest.js application in debug mode",
+      "detail": "nest start --debug --watch"
+    },
+    {
+      "type": "npm",
+      "script": "start:dev",
+      "isBackground": true,
+      "problemMatcher": ["$tsc-watch"],
+      "label": "Start the Nest.js application in development mode",
+      "detail": "nest start --watch"
+    },
+    {
+      "type": "npm",
+      "script": "db:create",
+      "problemMatcher": [],
+      "label": "Create the database",
+      "detail": "typeorm-extension db:create --synchronize=no --initialDatabase=postgres"
+    },
+    {
+      "type": "npm",
+      "script": "db:drop",
+      "problemMatcher": [],
+      "label": "Drop the database",
+      "detail": "typeorm-extension db:drop --synchronize=no --initialDatabase=postgres"
+    },
+    {
+      "type": "npm",
+      "script": "db:seed",
+      "problemMatcher": [],
+      "label": "Seed the database",
+      "detail": "typeorm-extension seed"
+    },
+    {
+      "type": "npm",
+      "script": "format",
+      "problemMatcher": [],
+      "label": "Format the source code",
+      "detail": "prettier --write \"{src,apps,libs,test}/**/*.ts\""
+    },
+    {
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$eslint-stylish"],
+      "label": "Lint the source code",
+      "detail": "eslint ."
+    },
+    {
+      "type": "npm",
+      "script": "test",
+      "problemMatcher": [],
+      "group": "test",
+      "label": "Run unit tests",
+      "detail": "jest --selectProjects 'Unit test'"
+    },
+    {
+      "type": "npm",
+      "script": "test:cov",
+      "problemMatcher": [],
+      "label": "Run unit tests with code coverage",
+      "detail": "jest --selectProjects 'Unit test' --coverage"
+    },
+    {
+      "type": "npm",
+      "script": "test:watch",
+      "problemMatcher": [],
+      "group": "test",
+      "dependsOn": ["Start the Nest.js application in development mode"],
+      "label": "Run tests in watch mode",
+      "detail": "jest --watch"
+    },
+    {
+      "type": "npm",
+      "script": "test:e2e",
+      "problemMatcher": [],
+      "group": "test",
+      "dependsOn": ["Start the Nest.js application in development mode"],
+      "label": "Run E2E tests",
+      "detail": "jest --selectProjects 'E2E test'"
+    },
+    {
+      "type": "docker-compose",
+      "dockerCompose": {
+        "up": {
+          "detached": true
+        },
+        "envFile": ".env",
+        "files": ["${workspaceFolder}/docker-compose.yml"]
+      },
+      "label": "Run services with docker compose",
+      "detail": "docker-compose up"
+    }
+  ]
+}
