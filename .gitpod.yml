@@ -6,18 +6,17 @@ tasks:
   - name: Prepare everything
     init: |
       pnpm install
-      cp .env.example .env
+      cp -u .env.example .env
       pnpm db:create
       pnpm typeorm migration:run
       pnpm db:seed
-      gp sync-done serve
+      gp sync-done setup
     command: pnpm start:dev
-  - name: unit tests
-    command: pnpm test
-  - name: e2e Tests
+  - name: watch tests
     command: |
+      gp sync-await setup
       gp ports await 3000
-      pnpm test:e2e
+      pnpm test:watch
 
 image:
   file: .gitpod.Dockerfile
