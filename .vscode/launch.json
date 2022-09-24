@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach by process ID",
+      "type": "node",
+      "request": "attach",
+      "processId": "${command:PickProcess}",
+      "restart": true
+    },
+    {
+      "name": "Launch the application",
+      "type": "node",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["start:dev"],
+      "sourceMaps": true
+    },
+    {
+      "type": "node",
+      "name": "Launch tests",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": ["--runInBand"]
+    },
+    {
+      "type": "node",
+      "name": "Launch current test",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": ["--runInBand", "--runTestsByPath", "${relativeFile}"]
+    }
+  ]
+}
