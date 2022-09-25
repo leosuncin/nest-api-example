@@ -8,7 +8,7 @@ import {
   TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
 import { type TestingModule, Test } from '@nestjs/testing';
-import { createMock } from 'ts-auto-mock';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 import { HealthController } from '~app/health.controller';
 
@@ -66,26 +66,25 @@ describe('HealthController', () => {
       controllers: [HealthController],
     })
       .useMocker((token) => {
+        let mock;
+
         if (token === HealthCheckService) {
-          return createMock<HealthCheckService>({
-            check: jest.fn().mockImplementation(checkHealthIndicators),
-          });
+          mock = createMockInstance(HealthCheckService);
+          mock.check.mockImplementation(checkHealthIndicators);
         }
 
         if (token === TypeOrmHealthIndicator) {
-          return createMock<TypeOrmHealthIndicator>({
-            pingCheck: jest.fn().mockImplementation(getStatus),
-          });
+          mock = createMockInstance(TypeOrmHealthIndicator);
+          mock.pingCheck.mockImplementation(getStatus);
         }
 
         if (token === MemoryHealthIndicator) {
-          return createMock<MemoryHealthIndicator>({
-            checkHeap: jest.fn().mockImplementation(getStatus),
-            checkRSS: jest.fn().mockImplementation(getStatus),
-          });
+          mock = createMockInstance(MemoryHealthIndicator);
+          mock.checkHeap.mockImplementation(getStatus);
+          mock.checkRSS.mockImplementation(getStatus);
         }
 
-        return;
+        return mock;
       })
       .compile();
 
