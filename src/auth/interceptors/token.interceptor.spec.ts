@@ -3,9 +3,9 @@ import { ConfigService } from '@nestjs/config';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { JwtService } from '@nestjs/jwt';
 import { Test } from '@nestjs/testing';
+import { createMockInstance } from 'jest-create-mock-instance';
 import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
-import { createMock } from 'ts-auto-mock';
 
 import { type AuthConfig, auth } from '~auth/config/auth';
 import { TOKEN_COOKIE_NAME } from '~auth/constants';
@@ -22,20 +22,22 @@ describe('TokenInterceptor', () => {
       providers: [TokenInterceptor],
     })
       .useMocker((token) => {
+        let mock;
+
         if (token === JwtService) {
-          return createMock<JwtService>();
+          mock = createMockInstance(JwtService);
         }
 
         if (token === ConfigService) {
-          return createMock<ConfigService>({
-            getOrThrow(propertyPath: keyof AuthConfig) {
+          mock = createMockInstance(ConfigService);
+          mock.getOrThrow.mockImplementation(
+            (propertyPath: keyof AuthConfig) =>
               // eslint-disable-next-line security/detect-object-injection
-              return auth()[propertyPath];
-            },
-          });
+              auth()[propertyPath],
+          );
         }
 
-        return;
+        return mock;
       })
       .compile();
 
