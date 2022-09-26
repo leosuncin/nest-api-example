@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { createMock } from 'ts-auto-mock';
+import { createMockInstance } from 'jest-create-mock-instance';
 import { Repository } from 'typeorm';
 
 import { User } from '~auth/entities/user.entity';
@@ -18,27 +18,19 @@ describe('ArticleService', () => {
       providers: [ArticleService],
     })
       .useMocker((token) => {
+        let mock;
+
         if (token === getRepositoryToken(Article)) {
-          const mock = createMock<Repository<Article>>({
-            create: jest
-              .fn()
-              .mockImplementation((dto: CreateArticle) =>
-                Object.assign(new Article(), dto),
-              ),
-            save: jest
-              .fn()
-              .mockImplementation((article: Article) =>
-                Promise.resolve(article),
-              ),
-            merge: jest.fn().mockImplementation(Object.assign),
-          });
-
+          mock = createMockInstance<Repository<Article>>(Repository);
+          mock.create.mockImplementation((dto) => Article.fromPartial(dto));
+          mock.save.mockImplementation((article) =>
+            Promise.resolve(article as Article),
+          );
+          mock.merge.mockImplementation(Object.assign);
           Object.setPrototypeOf(mock, Repository.prototype);
-
-          return mock;
         }
 
-        return;
+        return mock;
       })
       .compile();
 
