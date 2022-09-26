@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { Test } from '@nestjs/testing';
 import { useContainer, validate } from 'class-validator';
-import { createMock } from 'ts-auto-mock';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 import { ArticleService } from '~blog/services/article.service';
 import {
@@ -24,19 +24,18 @@ describe('ArticleExist', () => {
       providers: [ArticleExistConstraint],
     })
       .useMocker((token) => {
+        let mock;
+
         if (token === ArticleService) {
-          return createMock<ArticleService>({
-            checkExist: jest
-              .fn()
-              .mockImplementationOnce((articleId: string) =>
-                Promise.resolve(
-                  articleId === 'a832e632-0335-4191-8469-4d849bbb72be',
-                ),
-              ),
-          });
+          mock = createMockInstance(ArticleService);
+          mock.checkExist.mockImplementationOnce((articleId) =>
+            Promise.resolve(
+              articleId === 'a832e632-0335-4191-8469-4d849bbb72be',
+            ),
+          );
         }
 
-        return;
+        return mock;
       })
       .compile();
 
