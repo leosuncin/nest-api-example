@@ -1,7 +1,7 @@
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Test } from '@nestjs/testing';
-import { createMock } from 'ts-auto-mock';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 import { AuthController } from '~auth/controllers/auth.controller';
 import type { LoginUser } from '~auth/dto/login-user.dto';
@@ -20,40 +20,37 @@ describe('AuthController', () => {
       controllers: [AuthController],
     })
       .useMocker((token) => {
+        let mock;
+
         if (token === JwtService) {
-          return createMock<JwtService>();
+          mock = createMockInstance(JwtService);
         }
 
         if (token === AuthenticationService) {
-          return createMock<AuthenticationService>({
-            register: jest.fn().mockImplementation((dto: RegisterUser) =>
-              Promise.resolve(
-                User.fromPartial({
-                  ...dto,
-                  id: '',
-                  createdAt: new Date(),
-                  updatedAt: new Date(),
-                }),
-              ),
+          mock = createMockInstance(AuthenticationService);
+          mock.register.mockImplementation((dto: RegisterUser) =>
+            Promise.resolve(
+              User.fromPartial({
+                ...dto,
+                id: '',
+                createdAt: new Date(),
+                updatedAt: new Date(),
+              }),
             ),
-            login: jest
-              .fn()
-              .mockImplementation((credentials: LoginUser) =>
-                Promise.resolve(User.fromPartial(credentials)),
-              ),
-            update: jest
-              .fn()
-              .mockImplementation((user: User, changes: UpdateUser) =>
-                Promise.resolve(User.fromPartial({ ...user, ...changes })),
-              ),
-          });
+          );
+          mock.login.mockImplementation((credentials: LoginUser) =>
+            Promise.resolve(User.fromPartial(credentials)),
+          );
+          mock.update.mockImplementation((user: User, changes: UpdateUser) =>
+            Promise.resolve(User.fromPartial({ ...user, ...changes })),
+          );
         }
 
         if (token === ConfigService) {
-          return createMock<ConfigService>();
+          mock = createMockInstance(ConfigService);
         }
 
-        return;
+        return mock;
       })
       .compile();
 
