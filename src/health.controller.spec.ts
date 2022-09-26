@@ -12,8 +12,8 @@ import { createMock } from 'ts-auto-mock';
 
 import { HealthController } from '~app/health.controller';
 
-function getStatus(key: string): HealthIndicatorResult {
-  return { [key]: { status: 'up' } };
+function getStatus(key: string): Promise<HealthIndicatorResult> {
+  return Promise.resolve({ [key]: { status: 'up' } });
 }
 
 function reduceResults(
