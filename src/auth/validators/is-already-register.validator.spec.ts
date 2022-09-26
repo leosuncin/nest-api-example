@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { useContainer, validate } from 'class-validator';
-import { createMock } from 'ts-auto-mock';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 import { jane, john } from '~auth/fixtures/users';
 import { AuthenticationService } from '~auth/services/authentication.service';
@@ -35,7 +35,7 @@ describe('IsAlreadyRegister', () => {
     })
       .useMocker((token) => {
         if (token === AuthenticationService) {
-          return createMock<AuthenticationService>();
+          return createMockInstance(AuthenticationService);
         }
 
         return;
