@@ -4,8 +4,8 @@ import { Test } from '@nestjs/testing';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
+import { createMockInstance } from 'jest-create-mock-instance';
 import nock, { cleanAll, enableNetConnect } from 'nock';
-import { createMock } from 'ts-auto-mock';
 
 import { UpdateUser } from '~auth/dto/update-user.dto';
 import { updateUserFactory } from '~auth/factories/update-user.factory';
@@ -22,10 +22,11 @@ describe('Update user validations', () => {
     })
       .useMocker((token) => {
         if (token === AuthenticationService) {
-          return createMock<AuthenticationService>({
-            isRegistered: jest.fn().mockResolvedValue(false),
-            verifyCredentials: jest.fn().mockResolvedValue(true),
-          });
+          const mock = createMockInstance(AuthenticationService);
+          mock.isRegistered.mockResolvedValue(false);
+          mock.verifyCredentials.mockResolvedValue(true);
+
+          return mock;
         }
 
         return;
