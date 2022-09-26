@@ -31,6 +31,8 @@ const forbiddenError = {
   statusCode: HttpStatus.FORBIDDEN,
 };
 
+jest.setTimeout(7e3);
+
 describe('AuthModule', () => {
   let app: INestApplication;
   let jwt: string;
@@ -41,6 +43,10 @@ describe('AuthModule', () => {
     const dataSource = app.get(getDataSourceToken());
     jwt = jwtService.sign({ sub: jane.id });
     await runSeeders(dataSource);
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 
   it('create a new article', async () => {
