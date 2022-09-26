@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { createMock } from 'ts-auto-mock';
-import { type FindOptionsWhere, type Repository, Equal, Not } from 'typeorm';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { type FindOptionsWhere, Equal, Not, Repository } from 'typeorm';
 
 import type { UpdateUser } from '~auth/dto/update-user.dto';
 import { User } from '~auth/entities/user.entity';
@@ -23,24 +23,21 @@ describe('AuthenticationService', () => {
     })
       .useMocker((token) => {
         if (token === getRepositoryToken(User)) {
-          return createMock<Repository<User>>({
-            create: jest
-              .fn()
-              .mockImplementation((dto: Partial<User>) =>
-                User.fromPartial(dto),
-              ),
-            save: jest.fn().mockImplementation((entity: User) =>
-              Promise.resolve(
-                User.fromPartial({
-                  ...entity,
-                  id: '',
-                  createdAt: new Date(),
-                  updatedAt: new Date(),
-                }),
-              ),
+          const mock = createMockInstance<Repository<User>>(Repository);
+          mock.create.mockImplementation((dto) => User.fromPartial(dto));
+          mock.save.mockImplementation((entity) =>
+            Promise.resolve(
+              User.fromPartial({
+                ...entity,
+                id: '',
+                createdAt: new Date(),
+                updatedAt: new Date(),
+              }),
             ),
-            merge: jest.fn().mockImplementation(Object.assign),
-          });
+          );
+          mock.merge.mockImplementation(Object.assign);
+
+          return mock;
         }
 
         return;
