@@ -2,8 +2,8 @@ import { ForbiddenException, InjectionToken } from '@nestjs/common';
 import { ModuleRef, Reflector } from '@nestjs/core';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { Test } from '@nestjs/testing';
+import { createMockInstance } from 'jest-create-mock-instance';
 import { createMocks } from 'node-mocks-http';
-import { createMock } from 'ts-auto-mock';
 
 import { User } from '~auth/entities/user.entity';
 import { john as user } from '~auth/fixtures/users';
@@ -25,33 +25,33 @@ describe('IsAuthorGuard', () => {
       providers: [
         {
           provide: ModuleRef,
-          useValue: createMock<ModuleRef>({
+          useValue: {
             get: jest.fn().mockImplementation((typeOrToken: InjectionToken) => {
+              let mock;
+
               if (typeOrToken === ArticleService) {
-                return createMock<ArticleService>({
-                  getById: jest.fn().mockImplementation((id: Article['id']) =>
-                    // eslint-disable-next-line unicorn/no-null
-                    id === article.id ? article : null,
-                  ),
-                });
+                mock = createMockInstance(ArticleService);
+                mock.getById.mockImplementation((id: Article['id']) =>
+                  // eslint-disable-next-line unicorn/no-null
+                  Promise.resolve(id === article.id ? article : null),
+                );
               }
 
               if (typeOrToken === CommentService) {
-                return createMock<CommentService>({
-                  getById: jest.fn().mockImplementation((id: Comment['id']) =>
-                    // eslint-disable-next-line unicorn/no-null
-                    id === comment.id ? comment : null,
-                  ),
-                });
+                mock = createMockInstance(CommentService);
+                mock.getById.mockImplementation((id: Comment['id']) =>
+                  // eslint-disable-next-line unicorn/no-null
+                  Promise.resolve(id === comment.id ? comment : null),
+                );
               }
 
-              return;
+              return mock;
             }),
-          }),
+          },
         },
         {
           provide: Reflector,
-          useValue: createMock<Reflector>(),
+          useValue: createMockInstance(Reflector),
         },
         IsAuthorGuard,
       ],
