@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
-import { createMock } from 'ts-auto-mock';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 import { LoginUser } from '~auth/dto/login-user.dto';
 import { loginUserFactory } from '~auth/factories/login-user.factory';
@@ -18,9 +18,10 @@ describe('Login user validations', () => {
     })
       .useMocker((token) => {
         if (token === AuthenticationService) {
-          return createMock<AuthenticationService>({
-            verifyCredentials: jest.fn().mockResolvedValue(true),
-          });
+          const mock = createMockInstance(AuthenticationService);
+          mock.verifyCredentials.mockResolvedValue(true);
+
+          return mock;
         }
 
         return;
