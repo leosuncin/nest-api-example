@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { useContainer, validate } from 'class-validator';
-import { createMock } from 'ts-auto-mock';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 import { login as credentials } from '~auth/fixtures/credentials';
 import { john as user } from '~auth/fixtures/users';
@@ -44,16 +44,22 @@ describe('ValidateCredential', () => {
     })
       .useMocker((token) => {
         if (token === AuthenticationService) {
-          return createMock<AuthenticationService>({
-            verifyCredentials: jest
-              .fn()
-              .mockImplementation(({ password, username, id }, property) => {
-                if (id ? id !== user.id : username !== credentials.username)
-                  return false;
-                if (property !== 'password') return true;
-                return password === credentials.password;
-              }),
-          });
+          const mock = createMockInstance(AuthenticationService);
+          mock.verifyCredentials.mockImplementation((payload, property) =>
+            Promise.resolve(
+              (
+                'id' in payload
+                  ? payload.id !== user.id
+                  : payload.username !== credentials.username
+              )
+                ? false
+                : property !== 'password'
+                ? true
+                : payload.password === credentials.password,
+            ),
+          );
+
+          return mock;
         }
 
         return;
