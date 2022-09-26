@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { createMock } from 'ts-auto-mock';
-import { type SelectQueryBuilder, Repository } from 'typeorm';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { Repository, SelectQueryBuilder } from 'typeorm';
 
 import { User } from '~auth/entities/user.entity';
 import type { CreateComment } from '~blog/dto/create-comment';
@@ -18,26 +18,17 @@ describe('CommentService', () => {
       providers: [CommentService],
     })
       .useMocker((token) => {
+        let mock;
+
         if (token === getRepositoryToken(Comment)) {
-          const mock = createMock<Repository<Comment>>({
-            create: jest
-              .fn()
-              .mockImplementation((dto: CreateComment) =>
-                Object.assign(new Comment(), dto),
-              ),
-            save: jest
-              .fn()
-              .mockImplementation((comment: Comment) =>
-                Promise.resolve(comment),
-              ),
-          });
-
-          Object.setPrototypeOf(mock, Repository.prototype);
-
-          return mock;
+          mock = createMockInstance<Repository<Comment>>(Repository);
+          mock.create.mockImplementation((dto) => Comment.fromPartial(dto));
+          mock.save.mockImplementation((comment) =>
+            Promise.resolve(comment as Comment),
+          );
         }
 
-        return;
+        return mock;
       })
       .compile();
 
@@ -62,22 +53,22 @@ describe('CommentService', () => {
   });
 
   it('should paginate the comments', async () => {
-    const queryBuilder = createMock<SelectQueryBuilder<Article>>({
-      where: jest.fn().mockReturnThis(),
-      orderBy: jest.fn().mockReturnThis(),
-      limit: jest.fn().mockReturnThis(),
-      offset: jest.fn().mockReturnThis(),
-      skip: jest.fn().mockReturnThis(),
-      take: jest.fn().mockReturnThis(),
-      cache: jest.fn().mockReturnThis(),
-      select: jest.fn().mockReturnThis(),
-      from: jest.fn().mockReturnThis(),
-      setParameters: jest.fn().mockReturnThis(),
-      clone: jest.fn().mockReturnThis(),
-      getMany: jest.fn().mockResolvedValue([new Comment()]),
-      getRawOne: jest.fn().mockResolvedValue({ value: '1' }),
-    }) as unknown as jest.Mocked<SelectQueryBuilder<Comment>>;
-    const article = Object.assign(new Article(), {
+    const queryBuilder =
+      createMockInstance<SelectQueryBuilder<Comment>>(SelectQueryBuilder);
+    queryBuilder.where.mockReturnThis();
+    queryBuilder.orderBy.mockReturnThis();
+    queryBuilder.limit.mockReturnThis();
+    queryBuilder.offset.mockReturnThis();
+    queryBuilder.skip.mockReturnThis();
+    queryBuilder.take.mockReturnThis();
+    queryBuilder.cache.mockReturnThis();
+    queryBuilder.select.mockReturnThis();
+    queryBuilder.from.mockReturnThis();
+    queryBuilder.setParameters.mockReturnThis();
+    queryBuilder.clone.mockReturnThis();
+    queryBuilder.getMany.mockResolvedValue([new Comment()]);
+    queryBuilder.getRawOne.mockResolvedValue({ value: '1' });
+    const article = Article.fromPartial({
       id: 'a832e632-0335-4191-8469-4d849bbb72be',
     });
 
@@ -86,9 +77,7 @@ describe('CommentService', () => {
     queryBuilder.connection = {
       createQueryBuilder: jest.fn().mockReturnValue(queryBuilder),
     };
-    mockedCommentRepository.createQueryBuilder.mockReturnValue(
-      queryBuilder as SelectQueryBuilder<Comment>,
-    );
+    mockedCommentRepository.createQueryBuilder.mockReturnValue(queryBuilder);
 
     await expect(
       service.findBy({ limit: 10, page: 1 }, { article }),
