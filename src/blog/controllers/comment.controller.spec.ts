@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { createMock } from 'ts-auto-mock';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 import { User } from '~auth/entities/user.entity';
 import { CommentController } from '~blog/controllers/comment.controller';
@@ -19,11 +19,11 @@ describe('CommentController', () => {
     })
       .useMocker((token) => {
         if (token === CommentService) {
-          return createMock<CommentService>();
+          return createMockInstance(CommentService);
         }
 
         if (token === ArticleService) {
-          return createMock<ArticleService>();
+          return createMockInstance(ArticleService);
         }
 
         return;
