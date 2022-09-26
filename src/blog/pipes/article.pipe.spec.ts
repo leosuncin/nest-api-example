@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { createMock } from 'ts-auto-mock';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 import { Article } from '~blog/entities/article.entity';
 import { articleByJohn } from '~blog/fixtures/articles';
@@ -15,20 +15,21 @@ describe('ArticlePipe', () => {
       providers: [ArticlePipe],
     })
       .useMocker((token) => {
+        let mock;
+
         if (token === ArticleService) {
-          return createMock<ArticleService>({
-            getById: jest.fn().mockImplementation((id: Article['id']) =>
-              Promise.resolve(
-                id === articleByJohn.id
-                  ? new Article()
-                  : // eslint-disable-next-line unicorn/no-null
-                    null,
-              ),
+          mock = createMockInstance(ArticleService);
+          mock.getById.mockImplementation((id) =>
+            Promise.resolve(
+              id === articleByJohn.id
+                ? articleByJohn
+                : // eslint-disable-next-line unicorn/no-null
+                  null,
             ),
-          });
+          );
         }
 
-        return;
+        return mock;
       })
       .compile();
 
