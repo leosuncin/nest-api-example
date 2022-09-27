@@ -1,13 +1,6 @@
 {
   "plugins": [
-    [
-      "@semantic-release/commit-analyzer",
-      {
-        "releaseRules": [
-          { "type": "chore", "scope": "deps", "release": "patch" }
-        ]
-      }
-    ],
+    "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     [
       "@semantic-release/changelog",
@@ -24,7 +17,7 @@
     [
       "@semantic-release/github",
       {
-        "assets": [["dist", "ormconfig.js", "package.json", "README.md"]]
+        "assets": [["dist", "package.json", "README.md", "CHANGELOG.md"]]
       }
     ],
     [
