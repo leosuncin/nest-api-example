@@ -54,7 +54,8 @@
     "mypy",
     "ttypescript",
     "postgres",
-    "httpie"
+    "httpie",
+    "trivy"
   ],
   "dictionaries": [
     "en_US",
