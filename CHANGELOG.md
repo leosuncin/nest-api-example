@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/leosuncin/nest-api-example/compare/v1.7.1...v1.7.2) (2022-10-07)
+
+### Bug Fixes
+
+- mock PosgreSQL function in tests ([6cb7fd0](https://github.com/leosuncin/nest-api-example/commit/6cb7fd0aee84431b6b76717f00f52988899d8e51))
+
 ## [1.7.1](https://github.com/leosuncin/nest-api-example/compare/v1.7.0...v1.7.1) (2022-09-19)
 
 ### Bug Fixes
