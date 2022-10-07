@@ -39,7 +39,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Monitor coverage 📫
-        uses: slavcodev/coverage-monitor-action@1.6.0
+        uses: slavcodev/coverage-monitor-action@1.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           coverage_format: clover
