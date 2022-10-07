@@ -41,7 +41,7 @@ export class User {
   @UpdateDateColumn()
   updatedAt!: Date;
 
-  #salt: string | undefined;
+  private salt: string | undefined;
 
   static fromPartial(data: DeepPartial<User>): User {
     return Object.assign(new User(), data);
@@ -51,7 +51,7 @@ export class User {
   @BeforeUpdate()
   async hashPassword() {
     if (!bcryptRegex.test(this.password)) {
-      this.password = await bcrypt.hash(this.password, this.#salt ?? 10);
+      this.password = await bcrypt.hash(this.password, this.salt ?? 10);
     }
   }
 
@@ -61,6 +61,6 @@ export class User {
 
   @AfterLoad()
   protected setOldPassword() {
-    this.#salt = this.password.slice(0, 29);
+    this.salt = this.password.slice(0, 29);
   }
 }
