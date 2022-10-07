@@ -4,5 +4,6 @@
   "automerge": true,
   "automergeType": "pr",
   "automergeStrategy": "rebase",
-  "rebaseWhen": "behind-base-branch"
+  "rebaseWhen": "behind-base-branch",
+  "addLabels": ["automerge"]
 }
