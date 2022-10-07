@@ -3,5 +3,6 @@
   "extends": ["config:base"],
   "automerge": true,
   "automergeType": "pr",
-  "automergeStrategy": "rebase"
+  "automergeStrategy": "rebase",
+  "rebaseWhen": "behind-base-branch"
 }
