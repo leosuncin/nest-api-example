@@ -12,6 +12,11 @@ database.public.registerFunction({
 });
 
 database.public.registerFunction({
+  name: 'version',
+  implementation: () => 'PostgreSQL 14.0',
+});
+
+database.public.registerFunction({
   name: 'uuid_generate_v4',
   returns: DataType.uuid,
   implementation: () => randomUUID(),
