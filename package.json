@@ -10,7 +10,6 @@
   "license": "GPL-3.0",
   "author": "Jaime Leonardo Suncin Cruz <leosuncin@gmail.com>",
   "scripts": {
-    "prebuild": "rimraf dist",
     "build": "nest build",
     "db:create": "ts-node -r dotenv/config -r tsconfig-paths/register node_modules/typeorm-extension/dist/cli/index.js db:create -r src/config --synchronize=no --initialDatabase=postgres",
     "db:drop": "ts-node -r dotenv/config -r tsconfig-paths/register node_modules/typeorm-extension/dist/cli/index.js db:drop -r src/config --initialDatabase=postgres",
@@ -54,7 +53,6 @@
     "passport-jwt": "4.0.0",
     "pg": "8.8.0",
     "reflect-metadata": "0.1.13",
-    "rimraf": "3.0.2",
     "rxjs": "7.5.7",
     "short-uuid": "4.2.0",
     "slugify": "1.6.5",
