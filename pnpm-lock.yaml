@@ -86,7 +86,7 @@ specifiers:
   tsconfig-paths: 4.1.0
   txtgen: 3.0.2
   typeorm: 0.3.10
-  typeorm-extension: 2.1.13
+  typeorm-extension: 2.1.14
   typescript: 4.8.4
 
 dependencies:
@@ -177,7 +177,7 @@ devDependencies:
   ts-node: 10.9.1_xtdkmayvpbwqd3kc4kczaw2zvm
   tsconfig-paths: 4.1.0
   txtgen: 3.0.2
-  typeorm-extension: 2.1.13_typeorm@0.3.10
+  typeorm-extension: 2.1.14_typeorm@0.3.10
   typescript: 4.8.4
 
 packages:
@@ -6865,8 +6865,8 @@ packages:
       p-locate: 5.0.0
     dev: true
 
-  /locter/0.3.1:
-    resolution: {integrity: sha512-K62EoaH1RQmEhXk17WVVpI4/CPuFXmHPY0zgxdIv4ty9m7wgiVT7bo3fF585Ks6hwye0vqIHtb0OEo+brBJq4g==}
+  /locter/0.3.2:
+    resolution: {integrity: sha512-+mHgnARlKkuIXGLw0o52c0PLzhG/gTcWzsMtkfZ80zri6TYlYd/jomMz48WWTn3lFBnieUvIanZ9nXbsI04ICQ==}
     dependencies:
       glob: 8.0.3
     dev: true
@@ -9569,14 +9569,14 @@ packages:
   /typedarray/0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm-extension/2.1.13_typeorm@0.3.10:
-    resolution: {integrity: sha512-bY4D3MrDG2w/tFqhbfLtBzuwN/eRuiUVgsVoXFvDe39zpG8xGQQ6XZQfB1rwUbqvcYsXUZVCXAUKy7lT0ih9dg==}
+  /typeorm-extension/2.1.14_typeorm@0.3.10:
+    resolution: {integrity: sha512-UYZ2do8aMlL3AxYfga/VedLGU0At0wIX4oOEQpA+pTs3xzRfhCvbpGySISrppLZasAVbY0uIpnxGJnbOqRXWgg==}
     hasBin: true
     peerDependencies:
       typeorm: ~0.3.0
     dependencies:
       '@faker-js/faker': 7.5.0
-      locter: 0.3.1
+      locter: 0.3.2
       rapiq: 0.0.6
       reflect-metadata: 0.1.13
       typeorm: 0.3.10_pg@8.8.0+ts-node@10.9.1
