@@ -62,7 +62,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.1.2",
     "@commitlint/config-conventional": "17.1.0",
-    "@faker-js/faker": "7.5.0",
+    "@faker-js/faker": "7.6.0",
     "@nestjs/cli": "9.1.4",
     "@nestjs/schematics": "9.0.3",
     "@nestjs/testing": "9.1.4",

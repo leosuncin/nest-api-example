@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': 17.1.2
   '@commitlint/config-conventional': 17.1.0
-  '@faker-js/faker': 7.5.0
+  '@faker-js/faker': 7.6.0
   '@nestjs/cli': 9.1.4
   '@nestjs/common': 9.1.4
   '@nestjs/config': 2.2.0
@@ -120,7 +120,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.1.2
   '@commitlint/config-conventional': 17.1.0
-  '@faker-js/faker': 7.5.0
+  '@faker-js/faker': 7.6.0
   '@nestjs/cli': 9.1.4
   '@nestjs/schematics': 9.0.3_typescript@4.8.4
   '@nestjs/testing': 9.1.4_atqkzu3acujvho36dnj4dqtvde
@@ -1057,8 +1057,8 @@ packages:
     resolution: {integrity: sha512-+1mBLsa+vvlV0lwEAP1hwgmOPkjMnoJ8hyCMfCCJga0sVDwDzrPJjnxZwdDaUmOh/vbFHQGBTk+FxsVjoI/CjQ==}
     dev: true
 
-  /@faker-js/faker/7.5.0:
-    resolution: {integrity: sha512-8wNUCCUHvfvI0gQpDUho/3gPzABffnCn5um65F8dzQ86zz6dlt4+nmAA7PQUc8L+eH+9RgR/qzy5N/8kN0Ozdw==}
+  /@faker-js/faker/7.6.0:
+    resolution: {integrity: sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==}
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
@@ -9575,7 +9575,7 @@ packages:
     peerDependencies:
       typeorm: ~0.3.0
     dependencies:
-      '@faker-js/faker': 7.5.0
+      '@faker-js/faker': 7.6.0
       locter: 0.3.2
       rapiq: 0.0.6
       reflect-metadata: 0.1.13
