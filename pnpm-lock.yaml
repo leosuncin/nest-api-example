@@ -86,7 +86,7 @@ specifiers:
   tsconfig-paths: 4.1.0
   txtgen: 3.0.2
   typeorm: 0.3.10
-  typeorm-extension: 2.1.14
+  typeorm-extension: 2.1.15
   typescript: 4.8.4
 
 dependencies:
@@ -177,7 +177,7 @@ devDependencies:
   ts-node: 10.9.1_xtdkmayvpbwqd3kc4kczaw2zvm
   tsconfig-paths: 4.1.0
   txtgen: 3.0.2
-  typeorm-extension: 2.1.14_typeorm@0.3.10
+  typeorm-extension: 2.1.15_typeorm@0.3.10
   typescript: 4.8.4
 
 packages:
@@ -9569,8 +9569,8 @@ packages:
   /typedarray/0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm-extension/2.1.14_typeorm@0.3.10:
-    resolution: {integrity: sha512-UYZ2do8aMlL3AxYfga/VedLGU0At0wIX4oOEQpA+pTs3xzRfhCvbpGySISrppLZasAVbY0uIpnxGJnbOqRXWgg==}
+  /typeorm-extension/2.1.15_typeorm@0.3.10:
+    resolution: {integrity: sha512-r/TSIIoUaQkMVhC5IPu/g/a2uBtkGUKBkBahHyzPfndauNFXeLq0RgJ0GRoQ768QnKDwHDMVigY+b0tJesIdQw==}
     hasBin: true
     peerDependencies:
       typeorm: ~0.3.0
