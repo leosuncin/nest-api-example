@@ -75,7 +75,7 @@ specifiers:
   reflect-metadata: 0.1.13
   rxjs: 7.5.7
   semantic-release: 19.0.5
-  short-uuid: 4.2.0
+  short-uuid: 4.2.2
   slugify: 1.6.5
   sort-package-json: 2.0.0
   supertest: 6.3.0
@@ -112,7 +112,7 @@ dependencies:
   pg: 8.8.0
   reflect-metadata: 0.1.13
   rxjs: 7.5.7
-  short-uuid: 4.2.0
+  short-uuid: 4.2.2
   slugify: 1.6.5
   tiny-invariant: 1.3.1
   typeorm: 0.3.10_pg@8.8.0+ts-node@10.9.1
@@ -8717,8 +8717,8 @@ packages:
       rechoir: 0.6.2
     dev: true
 
-  /short-uuid/4.2.0:
-    resolution: {integrity: sha512-r3cxuPPZSuF0QkKsK9bBR7u+7cwuCRzWzgjPh07F5N2iIUNgblnMHepBY16xgj5t1lG9iOP9k/TEafY1qhRzaw==}
+  /short-uuid/4.2.2:
+    resolution: {integrity: sha512-IE7hDSGV2U/VZoCsjctKX6l5t5ak2jE0+aeGJi3KtvjIUNuZVmHVYUjNBhmo369FIWGDtaieRaO8A83Lvwfpqw==}
     engines: {node: '>=8'}
     dependencies:
       any-base: 1.1.0
