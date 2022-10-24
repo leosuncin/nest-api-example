@@ -113,7 +113,7 @@
     "prettier-plugin-toml": "0.3.1",
     "semantic-release": "19.0.5",
     "sort-package-json": "2.0.0",
-    "supertest": "6.3.0",
+    "supertest": "6.3.1",
     "ts-jest": "29.0.3",
     "ts-loader": "9.4.1",
     "ts-node": "10.9.1",
