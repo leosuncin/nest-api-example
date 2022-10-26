@@ -86,7 +86,7 @@ specifiers:
   tsconfig-paths: 4.1.0
   txtgen: 3.0.2
   typeorm: 0.3.10
-  typeorm-extension: 2.1.15
+  typeorm-extension: 2.2.8
   typescript: 4.8.4
 
 dependencies:
@@ -177,7 +177,7 @@ devDependencies:
   ts-node: 10.9.1_w23x7n7zvvy4jtcrbeyi4toj7i
   tsconfig-paths: 4.1.0
   txtgen: 3.0.2
-  typeorm-extension: 2.1.15_typeorm@0.3.10
+  typeorm-extension: 2.2.8_typeorm@0.3.10
   typescript: 4.8.4
 
 packages:
@@ -8330,10 +8330,11 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
-  /rapiq/0.0.6:
-    resolution: {integrity: sha512-9Z5r7zlOBrNhlvCiNXj8Vs9JKAdoPDXFBIBaOUGYv8WaRFKxzjMgeN4rjD6KMoEh926yir2vu/fGo5JWnQDNww==}
+  /rapiq/0.3.1:
+    resolution: {integrity: sha512-3wwkLq27fYwKS4R0crrYj/5YkcZQQQyGkCj8z8K7Fe3R22jdXXBeVyDGJUB3IN+kSifqlt03834lSilLmMbMrQ==}
     dependencies:
       minimatch: 5.1.0
+      smob: 0.0.6
     dev: true
 
   /raw-body/2.5.1:
@@ -8853,6 +8854,10 @@ packages:
     resolution: {integrity: sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ==}
     engines: {node: '>=8.0.0'}
     dev: false
+
+  /smob/0.0.6:
+    resolution: {integrity: sha512-V21+XeNni+tTyiST1MHsa84AQhT1aFZipzPpOFAVB8DkHzwJyjjAmt9bgwnuZiZWnIbMo2duE29wybxv/7HWUw==}
+    dev: true
 
   /snapdragon-node/2.1.1:
     resolution: {integrity: sha512-O27l4xaMYt/RSQ5TR3vpWCAB5Kb/czIcqUFOM/C4fYcLnbZUc1PkjTAMjof2pBWaSTwOUd6qUHcFGVGj7aIwnw==}
@@ -9644,15 +9649,15 @@ packages:
   /typedarray/0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm-extension/2.1.15_typeorm@0.3.10:
-    resolution: {integrity: sha512-r/TSIIoUaQkMVhC5IPu/g/a2uBtkGUKBkBahHyzPfndauNFXeLq0RgJ0GRoQ768QnKDwHDMVigY+b0tJesIdQw==}
+  /typeorm-extension/2.2.8_typeorm@0.3.10:
+    resolution: {integrity: sha512-fZ4DNnP9C0LPKGhcBeWA1cTrMTj2l7BtASyT0Tk81zAbGuxhW8B56CjzdKnpfiNdWdzNdmob0Pkxt3gMGrsM1A==}
     hasBin: true
     peerDependencies:
       typeorm: ~0.3.0
     dependencies:
       '@faker-js/faker': 7.6.0
       locter: 0.3.2
-      rapiq: 0.0.6
+      rapiq: 0.3.1
       reflect-metadata: 0.1.13
       typeorm: 0.3.10_pg@8.8.0+ts-node@10.9.1
       yargs: 17.6.0
