@@ -29,7 +29,7 @@ specifiers:
   '@types/passport': 1.0.11
   '@types/passport-jwt': 3.0.7
   '@types/supertest': 2.0.12
-  '@types/validator': 13.7.9
+  '@types/validator': 13.7.10
   '@typescript-eslint/eslint-plugin': 5.41.0
   '@typescript-eslint/parser': 5.41.0
   bcryptjs: 2.4.3
@@ -137,7 +137,7 @@ devDependencies:
   '@types/passport': 1.0.11
   '@types/passport-jwt': 3.0.7
   '@types/supertest': 2.0.12
-  '@types/validator': 13.7.9
+  '@types/validator': 13.7.10
   '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
   '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
   cspell: 6.13.3
@@ -2308,8 +2308,8 @@ packages:
       '@types/superagent': 4.1.15
     dev: true
 
-  /@types/validator/13.7.9:
-    resolution: {integrity: sha512-y5KJ1PjGXPpU4CZ7lThDu31s+FqvzhqwMOR6Go/x6xaQMFjgzwfzfOvCwABsylr/5n8sB1qFQm1Vi7TaCB8P+A==}
+  /@types/validator/13.7.10:
+    resolution: {integrity: sha512-t1yxFAR2n0+VO6hd/FJ9F2uezAZVWHLmpmlJzm1eX03+H7+HsuTAp7L8QJs+2pQCfWkP1+EXsGK9Z9v7o/qPVQ==}
     dev: true
 
   /@types/wait-on/5.3.1:
