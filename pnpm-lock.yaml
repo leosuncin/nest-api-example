@@ -65,7 +65,7 @@ specifiers:
   nock: 13.2.9
   node-mocks-http: 1.11.0
   normalize-email: 1.1.1
-  pactum: 3.2.3
+  pactum: 3.2.4
   passport: 0.6.0
   passport-jwt: 4.0.0
   pg: 8.8.0
@@ -165,7 +165,7 @@ devDependencies:
   lint-staged: 13.0.3
   nock: 13.2.9
   node-mocks-http: 1.11.0
-  pactum: 3.2.3
+  pactum: 3.2.4
   pg-mem: 2.6.3_typeorm@0.3.10
   prettier: 2.7.1
   prettier-plugin-toml: 0.3.1
@@ -1053,8 +1053,8 @@ packages:
       - supports-color
     dev: true
 
-  /@exodus/schemasafe/1.0.0-rc.7:
-    resolution: {integrity: sha512-+1mBLsa+vvlV0lwEAP1hwgmOPkjMnoJ8hyCMfCCJga0sVDwDzrPJjnxZwdDaUmOh/vbFHQGBTk+FxsVjoI/CjQ==}
+  /@exodus/schemasafe/1.0.0-rc.9:
+    resolution: {integrity: sha512-dGGHpb61hLwifAu7sotuHFDBw6GTdpG8aKC0fsK17EuTzMRvUrH7lEAr6LTJ+sx3AZYed9yZ77rltVDHyg2hRg==}
     dev: true
 
   /@faker-js/faker/7.6.0:
@@ -7714,11 +7714,11 @@ packages:
     resolution: {integrity: sha512-JRFUfWDxnA3e99M3tU+HUxkwiXIO1VlwSYzdJTUrxiOBOF8jUrCkeaHuTsfzQQFMkFAd0BrTqPhfb14hCgVX7w==}
     dev: true
 
-  /pactum/3.2.3:
-    resolution: {integrity: sha512-jeSTfPTb7ooXJt62kUsbhbRWyQbSwGm0ZN7+2TV0Vim/sfV3OFi6A+j+Q7NxqelxxcsXFj5YZ8ud8AnHIvUi2w==}
+  /pactum/3.2.4:
+    resolution: {integrity: sha512-92mtb1VSbxieEXUz/B1PTwPlL0HX+48ZZGgr1cXpPLWpeLnZbyJOWs0IOqXDrEaerocb3+jFKanItM62ylpv8A==}
     engines: {node: '>=10'}
     dependencies:
-      '@exodus/schemasafe': 1.0.0-rc.7
+      '@exodus/schemasafe': 1.0.0-rc.9
       deep-override: 1.0.2
       form-data-lite: 1.0.3
       json-query: 2.2.2
