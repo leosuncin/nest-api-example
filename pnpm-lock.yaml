@@ -43,7 +43,7 @@ specifiers:
   eslint-config-prettier: 8.5.0
   eslint-import-resolver-typescript: 3.5.2
   eslint-plugin-array-func: 3.1.7
-  eslint-plugin-deprecation: 1.3.2
+  eslint-plugin-deprecation: 1.3.3
   eslint-plugin-eslint-comments: 3.2.0
   eslint-plugin-import: 2.26.0
   eslint-plugin-jest: 27.1.4
@@ -146,7 +146,7 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.26.0
   eslint-import-resolver-typescript: 3.5.2_mynvxvmq5qtyojffiqgev4x7mm
   eslint-plugin-array-func: 3.1.7_eslint@8.26.0
-  eslint-plugin-deprecation: 1.3.2_wyqvi574yv7oiwfeinomdzmc3m
+  eslint-plugin-deprecation: 1.3.3_wyqvi574yv7oiwfeinomdzmc3m
   eslint-plugin-eslint-comments: 3.2.0_eslint@8.26.0
   eslint-plugin-import: 2.26.0_r2te5lumhbgztz2yv5ofo3mkvi
   eslint-plugin-jest: 27.1.4_6amp5fdmvwluzjywjm3ep2edui
@@ -4318,8 +4318,8 @@ packages:
       eslint: 8.26.0
     dev: true
 
-  /eslint-plugin-deprecation/1.3.2_wyqvi574yv7oiwfeinomdzmc3m:
-    resolution: {integrity: sha512-z93wbx9w7H/E3ogPw6AZMkkNJ6m51fTZRNZPNQqxQLmx+KKt7aLkMU9wN67s71i+VVHN4tLOZ3zT3QLbnlC0Mg==}
+  /eslint-plugin-deprecation/1.3.3_wyqvi574yv7oiwfeinomdzmc3m:
+    resolution: {integrity: sha512-Bbkv6ZN2cCthVXz/oZKPwsSY5S/CbgTLRG4Q2s2gpPpgNsT0uJ0dB5oLNiWzFYY8AgKX4ULxXFG1l/rDav9QFA==}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
       typescript: ^3.7.5 || ^4.0.0
