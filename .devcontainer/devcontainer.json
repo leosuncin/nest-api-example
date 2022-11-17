@@ -1,0 +1,46 @@
+// Update the VARIANT arg in docker-compose.yml to pick a Node.js version
+{
+  "name": "Node.js & PostgreSQL",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "zsh"
+  },
+
+  // Features to add to the dev container. More info: https://containers.dev/implementors/features.
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/dhoeric/features/k6:1": {},
+    "ghcr.io/NicoVIII/devcontainer-features/pnpm:1": {},
+    "ghcr.io/eitsupi/devcontainer-features/jq-likes:0": {}
+  },
+
+  "extensions": [
+    "ChakrounAnas.turbo-console-log",
+    "EditorConfig.EditorConfig",
+    "bierner.comment-tagged-templates",
+    "cweijan.vscode-mysql-client2",
+    "firsttris.vscode-jest-runner",
+    "hbenl.vscode-test-explorer",
+    "rangav.vscode-thunder-client",
+    "wmaurer.change-case",
+    "xabikos.JavaScriptSnippets"
+  ],
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // This can be used to network with other containers or with the host.
+  "forwardPorts": [3333, 5432],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "pnpm install"
+
+  // Configure tool-specific properties.
+  // "customizations": {},
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
