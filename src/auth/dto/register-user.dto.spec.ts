@@ -14,6 +14,8 @@ import { PASSWORD_HASHES } from '~auth/fixtures/password-hashes';
 import { AuthenticationService } from '~auth/services/authentication.service';
 import { IsAlreadyRegisterConstraint } from '~auth/validators/is-already-register.validator';
 
+jest.setTimeout(7e3);
+
 describe('Register user validations', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({

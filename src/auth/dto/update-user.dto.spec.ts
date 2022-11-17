@@ -15,6 +15,8 @@ import { AuthenticationService } from '~auth/services/authentication.service';
 import { IsAlreadyRegisterConstraint } from '~auth/validators/is-already-register.validator';
 import { ValidateCredentialConstraint } from '~auth/validators/validate-credential.validator';
 
+jest.setTimeout(7e3);
+
 describe('Update user validations', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
