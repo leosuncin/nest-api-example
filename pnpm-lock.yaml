@@ -65,7 +65,7 @@ specifiers:
   nock: 13.2.9
   node-mocks-http: 1.12.1
   normalize-email: 1.1.1
-  pactum: 3.2.4
+  pactum: 3.3.0
   passport: 0.6.0
   passport-jwt: 4.0.0
   pg: 8.8.0
@@ -165,7 +165,7 @@ devDependencies:
   lint-staged: 13.0.3
   nock: 13.2.9
   node-mocks-http: 1.12.1
-  pactum: 3.2.4
+  pactum: 3.3.0
   pg-mem: 2.6.4_typeorm@0.3.10
   prettier: 2.7.1
   prettier-plugin-toml: 0.3.1
@@ -7849,8 +7849,8 @@ packages:
     resolution: {integrity: sha512-JRFUfWDxnA3e99M3tU+HUxkwiXIO1VlwSYzdJTUrxiOBOF8jUrCkeaHuTsfzQQFMkFAd0BrTqPhfb14hCgVX7w==}
     dev: true
 
-  /pactum/3.2.4:
-    resolution: {integrity: sha512-92mtb1VSbxieEXUz/B1PTwPlL0HX+48ZZGgr1cXpPLWpeLnZbyJOWs0IOqXDrEaerocb3+jFKanItM62ylpv8A==}
+  /pactum/3.3.0:
+    resolution: {integrity: sha512-bMfXGS5dI8CJNWyzKm1PS+21lR94QpPEZevgRu0QUWDm1FJjAdXyVM4HkWZUnEX8x0Dg6Rkgs/1skIOYh8xXaQ==}
     engines: {node: '>=10'}
     dependencies:
       '@exodus/schemasafe': 1.0.0-rc.9
