@@ -70,7 +70,7 @@ specifiers:
   passport-jwt: 4.0.0
   pg: 8.8.0
   pg-mem: 2.6.4
-  prettier: 2.7.1
+  prettier: 2.8.0
   prettier-plugin-toml: 0.3.1
   reflect-metadata: 0.1.13
   rxjs: 7.5.7
@@ -167,7 +167,7 @@ devDependencies:
   node-mocks-http: 1.12.1
   pactum: 3.3.1
   pg-mem: 2.6.4_typeorm@0.3.10
-  prettier: 2.7.1
+  prettier: 2.8.0
   prettier-plugin-toml: 0.3.1
   semantic-release: 19.0.5
   sort-package-json: 2.1.0
@@ -8361,8 +8361,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.7.1:
-    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+  /prettier/2.8.0:
+    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
