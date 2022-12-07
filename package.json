@@ -115,7 +115,7 @@
     "sort-package-json": "2.1.0",
     "supertest": "6.3.2",
     "ts-jest": "29.0.3",
-    "ts-loader": "9.4.1",
+    "ts-loader": "9.4.2",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.1.0",
     "txtgen": "3.0.2",
