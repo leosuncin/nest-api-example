@@ -53,9 +53,9 @@ describe('ValidateCredential', () => {
                   : payload.username !== credentials.username
               )
                 ? false
-                : property !== 'password'
-                ? true
-                : payload.password === credentials.password,
+                : property === 'password'
+                ? payload.password === credentials.password
+                : true,
             ),
           );
 
