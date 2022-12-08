@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.8](https://github.com/leosuncin/nest-api-example/compare/v1.7.7...v1.7.8) (2022-12-08)
+
+### Bug Fixes
+
+- **auth:** amend eslint error ([eecf8db](https://github.com/leosuncin/nest-api-example/commit/eecf8db508b19034dec3cd203c9d6130d58adbd7))
+- **deps:** update dependencies ([b55e959](https://github.com/leosuncin/nest-api-example/commit/b55e959c006227f1c73450e5fc35256f6162b550))
+- **deps:** update dependency @nestjs/terminus to v9.1.4 ([c8f34d4](https://github.com/leosuncin/nest-api-example/commit/c8f34d441800550558720b0f861eb98da3e021ba))
+- **deps:** update dependency cached-lookup to v5.2.0 ([bc2bdcb](https://github.com/leosuncin/nest-api-example/commit/bc2bdcb0c8412ab0742883a2ee02f79c15ec90ce))
+- **deps:** update dependency typeorm to v0.3.11 ([a7b5e30](https://github.com/leosuncin/nest-api-example/commit/a7b5e3060f8ddc36cb09f1d4b672b89dcb449587))
+- **deps:** update nest monorepo to v9.2.1 ([9fada8b](https://github.com/leosuncin/nest-api-example/commit/9fada8bea4b515eb29ee80bbd3e2f7dced3aacc0))
+
 ## [1.7.7](https://github.com/leosuncin/nest-api-example/compare/v1.7.6...v1.7.7) (2022-11-17)
 
 ### Bug Fixes
