@@ -33,7 +33,7 @@ const forbiddenError = {
 
 jest.setTimeout(7e3);
 
-describe('AuthModule', () => {
+describe('BlogModule', () => {
   let app: INestApplication;
   let jwt: string;
 
