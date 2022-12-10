@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.9](https://github.com/leosuncin/nest-api-example/compare/v1.7.8...v1.7.9) (2022-12-10)
+
+### Bug Fixes
+
+- **deps:** update dependency class-validator to v0.14.0 ([8fc5037](https://github.com/leosuncin/nest-api-example/commit/8fc5037c029367927aa88e5b17fc9243c106fdc1))
+- set `forbidUnknownValues` to false ([44f9e06](https://github.com/leosuncin/nest-api-example/commit/44f9e06b327a707711efce26caab1796ed6f84bb))
+
 ## [1.7.8](https://github.com/leosuncin/nest-api-example/compare/v1.7.7...v1.7.8) (2022-12-08)
 
 ### Bug Fixes
