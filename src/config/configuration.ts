@@ -12,6 +12,7 @@ export function configuration() {
     validation: {
       transform: true,
       whitelist: true,
+      forbidUnknownValues: false,
       errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
     } as ValidationPipeOptions,
   };
