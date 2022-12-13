@@ -53,7 +53,7 @@ specifiers:
   eslint-plugin-security: 1.5.0
   eslint-plugin-simple-import-sort: 8.0.0
   eslint-plugin-switch-case: 1.1.2
-  eslint-plugin-unicorn: 45.0.1
+  eslint-plugin-unicorn: 45.0.2
   factory.io: 0.1.4
   fast-check: 3.3.0
   hibp: 11.1.0
@@ -156,7 +156,7 @@ devDependencies:
   eslint-plugin-security: 1.5.0
   eslint-plugin-simple-import-sort: 8.0.0_eslint@8.29.0
   eslint-plugin-switch-case: 1.1.2
-  eslint-plugin-unicorn: 45.0.1_eslint@8.29.0
+  eslint-plugin-unicorn: 45.0.2_eslint@8.29.0
   factory.io: 0.1.4
   fast-check: 3.3.0
   husky: 8.0.2
@@ -4615,8 +4615,8 @@ packages:
       lodash.zipobject: 4.1.3
     dev: true
 
-  /eslint-plugin-unicorn/45.0.1_eslint@8.29.0:
-    resolution: {integrity: sha512-tLnIw5oDJJc3ILYtlKtqOxPP64FZLTkZkgeuoN6e7x6zw+rhBjOxyvq2c7577LGxXuIhBYrwisZuKNqOOHp3BA==}
+  /eslint-plugin-unicorn/45.0.2_eslint@8.29.0:
+    resolution: {integrity: sha512-Y0WUDXRyGDMcKLiwgL3zSMpHrXI00xmdyixEGIg90gHnj0PcHY4moNv3Ppje/kDivdAy5vUeUr7z211ImPv2gw==}
     engines: {node: '>=14.18'}
     peerDependencies:
       eslint: '>=8.28.0'
