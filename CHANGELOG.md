@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.10](https://github.com/leosuncin/nest-api-example/compare/v1.7.9...v1.7.10) (2022-12-13)
+
+### Bug Fixes
+
+- **deps:** update dependency nestjs-typeorm-paginate to v4.0.3 ([b0aa2cc](https://github.com/leosuncin/nest-api-example/commit/b0aa2cc7be5a9341bf7d9f529e2f8642286e920b))
+
 ## [1.7.9](https://github.com/leosuncin/nest-api-example/compare/v1.7.8...v1.7.9) (2022-12-10)
 
 ### Bug Fixes
