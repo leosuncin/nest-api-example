@@ -61,7 +61,7 @@ specifiers:
   jest: 29.3.1
   jest-create-mock-instance: 2.0.0
   lint-staged: 13.1.0
-  nestjs-typeorm-paginate: 4.0.2
+  nestjs-typeorm-paginate: 4.0.3
   nock: 13.2.9
   node-mocks-http: 1.12.1
   normalize-email: 1.1.1
@@ -105,7 +105,7 @@ dependencies:
   class-validator: 0.14.0
   cookie-parser: 1.4.6
   hibp: 11.1.0
-  nestjs-typeorm-paginate: 4.0.2_debnttsdnwxg2akl53jay2ioma
+  nestjs-typeorm-paginate: 4.0.3_debnttsdnwxg2akl53jay2ioma
   normalize-email: 1.1.1
   passport: 0.6.0
   passport-jwt: 4.0.0
@@ -7479,8 +7479,8 @@ packages:
     resolution: {integrity: sha512-EZSPZB70jiVsivaBLYDCyntd5eH8NTSMOn3rB+HxwdmKThGELLdYv8qVIMWvZEFy9w8ZZpW9h9OB32l1rGtj7g==}
     dev: true
 
-  /nestjs-typeorm-paginate/4.0.2_debnttsdnwxg2akl53jay2ioma:
-    resolution: {integrity: sha512-9rUXFy3A2BKeWkGwP2aDB4KNQrJsTSNzmVyMW+N07tWhzqcrRiEaJNDxmfT/eiN53A/AVHQTeTucJ/f5iqYZPQ==}
+  /nestjs-typeorm-paginate/4.0.3_debnttsdnwxg2akl53jay2ioma:
+    resolution: {integrity: sha512-qr/pdSTIWTLRCf0xiAsGa2TV1KuHyramLzxV+n4VQ5RYLs7APusum7WdGWRWb/ByUlz+T9BWC5mKIGHotLtMnQ==}
     peerDependencies:
       '@nestjs/common': ^6.1.1 || ^5.6.2 || ^7.0.0 || ^8.0.0 || ^9.0.0
       typeorm: ^0.3.0
