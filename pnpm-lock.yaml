@@ -22,7 +22,7 @@ specifiers:
   '@tsconfig/node16-strictest': 1.0.4
   '@types/bcryptjs': 2.4.2
   '@types/cookie-parser': 1.4.3
-  '@types/express': 4.17.14
+  '@types/express': 4.17.15
   '@types/jest': 29.2.4
   '@types/jest-dev-server': 5.0.0
   '@types/node': 18.11.15
@@ -130,7 +130,7 @@ devDependencies:
   '@tsconfig/node16-strictest': 1.0.4
   '@types/bcryptjs': 2.4.2
   '@types/cookie-parser': 1.4.3
-  '@types/express': 4.17.14
+  '@types/express': 4.17.15
   '@types/jest': 29.2.4
   '@types/jest-dev-server': 5.0.0
   '@types/node': 18.11.15
@@ -2177,7 +2177,7 @@ packages:
   /@types/cookie-parser/1.4.3:
     resolution: {integrity: sha512-CqSKwFwefj4PzZ5n/iwad/bow2hTCh0FlNAeWLtQM3JA/NX/iYagIpWG2cf1bQKQ2c9gU2log5VUCrn7LDOs0w==}
     dependencies:
-      '@types/express': 4.17.14
+      '@types/express': 4.17.15
     dev: true
 
   /@types/cookiejar/2.1.2:
@@ -2202,19 +2202,19 @@ packages:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
     dev: true
 
-  /@types/express-serve-static-core/4.17.30:
-    resolution: {integrity: sha512-gstzbTWro2/nFed1WXtf+TtrpwxH7Ggs4RLYTLbeVgIkUQOI3WG/JKjgeOU1zXDvezllupjrf8OPIdvTbIaVOQ==}
+  /@types/express-serve-static-core/4.17.31:
+    resolution: {integrity: sha512-DxMhY+NAsTwMMFHBTtJFNp5qiHKJ7TeqOo23zVEM9alT1Ml27Q3xcTH0xwxn7Q0BbMcVEJOs/7aQtUWupUQN3Q==}
     dependencies:
       '@types/node': 18.11.15
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
     dev: true
 
-  /@types/express/4.17.14:
-    resolution: {integrity: sha512-TEbt+vaPFQ+xpxFLFssxUDXj5cWCxZJjIcB7Yg0k0GMHGtgtQgpvx/MUQUeAkNbA9AAGrwkAsoeItdTgS7FMyg==}
+  /@types/express/4.17.15:
+    resolution: {integrity: sha512-Yv0k4bXGOH+8a+7bELd2PqHQsuiANB+A8a4gnQrkRWzrkKlb6KHaVvyXhqs04sVW/OWlbPyYxRgYlIXLfrufMQ==}
     dependencies:
       '@types/body-parser': 1.19.2
-      '@types/express-serve-static-core': 4.17.30
+      '@types/express-serve-static-core': 4.17.31
       '@types/qs': 6.9.7
       '@types/serve-static': 1.15.0
     dev: true
@@ -2304,7 +2304,7 @@ packages:
   /@types/passport-jwt/3.0.8:
     resolution: {integrity: sha512-VKJZDJUAHFhPHHYvxdqFcc5vlDht8Q2pL1/ePvKAgqRThDaCc84lSYOTQmnx3+JIkDlN+2KfhFhXIzlcVT+Pcw==}
     dependencies:
-      '@types/express': 4.17.14
+      '@types/express': 4.17.15
       '@types/jsonwebtoken': 8.5.8
       '@types/passport-strategy': 0.2.35
     dev: true
@@ -2312,14 +2312,14 @@ packages:
   /@types/passport-strategy/0.2.35:
     resolution: {integrity: sha512-o5D19Jy2XPFoX2rKApykY15et3Apgax00RRLf0RUotPDUsYrQa7x4howLYr9El2mlUApHmCMv5CZ1IXqKFQ2+g==}
     dependencies:
-      '@types/express': 4.17.14
+      '@types/express': 4.17.15
       '@types/passport': 1.0.11
     dev: true
 
   /@types/passport/1.0.11:
     resolution: {integrity: sha512-pz1cx9ptZvozyGKKKIPLcVDVHwae4hrH5d6g5J+DkMRRjR3cVETb4jMabhXAUbg3Ov7T22nFHEgaK2jj+5CBpw==}
     dependencies:
-      '@types/express': 4.17.14
+      '@types/express': 4.17.15
     dev: true
 
   /@types/prettier/2.7.0:
