@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.11](https://github.com/leosuncin/nest-api-example/compare/v1.7.10...v1.7.11) (2022-12-16)
+
+### Bug Fixes
+
+- **deps:** update dependency rxjs to v7.8.0 ([d37bb28](https://github.com/leosuncin/nest-api-example/commit/d37bb2860e70a6a90a3e54ef1c7df106e2c46569))
+
 ## [1.7.10](https://github.com/leosuncin/nest-api-example/compare/v1.7.9...v1.7.10) (2022-12-13)
 
 ### Bug Fixes
