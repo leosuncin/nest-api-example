@@ -65,7 +65,7 @@ specifiers:
   nock: 13.2.9
   node-mocks-http: 1.12.1
   normalize-email: 1.1.1
-  pactum: 3.3.1
+  pactum: 3.3.2
   passport: 0.6.0
   passport-jwt: 4.0.0
   pg: 8.8.0
@@ -165,7 +165,7 @@ devDependencies:
   lint-staged: 13.1.0
   nock: 13.2.9
   node-mocks-http: 1.12.1
-  pactum: 3.3.1
+  pactum: 3.3.2
   pg-mem: 2.6.4_typeorm@0.3.11
   prettier: 2.8.1
   prettier-plugin-toml: 0.3.1
@@ -7929,12 +7929,12 @@ packages:
   /packet-reader/1.0.0:
     resolution: {integrity: sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==}
 
-  /pactum-matchers/1.1.3:
-    resolution: {integrity: sha512-JRFUfWDxnA3e99M3tU+HUxkwiXIO1VlwSYzdJTUrxiOBOF8jUrCkeaHuTsfzQQFMkFAd0BrTqPhfb14hCgVX7w==}
+  /pactum-matchers/1.1.4:
+    resolution: {integrity: sha512-GkIrdBQyFlmKb7LEcSSmkALnGFuZTRTS3C6q46e1uWHAtuwRqB/Mbeg4ta8nZ7eVUglJDG4pUYpZgpVVqycUNQ==}
     dev: true
 
-  /pactum/3.3.1:
-    resolution: {integrity: sha512-hQ4kZ5MUSMI5pamr4/n9qyKm6JAyYeHHK5lC5WGmnuVj8iSZDgaF0YGON3TZiC4pPeRmkNy2/l634a1sUCx0Ww==}
+  /pactum/3.3.2:
+    resolution: {integrity: sha512-GbgCQ3xGWGH6BCDZgMdfz5rhskdh2vntQMA41bA17SzZPgmysZgp7ahtcHW7jT/LU/kk5LFGb/Xj+SJ9lXRLAw==}
     engines: {node: '>=10'}
     dependencies:
       '@exodus/schemasafe': 1.0.0-rc.9
@@ -7944,7 +7944,7 @@ packages:
       klona: 2.0.5
       lightcookie: 1.0.25
       openapi-fuzzer-core: 1.0.6
-      pactum-matchers: 1.1.3
+      pactum-matchers: 1.1.4
       parse-graphql: 1.0.0
       phin: 3.7.0
       polka: 0.5.2
