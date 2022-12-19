@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.12](https://github.com/leosuncin/nest-api-example/compare/v1.7.11...v1.7.12) (2022-12-19)
+
+### Bug Fixes
+
+- **deps:** update dependency cached-lookup to v5.2.2 ([0c46cda](https://github.com/leosuncin/nest-api-example/commit/0c46cda9e3aa71d8e8b1a4124e612685c3a9923e))
+
 ## [1.7.11](https://github.com/leosuncin/nest-api-example/compare/v1.7.10...v1.7.11) (2022-12-16)
 
 ### Bug Fixes
