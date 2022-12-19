@@ -33,7 +33,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.46.1
   '@typescript-eslint/parser': 5.46.1
   bcryptjs: 2.4.3
-  cached-lookup: 5.2.0
+  cached-lookup: 5.2.2
   class-transformer: 0.5.1
   class-validator: 0.14.0
   cookie-parser: 1.4.6
@@ -100,7 +100,7 @@ dependencies:
   '@nestjs/terminus': 9.1.4_z3ebfkorznv4foxvy3pzu64jmm
   '@nestjs/typeorm': 9.0.1_hkapd3a3mi37wyf4vtt5y4i2ye
   bcryptjs: 2.4.3
-  cached-lookup: 5.2.0
+  cached-lookup: 5.2.2
   class-transformer: 0.5.1
   class-validator: 0.14.0
   cookie-parser: 1.4.6
@@ -3324,8 +3324,8 @@ packages:
       unset-value: 1.0.0
     dev: true
 
-  /cached-lookup/5.2.0:
-    resolution: {integrity: sha512-vmJEd8mdLWlICfRM7Yrj3q9Hi+/e6YqgRwykshfp72gEgAMjkQz0qEl5KJeeknfa3r2ju8rLosQhrbYrMWR8EA==}
+  /cached-lookup/5.2.2:
+    resolution: {integrity: sha512-PhOT5FblU6o7VoSIYjBeTsu20ldpKViGQV5sj84oCrleGGQKjfTOVp+8VYlV/x7kVDMAqmPr4pFKKXkE066PCA==}
     dev: false
 
   /call-bind/1.0.2:
