@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.13](https://github.com/leosuncin/nest-api-example/compare/v1.7.12...v1.7.13) (2022-12-24)
+
+### Bug Fixes
+
+- **deps:** update dependency passport-jwt to v4.0.1 ([45e771e](https://github.com/leosuncin/nest-api-example/commit/45e771ed506034198f7cc2e2dff6d9d1b3ce3c4b))
+
 ## [1.7.12](https://github.com/leosuncin/nest-api-example/compare/v1.7.11...v1.7.12) (2022-12-19)
 
 ### Bug Fixes
