@@ -1,15 +1,15 @@
-import { resolve } from 'node:path';
-
-import { validate } from 'class-validator';
-import nock, {
-  back as nockBack,
-  cleanAll,
-  enableNetConnect,
-  restore,
-} from 'nock';
+import { Test } from '@nestjs/testing';
+import { useContainer, validate } from 'class-validator';
 
 import { login as credentials } from '~auth/fixtures/credentials';
-import { IsNotVulnerable } from '~auth/validators/is-not-vulnerable.validator';
+import {
+  type hasPasswordBeenPwned,
+  PWNED_PASSWORD,
+} from '~auth/providers/pwned-password.provider';
+import {
+  IsNotVulnerable,
+  IsNotVulnerableConstraint,
+} from '~auth/validators/is-not-vulnerable.validator';
 
 class DTO {
   @IsNotVulnerable()
@@ -21,43 +21,38 @@ class DTO {
 }
 
 describe('IsNotVulnerablePassword', () => {
-  beforeAll(() => {
-    nockBack.fixtures = resolve(__dirname, '__fixtures__');
-    nockBack.setMode('lockdown');
+  let pwnedPassword: jest.MockedFunction<typeof hasPasswordBeenPwned>;
 
-    nock('https://api.pwnedpasswords.com')
-      .persist()
-      .replyDate()
-      .get(/range\/\w{5}/);
-  });
+  beforeEach(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        {
+          provide: PWNED_PASSWORD,
+          useValue: jest.fn(),
+        },
+        IsNotVulnerableConstraint,
+      ],
+    }).compile();
 
-  afterEach(() => {
-    restore();
-  });
-
-  afterAll(() => {
-    cleanAll();
-    enableNetConnect();
+    useContainer(module, { fallbackOnErrors: true });
+    pwnedPassword = module.get(PWNED_PASSWORD);
   });
 
   it('should check if the password is insecure when it has been exposed', async () => {
-    const { nockDone } = await nockBack('is-insecure.json');
     const dto = new DTO('password');
 
+    pwnedPassword.mockResolvedValueOnce(100);
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(1);
-
-    nockDone();
   });
 
   it('should check if the password is secure when it has never been exposed', async () => {
-    const { nockDone } = await nockBack('is-secure.json');
     const dto = new DTO(credentials.password);
+
+    pwnedPassword.mockResolvedValueOnce(0);
     const errors = await validate(dto);
 
     expect(errors).toHaveLength(0);
-
-    nockDone();
   });
 });

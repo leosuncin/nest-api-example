@@ -1,26 +1,35 @@
 import { faker } from '@faker-js/faker';
-import { HttpStatus } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
 import { createMockInstance } from 'jest-create-mock-instance';
-import nock, { cleanAll, enableNetConnect } from 'nock';
 
 import { UpdateUser } from '~auth/dto/update-user.dto';
 import { updateUserFactory } from '~auth/factories/update-user.factory';
-import { PASSWORD_HASHES } from '~auth/fixtures/password-hashes';
 import { john as user } from '~auth/fixtures/users';
+import { PWNED_PASSWORD } from '~auth/providers/pwned-password.provider';
 import { AuthenticationService } from '~auth/services/authentication.service';
 import { IsAlreadyRegisterConstraint } from '~auth/validators/is-already-register.validator';
+import { IsNotVulnerableConstraint } from '~auth/validators/is-not-vulnerable.validator';
 import { ValidateCredentialConstraint } from '~auth/validators/validate-credential.validator';
-
-jest.setTimeout(7e3);
 
 describe('Update user validations', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [IsAlreadyRegisterConstraint, ValidateCredentialConstraint],
+      providers: [
+        {
+          provide: PWNED_PASSWORD,
+          useValue: jest
+            .fn()
+            .mockImplementation((password: string) =>
+              Promise.resolve(password === 'password' ? 9_545_824 : 0),
+            ),
+        },
+        IsAlreadyRegisterConstraint,
+        IsNotVulnerableConstraint,
+        ValidateCredentialConstraint,
+      ],
     })
       .useMocker((token) => {
         if (token === AuthenticationService) {
@@ -36,17 +45,6 @@ describe('Update user validations', () => {
       .compile();
 
     useContainer(module, { fallbackOnErrors: true });
-
-    nock('https://api.pwnedpasswords.com')
-      .persist()
-      .replyDate()
-      .get(/range\/\w{5}/)
-      .reply(HttpStatus.OK, PASSWORD_HASHES);
-  });
-
-  afterAll(() => {
-    cleanAll();
-    enableNetConnect();
   });
 
   it('should pass with valid data', async () => {

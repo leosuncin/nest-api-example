@@ -1,21 +1,23 @@
-import CachedLookup, { type LookupHandler } from 'cached-lookup';
+import { Inject } from '@nestjs/common';
 import {
   registerDecorator,
   ValidationOptions,
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
-import { pwnedPassword } from 'hibp';
 
-const hasPasswordBeenPwned = (password: string) => pwnedPassword(password);
-
-const hibpCache = new CachedLookup(
-  hasPasswordBeenPwned as LookupHandler<number>,
-);
+import {
+  type hasPasswordBeenPwned,
+  PWNED_PASSWORD,
+} from '~auth/providers/pwned-password.provider';
 
 @ValidatorConstraint({ name: 'isNotVulnerable', async: true })
-class IsNotVulnerableConstraint implements ValidatorConstraintInterface {
+export class IsNotVulnerableConstraint implements ValidatorConstraintInterface {
+  #formatter = new Intl.NumberFormat();
   #exposedTimes!: number;
+
+  @Inject(PWNED_PASSWORD)
+  private readonly pwnedPassword!: typeof hasPasswordBeenPwned;
 
   async validate(value: string): Promise<boolean> {
     if (typeof value !== 'string' || value.length === 0) {
@@ -23,15 +25,15 @@ class IsNotVulnerableConstraint implements ValidatorConstraintInterface {
       return true;
     }
 
-    this.#exposedTimes = await hibpCache.cached(60e3, value);
+    this.#exposedTimes = await this.pwnedPassword(value);
 
     return this.#exposedTimes === 0;
   }
 
   defaultMessage() {
-    return `$property is vulnerable, it has been publicly exposed in ${
-      this.#exposedTimes
-    } data breaches`;
+    return `$property is vulnerable, it has been publicly exposed in ${this.#formatter.format(
+      this.#exposedTimes,
+    )} data breaches`;
   }
 }
 
