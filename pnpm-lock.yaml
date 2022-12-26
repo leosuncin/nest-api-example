@@ -85,7 +85,7 @@ specifiers:
   ts-loader: 9.4.2
   ts-node: 10.9.1
   tsconfig-paths: 4.1.1
-  txtgen: 3.0.2
+  txtgen: 3.0.4
   typeorm: 0.3.11
   typeorm-extension: 2.4.0
   typescript: 4.9.4
@@ -178,7 +178,7 @@ devDependencies:
   ts-loader: 9.4.2_typescript@4.9.4
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   tsconfig-paths: 4.1.1
-  txtgen: 3.0.2
+  txtgen: 3.0.4
   typeorm-extension: 2.4.0_typeorm@0.3.11
   typescript: 4.9.4
 
@@ -9720,8 +9720,8 @@ packages:
       typescript: 4.9.4
     dev: true
 
-  /txtgen/3.0.2:
-    resolution: {integrity: sha512-NkXJS6CnIzIqaFOTD/7W6JuNxpyETBQdUFShe4LnXypGUg0BrDn4Toyt/NNnVpYghbdGmBAedV9sAfZsYEaNcg==}
+  /txtgen/3.0.4:
+    resolution: {integrity: sha512-15UBmauZ4Ceq3UPEae9gaRo7g1c5AR6qyRRaF9TIXXMTEfCxo1h+fAsgl21Zqvad9gNhvEt0XTGKsTXy2PydeA==}
     engines: {node: '>= 14'}
     dev: true
 
