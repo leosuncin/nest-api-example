@@ -25,8 +25,6 @@ const unprocessableError = {
 // eslint-disable-next-line security/detect-non-literal-regexp
 const cookieRegex = new RegExp(`${TOKEN_COOKIE_NAME}=`, 'iu');
 
-jest.setTimeout(7e3);
-
 describe('Auth module', () => {
   const password = credentials.password;
   let app: INestApplication;

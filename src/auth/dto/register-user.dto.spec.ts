@@ -1,50 +1,45 @@
 import { faker } from '@faker-js/faker';
-import { HttpStatus } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { plainToInstance } from 'class-transformer';
 import { useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
 import { createMockInstance } from 'jest-create-mock-instance';
-import nock, { cleanAll, enableNetConnect } from 'nock';
 
 import { RegisterUser } from '~auth/dto/register-user.dto';
 import { registerUserFactory } from '~auth/factories/register-user.factory';
 import { register } from '~auth/fixtures/credentials';
-import { PASSWORD_HASHES } from '~auth/fixtures/password-hashes';
+import { PWNED_PASSWORD } from '~auth/providers/pwned-password.provider';
 import { AuthenticationService } from '~auth/services/authentication.service';
 import { IsAlreadyRegisterConstraint } from '~auth/validators/is-already-register.validator';
-
-jest.setTimeout(7e3);
+import { IsNotVulnerableConstraint } from '~auth/validators/is-not-vulnerable.validator';
 
 describe('Register user validations', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [IsAlreadyRegisterConstraint],
-    })
-      .useMocker((token) => {
-        if (token === AuthenticationService) {
-          const mock = createMockInstance(AuthenticationService);
-          mock.isRegistered.mockResolvedValue(false);
+      providers: [
+        {
+          provide: PWNED_PASSWORD,
+          useValue: jest
+            .fn()
+            .mockImplementation((password: string) =>
+              Promise.resolve(password === 'password' ? 9_545_824 : 0),
+            ),
+        },
+        {
+          provide: AuthenticationService,
+          useFactory() {
+            const mock = createMockInstance(AuthenticationService);
+            mock.isRegistered.mockResolvedValue(false);
 
-          return mock;
-        }
-
-        return;
-      })
-      .compile();
+            return mock;
+          },
+        },
+        IsAlreadyRegisterConstraint,
+        IsNotVulnerableConstraint,
+      ],
+    }).compile();
 
     useContainer(module, { fallbackOnErrors: true });
-
-    nock('https://api.pwnedpasswords.com')
-      .persist()
-      .replyDate()
-      .get(/range\/\w{5}/)
-      .reply(HttpStatus.OK, PASSWORD_HASHES);
-  });
-
-  afterAll(() => {
-    cleanAll();
-    enableNetConnect();
   });
 
   it('should be validated', async () => {

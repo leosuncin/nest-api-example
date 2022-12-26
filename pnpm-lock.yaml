@@ -33,7 +33,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.47.0
   '@typescript-eslint/parser': 5.47.0
   bcryptjs: 2.4.3
-  cached-lookup: 5.2.2
+  cachified: ^3.0.1
   class-transformer: 0.5.1
   class-validator: 0.14.0
   cookie-parser: 1.4.6
@@ -61,6 +61,7 @@ specifiers:
   jest: 29.3.1
   jest-create-mock-instance: 2.0.0
   lint-staged: 13.1.0
+  lru-cache: ^7.14.1
   nestjs-typeorm-paginate: 4.0.3
   nock: 13.2.9
   node-mocks-http: 1.12.1
@@ -100,11 +101,12 @@ dependencies:
   '@nestjs/terminus': 9.1.4_z3ebfkorznv4foxvy3pzu64jmm
   '@nestjs/typeorm': 9.0.1_hkapd3a3mi37wyf4vtt5y4i2ye
   bcryptjs: 2.4.3
-  cached-lookup: 5.2.2
+  cachified: 3.0.1
   class-transformer: 0.5.1
   class-validator: 0.14.0
   cookie-parser: 1.4.6
   hibp: 11.1.0
+  lru-cache: 7.14.1
   nestjs-typeorm-paginate: 4.0.3_debnttsdnwxg2akl53jay2ioma
   normalize-email: 1.1.1
   passport: 0.6.0
@@ -3324,8 +3326,8 @@ packages:
       unset-value: 1.0.0
     dev: true
 
-  /cached-lookup/5.2.2:
-    resolution: {integrity: sha512-PhOT5FblU6o7VoSIYjBeTsu20ldpKViGQV5sj84oCrleGGQKjfTOVp+8VYlV/x7kVDMAqmPr4pFKKXkE066PCA==}
+  /cachified/3.0.1:
+    resolution: {integrity: sha512-hggh2hdWPXX1L0tehnJ1hQc2LHVI5vtO3B2jvppgyyhWk9hwTcXpQfAfNq9CodNoHxUC/21yLw1CeFb+g21p3w==}
     dev: false
 
   /call-bind/1.0.2:
@@ -7137,6 +7139,11 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lru-cache/7.14.1:
+    resolution: {integrity: sha512-ysxwsnTKdAx96aTRdhDOCQfDgbHnt8SK0KY8SEjO0wHinhWOFTESbjVCMPbU1uGXg/ch4lifqx0wfjOawU2+WA==}
+    engines: {node: '>=12'}
+    dev: false
 
   /macos-release/2.5.0:
     resolution: {integrity: sha512-EIgv+QZ9r+814gjJj0Bt5vSLJLzswGmSUbUpbi9AIr/fsN2IWFBl2NucV9PAiek+U1STK468tEkxmVYUtuAN3g==}

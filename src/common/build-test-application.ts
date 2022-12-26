@@ -12,6 +12,7 @@ import { useContainer } from 'class-validator';
 import cookieParser from 'cookie-parser';
 import type { DataSource } from 'typeorm';
 
+import { PWNED_PASSWORD } from '~auth/providers/pwned-password.provider';
 import { database } from '~common/database';
 import { type ConfigObject, configuration } from '~config/configuration';
 import { dataSource } from '~config/data-source';
@@ -41,7 +42,12 @@ export async function buildTestApplication(
       }),
       ...modules,
     ],
-  }).compile();
+  })
+    .overrideProvider(PWNED_PASSWORD)
+    .useValue((password: string) =>
+      Promise.resolve(password === 'password' ? 9_545_824 : 0),
+    )
+    .compile();
   const app = module.createNestApplication();
   const config = app.get<ConfigService<ConfigObject>>(ConfigService);
 
