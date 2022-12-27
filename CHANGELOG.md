@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.14](https://github.com/leosuncin/nest-api-example/compare/v1.7.13...v1.7.14) (2022-12-27)
+
+### Bug Fixes
+
+- **deps:** update dependency @nestjs/jwt to v10 ([1e1ace0](https://github.com/leosuncin/nest-api-example/commit/1e1ace0bb9f2ef11b54d83afec3176385c4a1510))
+
 ## [1.7.13](https://github.com/leosuncin/nest-api-example/compare/v1.7.12...v1.7.13) (2022-12-24)
 
 ### Bug Fixes
