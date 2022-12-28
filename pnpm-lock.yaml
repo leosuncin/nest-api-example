@@ -87,7 +87,7 @@ specifiers:
   tsconfig-paths: 4.1.1
   txtgen: 3.0.2
   typeorm: 0.3.11
-  typeorm-extension: 2.4.0
+  typeorm-extension: 2.4.1
   typescript: 4.9.4
 
 dependencies:
@@ -179,7 +179,7 @@ devDependencies:
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   tsconfig-paths: 4.1.1
   txtgen: 3.0.2
-  typeorm-extension: 2.4.0_typeorm@0.3.11
+  typeorm-extension: 2.4.1_typeorm@0.3.11
   typescript: 4.9.4
 
 packages:
@@ -5407,7 +5407,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.1.1
+      minimatch: 5.1.2
       once: 1.4.0
     dev: true
 
@@ -6988,8 +6988,8 @@ packages:
       p-locate: 5.0.0
     dev: true
 
-  /locter/0.6.0:
-    resolution: {integrity: sha512-qHNkdIMNnwatynK2oYSYegIcTCz31CPE2Ck/dLMgp8VI9DYAuVZ2H76u1+PEaO29u5+z9snLYpj1oIuT5BNntQ==}
+  /locter/0.6.1:
+    resolution: {integrity: sha512-U1U3RbqznLPvJ1Ct5jNBCuDQbaKZ8PC8JmAv7cO4+ZP1V1L8+zL+sjbp3wGo170yEYgyqrI4KaQcDUowIZkEsQ==}
     dependencies:
       ebec: 0.1.0
       glob: 8.0.3
@@ -7312,8 +7312,8 @@ packages:
     dependencies:
       brace-expansion: 1.1.11
 
-  /minimatch/5.1.1:
-    resolution: {integrity: sha512-362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==}
+  /minimatch/5.1.2:
+    resolution: {integrity: sha512-bNH9mmM9qsJ2X4r2Nat1B//1dJVcn3+iBLa3IgqJ7EbGaDNepL9QSHOxN4ng33s52VMMhhIfgCYDk3C4ZmlDAg==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
@@ -8388,10 +8388,10 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
-  /rapiq/0.6.1:
-    resolution: {integrity: sha512-8kRCLfa3XCtAzXcZ/NoE0RkUQ07+Ere0v+MR28fIMz2sgQSOzniDxcbT1rGM2KVHmnBei0E8FA3puDpfJr1f3Q==}
+  /rapiq/0.6.2:
+    resolution: {integrity: sha512-+aiQ4AROD941BEBKVAs+r2Ebg6rhspxXtB6B+GWxBxd2smNyZVjgVphCNkZgtD3R/RbZlviVNzlW7l5aUBMCzQ==}
     dependencies:
-      minimatch: 5.1.1
+      minimatch: 5.1.2
       smob: 0.0.6
     dev: true
 
@@ -9719,15 +9719,15 @@ packages:
   /typedarray/0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm-extension/2.4.0_typeorm@0.3.11:
-    resolution: {integrity: sha512-LLAA7eaIsMxEI4/b5jiC97oto9X31F+xGzmQHU9hAVL4aQ56QSWWapFZqQuyZUBS4O0674eNtphm1CO1dDyYFg==}
+  /typeorm-extension/2.4.1_typeorm@0.3.11:
+    resolution: {integrity: sha512-dabV2fgy2xzL1p/2dS174F49JsUv2kRbZS3GZO89z3TmdeMUX5OX6Aa7l8ZJfQXhH8AaKuQ2HGbShu58FhZn0w==}
     hasBin: true
     peerDependencies:
       typeorm: ~0.3.0
     dependencies:
       '@faker-js/faker': 7.6.0
-      locter: 0.6.0
-      rapiq: 0.6.1
+      locter: 0.6.1
+      rapiq: 0.6.2
       reflect-metadata: 0.1.13
       typeorm: 0.3.11_pg@8.8.0+ts-node@10.9.1
       yargs: 17.6.2
