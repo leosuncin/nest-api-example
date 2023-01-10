@@ -63,7 +63,7 @@ specifiers:
   lint-staged: 13.1.0
   lru-cache: ^7.14.1
   nestjs-typeorm-paginate: 4.0.3
-  nock: 13.2.9
+  nock: 13.3.0
   node-mocks-http: 1.12.1
   normalize-email: 1.1.1
   pactum: 3.3.2
@@ -165,7 +165,7 @@ devDependencies:
   jest: 29.3.1_zfha7dvnw4nti6zkbsmhmn6xo4
   jest-create-mock-instance: 2.0.0
   lint-staged: 13.1.0
-  nock: 13.2.9
+  nock: 13.3.0
   node-mocks-http: 1.12.1
   pactum: 3.3.2
   pg-mem: 2.6.4_typeorm@0.3.11
@@ -7503,8 +7503,8 @@ packages:
       typeorm: 0.3.11_pg@8.8.0+ts-node@10.9.1
     dev: false
 
-  /nock/13.2.9:
-    resolution: {integrity: sha512-1+XfJNYF1cjGB+TKMWi29eZ0b82QOvQs2YoLNzbpWGqFMtRQHTa57osqdGj4FrFPgkO4D4AZinzUJR9VvW3QUA==}
+  /nock/13.3.0:
+    resolution: {integrity: sha512-HHqYQ6mBeiMc+N038w8LkMpDCRquCHWeNmN3v6645P3NhN2+qXOBqvPqo7Rt1VyCMzKhJ733wZqw5B7cQVFNPg==}
     engines: {node: '>= 10.13'}
     dependencies:
       debug: 4.3.4
