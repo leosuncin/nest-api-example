@@ -50,7 +50,7 @@ specifiers:
   eslint-plugin-jest-formatting: 3.1.0
   eslint-plugin-node: 11.1.0
   eslint-plugin-optimize-regex: 1.2.1
-  eslint-plugin-security: 1.5.0
+  eslint-plugin-security: 1.6.0
   eslint-plugin-simple-import-sort: 8.0.0
   eslint-plugin-switch-case: 1.1.2
   eslint-plugin-unicorn: 45.0.2
@@ -155,7 +155,7 @@ devDependencies:
   eslint-plugin-jest-formatting: 3.1.0_eslint@8.31.0
   eslint-plugin-node: 11.1.0_eslint@8.31.0
   eslint-plugin-optimize-regex: 1.2.1
-  eslint-plugin-security: 1.5.0
+  eslint-plugin-security: 1.6.0
   eslint-plugin-simple-import-sort: 8.0.0_eslint@8.31.0
   eslint-plugin-switch-case: 1.1.2
   eslint-plugin-unicorn: 45.0.2_eslint@8.31.0
@@ -4586,8 +4586,8 @@ packages:
       regexp-tree: 0.1.24
     dev: true
 
-  /eslint-plugin-security/1.5.0:
-    resolution: {integrity: sha512-hAFVwLZ/UeXrlyVD2TDarv/x00CoFVpaY0IUZhKjPjiFxqkuQVixsK4f2rxngeQOqSxi6OUjzJM/jMwKEVjJ8g==}
+  /eslint-plugin-security/1.6.0:
+    resolution: {integrity: sha512-SGvyejbhW/dziRbzOroKX5bj8z/qtBOw7Q95C9CBbJQqBtFB2o4OxSM3MCO2u9noPp7B6DDaFGtXTx8ImPiO/A==}
     dependencies:
       safe-regex: 2.1.1
     dev: true
