@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.15](https://github.com/leosuncin/nest-api-example/compare/v1.7.14...v1.7.15) (2023-01-27)
+
+### Bug Fixes
+
+- **deps:** update dependency pg to v8.9.0 ([3329e65](https://github.com/leosuncin/nest-api-example/commit/3329e65c926d530b21610e0b897648131b98b370))
+
 ## [1.7.14](https://github.com/leosuncin/nest-api-example/compare/v1.7.13...v1.7.14) (2022-12-27)
 
 ### Bug Fixes
