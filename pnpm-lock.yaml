@@ -56,7 +56,7 @@ specifiers:
   eslint-plugin-unicorn: 45.0.2
   factory.io: 0.1.4
   fast-check: 3.6.2
-  hibp: 11.1.0
+  hibp: 11.1.1
   husky: 8.0.3
   jest: 29.4.1
   jest-create-mock-instance: 2.0.0
@@ -105,7 +105,7 @@ dependencies:
   class-transformer: 0.5.1
   class-validator: 0.14.0
   cookie-parser: 1.4.6
-  hibp: 11.1.0
+  hibp: 11.1.1
   lru-cache: 7.14.1
   nestjs-typeorm-paginate: 4.0.3_debnttsdnwxg2akl53jay2ioma
   normalize-email: 1.1.1
@@ -5697,12 +5697,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /hibp/11.1.0:
-    resolution: {integrity: sha512-JrFGDFbtHhPl6zHe6iyOd89ICuNXM4Om1Vnv9krVpUbfPPF5mrudQBz4pztHlNofeHlGGQJSHDtTUQWQOfmp7Q==}
+  /hibp/11.1.1:
+    resolution: {integrity: sha512-teXOTCjiRWVBD/yY7NMMFsCBaJLgEx0TotqGe1nQMXLy+537ajKcG8zowW2OKGxxiPiuaFFA9VMAVLxxdAODxg==}
     engines: {node: '>= 12.16'}
     dependencies:
       isomorphic-unfetch: 3.1.0
-      jssha: 3.2.0
+      jssha: 3.3.0
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -6963,8 +6963,8 @@ packages:
       semver: 7.3.8
     dev: false
 
-  /jssha/3.2.0:
-    resolution: {integrity: sha512-QuruyBENDWdN4tZwJbQq7/eAK85FqrI4oDbXjy5IBhYD+2pTJyBUWZe8ctWaCkrV0gy6AaelgOZZBMeswEa/6Q==}
+  /jssha/3.3.0:
+    resolution: {integrity: sha512-w9OtT4ALL+fbbwG3gw7erAO0jvS5nfvrukGPMWIAoea359B26ALXGpzy4YJSp9yGnpUvuvOw1nSjSoHDfWSr1w==}
     dev: false
 
   /jwa/1.4.1:
