@@ -13,7 +13,7 @@ specifiers:
   '@nestjs/passport': 9.0.1
   '@nestjs/platform-express': 9.3.2
   '@nestjs/schematics': 9.0.4
-  '@nestjs/terminus': 9.1.4
+  '@nestjs/terminus': 9.2.0
   '@nestjs/testing': 9.3.2
   '@nestjs/typeorm': 9.0.1
   '@semantic-release/changelog': 6.0.2
@@ -98,7 +98,7 @@ dependencies:
   '@nestjs/mapped-types': 1.2.0_5v7hu63m5ik6yihicxwosl3a54
   '@nestjs/passport': 9.0.1_dpjyhlmcqdvxcebopcsorharce
   '@nestjs/platform-express': 9.3.2_fnnujyxcjtinmcbby3pisnawpe
-  '@nestjs/terminus': 9.1.4_rkohzuwe6uiae3qpctsqmtkz3q
+  '@nestjs/terminus': 9.2.0_rkohzuwe6uiae3qpctsqmtkz3q
   '@nestjs/typeorm': 9.0.1_yap6zdz53x5x2cqk2hmcgqigau
   bcryptjs: 2.4.3
   cachified: 3.0.1
@@ -1666,8 +1666,8 @@ packages:
       - chokidar
     dev: true
 
-  /@nestjs/terminus/9.1.4_rkohzuwe6uiae3qpctsqmtkz3q:
-    resolution: {integrity: sha512-VUkafKRK6uWzwyHPind3RejxQAFJxPaXjDtvHQRaNdJ5Pk9wVD4e6e8KLGhcrPGC8ZDorqBLZABnECIcGzkodA==}
+  /@nestjs/terminus/9.2.0_rkohzuwe6uiae3qpctsqmtkz3q:
+    resolution: {integrity: sha512-U3UR3qv3qY1i47JLxGQZfV8qkS4jlCtMWf/BJrUowSjNkBV/EkwOL9sUTHOROHPsEBZKjR6Ekwh9ymFARNhrfg==}
     peerDependencies:
       '@grpc/grpc-js': '*'
       '@grpc/proto-loader': '*'
