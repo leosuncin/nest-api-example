@@ -29,7 +29,7 @@ specifiers:
   '@types/passport': 1.0.11
   '@types/passport-jwt': 3.0.8
   '@types/supertest': 2.0.12
-  '@types/validator': 13.7.11
+  '@types/validator': 13.7.12
   '@typescript-eslint/eslint-plugin': 5.50.0
   '@typescript-eslint/parser': 5.50.0
   bcryptjs: 2.4.3
@@ -139,7 +139,7 @@ devDependencies:
   '@types/passport': 1.0.11
   '@types/passport-jwt': 3.0.8
   '@types/supertest': 2.0.12
-  '@types/validator': 13.7.11
+  '@types/validator': 13.7.12
   '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
   '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
   cspell: 6.21.0
@@ -2394,8 +2394,8 @@ packages:
       '@types/superagent': 4.1.15
     dev: true
 
-  /@types/validator/13.7.11:
-    resolution: {integrity: sha512-WqTos+CnAKN64YwyBMhgUYhb5VsTNKwUY6AuzG5qu9/pFZJar/RJFMZBXwX7VS+uzYi+lIAr3WkvuWqEI9F2eg==}
+  /@types/validator/13.7.12:
+    resolution: {integrity: sha512-YVtyAPqpefU+Mm/qqnOANW6IkqKpCSrarcyV269C8MA8Ux0dbkEuQwM/4CjL47kVEM2LgBef/ETfkH+c6+moFA==}
 
   /@types/wait-on/5.3.1:
     resolution: {integrity: sha512-2FFOKCF/YydrMUaqg+fkk49qf0e5rDgwt6aQsMzFQzbS419h2gNOXyiwp/o2yYy27bi/C1z+HgfncryjGzlvgQ==}
@@ -3541,7 +3541,7 @@ packages:
   /class-validator/0.14.0:
     resolution: {integrity: sha512-ct3ltplN8I9fOwUd8GrP8UQixwff129BkEtuWDKL5W45cQuLd19xqmTLu5ge78YDm/fdje6FMt0hGOhl0lii3A==}
     dependencies:
-      '@types/validator': 13.7.11
+      '@types/validator': 13.7.12
       libphonenumber-js: 1.10.15
       validator: 13.7.0
 
