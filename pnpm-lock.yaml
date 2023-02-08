@@ -55,7 +55,7 @@ specifiers:
   eslint-plugin-switch-case: 1.1.2
   eslint-plugin-unicorn: 45.0.2
   factory.io: 0.1.4
-  fast-check: 3.6.2
+  fast-check: 3.6.3
   hibp: 12.0.0
   husky: 8.0.3
   jest: 29.4.2
@@ -160,7 +160,7 @@ devDependencies:
   eslint-plugin-switch-case: 1.1.2
   eslint-plugin-unicorn: 45.0.2_eslint@8.33.0
   factory.io: 0.1.4
-  fast-check: 3.6.2
+  fast-check: 3.6.3
   husky: 8.0.3
   jest: 29.4.2_qnch7tm6w36cvfoqlc3v7gbphu
   jest-create-mock-instance: 2.0.0
@@ -5257,8 +5257,8 @@ packages:
       lodash.assignin: 4.2.0
     dev: true
 
-  /fast-check/3.6.2:
-    resolution: {integrity: sha512-htRkbkw8B1yVfvrLNiJTnpcvpXrdcgpwZUQdC07dsiUGXaHHWK38t6VCnTmAUf68atyos1+XXXY60VUbSgorAQ==}
+  /fast-check/3.6.3:
+    resolution: {integrity: sha512-5+ovrjQLUa+F9RbRcW7A++K+olKy2mNgYNfFmXSzQOAQ/Fuit12F1UI8z5Bic9YgRkUAQqXSkFUAAs7xohbvvg==}
     engines: {node: '>=8.0.0'}
     dependencies:
       pure-rand: 6.0.0
