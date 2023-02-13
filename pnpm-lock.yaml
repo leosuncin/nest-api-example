@@ -60,7 +60,7 @@ specifiers:
   husky: 8.0.3
   jest: 29.4.2
   jest-create-mock-instance: 2.0.0
-  lint-staged: 13.1.1
+  lint-staged: 13.1.2
   lru-cache: ^7.14.1
   nestjs-typeorm-paginate: 4.0.3
   nock: 13.3.0
@@ -164,7 +164,7 @@ devDependencies:
   husky: 8.0.3
   jest: 29.4.2_ucpl6toqp57nqodtp3vxxi6g5a
   jest-create-mock-instance: 2.0.0
-  lint-staged: 13.1.1
+  lint-staged: 13.1.2
   nock: 13.3.0
   node-mocks-http: 1.12.1
   pactum: 3.3.2
@@ -7223,8 +7223,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged/13.1.1:
-    resolution: {integrity: sha512-LLJLO0Kdbcv2a+CvSF4p1M7jBZOajKSMpBUvyR8+bXccsqPER0/NxTFQSpNHjqwV9kM3tkHczYerTB5wI+bksQ==}
+  /lint-staged/13.1.2:
+    resolution: {integrity: sha512-K9b4FPbWkpnupvK3WXZLbgu9pchUJ6N7TtVZjbaPsoizkqFUDkUReUL25xdrCljJs7uLUF3tZ7nVPeo/6lp+6w==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
