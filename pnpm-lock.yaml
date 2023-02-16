@@ -26,7 +26,7 @@ specifiers:
   '@types/jest': 29.4.0
   '@types/jest-dev-server': 5.0.0
   '@types/node': 18.13.0
-  '@types/passport': 1.0.11
+  '@types/passport': 1.0.12
   '@types/passport-jwt': 3.0.8
   '@types/supertest': 2.0.12
   '@types/validator': 13.7.12
@@ -136,7 +136,7 @@ devDependencies:
   '@types/jest': 29.4.0
   '@types/jest-dev-server': 5.0.0
   '@types/node': 18.13.0
-  '@types/passport': 1.0.11
+  '@types/passport': 1.0.12
   '@types/passport-jwt': 3.0.8
   '@types/supertest': 2.0.12
   '@types/validator': 13.7.12
@@ -2389,11 +2389,11 @@ packages:
     resolution: {integrity: sha512-o5D19Jy2XPFoX2rKApykY15et3Apgax00RRLf0RUotPDUsYrQa7x4howLYr9El2mlUApHmCMv5CZ1IXqKFQ2+g==}
     dependencies:
       '@types/express': 4.17.17
-      '@types/passport': 1.0.11
+      '@types/passport': 1.0.12
     dev: true
 
-  /@types/passport/1.0.11:
-    resolution: {integrity: sha512-pz1cx9ptZvozyGKKKIPLcVDVHwae4hrH5d6g5J+DkMRRjR3cVETb4jMabhXAUbg3Ov7T22nFHEgaK2jj+5CBpw==}
+  /@types/passport/1.0.12:
+    resolution: {integrity: sha512-QFdJ2TiAEoXfEQSNDISJR1Tm51I78CymqcBa8imbjo6dNNu+l2huDxxbDEIoFIwOSKMkOfHEikyDuZ38WwWsmw==}
     dependencies:
       '@types/express': 4.17.17
     dev: true
