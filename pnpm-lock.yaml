@@ -70,7 +70,7 @@ specifiers:
   passport: 0.6.0
   passport-jwt: 4.0.1
   pg: 8.9.0
-  pg-mem: 2.6.4
+  pg-mem: 2.6.6
   prettier: 2.8.4
   prettier-plugin-toml: 0.3.1
   reflect-metadata: 0.1.13
@@ -168,7 +168,7 @@ devDependencies:
   nock: 13.3.0
   node-mocks-http: 1.12.1
   pactum: 3.3.2
-  pg-mem: 2.6.4_typeorm@0.3.12
+  pg-mem: 2.6.6_typeorm@0.3.12
   prettier: 2.8.4
   prettier-plugin-toml: 0.3.1
   semantic-release: 20.1.1
@@ -8472,8 +8472,8 @@ packages:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
 
-  /pg-mem/2.6.4_typeorm@0.3.12:
-    resolution: {integrity: sha512-0QYoy2/jVmZF6Z3nCwQndhw/fAfrWM2vrVsJ+TOzlo1mxk3wBMQzUxsuPLcsZcSm4j6J+ACUHy2TIdz7nm9AcQ==}
+  /pg-mem/2.6.6_typeorm@0.3.12:
+    resolution: {integrity: sha512-AU23zJY/OI87aXMZruL0cPZcDsM4ABY5TLQ+1jnlI5Xflp6S6Y1Ax1GL+k2seRZPX7LacYuyCypEnHk1ckpfFA==}
     peerDependencies:
       knex: '>=0.20'
       mikro-orm: '*'
@@ -8500,7 +8500,7 @@ packages:
       lru-cache: 6.0.0
       moment: 2.29.4
       object-hash: 2.2.0
-      pgsql-ast-parser: 10.5.2
+      pgsql-ast-parser: 11.0.1
       typeorm: 0.3.12_pg@8.9.0+ts-node@10.9.1
     transitivePeerDependencies:
       - '@mikro-orm/entity-generator'
@@ -8585,8 +8585,8 @@ packages:
     dependencies:
       split2: 4.1.0
 
-  /pgsql-ast-parser/10.5.2:
-    resolution: {integrity: sha512-GkGhxSPiGlLlT6dRpeTveK8g0meJZuQldhbBmlFWwjoNp4SePoS2n5cCS2bmjVUkI5ugvvSnfl1WMIB36IQzxA==}
+  /pgsql-ast-parser/11.0.1:
+    resolution: {integrity: sha512-ds6WgKw/Ljv4hs0lGTDBd1qEcOa5SsMAqKEaHhY8UbvyuD0mN0R1VVesvcsiEE5ffZ4879jqAry4DHkC1LkdCw==}
     dependencies:
       moo: 0.5.1
       nearley: 2.20.1
