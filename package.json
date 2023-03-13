@@ -80,7 +80,7 @@
     "@types/passport": "1.0.12",
     "@types/passport-jwt": "3.0.8",
     "@types/supertest": "2.0.12",
-    "@types/validator": "13.7.13",
+    "@types/validator": "13.7.14",
     "@typescript-eslint/eslint-plugin": "5.54.1",
     "@typescript-eslint/parser": "5.54.1",
     "cspell": "6.29.1",
