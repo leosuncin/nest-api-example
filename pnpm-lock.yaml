@@ -70,7 +70,7 @@ specifiers:
   passport: 0.6.0
   passport-jwt: 4.0.1
   pg: 8.10.0
-  pg-mem: 2.6.6
+  pg-mem: 2.6.7
   prettier: 2.8.4
   prettier-plugin-toml: 0.3.1
   reflect-metadata: 0.1.13
@@ -168,7 +168,7 @@ devDependencies:
   nock: 13.3.0
   node-mocks-http: 1.12.2
   pactum: 3.3.2
-  pg-mem: 2.6.6_typeorm@0.3.12
+  pg-mem: 2.6.7_typeorm@0.3.12
   prettier: 2.8.4
   prettier-plugin-toml: 0.3.1
   semantic-release: 20.1.1
@@ -8499,8 +8499,8 @@ packages:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
 
-  /pg-mem/2.6.6_typeorm@0.3.12:
-    resolution: {integrity: sha512-AU23zJY/OI87aXMZruL0cPZcDsM4ABY5TLQ+1jnlI5Xflp6S6Y1Ax1GL+k2seRZPX7LacYuyCypEnHk1ckpfFA==}
+  /pg-mem/2.6.7_typeorm@0.3.12:
+    resolution: {integrity: sha512-i0Eb1Ow3J2dRsEJdWbHifLxveSPGLnvEsx1bJoduIT/VA37AbmQFaRcwFjQ3owzxZuuSfHVMz52hxY9X0Hizyw==}
     peerDependencies:
       knex: '>=0.20'
       mikro-orm: '*'
