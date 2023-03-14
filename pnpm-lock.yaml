@@ -87,7 +87,7 @@ specifiers:
   tsconfig-paths: 4.1.2
   txtgen: 3.0.2
   typeorm: 0.3.12
-  typeorm-extension: 2.5.2
+  typeorm-extension: 2.5.4
   typescript: 4.9.5
 
 dependencies:
@@ -179,7 +179,7 @@ devDependencies:
   ts-node: 10.9.1_cbfmry4sbbh4vatmdrsmatfg5a
   tsconfig-paths: 4.1.2
   txtgen: 3.0.2
-  typeorm-extension: 2.5.2_typeorm@0.3.12
+  typeorm-extension: 2.5.4_typeorm@0.3.12
   typescript: 4.9.5
 
 packages:
@@ -5655,6 +5655,16 @@ packages:
       minimatch: 5.1.2
       once: 1.4.0
 
+  /glob/9.3.0:
+    resolution: {integrity: sha512-EAZejC7JvnQINayvB/7BJbpZpNOJ8Lrw2OZNEvQxe0vaLn1SuwMcfV7/MNaX8L/T0wmptBFI4YMtDvSBxYDc7w==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      fs.realpath: 1.0.0
+      minimatch: 7.4.2
+      minipass: 4.2.5
+      path-scurry: 1.6.1
+    dev: true
+
   /global-dirs/0.1.1:
     resolution: {integrity: sha512-NknMLn7F2J7aflwFOlGdNIuCDpN3VGoSoB+aap3KABFWbHVn1TCgFC+np23J8W2BiZbjfEw3BFBycSMv1AFblg==}
     engines: {node: '>=4'}
@@ -6589,7 +6599,7 @@ packages:
       jest-util: 29.4.3
       jest-validate: 29.4.3
       prompts: 2.4.2
-      yargs: 17.6.2
+      yargs: 17.7.1
     transitivePeerDependencies:
       - '@types/node'
       - supports-color
@@ -7020,8 +7030,8 @@ packages:
       - ts-node
     dev: true
 
-  /jiti/1.17.0:
-    resolution: {integrity: sha512-CByzPgFqYoB9odEeef7GNmQ3S5THIBOtzRYoSCya2Sv27AuQxy2jgoFjQ6VTF53xsq1MXRm+YWNvOoDHUAteOw==}
+  /jiti/1.17.2:
+    resolution: {integrity: sha512-Xf0nU8+8wuiQpLcqdb2HRyHqYwGk2Pd+F7kstyp20ZuqTyCmB9dqpX2NxaxFc1kovraa2bG6c1RL3W7XfapiZg==}
     hasBin: true
     dev: true
 
@@ -7365,12 +7375,12 @@ packages:
       p-locate: 6.0.0
     dev: true
 
-  /locter/1.0.3:
-    resolution: {integrity: sha512-q/mI6BrWzGDYxT5AL7ydSM5jIVbzckV6HDRpDFQ0qSRHrOLtfwPwjKnQmbuKX+i0SQH0UHH23KopzsEWGE85QQ==}
+  /locter/1.0.9:
+    resolution: {integrity: sha512-UKL9xeIlmZl41fpsgSkeydFunq8BBlnbsSaAbFEwCU0tEHmd3wfKO/BIkF3ZHvHmR8bcwips6CcdQONWGRcHAA==}
     dependencies:
       ebec: 0.2.1
-      glob: 8.1.0
-      jiti: 1.17.0
+      glob: 9.3.0
+      jiti: 1.17.2
     dev: true
 
   /lodash-es/4.17.21:
@@ -7707,6 +7717,13 @@ packages:
     dependencies:
       brace-expansion: 2.0.1
 
+  /minimatch/7.4.2:
+    resolution: {integrity: sha512-xy4q7wou3vUoC9k1xGTXc+awNdGaGVHtFUaey8tiX4H1QRc04DZ/rmDFwNm2EBsuYEhAZ6SgMmYf3InGY6OauA==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /minimist-options/4.1.0:
     resolution: {integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==}
     engines: {node: '>= 6'}
@@ -7718,6 +7735,11 @@ packages:
 
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
+
+  /minipass/4.2.5:
+    resolution: {integrity: sha512-+yQl7SX3bIT83Lhb4BVorMAHVuqsskxRdlmO9kTpyukp8vsm2Sn/fUOV9xlnG8/a5JsypJzap21lz/y3FBMJ8Q==}
+    engines: {node: '>=8'}
+    dev: true
 
   /mixin-deep/1.3.2:
     resolution: {integrity: sha512-WRoDn//mXBiJ1H40rqa3vH0toePwSsGb45iInWlTySa+Uu4k3tYUSxa2v1KqAiLtvlrSzaExqS1gtk96A9zvEA==}
@@ -8458,6 +8480,14 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       path-root-regex: 0.1.2
+    dev: true
+
+  /path-scurry/1.6.1:
+    resolution: {integrity: sha512-OW+5s+7cw6253Q4E+8qQ/u1fVvcJQCJo/VFD8pje+dbJCF1n5ZRMV2AEHbGp+5Q7jxQIYJxkHopnj6nzdGeZLA==}
+    engines: {node: '>=14'}
+    dependencies:
+      lru-cache: 7.14.1
+      minipass: 4.2.5
     dev: true
 
   /path-to-regexp/0.1.7:
@@ -10160,19 +10190,19 @@ packages:
   /typedarray/0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm-extension/2.5.2_typeorm@0.3.12:
-    resolution: {integrity: sha512-r7WAFFG00Zu3L/FiE3697w4PLjzfGpkelq5geQJE27do2Deja9UwdyqVIWT3owL8IbEPpqk1O2x1dJynoEumOw==}
+  /typeorm-extension/2.5.4_typeorm@0.3.12:
+    resolution: {integrity: sha512-Z636oNsXD6Xy0zbRL3aJHYB9c9HW2bhm5ikLdaiilrg0tEJXp4HOtUlkZMM/nnIwQ4Ih71Afo6iIbEUCnbImgg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     peerDependencies:
       typeorm: ~0.3.0
     dependencies:
       '@faker-js/faker': 7.6.0
-      locter: 1.0.3
+      locter: 1.0.9
       rapiq: 0.8.0
       reflect-metadata: 0.1.13
       typeorm: 0.3.12_pg@8.10.0+ts-node@10.9.1
-      yargs: 17.6.2
+      yargs: 17.7.1
     dev: true
 
   /typeorm/0.3.12_pg@8.10.0+ts-node@10.9.1:
@@ -10681,6 +10711,19 @@ packages:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 21.1.1
+
+  /yargs/17.7.1:
+    resolution: {integrity: sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==}
+    engines: {node: '>=12'}
+    dependencies:
+      cliui: 8.0.1
+      escalade: 3.1.1
+      get-caller-file: 2.0.5
+      require-directory: 2.1.1
+      string-width: 4.2.3
+      y18n: 5.0.8
+      yargs-parser: 21.1.1
+    dev: true
 
   /yn/3.1.1:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
