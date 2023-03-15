@@ -23,7 +23,7 @@ specifiers:
   '@types/bcryptjs': 2.4.2
   '@types/cookie-parser': 1.4.3
   '@types/express': 4.17.17
-  '@types/jest': 29.4.2
+  '@types/jest': 29.4.3
   '@types/jest-dev-server': 5.0.0
   '@types/node': 18.15.3
   '@types/passport': 1.0.12
@@ -133,7 +133,7 @@ devDependencies:
   '@types/bcryptjs': 2.4.2
   '@types/cookie-parser': 1.4.3
   '@types/express': 4.17.17
-  '@types/jest': 29.4.2
+  '@types/jest': 29.4.3
   '@types/jest-dev-server': 5.0.0
   '@types/node': 18.15.3
   '@types/passport': 1.0.12
@@ -2327,8 +2327,8 @@ packages:
       '@types/wait-on': 5.3.1
     dev: true
 
-  /@types/jest/29.4.2:
-    resolution: {integrity: sha512-bbne90W7is+m88ezmZrLiTpp41tIoTdvPC5t3gLoNgu/6qbGdWTC2JWqPWQRJn2Q7rVYTr8aTWqOjhGJDXyvAQ==}
+  /@types/jest/29.4.3:
+    resolution: {integrity: sha512-rQ+fXtBHSDfgoTwGLLNuZ27fHpp14mCZSxGUZ3MlNExwJno5hz0uXEWtXfQlE8vaZmYAa6atbR9rpHk+NnlRaw==}
     dependencies:
       expect: 29.5.0
       pretty-format: 29.5.0
