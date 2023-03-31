@@ -65,7 +65,7 @@
     "@commitlint/config-conventional": "17.4.4",
     "@faker-js/faker": "7.6.0",
     "@nestjs/cli": "9.3.0",
-    "@nestjs/schematics": "9.0.4",
+    "@nestjs/schematics": "9.1.0",
     "@nestjs/testing": "9.3.12",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/exec": "6.0.3",
