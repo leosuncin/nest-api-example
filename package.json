@@ -109,7 +109,7 @@
     "nock": "13.3.0",
     "node-mocks-http": "1.12.2",
     "pactum": "3.3.3",
-    "pg-mem": "2.6.11",
+    "pg-mem": "2.6.12",
     "prettier": "2.8.7",
     "prettier-plugin-toml": "0.3.1",
     "semantic-release": "21.0.0",
