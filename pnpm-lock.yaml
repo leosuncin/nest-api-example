@@ -262,8 +262,8 @@ devDependencies:
     specifier: 3.0.2
     version: 3.0.2
   typeorm-extension:
-    specifier: 2.6.2
-    version: 2.6.2(typeorm@0.3.12)
+    specifier: 2.7.0
+    version: 2.7.0(typeorm@0.3.12)
   typescript:
     specifier: 4.9.5
     version: 4.9.5
@@ -4302,6 +4302,10 @@ packages:
     resolution: {integrity: sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==}
     dev: true
 
+  /destr@1.2.2:
+    resolution: {integrity: sha512-lrbCJwD9saUQrqUfXvl6qoM+QN3W7tLV5pAOs+OqOmopCCz/JkE05MHedJR1xfk4IAnZuJXPVuN5+7jNA2ZCiA==}
+    dev: true
+
   /destroy@1.2.0:
     resolution: {integrity: sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==}
     engines: {node: '>= 0.8', npm: 1.2.8000 || >= 1.4.16}
@@ -4395,10 +4399,10 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /ebec@0.2.1:
-    resolution: {integrity: sha512-JFYoMVXROnfl0k53pir1/I1OyEtObxObz5og62aIiiCzlIK82lQLq80fJS8hHyFr0Xh5p4ZsBBn+iyk8Tt0H1A==}
+  /ebec@1.0.0:
+    resolution: {integrity: sha512-tPS/jSTrzChdC/EkxGcHRHvLZYnEbEepqvnOr8PnwsHlOpoKsQbQv8VZf6NmdR1AXyj+6suiq+1AoOXrKtKkTw==}
     dependencies:
-      smob: 0.1.0
+      smob: 1.0.0
     dev: true
 
   /ecdsa-sig-formatter@1.0.11:
@@ -5333,6 +5337,11 @@ packages:
       rimraf: 3.0.2
     dev: true
 
+  /flat@5.0.2:
+    resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
+    hasBin: true
+    dev: true
+
   /flatted@3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
@@ -5612,8 +5621,8 @@ packages:
       minimatch: 5.1.2
       once: 1.4.0
 
-  /glob@9.3.0:
-    resolution: {integrity: sha512-EAZejC7JvnQINayvB/7BJbpZpNOJ8Lrw2OZNEvQxe0vaLn1SuwMcfV7/MNaX8L/T0wmptBFI4YMtDvSBxYDc7w==}
+  /glob@9.3.2:
+    resolution: {integrity: sha512-BTv/JhKXFEHsErMte/AnfiSv8yYOLLiyH2lTg8vn02O21zWFgHPTfxtgn1QRe7NRgggUhC8hacR2Re94svHqeA==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       fs.realpath: 1.0.0
@@ -7241,11 +7250,13 @@ packages:
       p-locate: 6.0.0
     dev: true
 
-  /locter@1.0.10:
-    resolution: {integrity: sha512-qHaLwOizkIFz48O2r9u0BeB5JiEwY+7BxUCMc+d0MxJQqLdR93hAZnhmshtRmtCyX0Bq0h2OLQrBR0p9yLaLTw==}
+  /locter@1.1.0:
+    resolution: {integrity: sha512-dZD6T3CSeVtJ+37ZArPtk/QROvwpZAfydBDP5qDpITBPoAd3EBm/SKPmzkSRiHhkZbvB2BrW0kj/QglYXVT4Zw==}
     dependencies:
-      ebec: 0.2.1
-      glob: 9.3.0
+      destr: 1.2.2
+      ebec: 1.0.0
+      flat: 5.0.2
+      glob: 9.3.2
       jiti: 1.18.2
     dev: true
 
@@ -8956,7 +8967,7 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
-      glob: 9.3.0
+      glob: 9.3.2
     dev: true
 
   /run-async@2.4.1:
@@ -9240,6 +9251,10 @@ packages:
 
   /smob@0.1.0:
     resolution: {integrity: sha512-u6ezVF7hN3AxA1onkbMsl46XZr1HYrtMksmckSVpkLI8bYJ5I34kHMvDZk8qNCfA0y54VnhWqCoU6DQMMStzpw==}
+    dev: true
+
+  /smob@1.0.0:
+    resolution: {integrity: sha512-fnePEPpgGjAdBDk0nV7L9jcStbbcUsKS5TC+RYambCSU9Dm1k2rqDivdg5LBRVWF/NXe0Rq8yfnKKQI08kSXIg==}
     dev: true
 
   /snapdragon-node@2.1.1:
@@ -10005,18 +10020,19 @@ packages:
   /typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm-extension@2.6.2(typeorm@0.3.12):
-    resolution: {integrity: sha512-WyCKLd1dJXTwjr1W8/GuI8H+x8lFVfNaE1p/wIxkJVIqkcgHHcqKqQyEqt1o8REnV9kV+Bdzx8dDtFsHEVWBIA==}
+  /typeorm-extension@2.7.0(typeorm@0.3.12):
+    resolution: {integrity: sha512-ef5x+F635ztLE/4Li1yCCwyf+G6MeHBhIQVNqbgDL20FQpCly0rpq9itrohCxbpu5diLFcYkdZ+8lGkHZqnxBg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     peerDependencies:
       typeorm: ~0.3.0
     dependencies:
       '@faker-js/faker': 7.6.0
-      locter: 1.0.10
+      locter: 1.1.0
       pascal-case: 3.1.2
       rapiq: 0.8.0
       reflect-metadata: 0.1.13
+      smob: 1.0.0
       typeorm: 0.3.12(pg@8.10.0)(ts-node@10.9.1)
       yargs: 17.7.1
     dev: true
