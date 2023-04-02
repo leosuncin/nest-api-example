@@ -247,8 +247,8 @@ devDependencies:
     specifier: 6.3.3
     version: 6.3.3
   ts-jest:
-    specifier: 29.0.5
-    version: 29.0.5(@babel/core@7.19.0)(jest@29.5.0)(typescript@4.9.5)
+    specifier: 29.1.0
+    version: 29.1.0(@babel/core@7.19.0)(jest@29.5.0)(typescript@4.9.5)
   ts-loader:
     specifier: 9.4.2
     version: 9.4.2(typescript@4.9.5)(webpack@5.76.2)
@@ -6743,18 +6743,6 @@ packages:
       - supports-color
     dev: true
 
-  /jest-util@29.3.1:
-    resolution: {integrity: sha512-7YOVZaiX7RJLv76ZfHt4nbNEzzTRiMW/IiOG7ZOKmTXmoGBxUDefgMAxQubu6WPVqP5zSzAdZG0FfLcC7HOIFQ==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    dependencies:
-      '@jest/types': 29.5.0
-      '@types/node': 18.15.11
-      chalk: 4.1.2
-      ci-info: 3.6.2
-      graceful-fs: 4.2.10
-      picomatch: 2.3.1
-    dev: true
-
   /jest-util@29.5.0:
     resolution: {integrity: sha512-RYMgG/MTadOr5t8KdhejfvUU82MxsCu5MF6KuDUHl+NuwzUt+Sm6jJWxTJVrDR1j5M/gJVCPKQEpWXY+yIQ6lQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -9726,8 +9714,8 @@ packages:
       matchit: 1.1.0
     dev: true
 
-  /ts-jest@29.0.5(@babel/core@7.19.0)(jest@29.5.0)(typescript@4.9.5):
-    resolution: {integrity: sha512-PL3UciSgIpQ7f6XjVOmbi96vmDHUqAyqDr8YxzopDqX3kfgYtX1cuNeBjP+L9sFXi6nzsGGA6R3fP3DDDJyrxA==}
+  /ts-jest@29.1.0(@babel/core@7.19.0)(jest@29.5.0)(typescript@4.9.5):
+    resolution: {integrity: sha512-ZhNr7Z4PcYa+JjMl62ir+zPiNJfXJN6E8hSLnaUKhOgqcn8vb3e537cpkd0FuAfRK3sR1LSqM1MOhliXNgOFPA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
     peerDependencies:
@@ -9736,7 +9724,7 @@ packages:
       babel-jest: ^29.0.0
       esbuild: '*'
       jest: ^29.0.0
-      typescript: '>=4.3'
+      typescript: '>=4.3 <6'
     peerDependenciesMeta:
       '@babel/core':
         optional: true
@@ -9751,7 +9739,7 @@ packages:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
       jest: 29.5.0(@types/node@18.15.11)(ts-node@10.9.1)
-      jest-util: 29.3.1
+      jest-util: 29.5.0
       json5: 2.2.3
       lodash.memoize: 4.1.2
       make-error: 1.3.6
