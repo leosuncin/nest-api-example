@@ -47,8 +47,8 @@ dependencies:
     specifier: 12.0.1
     version: 12.0.1
   lru-cache:
-    specifier: ^7.14.1
-    version: 7.14.1
+    specifier: ^8.0.0
+    version: 8.0.0
   nestjs-typeorm-paginate:
     specifier: 4.0.3
     version: 4.0.3(@nestjs/common@9.4.0)(typeorm@0.3.14)
@@ -7273,6 +7273,12 @@ packages:
   /lru-cache@7.14.1:
     resolution: {integrity: sha512-ysxwsnTKdAx96aTRdhDOCQfDgbHnt8SK0KY8SEjO0wHinhWOFTESbjVCMPbU1uGXg/ch4lifqx0wfjOawU2+WA==}
     engines: {node: '>=12'}
+    dev: true
+
+  /lru-cache@8.0.0:
+    resolution: {integrity: sha512-pMu1vSJIwJPS/YuMJAJFjvKA2OC7rvgKqJHr90JmZ1kv/hO+MuzqHRSWqyn730vlOwc1Bx/c8+3izTGzmKyXNQ==}
+    engines: {node: '>=16.14'}
+    dev: false
 
   /macos-release@2.5.0:
     resolution: {integrity: sha512-EIgv+QZ9r+814gjJj0Bt5vSLJLzswGmSUbUpbi9AIr/fsN2IWFBl2NucV9PAiek+U1STK468tEkxmVYUtuAN3g==}

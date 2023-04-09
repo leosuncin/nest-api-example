@@ -47,7 +47,7 @@
     "class-validator": "0.14.0",
     "cookie-parser": "1.4.6",
     "hibp": "12.0.1",
-    "lru-cache": "^7.14.1",
+    "lru-cache": "^8.0.0",
     "nestjs-typeorm-paginate": "4.0.3",
     "normalize-email": "1.1.1",
     "passport": "0.6.0",
