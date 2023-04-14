@@ -61,8 +61,8 @@
     "typeorm": "0.3.14"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.0",
-    "@commitlint/config-conventional": "17.6.0",
+    "@commitlint/cli": "17.6.1",
+    "@commitlint/config-conventional": "17.6.1",
     "@faker-js/faker": "7.6.0",
     "@nestjs/cli": "9.4.0",
     "@nestjs/schematics": "9.1.0",
