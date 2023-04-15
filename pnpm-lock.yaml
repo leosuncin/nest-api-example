@@ -259,8 +259,8 @@ devDependencies:
     specifier: 4.2.0
     version: 4.2.0
   txtgen:
-    specifier: 3.0.2
-    version: 3.0.2
+    specifier: 3.0.5
+    version: 3.0.5
   typeorm-extension:
     specifier: 2.7.0
     version: 2.7.0(typeorm@0.3.15)
@@ -9918,8 +9918,8 @@ packages:
       typescript: 4.9.5
     dev: true
 
-  /txtgen@3.0.2:
-    resolution: {integrity: sha512-NkXJS6CnIzIqaFOTD/7W6JuNxpyETBQdUFShe4LnXypGUg0BrDn4Toyt/NNnVpYghbdGmBAedV9sAfZsYEaNcg==}
+  /txtgen@3.0.5:
+    resolution: {integrity: sha512-b63LwLNsQF/vkfCwKxIXpj3qngoSmQZh2dXEA1dRgTMrtikgxZcDmTcQTTCyBRecNPHdkzvQ6StFJrkawgK8Ug==}
     engines: {node: '>= 14'}
     dev: true
 
