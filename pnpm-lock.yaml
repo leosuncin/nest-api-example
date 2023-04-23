@@ -226,8 +226,8 @@ devDependencies:
     specifier: 1.12.2
     version: 1.12.2
   pactum:
-    specifier: 3.3.3
-    version: 3.3.3
+    specifier: 3.4.0
+    version: 3.4.0
   pg-mem:
     specifier: 2.6.12
     version: 2.6.12(typeorm@0.3.15)
@@ -8177,8 +8177,8 @@ packages:
     resolution: {integrity: sha512-GkIrdBQyFlmKb7LEcSSmkALnGFuZTRTS3C6q46e1uWHAtuwRqB/Mbeg4ta8nZ7eVUglJDG4pUYpZgpVVqycUNQ==}
     dev: true
 
-  /pactum@3.3.3:
-    resolution: {integrity: sha512-W+uY8/sM7m8y8+tP5YmBRsF1gSW3wCdgFnQhh06zYjpe/GuPOI4QHIiIAXbhuL1OY9CuAK+E6on4u7eDbdDRAA==}
+  /pactum@3.4.0:
+    resolution: {integrity: sha512-GlB5G1EcUWAsKMPk2ku0ygA2PlByPHOiQtfwU2JC7X9vnNYikR35QaINZHlfiapAA8KYrIbIDAXkxnCbK9LBZA==}
     engines: {node: '>=10'}
     dependencies:
       '@exodus/schemasafe': 1.0.0-rc.9
