@@ -220,8 +220,8 @@ devDependencies:
     specifier: 13.2.2
     version: 13.2.2
   nock:
-    specifier: 13.3.0
-    version: 13.3.0
+    specifier: 13.3.1
+    version: 13.3.1
   node-mocks-http:
     specifier: 1.12.2
     version: 1.12.2
@@ -7736,8 +7736,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /nock@13.3.0:
-    resolution: {integrity: sha512-HHqYQ6mBeiMc+N038w8LkMpDCRquCHWeNmN3v6645P3NhN2+qXOBqvPqo7Rt1VyCMzKhJ733wZqw5B7cQVFNPg==}
+  /nock@13.3.1:
+    resolution: {integrity: sha512-vHnopocZuI93p2ccivFyGuUfzjq2fxNyNurp7816mlT5V5HF4SzXu8lvLrVzBbNqzs+ODooZ6OksuSUNM7Njkw==}
     engines: {node: '>= 10.13'}
     dependencies:
       debug: 4.3.4
