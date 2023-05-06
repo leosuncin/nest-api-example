@@ -44,8 +44,8 @@ dependencies:
     specifier: 1.4.6
     version: 1.4.6
   hibp:
-    specifier: 12.0.1
-    version: 12.0.1
+    specifier: 13.0.0
+    version: 13.0.0
   lru-cache:
     specifier: ^7.14.1
     version: 7.14.1
@@ -2028,8 +2028,8 @@ packages:
       web-encoding: 1.1.5
     dev: false
 
-  /@remix-run/web-fetch@4.3.2:
-    resolution: {integrity: sha512-aRNaaa0Fhyegv/GkJ/qsxMhXvyWGjPNgCKrStCvAvV1XXphntZI0nQO/Fl02LIQg3cGL8lDiOXOS1gzqDOlG5w==}
+  /@remix-run/web-fetch@4.3.4:
+    resolution: {integrity: sha512-AUM1XBa4hcgeNt2CD86OlB5aDLlqdMl0uJ+89R8dPGx07I5BwMXnbopCaPAkvSBIoHeT/IoLWIuZrLi7RvXS+Q==}
     engines: {node: ^10.17 || >=12.3}
     dependencies:
       '@remix-run/web-blob': 3.0.4
@@ -5833,11 +5833,11 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /hibp@12.0.1:
-    resolution: {integrity: sha512-MwIAA7TkftA9XqlVGPOtYHuKeO4K+vNgucIGCXyX4HNj9f7r9Oh6HSUyuW3PDS4SM5f0Xnvpsw77VAU9+YphvA==}
-    engines: {node: '>= 14.13.1'}
+  /hibp@13.0.0:
+    resolution: {integrity: sha512-d3D2W9fqhIu4EJ8Wa85rXKHBxpIB9dEsHDIWNB26bcptlU18VD3PCfDVsVBE8nd/zImJmbNqRgfpzgO6pJ68Sg==}
+    engines: {node: '>= 16.0.0'}
     dependencies:
-      '@remix-run/web-fetch': 4.3.2
+      '@remix-run/web-fetch': 4.3.4
       jssha: 3.3.0
     dev: false
 
