@@ -226,8 +226,8 @@ devDependencies:
     specifier: 1.12.2
     version: 1.12.2
   pactum:
-    specifier: 3.4.0
-    version: 3.4.0
+    specifier: 3.4.1
+    version: 3.4.1
   pg-mem:
     specifier: 2.6.12
     version: 2.6.12(typeorm@0.3.16)
@@ -8187,12 +8187,12 @@ packages:
   /packet-reader@1.0.0:
     resolution: {integrity: sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==}
 
-  /pactum-matchers@1.1.4:
-    resolution: {integrity: sha512-GkIrdBQyFlmKb7LEcSSmkALnGFuZTRTS3C6q46e1uWHAtuwRqB/Mbeg4ta8nZ7eVUglJDG4pUYpZgpVVqycUNQ==}
+  /pactum-matchers@1.1.5:
+    resolution: {integrity: sha512-Bc9VVmCYeTFLRw+Du/i8MJl8jA0iBP1pbhYg45+shrKkZJbhSTsrL8ZyAKLuGeFnO0e1HG1c7u6O9Cua30a9cg==}
     dev: true
 
-  /pactum@3.4.0:
-    resolution: {integrity: sha512-GlB5G1EcUWAsKMPk2ku0ygA2PlByPHOiQtfwU2JC7X9vnNYikR35QaINZHlfiapAA8KYrIbIDAXkxnCbK9LBZA==}
+  /pactum@3.4.1:
+    resolution: {integrity: sha512-rRo2qtrUCdzjjKC+o5GeET+OsIMxxejimPh0tz7w9MB6ZDQgI0WJaXjVbZ0+/CtWPrKD7cyWIWdIJMNVJxsQxg==}
     engines: {node: '>=10'}
     dependencies:
       '@exodus/schemasafe': 1.0.0-rc.9
@@ -8202,7 +8202,7 @@ packages:
       klona: 2.0.5
       lightcookie: 1.0.25
       openapi-fuzzer-core: 1.0.6
-      pactum-matchers: 1.1.4
+      pactum-matchers: 1.1.5
       parse-graphql: 1.0.0
       phin: 3.7.0
       polka: 0.5.2
