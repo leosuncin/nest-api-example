@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
   '@nestjs/common':
@@ -262,8 +266,8 @@ devDependencies:
     specifier: 3.0.2
     version: 3.0.2
   typeorm-extension:
-    specifier: 2.8.0
-    version: 2.8.0(typeorm@0.3.16)
+    specifier: 2.8.1
+    version: 2.8.1(typeorm@0.3.16)
   typescript:
     specifier: 4.9.5
     version: 4.9.5
@@ -1178,11 +1182,6 @@ packages:
 
   /@exodus/schemasafe@1.0.0-rc.9:
     resolution: {integrity: sha512-dGGHpb61hLwifAu7sotuHFDBw6GTdpG8aKC0fsK17EuTzMRvUrH7lEAr6LTJ+sx3AZYed9yZ77rltVDHyg2hRg==}
-    dev: true
-
-  /@faker-js/faker@7.6.0:
-    resolution: {integrity: sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==}
-    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
   /@faker-js/faker@8.0.2:
@@ -4425,7 +4424,7 @@ packages:
   /ebec@1.0.0:
     resolution: {integrity: sha512-tPS/jSTrzChdC/EkxGcHRHvLZYnEbEepqvnOr8PnwsHlOpoKsQbQv8VZf6NmdR1AXyj+6suiq+1AoOXrKtKkTw==}
     dependencies:
-      smob: 1.0.0
+      smob: 1.4.0
     dev: true
 
   /ecdsa-sig-formatter@1.0.11:
@@ -8700,10 +8699,10 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
-  /rapiq@0.8.0:
-    resolution: {integrity: sha512-qAWUHJP++IDKE9ul9mwXoix45a6Hne3wDiqTd7BhoRNVOQv2gQvAlCOWCQCNTbQA/Ia9jW5ugcOmbd4eRGklSQ==}
+  /rapiq@0.8.1:
+    resolution: {integrity: sha512-AyhUNucaIy7LOBs200uvED36FqhCWznwUWPEmjuarbVxG39KLfL0cW2ymhPfPz/T7g4SrPk1+2JRaIV87rTYYw==}
     dependencies:
-      smob: 0.1.0
+      smob: 1.4.0
     dev: true
 
   /raw-body@2.5.1:
@@ -9262,12 +9261,8 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: false
 
-  /smob@0.1.0:
-    resolution: {integrity: sha512-u6ezVF7hN3AxA1onkbMsl46XZr1HYrtMksmckSVpkLI8bYJ5I34kHMvDZk8qNCfA0y54VnhWqCoU6DQMMStzpw==}
-    dev: true
-
-  /smob@1.0.0:
-    resolution: {integrity: sha512-fnePEPpgGjAdBDk0nV7L9jcStbbcUsKS5TC+RYambCSU9Dm1k2rqDivdg5LBRVWF/NXe0Rq8yfnKKQI08kSXIg==}
+  /smob@1.4.0:
+    resolution: {integrity: sha512-MqR3fVulhjWuRNSMydnTlweu38UhQ0HXM4buStD/S3mc/BzX3CuM9OmhyQpmtYCvoYdl5ris6TI0ZqH355Ymqg==}
     dev: true
 
   /snapdragon-node@2.1.1:
@@ -10017,19 +10012,19 @@ packages:
   /typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm-extension@2.8.0(typeorm@0.3.16):
-    resolution: {integrity: sha512-CdBW2VPDtmvjQ9lTDF26JG06VBwKxPZeYBEkzsZV3Ue2omU6A2rsh6HtydP4KxWhYcpb9WB6IV+gzrx6sNQ20g==}
+  /typeorm-extension@2.8.1(typeorm@0.3.16):
+    resolution: {integrity: sha512-QCkSzPAT6+fR0wA/NGzKrygEyIAkZV9464dz8+hQNzh3HbaJdYLcvWFe7KS6qO3EuxMY3B9/6Ydv5BeSv+O3bg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     peerDependencies:
       typeorm: ~0.3.0
     dependencies:
-      '@faker-js/faker': 7.6.0
+      '@faker-js/faker': 8.0.2
       locter: 1.1.0
       pascal-case: 3.1.2
-      rapiq: 0.8.0
+      rapiq: 0.8.1
       reflect-metadata: 0.1.13
-      smob: 1.0.0
+      smob: 1.4.0
       typeorm: 0.3.16(pg@8.11.0)(ts-node@10.9.1)
       yargs: 17.7.2
     dev: true
