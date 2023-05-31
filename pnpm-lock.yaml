@@ -128,8 +128,8 @@ devDependencies:
     specifier: 4.17.17
     version: 4.17.17
   '@types/jest':
-    specifier: 29.5.1
-    version: 29.5.1
+    specifier: 29.5.2
+    version: 29.5.2
   '@types/jest-dev-server':
     specifier: 5.0.0
     version: 5.0.0
@@ -2363,8 +2363,8 @@ packages:
       '@types/wait-on': 5.3.1
     dev: true
 
-  /@types/jest@29.5.1:
-    resolution: {integrity: sha512-tEuVcHrpaixS36w7hpsfLBLpjtMRJUE09/MHXn923LOVojDwyC14cWcfc0rDs0VEfUyYmt/+iX1kxxp+gZMcaQ==}
+  /@types/jest@29.5.2:
+    resolution: {integrity: sha512-mSoZVJF5YzGVCk+FsDxzDuH7s+SCkzrgKZzf0Z0T2WudhBUPoF6ktoTPC4R0ZoCPCV5xUvuU6ias5NvxcBcMMg==}
     dependencies:
       expect: 29.5.0
       pretty-format: 29.5.0
