@@ -40,7 +40,7 @@
     "@nestjs/passport": "9.0.3",
     "@nestjs/platform-express": "9.4.3",
     "@nestjs/terminus": "9.2.2",
-    "@nestjs/typeorm": "9.0.1",
+    "@nestjs/typeorm": "10.0.0",
     "bcryptjs": "2.4.3",
     "cachified": "^3.0.1",
     "class-transformer": "0.5.1",
