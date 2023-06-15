@@ -28,10 +28,10 @@ dependencies:
     version: 9.4.3(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)
   '@nestjs/terminus':
     specifier: 9.2.2
-    version: 9.2.2(@mikro-orm/core@4.5.10)(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(@nestjs/typeorm@9.0.1)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16)
+    version: 9.2.2(@mikro-orm/core@4.5.10)(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(@nestjs/typeorm@10.0.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16)
   '@nestjs/typeorm':
-    specifier: 9.0.1
-    version: 9.0.1(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16)
+    specifier: 10.0.0
+    version: 10.0.0(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16)
   bcryptjs:
     specifier: 2.4.3
     version: 2.4.3
@@ -1786,7 +1786,7 @@ packages:
       - chokidar
     dev: true
 
-  /@nestjs/terminus@9.2.2(@mikro-orm/core@4.5.10)(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(@nestjs/typeorm@9.0.1)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16):
+  /@nestjs/terminus@9.2.2(@mikro-orm/core@4.5.10)(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(@nestjs/typeorm@10.0.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16):
     resolution: {integrity: sha512-AWUA8XLcgxWUjUFYHDqi42M7CZn2e+DEWxP+MqNAbMzz4ybB5jGcFK5Fy8qwaNBoWg6KMF1JiXOOygGXgk9ydg==}
     peerDependencies:
       '@grpc/grpc-js': '*'
@@ -1834,7 +1834,7 @@ packages:
       '@mikro-orm/core': 4.5.10(@mikro-orm/postgresql@4.5.10)
       '@nestjs/common': 9.4.3(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 9.4.3(@nestjs/common@9.4.3)(@nestjs/platform-express@9.4.3)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      '@nestjs/typeorm': 9.0.1(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16)
+      '@nestjs/typeorm': 10.0.0(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16)
       boxen: 5.1.2
       check-disk-space: 3.3.1
       reflect-metadata: 0.1.13
@@ -1861,11 +1861,11 @@ packages:
       tslib: 2.5.3
     dev: true
 
-  /@nestjs/typeorm@9.0.1(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16):
-    resolution: {integrity: sha512-A2BgLIPsMtmMI0bPKEf4bmzgFPsnvHqNBx3KkvaJ7hJrBQy0OqYOb+Rr06ifblKWDWS2tUPNrAFQbZjtk3PI+g==}
+  /@nestjs/typeorm@10.0.0(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.16):
+    resolution: {integrity: sha512-WQU4HCDTz4UavsFzvGUKDHqi0MO5K47yFoPXdmh+Z/hCNO7SHCMmV9jLiLukM8n5nKUqJ3jDqiljkWBcZPdCtA==}
     peerDependencies:
-      '@nestjs/common': ^8.0.0 || ^9.0.0
-      '@nestjs/core': ^8.0.0 || ^9.0.0
+      '@nestjs/common': ^8.0.0 || ^9.0.0 || ^10.0.0
+      '@nestjs/core': ^8.0.0 || ^9.0.0 || ^10.0.0
       reflect-metadata: ^0.1.13
       rxjs: ^7.2.0
       typeorm: ^0.3.0
@@ -1875,7 +1875,7 @@ packages:
       reflect-metadata: 0.1.13
       rxjs: 7.8.1
       typeorm: 0.3.16(pg@8.11.0)(ts-node@10.9.1)
-      uuid: 8.3.2
+      uuid: 9.0.0
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:
