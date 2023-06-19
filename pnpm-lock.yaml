@@ -98,8 +98,8 @@ devDependencies:
     specifier: 8.0.2
     version: 8.0.2
   '@nestjs/cli':
-    specifier: 10.0.2
-    version: 10.0.2
+    specifier: 10.0.3
+    version: 10.0.3
   '@nestjs/schematics':
     specifier: 9.2.0
     version: 9.2.0(typescript@4.9.5)
@@ -1592,8 +1592,8 @@ packages:
       - sqlite3
       - supports-color
 
-  /@nestjs/cli@10.0.2:
-    resolution: {integrity: sha512-zM21oq+RL5tZu4zByIXlv+RAqE/SujGJVF+p1oDZkpSzbRD3Nn3iElYDQLNnFLwFBbVhUUdN9s5BxJhFrFJD3g==}
+  /@nestjs/cli@10.0.3:
+    resolution: {integrity: sha512-mmcc8NmYdMVwOkXkK9FZofk+dXYWYAEBIP9AOnI5/+idhPLLkjBUFdT5iP55hTE3NZ6OUGIBrteBe5iJEqyqRw==}
     engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
