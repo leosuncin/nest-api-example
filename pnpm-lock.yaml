@@ -54,8 +54,8 @@ dependencies:
     specifier: ^7.14.1
     version: 7.14.1
   nestjs-typeorm-paginate:
-    specifier: 4.0.3
-    version: 4.0.3(@nestjs/common@9.4.3)(typeorm@0.3.17)
+    specifier: 4.0.4
+    version: 4.0.4(@nestjs/common@9.4.3)(typeorm@0.3.17)
   normalize-email:
     specifier: 1.1.1
     version: 1.1.1
@@ -7756,10 +7756,10 @@ packages:
     resolution: {integrity: sha512-EZSPZB70jiVsivaBLYDCyntd5eH8NTSMOn3rB+HxwdmKThGELLdYv8qVIMWvZEFy9w8ZZpW9h9OB32l1rGtj7g==}
     dev: true
 
-  /nestjs-typeorm-paginate@4.0.3(@nestjs/common@9.4.3)(typeorm@0.3.17):
-    resolution: {integrity: sha512-qr/pdSTIWTLRCf0xiAsGa2TV1KuHyramLzxV+n4VQ5RYLs7APusum7WdGWRWb/ByUlz+T9BWC5mKIGHotLtMnQ==}
+  /nestjs-typeorm-paginate@4.0.4(@nestjs/common@9.4.3)(typeorm@0.3.17):
+    resolution: {integrity: sha512-arinWDc78wPV/EYWMmLYyeMSE5Lae1FHWD/2QpOdTmHaOVqK4PYf19EqZBqT9gbbPugkNW9JAMz3G2WmvSgR/A==}
     peerDependencies:
-      '@nestjs/common': ^6.1.1 || ^5.6.2 || ^7.0.0 || ^8.0.0 || ^9.0.0
+      '@nestjs/common': ^6.1.1 || ^5.6.2 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
       typeorm: ^0.3.0
     dependencies:
       '@nestjs/common': 9.4.3(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
