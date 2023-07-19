@@ -98,8 +98,8 @@ devDependencies:
     specifier: 8.0.2
     version: 8.0.2
   '@nestjs/cli':
-    specifier: 10.1.9
-    version: 10.1.9
+    specifier: 10.1.10
+    version: 10.1.10
   '@nestjs/schematics':
     specifier: 10.0.1
     version: 10.0.1(typescript@4.9.5)
@@ -1595,8 +1595,8 @@ packages:
       - sqlite3
       - supports-color
 
-  /@nestjs/cli@10.1.9:
-    resolution: {integrity: sha512-kD+QZUPZ5T9dCfp5pjYXQ+tulLiszARQiXuTi56ZvsKg0MVW3jrF90zfMD5thU5XyfmUYFCpB1kpCMXiOYhLcg==}
+  /@nestjs/cli@10.1.10:
+    resolution: {integrity: sha512-5adPl6m2X0uOrK4IPUbzBJUqZ//UKsKi9c7yAR3uCu+moSDMieG/YeKt+zGLnF2gaCdHdgeWWoxI0nfMVE5uCA==}
     engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
@@ -2365,7 +2365,7 @@ packages:
     resolution: {integrity: sha512-/fqTbjxyFUaYNO7VcW5g+4npmqVACz1bB7RTHYuLj+PRjw9hrCwrUXVQFpChUS0JsyEFvMZ7U/PfmvWgxJhI9g==}
     dependencies:
       '@types/estree': 1.0.0
-      '@types/json-schema': 7.0.11
+      '@types/json-schema': 7.0.12
     dev: true
 
   /@types/estree@1.0.0:
@@ -9098,7 +9098,7 @@ packages:
     resolution: {integrity: sha512-pN/yOAvcC+5rQ5nERGuwrjLlYvLTbCibnZ1I7B1LaiAz9BRBlE9GMgE/eqV30P7aJQUf7Ddimy/RsbYO/GrVGg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/json-schema': 7.0.11
+      '@types/json-schema': 7.0.12
       ajv: 6.12.6
       ajv-keywords: 3.5.2(ajv@6.12.6)
     dev: true
