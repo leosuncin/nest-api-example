@@ -203,8 +203,8 @@ devDependencies:
     specifier: 1.1.2
     version: 1.1.2
   eslint-plugin-unicorn:
-    specifier: 48.0.0
-    version: 48.0.0(eslint@8.45.0)
+    specifier: 48.0.1
+    version: 48.0.1(eslint@8.45.0)
   factory.io:
     specifier: 0.1.4
     version: 0.1.4
@@ -4866,8 +4866,8 @@ packages:
       lodash.zipobject: 4.1.3
     dev: true
 
-  /eslint-plugin-unicorn@48.0.0(eslint@8.45.0):
-    resolution: {integrity: sha512-8fk/v3p1ro34JSVDBEmtOq6EEQRpMR0iTir79q69KnXFZ6DJyPkT3RAi+ZoTqhQMdDSpGh8BGR68ne1sP5cnAA==}
+  /eslint-plugin-unicorn@48.0.1(eslint@8.45.0):
+    resolution: {integrity: sha512-FW+4r20myG/DqFcCSzoumaddKBicIPeFnTrifon2mWIzlfyvzwyqZjqVP7m4Cqr/ZYisS2aiLghkUWaPg6vtCw==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: '>=8.44.0'
@@ -9168,7 +9168,7 @@ packages:
   /safe-regex@2.1.1:
     resolution: {integrity: sha512-rx+x8AMzKb5Q5lQ95Zoi6ZbJqwCLkqi3XuJXp5P3rT8OEc6sZCJG5AE5dU3lsgRr/F4Bs31jSlVN+j5KrsGu9A==}
     dependencies:
-      regexp-tree: 0.1.24
+      regexp-tree: 0.1.27
     dev: true
 
   /safer-buffer@2.1.2:
