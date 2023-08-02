@@ -239,8 +239,8 @@ devDependencies:
     specifier: 3.0.0
     version: 3.0.0
   prettier-plugin-toml:
-    specifier: 0.3.1
-    version: 0.3.1
+    specifier: 0.4.0
+    version: 0.4.0(prettier@3.0.0)
   semantic-release:
     specifier: 21.0.7
     version: 21.0.7
@@ -709,6 +709,29 @@ packages:
 
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
+    dev: true
+
+  /@chevrotain/cst-dts-gen@10.5.0:
+    resolution: {integrity: sha512-lhmC/FyqQ2o7pGK4Om+hzuDrm9rhFYIJ/AXoQBeongmn870Xeb0L6oGEiuR8nohFNL5sMaQEJWCxr1oIVIVXrw==}
+    dependencies:
+      '@chevrotain/gast': 10.5.0
+      '@chevrotain/types': 10.5.0
+      lodash: 4.17.21
+    dev: true
+
+  /@chevrotain/gast@10.5.0:
+    resolution: {integrity: sha512-pXdMJ9XeDAbgOWKuD1Fldz4ieCs6+nLNmyVhe2gZVqoO7v8HXuHYs5OV2EzUtbuai37TlOAQHrTDvxMnvMJz3A==}
+    dependencies:
+      '@chevrotain/types': 10.5.0
+      lodash: 4.17.21
+    dev: true
+
+  /@chevrotain/types@10.5.0:
+    resolution: {integrity: sha512-f1MAia0x/pAVPWH/T73BJVyO2XU5tI4/iE7cnxb7tqdNTNhQI3Uq3XkqcoteTmD4t1aM0LbHCJOhgIDn07kl2A==}
+    dev: true
+
+  /@chevrotain/utils@10.5.0:
+    resolution: {integrity: sha512-hBzuU5+JjB2cqNZyszkDHZgOSrUUT8V3dhgRl8Q9Gp6dAj/H5+KILGjbhDpc3Iy9qmqlm/akuOI2ut9VUtzJxQ==}
     dev: true
 
   /@colors/colors@1.5.0:
@@ -2277,17 +2300,17 @@ packages:
   /@sqltools/formatter@1.2.5:
     resolution: {integrity: sha512-Uy0+khmZqUrUGm5dmMqVlnvufZRSK0FbYzVgp0UMstm+F5+W2/jnEEQyc9vo1ZR/E5ZI/B1WjjoTqBqwJL6Krw==}
 
-  /@toml-tools/lexer@0.3.1:
-    resolution: {integrity: sha512-CCKHQb5OWpgFu47MQ2rcql4AnE9GaehNk/c1oJOyOBovED6XmdzQPXsvPSu+NJ9lToqJNoX+nLXQsB8WyQGdzQ==}
+  /@toml-tools/lexer@0.4.0:
+    resolution: {integrity: sha512-67Rm2I6lATi9TN5hwcMSiYqipYqwU402W1wXuMk+X3nki38LZCQSIMOoOkD7SzKfXE8QD/mhXDUKVTkiTy3iCw==}
     dependencies:
-      chevrotain: 4.1.1
+      chevrotain: 10.5.0
     dev: true
 
-  /@toml-tools/parser@0.3.1:
-    resolution: {integrity: sha512-vadwVx5TkgByt19dbp/rfIUKPkDdn5werANYvziiGK9wHlqPA0BWnvOloQw/dPDxF31+Ag0+zarXJpPDdRsPPg==}
+  /@toml-tools/parser@0.4.0:
+    resolution: {integrity: sha512-3T7YvAvbvpan0GY8VAzurSP53sXb45bHwgf5hITTipqNdSh6Ukx69AejtZ48SmMXet/vhpFH6PdhPJW9d3s1lQ==}
     dependencies:
-      '@toml-tools/lexer': 0.3.1
-      chevrotain: 4.1.1
+      '@toml-tools/lexer': 0.4.0
+      chevrotain: 10.5.0
     dev: true
 
   /@tsconfig/node10@1.0.9:
@@ -3586,10 +3609,15 @@ packages:
     engines: {node: '>=16'}
     dev: false
 
-  /chevrotain@4.1.1:
-    resolution: {integrity: sha512-NQky1HQyiAzxsxpq4Ppt47SYO2U3JLtmfs85QPf3kYSzGBjjp5AA8kqjH8hCjGFRpaQ781QOk1ragQIOkBgUTA==}
+  /chevrotain@10.5.0:
+    resolution: {integrity: sha512-Pkv5rBY3+CsHOYfV5g/Vs5JY9WTHHDEKOlohI2XeygaZhUeqhAlldZ8Hz9cRmxu709bvS08YzxHdTPHhffc13A==}
     dependencies:
-      regexp-to-ast: 0.3.5
+      '@chevrotain/cst-dts-gen': 10.5.0
+      '@chevrotain/gast': 10.5.0
+      '@chevrotain/types': 10.5.0
+      '@chevrotain/utils': 10.5.0
+      lodash: 4.17.21
+      regexp-to-ast: 0.5.0
     dev: true
 
   /chokidar@3.5.3:
@@ -8815,17 +8843,14 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-toml@0.3.1:
-    resolution: {integrity: sha512-j47DEO/dN/acU1nSL/B7q4A4Z2SYJhpWPCLPkcmfAXIQC6A5GD6Ao/bi9HRHZ8ueIDOauqjuAQbnvRxLXMjazA==}
+  /prettier-plugin-toml@0.4.0(prettier@3.0.0):
+    resolution: {integrity: sha512-xieqXjxJmAEqE/rHy7Hym3cpYphNU1fdsrgqXVBNlZhx7HDbSXS64ULeD3nIPzf1QtO6kbgTIHy/ob/dCsVWrw==}
+    peerDependencies:
+      prettier: ^1.16.0 || ^2.0.0
     dependencies:
-      '@toml-tools/parser': 0.3.1
-      prettier: 1.19.1
-    dev: true
-
-  /prettier@1.19.1:
-    resolution: {integrity: sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==}
-    engines: {node: '>=4'}
-    hasBin: true
+      '@toml-tools/lexer': 0.4.0
+      '@toml-tools/parser': 0.4.0
+      prettier: 3.0.0
     dev: true
 
   /prettier@3.0.0:
@@ -9091,8 +9116,8 @@ packages:
       extend-shallow: 3.0.2
       safe-regex: 1.1.0
 
-  /regexp-to-ast@0.3.5:
-    resolution: {integrity: sha512-1CJygtdvsfNFwiyjaMLBWtg2tfEqx/jSZ8S6TV+GlNL8kiH8rb4cm5Pb7A/C2BpyM/fA8ZJEudlCwi/jvAY+Ow==}
+  /regexp-to-ast@0.5.0:
+    resolution: {integrity: sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw==}
     dev: true
 
   /regexp-tree@0.1.24:
