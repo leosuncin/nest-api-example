@@ -230,8 +230,8 @@ devDependencies:
     specifier: 1.12.2
     version: 1.12.2
   pactum:
-    specifier: 3.4.1
-    version: 3.4.1
+    specifier: 3.5.0
+    version: 3.5.0
   pg-mem:
     specifier: 2.6.13
     version: 2.6.13(typeorm@0.3.17)
@@ -1237,8 +1237,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@exodus/schemasafe@1.0.0-rc.9:
-    resolution: {integrity: sha512-dGGHpb61hLwifAu7sotuHFDBw6GTdpG8aKC0fsK17EuTzMRvUrH7lEAr6LTJ+sx3AZYed9yZ77rltVDHyg2hRg==}
+  /@exodus/schemasafe@1.2.3:
+    resolution: {integrity: sha512-hmdFF4vVyvXosVdCCnZPCfrgwNPA79y3K5l0QzlKFcK5Qd3nkM9oGKcQYCTnTRWJXIV5SUMkkTFIEIdDFtxQPQ==}
     dev: true
 
   /@faker-js/faker@8.0.2:
@@ -7281,8 +7281,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /klona@2.0.5:
-    resolution: {integrity: sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==}
+  /klona@2.0.6:
+    resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
     dev: true
 
@@ -8266,7 +8266,7 @@ packages:
   /openapi-fuzzer-core@1.0.6:
     resolution: {integrity: sha512-FJNJIfgUFuv4NmVGq9MYdoKra2GrkDy2uhIjE2YGlw30UA1glf4SXLMhI4UwdcJ8jisKdIxi7lXrfej8GvNW5w==}
     dependencies:
-      klona: 2.0.5
+      klona: 2.0.6
     dev: true
 
   /optionator@0.9.3:
@@ -8412,22 +8412,22 @@ packages:
   /packet-reader@1.0.0:
     resolution: {integrity: sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==}
 
-  /pactum-matchers@1.1.5:
-    resolution: {integrity: sha512-Bc9VVmCYeTFLRw+Du/i8MJl8jA0iBP1pbhYg45+shrKkZJbhSTsrL8ZyAKLuGeFnO0e1HG1c7u6O9Cua30a9cg==}
+  /pactum-matchers@1.1.6:
+    resolution: {integrity: sha512-55io32NeOKbLpHKKPzYDOr+N2dseTzMbj1Gj1y+zvOkKK6NDf5BT5pxglfqLN/ra3ig5zvbrKFUqZIWjAWboog==}
     dev: true
 
-  /pactum@3.4.1:
-    resolution: {integrity: sha512-rRo2qtrUCdzjjKC+o5GeET+OsIMxxejimPh0tz7w9MB6ZDQgI0WJaXjVbZ0+/CtWPrKD7cyWIWdIJMNVJxsQxg==}
+  /pactum@3.5.0:
+    resolution: {integrity: sha512-9uV8m8sOP0EvbrK7NF7r+d7HIxEZWHkf2f4Df4okShad07R2desvSSTOJVg4ySfZ6hmB2ZckfDSF5pUCtWjoHQ==}
     engines: {node: '>=10'}
     dependencies:
-      '@exodus/schemasafe': 1.0.0-rc.9
+      '@exodus/schemasafe': 1.2.3
       deep-override: 1.0.2
       form-data-lite: 1.0.3
       json-query: 2.2.2
-      klona: 2.0.5
+      klona: 2.0.6
       lightcookie: 1.0.25
       openapi-fuzzer-core: 1.0.6
-      pactum-matchers: 1.1.5
+      pactum-matchers: 1.1.6
       parse-graphql: 1.0.0
       phin: 3.7.0
       polka: 0.5.2
