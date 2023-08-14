@@ -221,8 +221,8 @@ devDependencies:
     specifier: 2.0.0
     version: 2.0.0
   lint-staged:
-    specifier: 13.3.0
-    version: 13.3.0
+    specifier: 14.0.0
+    version: 14.0.0
   nock:
     specifier: 13.3.2
     version: 13.3.2
@@ -2256,7 +2256,7 @@ packages:
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 4.0.1
-      execa: 7.0.0
+      execa: 7.2.0
       fs-extra: 11.1.0
       lodash-es: 4.17.21
       nerf-dart: 1.0.0
@@ -4551,7 +4551,7 @@ packages:
     resolution: {integrity: sha512-Q3cjr1tX9xwigprw4G8M3o7PIOO/1LYji6TyGsbD1WfMmD23etZvhgmPXJqkP788yH4dgSSK7oaIMuaayUJIfg==}
     engines: {node: ^16.14 || >=18}
     dependencies:
-      execa: 7.0.0
+      execa: 7.2.0
       java-properties: 1.0.2
     dev: true
 
@@ -7367,8 +7367,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
-  /lint-staged@13.3.0:
-    resolution: {integrity: sha512-mPRtrYnipYYv1FEE134ufbWpeggNTo+O/UPzngoaKzbzHAthvR55am+8GfHTnqNRQVRRrYQLGW9ZyUoD7DsBHQ==}
+  /lint-staged@14.0.0:
+    resolution: {integrity: sha512-0tLf0pqZYkar/wu3nTctk4rVIG+d7PanDYv4/IQR4qwdqfQkTDziLRFnqMcLuLBTuUqmcLwsHPD2EjQ18d/oaA==}
     engines: {node: ^16.14.0 || >=18.0.0}
     hasBin: true
     dependencies:
