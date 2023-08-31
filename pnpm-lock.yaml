@@ -9,8 +9,8 @@ dependencies:
     specifier: 10.2.3
     version: 10.2.3(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
   '@nestjs/config':
-    specifier: 3.0.0
-    version: 3.0.0(@nestjs/common@10.2.3)(reflect-metadata@0.1.13)
+    specifier: 3.0.1
+    version: 3.0.1(@nestjs/common@10.2.3)(reflect-metadata@0.1.13)
   '@nestjs/core':
     specifier: 10.2.3
     version: 10.2.3(@nestjs/common@10.2.3)(@nestjs/platform-express@10.2.3)(reflect-metadata@0.1.13)(rxjs@7.8.1)
@@ -1721,14 +1721,14 @@ packages:
       tslib: 2.6.2
       uid: 2.0.2
 
-  /@nestjs/config@3.0.0(@nestjs/common@10.2.3)(reflect-metadata@0.1.13):
-    resolution: {integrity: sha512-fzASk1Uv6AjdE6uA1na8zpqRCXAhRpcfgpCVv3SAKlgJ3VR3bEjcI4G17WHLgLBsmPzI1ofdkSI451WLD1F1Rw==}
+  /@nestjs/config@3.0.1(@nestjs/common@10.2.3)(reflect-metadata@0.1.13):
+    resolution: {integrity: sha512-a98MMkDlgUlXTv9qtDbimYfXsuafn/YZOh/S35afutr0Qc5T6KzjyWP5VjxRkv26yI2JM0RhFruByFTM6ezwHA==}
     peerDependencies:
       '@nestjs/common': ^8.0.0 || ^9.0.0 || ^10.0.0
       reflect-metadata: ^0.1.13
     dependencies:
       '@nestjs/common': 10.2.3(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      dotenv: 16.1.4
+      dotenv: 16.3.1
       dotenv-expand: 10.0.0
       lodash: 4.17.21
       reflect-metadata: 0.1.13
@@ -4471,11 +4471,6 @@ packages:
 
   /dotenv-expand@10.0.0:
     resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
-    engines: {node: '>=12'}
-    dev: false
-
-  /dotenv@16.1.4:
-    resolution: {integrity: sha512-m55RtE8AsPeJBpOIFKihEmqUcoVncQIwo7x9U8ZwLEZw9ZpXboz2c+rvog+jUaJvVrZ5kBOeYQBX5+8Aa/OZQw==}
     engines: {node: '>=12'}
     dev: false
 
