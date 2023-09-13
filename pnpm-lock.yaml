@@ -9,8 +9,8 @@ dependencies:
     specifier: 10.2.5
     version: 10.2.5(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
   '@nestjs/config':
-    specifier: 3.1.0
-    version: 3.1.0(@nestjs/common@10.2.5)(reflect-metadata@0.1.13)
+    specifier: 3.1.1
+    version: 3.1.1(@nestjs/common@10.2.5)(reflect-metadata@0.1.13)
   '@nestjs/core':
     specifier: 10.2.5
     version: 10.2.5(@nestjs/common@10.2.5)(@nestjs/platform-express@10.2.5)(reflect-metadata@0.1.13)(rxjs@7.8.1)
@@ -1721,8 +1721,8 @@ packages:
       tslib: 2.6.2
       uid: 2.0.2
 
-  /@nestjs/config@3.1.0(@nestjs/common@10.2.5)(reflect-metadata@0.1.13):
-    resolution: {integrity: sha512-yaAM30odymAD1d85QJreb0MXEu8AaHmTDl0q4jJTIKnjUnypjF1uO34/6ayYG2eY6jByBAtoRTxo8NCrlwBLUw==}
+  /@nestjs/config@3.1.1(@nestjs/common@10.2.5)(reflect-metadata@0.1.13):
+    resolution: {integrity: sha512-qu5QlNiJdqQtOsnB6lx4JCXPQ96jkKUsOGd+JXfXwqJqZcOSAq6heNFg0opW4pq4J/VZoNwoo87TNnx9wthnqQ==}
     peerDependencies:
       '@nestjs/common': ^8.0.0 || ^9.0.0 || ^10.0.0
       reflect-metadata: ^0.1.13
