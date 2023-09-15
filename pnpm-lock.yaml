@@ -173,8 +173,8 @@ devDependencies:
     specifier: 4.0.0
     version: 4.0.0(eslint@8.49.0)
   eslint-plugin-deprecation:
-    specifier: 1.5.0
-    version: 1.5.0(eslint@8.49.0)(typescript@4.9.5)
+    specifier: 2.0.0
+    version: 2.0.0(eslint@8.49.0)(typescript@4.9.5)
   eslint-plugin-eslint-comments:
     specifier: 3.2.0
     version: 3.2.0(eslint@8.49.0)
@@ -4759,15 +4759,15 @@ packages:
       eslint: 8.49.0
     dev: true
 
-  /eslint-plugin-deprecation@1.5.0(eslint@8.49.0)(typescript@4.9.5):
-    resolution: {integrity: sha512-mRcssI/tLROueBQ6yf4LnnGTijbMsTCPIpbRbPj5R5wGYVCpk1zDmAS0SEkgcUDXOPc22qMNFR24Qw7vSPrlTA==}
+  /eslint-plugin-deprecation@2.0.0(eslint@8.49.0)(typescript@4.9.5):
+    resolution: {integrity: sha512-OAm9Ohzbj11/ZFyICyR5N6LbOIvQMp7ZU2zI7Ej0jIc8kiGUERXPNMfw2QqqHD1ZHtjMub3yPZILovYEYucgoQ==}
     peerDependencies:
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-      typescript: ^3.7.5 || ^4.0.0 || ^5.0.0
+      eslint: ^7.0.0 || ^8.0.0
+      typescript: ^4.2.4 || ^5.0.0
     dependencies:
-      '@typescript-eslint/utils': 5.59.11(eslint@8.49.0)(typescript@4.9.5)
+      '@typescript-eslint/utils': 6.7.0(eslint@8.49.0)(typescript@4.9.5)
       eslint: 8.49.0
-      tslib: 2.6.1
+      tslib: 2.6.2
       tsutils: 3.21.0(typescript@4.9.5)
       typescript: 4.9.5
     transitivePeerDependencies:
@@ -10240,10 +10240,6 @@ packages:
 
   /tslib@2.5.3:
     resolution: {integrity: sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w==}
-
-  /tslib@2.6.1:
-    resolution: {integrity: sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig==}
-    dev: true
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
