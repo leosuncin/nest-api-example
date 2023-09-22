@@ -87,7 +87,7 @@
     "dotenv": "16.3.1",
     "eslint": "8.49.0",
     "eslint-config-prettier": "9.0.0",
-    "eslint-import-resolver-typescript": "3.6.0",
+    "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-array-func": "4.0.0",
     "eslint-plugin-deprecation": "2.0.0",
     "eslint-plugin-eslint-comments": "3.2.0",
