@@ -137,8 +137,8 @@ devDependencies:
     specifier: 18.17.19
     version: 18.17.19
   '@types/passport':
-    specifier: 1.0.12
-    version: 1.0.12
+    specifier: 1.0.13
+    version: 1.0.13
   '@types/passport-jwt':
     specifier: 3.0.9
     version: 3.0.9
@@ -2534,11 +2534,11 @@ packages:
     resolution: {integrity: sha512-o5D19Jy2XPFoX2rKApykY15et3Apgax00RRLf0RUotPDUsYrQa7x4howLYr9El2mlUApHmCMv5CZ1IXqKFQ2+g==}
     dependencies:
       '@types/express': 4.17.18
-      '@types/passport': 1.0.12
+      '@types/passport': 1.0.13
     dev: true
 
-  /@types/passport@1.0.12:
-    resolution: {integrity: sha512-QFdJ2TiAEoXfEQSNDISJR1Tm51I78CymqcBa8imbjo6dNNu+l2huDxxbDEIoFIwOSKMkOfHEikyDuZ38WwWsmw==}
+  /@types/passport@1.0.13:
+    resolution: {integrity: sha512-XXURryL+EZAWtbQFOHX1eNB+RJwz5XMPPz1xrGpEKr2xUZCXM4NCPkHMtZQ3B2tTSG/1IRaAcTHjczRA4sSFCw==}
     dependencies:
       '@types/express': 4.17.18
     dev: true
