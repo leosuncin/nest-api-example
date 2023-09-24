@@ -112,7 +112,7 @@
     "pg-mem": "2.6.13",
     "prettier": "3.0.3",
     "prettier-plugin-toml": "1.0.0",
-    "semantic-release": "22.0.4",
+    "semantic-release": "22.0.5",
     "sort-package-json": "2.5.1",
     "supertest": "6.3.3",
     "ts-jest": "29.1.1",
