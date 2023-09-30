@@ -233,8 +233,8 @@ devDependencies:
     specifier: 3.5.1
     version: 3.5.1
   pg-mem:
-    specifier: 2.6.13
-    version: 2.6.13(typeorm@0.3.17)
+    specifier: 2.7.0
+    version: 2.7.0(typeorm@0.3.17)
   prettier:
     specifier: 3.0.3
     version: 3.0.3
@@ -8637,8 +8637,8 @@ packages:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
 
-  /pg-mem@2.6.13(typeorm@0.3.17):
-    resolution: {integrity: sha512-6y4Is3iXvXJgEBOZtCCt7nCkm86j7xVXonbMYveVISVV2pYbK0GVKThGihqeeal+sBsG3NGre6JOEWc58PpU7w==}
+  /pg-mem@2.7.0(typeorm@0.3.17):
+    resolution: {integrity: sha512-O0Ai7J3kxqx0R6OPLK9M3ib3eSYzgKDCbG9y1jEGdR4KK4WnmXUsTQosrzqWOLwqFnP+74PxF9glc2NSxe4hXQ==}
     peerDependencies:
       knex: '>=0.20'
       mikro-orm: '*'
