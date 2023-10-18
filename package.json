@@ -79,7 +79,7 @@
     "@types/node": "18.18.6",
     "@types/passport": "1.0.14",
     "@types/passport-jwt": "3.0.11",
-    "@types/supertest": "2.0.14",
+    "@types/supertest": "2.0.15",
     "@types/validator": "13.11.3",
     "@typescript-eslint/eslint-plugin": "6.8.0",
     "@typescript-eslint/parser": "6.8.0",
