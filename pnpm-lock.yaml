@@ -131,8 +131,8 @@ devDependencies:
     specifier: 29.5.6
     version: 29.5.6
   '@types/jest-dev-server':
-    specifier: 5.0.1
-    version: 5.0.1
+    specifier: 5.0.2
+    version: 5.0.2
   '@types/node':
     specifier: 18.18.5
     version: 18.18.5
@@ -2462,8 +2462,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest-dev-server@5.0.1:
-    resolution: {integrity: sha512-YtCPlf0wyPE5K6T2cIYVHLGYJc+8cB3h1VOqernAIZcJMAHTnuYvx+gLiU26ajOP6bpTx6mP9cf1EIgHibsKBA==}
+  /@types/jest-dev-server@5.0.2:
+    resolution: {integrity: sha512-pYSOTm4+ox+a6uJvpGKkRaz2wiYwRfHXvu2WhyD5nZd/9soNx24dDaWfQy3LaSsS0V1DUB/3lhxUoNCPuCYIyg==}
     dependencies:
       '@types/node': 18.18.5
       '@types/wait-on': 5.3.1
