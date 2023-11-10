@@ -18,7 +18,8 @@
       "~blog/*": ["src/blog/*"],
       "~common/*": ["src/common/*"],
       "~config/*": ["src/config/*"],
-      "~migrations/*": ["src/migrations/*"]
+      "~migrations/*": ["src/migrations/*"],
+      "~shop/*": ["src/shop/*"]
     }
   }
 }

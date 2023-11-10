@@ -8,6 +8,7 @@ import { AuthModule } from '~auth/auth.module';
 import { BlogModule } from '~blog/blog.module';
 import { configuration } from '~config/configuration';
 import { dataSource } from '~config/data-source';
+import { ShopModule } from '~shop/shop.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { dataSource } from '~config/data-source';
     }),
     AuthModule,
     BlogModule,
+    ShopModule,
   ],
   controllers: [HealthController],
 })
