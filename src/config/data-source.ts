@@ -15,6 +15,9 @@ import { ArticleSeeder } from '~blog/seeders/article.seeder';
 import { CommentSeeder } from '~blog/seeders/comment.seeder';
 import { CreateUser1637703183543 } from '~migrations/1637703183543-create-user';
 import { CreateArticleComment1651517018946 } from '~migrations/1651517018946-create-article-comment';
+import { CreateShopSchema1699649023065 } from '~migrations/1699649023065-create-shop-schema';
+import { CreateShopCategory1699649201467 } from '~migrations/1699649201467-create-shop-category';
+import { Category } from '~shop/entities/category.entity';
 
 // needed by TypeORM CLI
 declare global {
@@ -29,10 +32,17 @@ declare global {
 }
 
 const type: DataSourceOptions['type'] = 'postgres';
-const entities: DataSourceOptions['entities'] = [User, Article, Comment];
+const entities: DataSourceOptions['entities'] = [
+  User,
+  Article,
+  Comment,
+  Category,
+];
 const migrations: DataSourceOptions['migrations'] = [
   CreateUser1637703183543,
   CreateArticleComment1651517018946,
+  CreateShopSchema1699649023065,
+  CreateShopCategory1699649201467,
 ];
 const factories: SeederOptions['factories'] = [
   userFactory,
