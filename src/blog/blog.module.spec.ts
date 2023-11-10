@@ -166,7 +166,7 @@ describe('BlogModule', () => {
         .send(data)
         .expect(HttpStatus.OK)
         .expect(({ body }) => {
-          const slug: string = title.toLowerCase().replace(/\s+/g, '-');
+          const slug: string = title.toLowerCase().replaceAll(/\s+/g, '-');
 
           expect(body).toHaveProperty('title', title);
           expect(body).toHaveProperty('slug', expect.stringContaining(slug));

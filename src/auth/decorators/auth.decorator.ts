@@ -1,4 +1,4 @@
-import { type ExecutionContext, createParamDecorator } from '@nestjs/common';
+import { createParamDecorator, type ExecutionContext } from '@nestjs/common';
 import type { Request } from 'express';
 
 import type { User } from '~auth/entities/user.entity';

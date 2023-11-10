@@ -1,13 +1,13 @@
 import {
   type HealthCheckResult,
+  HealthCheckService,
   type HealthCheckStatus,
   type HealthIndicatorFunction,
   type HealthIndicatorResult,
-  HealthCheckService,
   MemoryHealthIndicator,
   TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
-import { type TestingModule, Test } from '@nestjs/testing';
+import { Test, type TestingModule } from '@nestjs/testing';
 import { createMockInstance } from 'jest-create-mock-instance';
 
 import { HealthController } from '~app/health.controller';

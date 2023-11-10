@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { createMockInstance } from 'jest-create-mock-instance';
-import { type FindOptionsWhere, Equal, Not, Repository } from 'typeorm';
+import { Equal, type FindOptionsWhere, Not, Repository } from 'typeorm';
 
 import type { UpdateUser } from '~auth/dto/update-user.dto';
 import { User } from '~auth/entities/user.entity';

@@ -13,7 +13,10 @@ class WithEmail {
   @IsAlreadyRegister()
   readonly email!: string;
 
-  constructor(email: string, readonly id?: string) {
+  constructor(
+    email: string,
+    readonly id?: string,
+  ) {
     this.email = email;
   }
 }
@@ -21,7 +24,10 @@ class WithUsername {
   @IsAlreadyRegister()
   readonly username!: string;
 
-  constructor(username: string, readonly id?: string) {
+  constructor(
+    username: string,
+    readonly id?: string,
+  ) {
     this.username = username;
   }
 }

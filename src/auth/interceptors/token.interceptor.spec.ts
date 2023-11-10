@@ -7,7 +7,7 @@ import { createMockInstance } from 'jest-create-mock-instance';
 import { createMocks } from 'node-mocks-http';
 import { lastValueFrom, of } from 'rxjs';
 
-import { type AuthConfig, auth } from '~auth/config/auth';
+import { auth, type AuthConfig } from '~auth/config/auth';
 import { TOKEN_COOKIE_NAME } from '~auth/constants';
 import type { User } from '~auth/entities/user.entity';
 import { john as user } from '~auth/fixtures/users';

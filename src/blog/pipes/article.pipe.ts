@@ -7,7 +7,7 @@ import { ArticleService } from '~blog/services/article.service';
 export class ArticlePipe implements PipeTransform<string, Promise<Article>> {
   constructor(private readonly articleService: ArticleService) {}
 
-  async transform(value: Article['id'] | Article['slug']) {
+  async transform(value: Article['id']) {
     const id = Article.extractId(value);
 
     const article = await this.articleService.getById(id);

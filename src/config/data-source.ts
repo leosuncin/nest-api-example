@@ -1,7 +1,7 @@
 import { registerAs } from '@nestjs/config';
 import type { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import invariant from 'tiny-invariant';
-import { type DataSourceOptions, DataSource } from 'typeorm';
+import { DataSource, type DataSourceOptions } from 'typeorm';
 import type { SeederOptions } from 'typeorm-extension';
 
 import { User } from '~auth/entities/user.entity';

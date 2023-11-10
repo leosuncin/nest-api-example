@@ -1,8 +1,8 @@
 import { Exclude } from 'class-transformer';
 import {
-  type DeepPartial,
   Column,
   CreateDateColumn,
+  type DeepPartial,
   DeleteDateColumn,
   Entity,
   ManyToOne,

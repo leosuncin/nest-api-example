@@ -4,10 +4,10 @@ import type { UpdateUser } from '~auth/dto/update-user.dto';
 
 @Injectable()
 export class StripIdPipe implements PipeTransform {
-  transform(value: unknown, metadata: ArgumentMetadata): UpdateUser | unknown {
+  transform(value: UpdateUser, metadata: ArgumentMetadata): UpdateUser {
     if (metadata.type !== 'body') return value;
 
-    delete (value as UpdateUser).id;
+    delete value.id;
 
     return value;
   }

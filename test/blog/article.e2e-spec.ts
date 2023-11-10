@@ -156,7 +156,7 @@ describe('ArticleController (e2e)', () => {
   it.each(['id', 'slug'])('update one article by %s', async (property) => {
     const title = 'Aute pariatur ad sit id nostrud qui est nulla consectetur';
     const data = updateArticleFactory.buildOne({ title });
-    const slug: string = title.toLowerCase().replace(/\s+/g, '-');
+    const slug: string = title.toLowerCase().replaceAll(/\s+/g, '-');
 
     await testCase
       .step('Update article')

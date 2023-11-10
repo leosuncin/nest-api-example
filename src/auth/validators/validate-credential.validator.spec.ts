@@ -30,7 +30,10 @@ class Update {
   @ValidateCredential()
   public readonly password: string;
 
-  constructor(password: string, readonly id: string) {
+  constructor(
+    password: string,
+    readonly id: string,
+  ) {
     this.password = password;
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { type FindOptionsWhere, type Repository, Equal, Not } from 'typeorm';
+import { Equal, type FindOptionsWhere, Not, type Repository } from 'typeorm';
 
 import type { LoginUser } from '~auth/dto/login-user.dto';
 import type { RegisterUser } from '~auth/dto/register-user.dto';

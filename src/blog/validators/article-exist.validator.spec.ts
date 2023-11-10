@@ -51,7 +51,7 @@ describe('ArticleExist', () => {
   });
 
   it('should fail when the article not exist', async () => {
-    const dto = new DTO(faker.datatype.uuid());
+    const dto = new DTO(faker.string.uuid());
 
     const errors = await validate(dto);
 

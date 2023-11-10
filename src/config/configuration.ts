@@ -1,4 +1,4 @@
-import { type ValidationPipeOptions, HttpStatus } from '@nestjs/common';
+import { HttpStatus, type ValidationPipeOptions } from '@nestjs/common';
 import invariant from 'tiny-invariant';
 
 export type ConfigObject = ReturnType<typeof configuration>;

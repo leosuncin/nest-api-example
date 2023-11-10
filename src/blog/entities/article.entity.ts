@@ -5,11 +5,11 @@ import { isUUID } from 'class-validator';
 import shortUUID from 'short-uuid';
 import slugify from 'slugify';
 import {
-  type DeepPartial,
   BeforeInsert,
   BeforeUpdate,
   Column,
   CreateDateColumn,
+  type DeepPartial,
   DeleteDateColumn,
   Entity,
   ManyToOne,
