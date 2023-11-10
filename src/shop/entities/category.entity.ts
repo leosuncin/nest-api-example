@@ -1,6 +1,7 @@
 import {
   Column,
   CreateDateColumn,
+  type DeepPartial,
   DeleteDateColumn,
   Entity,
   PrimaryColumn,
@@ -25,4 +26,8 @@ export class Category {
 
   @DeleteDateColumn()
   deletedAt?: Date;
+
+  static fromPartial(data: DeepPartial<Category>): Category {
+    return Object.assign(new Category(), data);
+  }
 }

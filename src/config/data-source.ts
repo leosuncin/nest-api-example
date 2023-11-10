@@ -18,6 +18,8 @@ import { CreateArticleComment1651517018946 } from '~migrations/1651517018946-cre
 import { CreateShopSchema1699649023065 } from '~migrations/1699649023065-create-shop-schema';
 import { CreateShopCategory1699649201467 } from '~migrations/1699649201467-create-shop-category';
 import { Category } from '~shop/entities/category.entity';
+import { categoryFactory } from '~shop/factories/category.factory';
+import { CategorySeeder } from '~shop/seeders/category.seeder';
 
 // needed by TypeORM CLI
 declare global {
@@ -48,11 +50,13 @@ const factories: SeederOptions['factories'] = [
   userFactory,
   articleFactory,
   commentFactory,
+  categoryFactory,
 ];
 const seeds: SeederOptions['seeds'] = [
   UserSeeder,
   ArticleSeeder,
   CommentSeeder,
+  CategorySeeder,
 ];
 
 const dataSourceOptions: DataSourceOptions & SeederOptions = {
