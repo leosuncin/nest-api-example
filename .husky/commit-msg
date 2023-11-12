@@ -1,11 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-PATH=$(npm bin):$PATH
-
 if [ -n "$CI" ]; then
   exit 0
 fi
 
-commitlint --edit "$1"
-cspell lint --no-summary --no-progress --no-must-find-files --language-id commit-msg "$1"
+COMMIT_MSG_FILE=$1
+
+pnpm exec commitlint --edit "$COMMIT_MSG_FILE"
+cat "$COMMIT_MSG_FILE" | pnpm exec cspell lint --no-summary --no-progress --language-id commit-msg stdin
