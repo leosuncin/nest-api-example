@@ -20,7 +20,9 @@ import { CreateShopCategory1699649201467 } from '~migrations/1699649201467-creat
 import { CreateShopBrand1699827319121 } from '~migrations/1699827319121-create-shop-brand';
 import { Brand } from '~shop/entities/brand.entity';
 import { Category } from '~shop/entities/category.entity';
+import { brandFactory } from '~shop/factories/brand.factory';
 import { categoryFactory } from '~shop/factories/category.factory';
+import { BrandSeeder } from '~shop/seeders/brand.seeder';
 import { CategorySeeder } from '~shop/seeders/category.seeder';
 
 // needed by TypeORM CLI
@@ -55,12 +57,14 @@ const factories: SeederOptions['factories'] = [
   articleFactory,
   commentFactory,
   categoryFactory,
+  brandFactory,
 ];
 const seeds: SeederOptions['seeds'] = [
   UserSeeder,
   ArticleSeeder,
   CommentSeeder,
   CategorySeeder,
+  BrandSeeder,
 ];
 
 const dataSourceOptions: DataSourceOptions & SeederOptions = {
