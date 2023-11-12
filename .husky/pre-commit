@@ -1,6 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-PATH=$(npm bin):$PATH
-
-lint-staged
+pnpm exec lint-staged
