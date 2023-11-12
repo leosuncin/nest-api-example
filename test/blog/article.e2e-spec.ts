@@ -5,21 +5,17 @@ import { login as credentials } from '~auth/fixtures/credentials';
 import { createArticleFactory } from '~blog/factories/create-article.factory';
 import { updateArticleFactory } from '~blog/factories/update-article.factory';
 import { articleByJane, articleByJohn } from '~blog/fixtures/articles';
-import { isoDateRegex, uuidRegex } from '~common/test-matchers';
+import {
+  forbiddenError,
+  isoDateRegex,
+  unauthorizedError,
+  uuidRegex,
+} from '~common/test-matchers';
 
-const unauthorizedError = {
-  message: 'Unauthorized',
-  statusCode: HttpStatus.UNAUTHORIZED,
-};
 const notFoundError = {
   error: 'Not Found',
   message: 'The article was not found',
   statusCode: HttpStatus.NOT_FOUND,
-};
-const forbiddenError = {
-  error: 'Forbidden',
-  message: 'You are not the author of the article',
-  statusCode: HttpStatus.FORBIDDEN,
 };
 
 describe('ArticleController (e2e)', () => {

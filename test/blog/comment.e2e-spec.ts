@@ -8,17 +8,12 @@ import {
   commentByJaneOnArticleByJohn,
   commentByJohnOnArticleByJane,
 } from '~blog/fixtures/comments';
-import { isoDateRegex, uuidRegex } from '~common/test-matchers';
-
-const unauthorizedError = {
-  message: 'Unauthorized',
-  statusCode: HttpStatus.UNAUTHORIZED,
-};
-const forbiddenError = {
-  error: 'Forbidden',
-  message: 'You are not the author of the comment',
-  statusCode: HttpStatus.FORBIDDEN,
-};
+import {
+  forbiddenError,
+  isoDateRegex,
+  unauthorizedError,
+  uuidRegex,
+} from '~common/test-matchers';
 
 describe('CommentController (e2e)', () => {
   const testCase = e2e('Comment CRUD');
