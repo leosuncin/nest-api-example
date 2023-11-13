@@ -236,11 +236,11 @@ devDependencies:
     specifier: 2.7.1
     version: 2.7.1(typeorm@0.3.17)
   prettier:
-    specifier: 3.0.3
-    version: 3.0.3
+    specifier: 3.1.0
+    version: 3.1.0
   prettier-plugin-toml:
     specifier: 1.0.0
-    version: 1.0.0(prettier@3.0.3)
+    version: 1.0.0(prettier@3.1.0)
   semantic-release:
     specifier: 22.0.7
     version: 22.0.7(typescript@4.9.5)
@@ -8954,18 +8954,18 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-toml@1.0.0(prettier@3.0.3):
+  /prettier-plugin-toml@1.0.0(prettier@3.1.0):
     resolution: {integrity: sha512-YMn4Fqy/ANHommZh61s5qqtpfcgPB00Ty890bFPr73B0HAy77zgyH89SvAK+NyPPx3AdM56a4Yo66LH9GPnuZw==}
     peerDependencies:
       prettier: ^3.0.0
     dependencies:
       '@toml-tools/lexer': 1.0.0
       '@toml-tools/parser': 1.0.0
-      prettier: 3.0.3
+      prettier: 3.1.0
     dev: true
 
-  /prettier@3.0.3:
-    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
+  /prettier@3.1.0:
+    resolution: {integrity: sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
