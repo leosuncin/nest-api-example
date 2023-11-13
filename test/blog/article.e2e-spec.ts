@@ -190,7 +190,7 @@ describe('ArticleController (e2e)', () => {
       .withHeaders('Cookie', tokenCookie)
       .withBody(data)
       .expectStatus(HttpStatus.FORBIDDEN)
-      .expectJson(forbiddenError)
+      .expectJsonLike(forbiddenError)
       .toss();
   });
 
@@ -208,7 +208,7 @@ describe('ArticleController (e2e)', () => {
       .delete(`/articles/${articleByJane.id}`)
       .withHeaders('Cookie', tokenCookie)
       .expectStatus(HttpStatus.FORBIDDEN)
-      .expectJson(forbiddenError)
+      .expectJsonLike(forbiddenError)
       .toss();
   });
 });

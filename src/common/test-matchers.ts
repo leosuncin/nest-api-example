@@ -12,6 +12,6 @@ export const unauthorizedError = {
 
 export const forbiddenError = {
   error: 'Forbidden',
-  message: 'You are not the author of the comment',
+  message: /You are not the author of the (article|comment)/,
   statusCode: HttpStatus.FORBIDDEN,
 };

@@ -144,7 +144,7 @@ describe('CommentController (e2e)', () => {
       )
       .withHeaders('Cookie', tokenCookie)
       .expectStatus(HttpStatus.FORBIDDEN)
-      .expectJson(forbiddenError)
+      .expectJsonLike(forbiddenError)
       .toss();
   });
 });
