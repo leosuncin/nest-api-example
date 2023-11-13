@@ -18,8 +18,10 @@ import { CreateArticleComment1651517018946 } from '~migrations/1651517018946-cre
 import { CreateShopSchema1699649023065 } from '~migrations/1699649023065-create-shop-schema';
 import { CreateShopCategory1699649201467 } from '~migrations/1699649201467-create-shop-category';
 import { CreateShopBrand1699827319121 } from '~migrations/1699827319121-create-shop-brand';
+import { CreateShopProduct1699847590022 } from '~migrations/1699847590022-create-shop-product';
 import { Brand } from '~shop/entities/brand.entity';
 import { Category } from '~shop/entities/category.entity';
+import { Product } from '~shop/entities/product.entity';
 import { brandFactory } from '~shop/factories/brand.factory';
 import { categoryFactory } from '~shop/factories/category.factory';
 import { BrandSeeder } from '~shop/seeders/brand.seeder';
@@ -44,6 +46,7 @@ const entities: DataSourceOptions['entities'] = [
   Comment,
   Category,
   Brand,
+  Product,
 ];
 const migrations: DataSourceOptions['migrations'] = [
   CreateUser1637703183543,
@@ -51,6 +54,7 @@ const migrations: DataSourceOptions['migrations'] = [
   CreateShopSchema1699649023065,
   CreateShopCategory1699649201467,
   CreateShopBrand1699827319121,
+  CreateShopProduct1699847590022,
 ];
 const factories: SeederOptions['factories'] = [
   userFactory,
