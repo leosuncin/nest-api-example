@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.17](https://github.com/leosuncin/nest-api-example/compare/v1.7.16...v1.7.17) (2023-11-15)
+
+### Bug Fixes
+
+- **deps:** update dependency @nestjs/mapped-types to v2.0.4 ([6b8f2b1](https://github.com/leosuncin/nest-api-example/commit/6b8f2b1ad1a4c39fd4a9b39754da797c560e0071))
+- **deps:** update dependency @nestjs/typeorm to v10.0.1 ([86c55b9](https://github.com/leosuncin/nest-api-example/commit/86c55b98f10e6d8d25164cfd51f9ce72f25c26f9))
+
 ## [1.7.16](https://github.com/leosuncin/nest-api-example/compare/v1.7.15...v1.7.16) (2023-11-12)
 
 ### Bug Fixes
