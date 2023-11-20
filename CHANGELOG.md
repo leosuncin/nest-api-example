@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.19](https://github.com/leosuncin/nest-api-example/compare/v1.7.18...v1.7.19) (2023-11-20)
+
+### Bug Fixes
+
+- **deps:** update nest monorepo to v10.2.10 ([9f81904](https://github.com/leosuncin/nest-api-example/commit/9f819049be192aeeae38e24836951a37dc49371a))
+
 ## [1.7.18](https://github.com/leosuncin/nest-api-example/compare/v1.7.17...v1.7.18) (2023-11-17)
 
 ### Bug Fixes
