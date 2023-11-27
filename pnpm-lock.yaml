@@ -27,8 +27,8 @@ dependencies:
     specifier: 10.2.10
     version: 10.2.10(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)
   '@nestjs/terminus':
-    specifier: 10.1.1
-    version: 10.1.1(@mikro-orm/core@4.5.10)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(@nestjs/typeorm@10.0.1)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.17)
+    specifier: 10.2.0
+    version: 10.2.0(@mikro-orm/core@4.5.10)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(@nestjs/typeorm@10.0.1)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.17)
   '@nestjs/typeorm':
     specifier: 10.0.1
     version: 10.0.1(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.17)
@@ -1851,8 +1851,8 @@ packages:
       - chokidar
     dev: true
 
-  /@nestjs/terminus@10.1.1(@mikro-orm/core@4.5.10)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(@nestjs/typeorm@10.0.1)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.17):
-    resolution: {integrity: sha512-aDoPK/uaR9PHn56xzand6zqpp+S3Ibm+y/OrG3M01F1WnScLfo29hbS6MdnIMqmVRAS11r/8X3xWTSo8TT/Lig==}
+  /@nestjs/terminus@10.2.0(@mikro-orm/core@4.5.10)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(@nestjs/typeorm@10.0.1)(reflect-metadata@0.1.13)(rxjs@7.8.1)(typeorm@0.3.17):
+    resolution: {integrity: sha512-zPs98xvJ4ogEimRQOz8eU90mb7z+W/kd/mL4peOgrJ/VqER+ibN2Cboj65uJZW3XuNhpOqaeYOJte86InJd44A==}
     peerDependencies:
       '@grpc/grpc-js': '*'
       '@grpc/proto-loader': '*'
