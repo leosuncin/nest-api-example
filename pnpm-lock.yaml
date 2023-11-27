@@ -239,8 +239,8 @@ devDependencies:
     specifier: 3.1.0
     version: 3.1.0
   prettier-plugin-toml:
-    specifier: 1.0.0
-    version: 1.0.0(prettier@3.1.0)
+    specifier: 2.0.1
+    version: 2.0.1(prettier@3.1.0)
   semantic-release:
     specifier: 22.0.8
     version: 22.0.8(typescript@4.9.5)
@@ -702,33 +702,6 @@ packages:
 
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
-    dev: true
-
-  /@chevrotain/cst-dts-gen@11.0.1:
-    resolution: {integrity: sha512-WFnTsSc+scDotTzyy8iVV88+zovLzLtQUPnuSnv1x/p+IHkUGpINTcF+HNMPcvJL1cGk8Hb3cQnYx0sobltkFw==}
-    dependencies:
-      '@chevrotain/gast': 11.0.1
-      '@chevrotain/types': 11.0.1
-      lodash-es: 4.17.21
-    dev: true
-
-  /@chevrotain/gast@11.0.1:
-    resolution: {integrity: sha512-Q/LZgSdQvmZSAFT/zSRhsvwmmBU9zhKqW+2S65x8v3zNb4nFCzrNK/vCbU4HpbsM4fmBZkJZ/1FQYV+S9DcOeg==}
-    dependencies:
-      '@chevrotain/types': 11.0.1
-      lodash-es: 4.17.21
-    dev: true
-
-  /@chevrotain/regexp-to-ast@11.0.1:
-    resolution: {integrity: sha512-pA4aqqESsmsUr2kJUSUFUoOcVp5ltivHaib1mVtIJ7kPDSJ44JLQ8wXJdBV1/iAhLUaoqgy30ybQR6yAXHRt0A==}
-    dev: true
-
-  /@chevrotain/types@11.0.1:
-    resolution: {integrity: sha512-0s7LD/dcZThnm/SbG/Ts4KGEJzMhta51cTVUHck737TIzpRZXyQDYOgs16MlwqOnzNGtp1IDU/yX616LmUTLtw==}
-    dev: true
-
-  /@chevrotain/utils@11.0.1:
-    resolution: {integrity: sha512-abc+noz6Sd/ZzTiivdMKN18SKORsPtNRq5o+OZt8KOSqDBTJIrwV907KxsfmB+4AX+VZ3Hk2R/QpEJUb7SEi8A==}
     dev: true
 
   /@colors/colors@1.5.0:
@@ -2333,17 +2306,14 @@ packages:
   /@sqltools/formatter@1.2.5:
     resolution: {integrity: sha512-Uy0+khmZqUrUGm5dmMqVlnvufZRSK0FbYzVgp0UMstm+F5+W2/jnEEQyc9vo1ZR/E5ZI/B1WjjoTqBqwJL6Krw==}
 
-  /@toml-tools/lexer@1.0.0:
-    resolution: {integrity: sha512-rVoOC9FibF2CICwCBWQnYcjAEOmLCJExer178K2AsY0Nk9FjJNVoVJuR5UAtuq42BZOajvH+ainf6Gj2GpCnXQ==}
-    dependencies:
-      chevrotain: 11.0.1
+  /@taplo/core@0.1.1:
+    resolution: {integrity: sha512-BG/zLGf5wiNXGEVPvUAAX/4ilB3PwDUY2o0MV0y47mZbDZ9ad9UK/cIQsILat3bqbPJsALVbU6k3cskNZ3vAQg==}
     dev: true
 
-  /@toml-tools/parser@1.0.0:
-    resolution: {integrity: sha512-j8cd3A3ccLHppGoWI69urbiVJslrpwI6sZ61ySDUPxM/FTkQWRx/JkkF8aipnl0Ds0feWXyjyvmWzn70mIohYg==}
+  /@taplo/lib@0.4.0-alpha.2:
+    resolution: {integrity: sha512-DV/Re3DPVY+BhBtLZ3dmP4mP6YMLSsgq9qGLXwOV38lvNF/fBlgvQswzlXmzCEefL/3q2eMoefZpOI/+GLuCNA==}
     dependencies:
-      '@toml-tools/lexer': 1.0.0
-      chevrotain: 11.0.1
+      '@taplo/core': 0.1.1
     dev: true
 
   /@tsconfig/node10@1.0.9:
@@ -3731,17 +3701,6 @@ packages:
     resolution: {integrity: sha512-drVkSqfwA+TvuEhFipiR1OC9boEGZL5RrWvVsOthdcvQNXyCCuKkEiTOTXZ7qxSf/GLwq4GvzfrQD/Wz325hgw==}
     engines: {node: '>=16'}
     dev: false
-
-  /chevrotain@11.0.1:
-    resolution: {integrity: sha512-aK0xr6GdoX6tSaACNIajrppj0iraJKXadQ97EiY+g46aheUwBDrBLF6AJYqtRbQO9S+DHcaSst4Xpcl+lqyeDg==}
-    dependencies:
-      '@chevrotain/cst-dts-gen': 11.0.1
-      '@chevrotain/gast': 11.0.1
-      '@chevrotain/regexp-to-ast': 11.0.1
-      '@chevrotain/types': 11.0.1
-      '@chevrotain/utils': 11.0.1
-      lodash-es: 4.17.21
-    dev: true
 
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
@@ -8954,13 +8913,13 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-toml@1.0.0(prettier@3.1.0):
-    resolution: {integrity: sha512-YMn4Fqy/ANHommZh61s5qqtpfcgPB00Ty890bFPr73B0HAy77zgyH89SvAK+NyPPx3AdM56a4Yo66LH9GPnuZw==}
+  /prettier-plugin-toml@2.0.1(prettier@3.1.0):
+    resolution: {integrity: sha512-99z1YOkViECHtXQjGIigd3talI/ybUI1zB3yniAwUrlWBXupNXThB1hM6bwSMUEj2/+tomTlMtT98F5t4s8IWA==}
+    engines: {node: '>=16.0.0'}
     peerDependencies:
-      prettier: ^3.0.0
+      prettier: ^3.0.3
     dependencies:
-      '@toml-tools/lexer': 1.0.0
-      '@toml-tools/parser': 1.0.0
+      '@taplo/lib': 0.4.0-alpha.2
       prettier: 3.1.0
     dev: true
 
