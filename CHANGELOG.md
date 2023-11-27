@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.20](https://github.com/leosuncin/nest-api-example/compare/v1.7.19...v1.7.20) (2023-11-27)
+
+### Bug Fixes
+
+- **deps:** update dependency @nestjs/terminus to v10.2.0 ([0a5c464](https://github.com/leosuncin/nest-api-example/commit/0a5c4643bc1df3dde36c6364982a105ead419808))
+
 ## [1.7.19](https://github.com/leosuncin/nest-api-example/compare/v1.7.18...v1.7.19) (2023-11-20)
 
 ### Bug Fixes
