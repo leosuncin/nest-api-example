@@ -36,8 +36,8 @@ dependencies:
     specifier: 2.4.3
     version: 2.4.3
   cachified:
-    specifier: ^3.0.1
-    version: 3.0.1
+    specifier: ^4.0.0
+    version: 4.0.0
   class-transformer:
     specifier: 0.5.1
     version: 0.5.1
@@ -3611,8 +3611,8 @@ packages:
       union-value: 1.0.1
       unset-value: 1.0.0
 
-  /cachified@3.0.1:
-    resolution: {integrity: sha512-hggh2hdWPXX1L0tehnJ1hQc2LHVI5vtO3B2jvppgyyhWk9hwTcXpQfAfNq9CodNoHxUC/21yLw1CeFb+g21p3w==}
+  /cachified@4.0.0:
+    resolution: {integrity: sha512-gTi8sr7Ka/VuI8qEXEbUGG10N8UCcLCEtErj0hL780Og1P8hioWKNfdBGG3Q7jSH76CAfoPsxV2UwbVGyLXogA==}
     dev: false
 
   /call-bind@1.0.2:
