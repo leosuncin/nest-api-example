@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.22](https://github.com/leosuncin/nest-api-example/compare/v1.7.21...v1.7.22) (2023-12-04)
+
+### Bug Fixes
+
+- **deps:** update dependency @nestjs/passport to v10.0.3 ([5eb7620](https://github.com/leosuncin/nest-api-example/commit/5eb762049d55920d1e0504e0bb8e94b02d4d08e8))
+
 ## [1.7.21](https://github.com/leosuncin/nest-api-example/compare/v1.7.20...v1.7.21) (2023-11-28)
 
 ### Bug Fixes
