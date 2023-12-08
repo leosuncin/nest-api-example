@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.23](https://github.com/leosuncin/nest-api-example/compare/v1.7.22...v1.7.23) (2023-12-08)
+
+### Bug Fixes
+
+- **deps:** update dependency reflect-metadata to v0.1.14 ([32a129d](https://github.com/leosuncin/nest-api-example/commit/32a129dcc7dbaaa613d6e17029bba6a86c3d87d6))
+
 ## [1.7.22](https://github.com/leosuncin/nest-api-example/compare/v1.7.21...v1.7.22) (2023-12-04)
 
 ### Bug Fixes
