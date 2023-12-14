@@ -48,7 +48,7 @@ jobs:
           threshold_alert: 50
           threshold_warning: 80
       - name: Upload code coverage ⬆️
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: unit-coverage
           path: coverage
