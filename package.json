@@ -44,7 +44,7 @@
     "bcryptjs": "2.4.3",
     "cachified": "^3.0.1",
     "class-transformer": "0.5.1",
-    "class-validator": "0.14.0",
+    "class-validator": "0.14.1",
     "cookie-parser": "1.4.6",
     "hibp": "13.0.0",
     "lru-cache": "^7.14.1",
