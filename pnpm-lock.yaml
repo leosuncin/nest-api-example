@@ -140,8 +140,8 @@ devDependencies:
     specifier: 1.0.16
     version: 1.0.16
   '@types/passport-jwt':
-    specifier: 3.0.13
-    version: 3.0.13
+    specifier: 4.0.1
+    version: 4.0.1
   '@types/supertest':
     specifier: 6.0.2
     version: 6.0.2
@@ -2354,17 +2354,10 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/jsonwebtoken@9.0.2:
-    resolution: {integrity: sha512-drE6uz7QBKq1fYqqoFKTDRdFCPHd5TCub75BM+D+cMx7NU9hUz7SESLfC2fSCXVFMO5Yj8sOWHuGqPgjc+fz0Q==}
-    dependencies:
-      '@types/node': 20.11.7
-    dev: true
-
   /@types/jsonwebtoken@9.0.5:
     resolution: {integrity: sha512-VRLSGzik+Unrup6BsouBeHsf4d1hOEgYWTm/7Nmw1sXoN1+tRly/Gy/po3yeahnP4jfnQWWAhQAqcNfH7ngOkA==}
     dependencies:
       '@types/node': 20.11.7
-    dev: false
 
   /@types/lodash.assignin@4.2.7:
     resolution: {integrity: sha512-XvENIWy921M29eEFAZy7jcjN05l/O8pdXPW00/aUMlWD3q6FhWAhERnKuFyNTHeamqZWff7YUtxXoSGKdAehig==}
@@ -2397,11 +2390,10 @@ packages:
     resolution: {integrity: sha512-ehPtgRgaULsFG8x0NeYJvmyH1hmlfsNLujHe9dQEia/7MAJYdzMSi19JtchUHjmBA6XC/75dK55mzZH+RyieSg==}
     dev: true
 
-  /@types/passport-jwt@3.0.13:
-    resolution: {integrity: sha512-fjHaC6Bv8EpMMqzTnHP32SXlZGaNfBPC/Po5dmRGYi2Ky7ljXPbGnOy+SxZqa6iZvFgVhoJ1915Re3m93zmcfA==}
+  /@types/passport-jwt@4.0.1:
+    resolution: {integrity: sha512-Y0Ykz6nWP4jpxgEUYq8NoVZeCQPo1ZndJLfapI249g1jHChvRfZRO/LS3tqu26YgAS/laI1qx98sYGz0IalRXQ==}
     dependencies:
-      '@types/express': 4.17.21
-      '@types/jsonwebtoken': 9.0.2
+      '@types/jsonwebtoken': 9.0.5
       '@types/passport-strategy': 0.2.35
     dev: true
 
