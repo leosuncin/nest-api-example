@@ -170,8 +170,8 @@ devDependencies:
     specifier: 3.6.1
     version: 3.6.1(@typescript-eslint/parser@6.20.0)(eslint-plugin-import@2.29.1)(eslint@8.56.0)
   eslint-plugin-array-func:
-    specifier: 4.0.0
-    version: 4.0.0(eslint@8.56.0)
+    specifier: 5.0.0
+    version: 5.0.0(eslint@8.56.0)
   eslint-plugin-deprecation:
     specifier: 2.0.0
     version: 2.0.0(eslint@8.56.0)(typescript@4.9.5)
@@ -4531,11 +4531,11 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-array-func@4.0.0(eslint@8.56.0):
-    resolution: {integrity: sha512-p3NY2idNIvgmQLF2/62ZskYt8gOuUgQ51smRc3Lh7FtSozpNc2sg+lniz9VaCagLZHEZTl8qGJKqE7xy8O/D/g==}
+  /eslint-plugin-array-func@5.0.0(eslint@8.56.0):
+    resolution: {integrity: sha512-OMZV3YWvnqI/KEB9bLG4djs6GA6YlH2m3mi/FaCRK5XpZ3rhVuE8zHaXMeLupQTZfTE05zj9Tt3DHt4MbJfFhw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
-      eslint: '>=8.40.0'
+      eslint: '>=8.51.0'
     dependencies:
       eslint: 8.56.0
     dev: true
