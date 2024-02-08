@@ -95,8 +95,8 @@ devDependencies:
     specifier: 18.6.0
     version: 18.6.0
   '@faker-js/faker':
-    specifier: 8.4.0
-    version: 8.4.0
+    specifier: 8.4.1
+    version: 8.4.1
   '@nestjs/cli':
     specifier: 10.3.2
     version: 10.3.2
@@ -1188,8 +1188,8 @@ packages:
     resolution: {integrity: sha512-hmdFF4vVyvXosVdCCnZPCfrgwNPA79y3K5l0QzlKFcK5Qd3nkM9oGKcQYCTnTRWJXIV5SUMkkTFIEIdDFtxQPQ==}
     dev: true
 
-  /@faker-js/faker@8.4.0:
-    resolution: {integrity: sha512-htW87352wzUCdX1jyUQocUcmAaFqcR/w082EC8iP/gtkF0K+aKcBp0hR5Arb7dzR8tQ1TrhE9DNa5EbJELm84w==}
+  /@faker-js/faker@8.4.1:
+    resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
     dev: true
 
@@ -9497,7 +9497,7 @@ packages:
     peerDependencies:
       typeorm: ~0.3.0
     dependencies:
-      '@faker-js/faker': 8.4.0
+      '@faker-js/faker': 8.4.1
       locter: 1.1.0
       pascal-case: 3.1.2
       rapiq: 0.8.1
