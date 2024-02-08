@@ -27,8 +27,8 @@ dependencies:
     specifier: 10.3.2
     version: 10.3.2(@nestjs/common@10.3.2)(@nestjs/core@10.3.2)
   '@nestjs/terminus':
-    specifier: 10.2.1
-    version: 10.2.1(@nestjs/common@10.3.2)(@nestjs/core@10.3.2)(@nestjs/typeorm@10.0.2)(reflect-metadata@0.2.1)(rxjs@7.8.1)(typeorm@0.3.20)
+    specifier: 10.2.2
+    version: 10.2.2(@nestjs/common@10.3.2)(@nestjs/core@10.3.2)(@nestjs/typeorm@10.0.2)(reflect-metadata@0.2.1)(rxjs@7.8.1)(typeorm@0.3.20)
   '@nestjs/typeorm':
     specifier: 10.0.2
     version: 10.0.2(@nestjs/common@10.3.2)(@nestjs/core@10.3.2)(reflect-metadata@0.2.1)(rxjs@7.8.1)(typeorm@0.3.20)
@@ -1706,8 +1706,8 @@ packages:
       - chokidar
     dev: true
 
-  /@nestjs/terminus@10.2.1(@nestjs/common@10.3.2)(@nestjs/core@10.3.2)(@nestjs/typeorm@10.0.2)(reflect-metadata@0.2.1)(rxjs@7.8.1)(typeorm@0.3.20):
-    resolution: {integrity: sha512-23abPhotIP4+hrCZ8YkLEOmZ3m7eUYh1QOwdyrNkU9eMz/nc5LpVzy7jFbsNUuvlnT4MPV/7KXfyQTruQkTouw==}
+  /@nestjs/terminus@10.2.2(@nestjs/common@10.3.2)(@nestjs/core@10.3.2)(@nestjs/typeorm@10.0.2)(reflect-metadata@0.2.1)(rxjs@7.8.1)(typeorm@0.3.20):
+    resolution: {integrity: sha512-tZdTSqgHyxekN8PJmJJ1ptZG97q/1nBIBwLdMcmB7Dsz4XDTQvYuhs20F1qkEgFuQwarNkb/2AF5Qib31g2bmA==}
     peerDependencies:
       '@grpc/grpc-js': '*'
       '@grpc/proto-loader': '*'
@@ -1722,7 +1722,7 @@ packages:
       '@nestjs/typeorm': ^9.0.0 || ^10.0.0
       '@prisma/client': '*'
       mongoose: '*'
-      reflect-metadata: 0.1.x
+      reflect-metadata: 0.1.x || 0.2.x
       rxjs: 7.x
       sequelize: '*'
       typeorm: '*'
