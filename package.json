@@ -39,7 +39,7 @@
     "@nestjs/mapped-types": "2.0.5",
     "@nestjs/passport": "10.0.3",
     "@nestjs/platform-express": "10.3.3",
-    "@nestjs/terminus": "10.2.2",
+    "@nestjs/terminus": "10.2.3",
     "@nestjs/typeorm": "10.0.2",
     "bcryptjs": "2.4.3",
     "cachified": "^3.0.1",
