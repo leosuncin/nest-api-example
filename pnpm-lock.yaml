@@ -230,8 +230,8 @@ devDependencies:
     specifier: 1.14.1
     version: 1.14.1
   pactum:
-    specifier: 3.6.0
-    version: 3.6.0
+    specifier: 3.6.1
+    version: 3.6.1
   pg-mem:
     specifier: 2.8.1
     version: 2.8.1(typeorm@0.3.20)
@@ -3566,6 +3566,7 @@ packages:
 
   /centra@2.6.0:
     resolution: {integrity: sha512-dgh+YleemrT8u85QL11Z6tYhegAs3MMxsaWAq/oXeAmYJ7VxL3SI9TZtnfaEvNDMAPolj25FXIb3S+HCI4wQaQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dev: true
 
   /chalk-template@1.1.0:
@@ -6893,6 +6894,7 @@ packages:
 
   /lightcookie@1.0.25:
     resolution: {integrity: sha512-SrY/+eBPaKAMnsn7mCsoOMZzoQyCyHHHZlFCu2fjo28XxSyCLjlooKiTxyrXTg8NPaHp1YzWi0lcGG1gDi6KHw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dev: true
 
   /lilconfig@3.0.0:
@@ -7827,8 +7829,8 @@ packages:
     resolution: {integrity: sha512-55io32NeOKbLpHKKPzYDOr+N2dseTzMbj1Gj1y+zvOkKK6NDf5BT5pxglfqLN/ra3ig5zvbrKFUqZIWjAWboog==}
     dev: true
 
-  /pactum@3.6.0:
-    resolution: {integrity: sha512-pR3OzFXi7K3oNADMoEiC8Err51aCJS3FTS0MXHqqr3YDlSCb/NcdJjcoTGh443W0WilvnHFL4OsaGtO0sWv76A==}
+  /pactum@3.6.1:
+    resolution: {integrity: sha512-/DvfHyIt7+K1FQwKzPzmikx7/SXZ+GZxPqR/FVkqkC4SSvtsCwTlRxxfxe+PWfj887wnYF9D91lIRI7Ws8qxYA==}
     engines: {node: '>=10'}
     dependencies:
       '@exodus/schemasafe': 1.2.3
@@ -8104,6 +8106,7 @@ packages:
   /phin@3.7.0:
     resolution: {integrity: sha512-DqnVNrpYhKGBZppNKprD+UJylMeEKOZxHgPB+ZP6mGzf3uA2uox4Ep9tUm+rUc8WLIdHT3HcAE4X8fhwQA9JKg==}
     engines: {node: '>= 8'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dependencies:
       centra: 2.6.0
     dev: true
