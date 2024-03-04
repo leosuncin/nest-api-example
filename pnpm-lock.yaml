@@ -209,8 +209,8 @@ devDependencies:
     specifier: 0.1.4
     version: 0.1.4
   fast-check:
-    specifier: 3.15.1
-    version: 3.15.1
+    specifier: 3.16.0
+    version: 3.16.0
   husky:
     specifier: 9.0.11
     version: 9.0.11
@@ -5080,8 +5080,8 @@ packages:
       lodash.assignin: 4.2.0
     dev: true
 
-  /fast-check@3.15.1:
-    resolution: {integrity: sha512-GutOXZ+SCxGaFWfHe0Pbeq8PrkpGtPxA9/hdkI3s9YzqeMlrq5RdJ+QfYZ/S93jMX+tAyqgW0z5c9ppD+vkGUw==}
+  /fast-check@3.16.0:
+    resolution: {integrity: sha512-k8GtQHi4pJoRQ1gVDFQno+/FVkowo/ehiz/aCj9O/D7HRWb1sSFzNrw+iPVU8QlWtH+jNwbuN+dDVg3QkS56DQ==}
     engines: {node: '>=8.0.0'}
     dependencies:
       pure-rand: 6.0.0
