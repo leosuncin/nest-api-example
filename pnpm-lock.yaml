@@ -209,8 +209,8 @@ devDependencies:
     specifier: 0.1.4
     version: 0.1.4
   fast-check:
-    specifier: 3.16.0
-    version: 3.16.0
+    specifier: 3.17.0
+    version: 3.17.0
   husky:
     specifier: 9.0.11
     version: 9.0.11
@@ -5013,11 +5013,11 @@ packages:
       lodash.assignin: 4.2.0
     dev: true
 
-  /fast-check@3.16.0:
-    resolution: {integrity: sha512-k8GtQHi4pJoRQ1gVDFQno+/FVkowo/ehiz/aCj9O/D7HRWb1sSFzNrw+iPVU8QlWtH+jNwbuN+dDVg3QkS56DQ==}
+  /fast-check@3.17.0:
+    resolution: {integrity: sha512-9A7UiBENXxMBb40qY+xOcIcGdxF5CYbXJOU4b+omh773RIFcIQRejHEjjrzIHQFLIQXWgWQu3dl6FrWR9VpYRQ==}
     engines: {node: '>=8.0.0'}
     dependencies:
-      pure-rand: 6.0.0
+      pure-rand: 6.1.0
     dev: true
 
   /fast-deep-equal@3.1.3:
@@ -8208,6 +8208,10 @@ packages:
 
   /pure-rand@6.0.0:
     resolution: {integrity: sha512-rLSBxJjP+4DQOgcJAx6RZHT2he2pkhQdSnofG5VWyVl6GRq/K02ISOuOLcsMOrtKDIJb8JN2zm3FFzWNbezdPw==}
+    dev: true
+
+  /pure-rand@6.1.0:
+    resolution: {integrity: sha512-bVWawvoZoBYpp6yIoQtQXHZjmz35RSVHnUOTefl8Vcjr8snTPY1wnpSPMWekcFwbxI6gtmT7rSYPFvz71ldiOA==}
     dev: true
 
   /qs@6.11.0:
