@@ -209,8 +209,8 @@ devDependencies:
     specifier: 0.1.4
     version: 0.1.4
   fast-check:
-    specifier: 3.17.0
-    version: 3.17.0
+    specifier: 3.17.1
+    version: 3.17.1
   husky:
     specifier: 9.0.11
     version: 9.0.11
@@ -5018,8 +5018,8 @@ packages:
       lodash.assignin: 4.2.0
     dev: true
 
-  /fast-check@3.17.0:
-    resolution: {integrity: sha512-9A7UiBENXxMBb40qY+xOcIcGdxF5CYbXJOU4b+omh773RIFcIQRejHEjjrzIHQFLIQXWgWQu3dl6FrWR9VpYRQ==}
+  /fast-check@3.17.1:
+    resolution: {integrity: sha512-jIKXJVe6ZO0SpwEgVtEVujTf8TwjI9wMXFJCjsDHUB3RroUbXBgF4kOSz3A7MW0UR26aqsoB8i9O2mjtjERAiA==}
     engines: {node: '>=8.0.0'}
     dependencies:
       pure-rand: 6.1.0
@@ -6237,7 +6237,7 @@ packages:
       jest-util: 29.7.0
       p-limit: 3.1.0
       pretty-format: 29.7.0
-      pure-rand: 6.0.0
+      pure-rand: 6.1.0
       slash: 3.0.0
       stack-utils: 2.0.5
     transitivePeerDependencies:
@@ -8164,10 +8164,6 @@ packages:
   /punycode@2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
-    dev: true
-
-  /pure-rand@6.0.0:
-    resolution: {integrity: sha512-rLSBxJjP+4DQOgcJAx6RZHT2he2pkhQdSnofG5VWyVl6GRq/K02ISOuOLcsMOrtKDIJb8JN2zm3FFzWNbezdPw==}
     dev: true
 
   /pure-rand@6.1.0:
