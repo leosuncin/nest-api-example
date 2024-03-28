@@ -48,8 +48,8 @@ dependencies:
     specifier: 1.4.6
     version: 1.4.6
   hibp:
-    specifier: 13.0.0
-    version: 13.0.0
+    specifier: 14.0.3
+    version: 14.0.3
   lru-cache:
     specifier: ^7.14.1
     version: 7.18.3
@@ -1967,34 +1967,41 @@ packages:
     resolution: {integrity: sha512-oZLYFEAzUKyi3SKnXvj32ZCEGH6RDnao7COuCVhDydMS9NrCSVXhM79VaKyP5+Zc33m0QXEd2DN3UkU7OsHcfw==}
     dev: true
 
-  /@remix-run/web-blob@3.0.4:
-    resolution: {integrity: sha512-AfegzZvSSDc+LwnXV+SwROTrDtoLiPxeFW+jxgvtDAnkuCX1rrzmVJ6CzqZ1Ai0bVfmJadkG5GxtAfYclpPmgw==}
+  /@remix-run/web-blob@3.1.0:
+    resolution: {integrity: sha512-owGzFLbqPH9PlKb8KvpNJ0NO74HWE2euAn61eEiyCXX/oteoVzTVSN8mpLgDjaxBf2btj5/nUllSUgpyd6IH6g==}
     dependencies:
-      '@remix-run/web-stream': 1.0.3
+      '@remix-run/web-stream': 1.1.0
       web-encoding: 1.1.5
     dev: false
 
-  /@remix-run/web-fetch@4.3.4:
-    resolution: {integrity: sha512-AUM1XBa4hcgeNt2CD86OlB5aDLlqdMl0uJ+89R8dPGx07I5BwMXnbopCaPAkvSBIoHeT/IoLWIuZrLi7RvXS+Q==}
+  /@remix-run/web-fetch@4.4.2:
+    resolution: {integrity: sha512-jgKfzA713/4kAW/oZ4bC3MoLWyjModOVDjFPNseVqcJKSafgIscrYL9G50SurEYLswPuoU3HzSbO0jQCMYWHhA==}
     engines: {node: ^10.17 || >=12.3}
     dependencies:
-      '@remix-run/web-blob': 3.0.4
-      '@remix-run/web-form-data': 3.0.4
-      '@remix-run/web-stream': 1.0.3
+      '@remix-run/web-blob': 3.1.0
+      '@remix-run/web-file': 3.1.0
+      '@remix-run/web-form-data': 3.1.0
+      '@remix-run/web-stream': 1.1.0
       '@web3-storage/multipart-parser': 1.0.0
       abort-controller: 3.0.0
       data-uri-to-buffer: 3.0.1
       mrmime: 1.0.1
     dev: false
 
-  /@remix-run/web-form-data@3.0.4:
-    resolution: {integrity: sha512-UMF1jg9Vu9CLOf8iHBdY74Mm3PUvMW8G/XZRJE56SxKaOFWGSWlfxfG+/a3boAgHFLTkP7K4H1PxlRugy1iQtw==}
+  /@remix-run/web-file@3.1.0:
+    resolution: {integrity: sha512-dW2MNGwoiEYhlspOAXFBasmLeYshyAyhIdrlXBi06Duex5tDr3ut2LFKVj7tyHLmn8nnNwFf1BjNbkQpygC2aQ==}
+    dependencies:
+      '@remix-run/web-blob': 3.1.0
+    dev: false
+
+  /@remix-run/web-form-data@3.1.0:
+    resolution: {integrity: sha512-NdeohLMdrb+pHxMQ/Geuzdp0eqPbea+Ieo8M8Jx2lGC6TBHsgHzYcBvr0LyPdPVycNRDEpWpiDdCOdCryo3f9A==}
     dependencies:
       web-encoding: 1.1.5
     dev: false
 
-  /@remix-run/web-stream@1.0.3:
-    resolution: {integrity: sha512-wlezlJaA5NF6SsNMiwQnnAW6tnPzQ5I8qk0Y0pSohm0eHKa2FQ1QhEKLVVcDDu02TmkfHgnux0igNfeYhDOXiA==}
+  /@remix-run/web-stream@1.1.0:
+    resolution: {integrity: sha512-KRJtwrjRV5Bb+pM7zxcTJkhIqWWSy+MYsIxHK+0m5atcznsf15YwUBWHWulZerV2+vvHH1Lp1DD7pw6qKW8SgA==}
     dependencies:
       web-streams-polyfill: 3.2.1
     dev: false
@@ -5644,12 +5651,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /hibp@13.0.0:
-    resolution: {integrity: sha512-d3D2W9fqhIu4EJ8Wa85rXKHBxpIB9dEsHDIWNB26bcptlU18VD3PCfDVsVBE8nd/zImJmbNqRgfpzgO6pJ68Sg==}
-    engines: {node: '>= 16.0.0'}
+  /hibp@14.0.3:
+    resolution: {integrity: sha512-MlzmpVm3egNTzhFp8lnVlxjC067J4MbTITCYVE0bGHxXhb3AwAMJ86oxTvk6mC5VeAtgDyXLePEz9254h4zBtw==}
+    engines: {node: '>= 18.0.0'}
     dependencies:
-      '@remix-run/web-fetch': 4.3.4
-      jssha: 3.3.0
+      '@remix-run/web-fetch': 4.4.2
+      jssha: 3.3.1
     dev: false
 
   /highlight.js@10.7.3:
@@ -6779,8 +6786,8 @@ packages:
       semver: 7.6.0
     dev: false
 
-  /jssha@3.3.0:
-    resolution: {integrity: sha512-w9OtT4ALL+fbbwG3gw7erAO0jvS5nfvrukGPMWIAoea359B26ALXGpzy4YJSp9yGnpUvuvOw1nSjSoHDfWSr1w==}
+  /jssha@3.3.1:
+    resolution: {integrity: sha512-VCMZj12FCFMQYcFLPRm/0lOBbLi8uM2BhXPTqw3U4YAfs4AZfiApOoBLoN8cQE60Z50m1MYMTQVCfgF/KaCVhQ==}
     dev: false
 
   /jwa@1.4.1:
