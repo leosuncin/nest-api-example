@@ -51,8 +51,8 @@ dependencies:
     specifier: 13.0.0
     version: 13.0.0
   lru-cache:
-    specifier: ^7.14.1
-    version: 7.18.3
+    specifier: ^10.0.0
+    version: 10.2.0
   nestjs-typeorm-paginate:
     specifier: 4.0.4
     version: 4.0.4(@nestjs/common@10.3.7)(typeorm@0.3.20)
@@ -7056,11 +7056,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-
-  /lru-cache@7.18.3:
-    resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
-    engines: {node: '>=12'}
-    dev: false
 
   /magic-string@0.30.5:
     resolution: {integrity: sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==}
