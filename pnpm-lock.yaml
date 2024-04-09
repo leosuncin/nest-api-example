@@ -188,8 +188,8 @@ devDependencies:
     specifier: 3.1.0
     version: 3.1.0(eslint@9.0.0)
   eslint-plugin-n:
-    specifier: 17.0.0
-    version: 17.0.0(eslint@9.0.0)
+    specifier: 17.1.0
+    version: 17.1.0(eslint@9.0.0)
   eslint-plugin-optimize-regex:
     specifier: 1.2.1
     version: 1.2.1
@@ -1184,7 +1184,7 @@ packages:
       debug: 4.3.4
       espree: 9.6.1
       globals: 13.24.0
-      ignore: 5.2.4
+      ignore: 5.3.1
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       minimatch: 3.1.2
@@ -1201,7 +1201,7 @@ packages:
       debug: 4.3.4
       espree: 10.0.1
       globals: 14.0.0
-      ignore: 5.2.4
+      ignore: 5.3.1
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       minimatch: 3.1.2
@@ -4565,7 +4565,7 @@ packages:
       eslint: '>=8'
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.0.0)
-      '@eslint-community/regexpp': 4.6.2
+      '@eslint-community/regexpp': 4.10.0
       eslint: 9.0.0
       eslint-compat-utils: 0.1.2(eslint@9.0.0)
     dev: true
@@ -4647,8 +4647,8 @@ packages:
       - typescript
     dev: true
 
-  /eslint-plugin-n@17.0.0(eslint@9.0.0):
-    resolution: {integrity: sha512-0Ihff+kWUIiXYTNTotGj/yRI1X5uCh/lef5Hr7ih/mFeYMQ3bPfN0KxlrfhU+Xn4x697l/TPO6zxqE33M1yD0w==}
+  /eslint-plugin-n@17.1.0(eslint@9.0.0):
+    resolution: {integrity: sha512-+MTiTej3B07+8vS/RfSMD1w4O9VVR9BSJT9kSa9QUsBlXzKi5PZc+lB3w+iu/2eIS3drFU7zCikSrD8Yn8PEBQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
@@ -4659,9 +4659,8 @@ packages:
       eslint-plugin-es-x: 7.5.0(eslint@9.0.0)
       get-tsconfig: 4.7.3
       globals: 14.0.0
-      ignore: 5.2.4
-      is-builtin-module: 3.2.1
-      minimatch: 9.0.3
+      ignore: 5.3.1
+      minimatch: 9.0.4
       semver: 7.6.0
     dev: true
 
@@ -5398,7 +5397,7 @@ packages:
     dependencies:
       foreground-child: 3.1.1
       jackspeak: 2.3.6
-      minimatch: 9.0.3
+      minimatch: 9.0.4
       minipass: 7.0.4
       path-scurry: 1.10.1
 
@@ -5461,7 +5460,7 @@ packages:
       array-union: 2.1.0
       dir-glob: 3.0.1
       fast-glob: 3.3.2
-      ignore: 5.2.4
+      ignore: 5.3.1
       merge2: 1.4.1
       slash: 3.0.0
     dev: true
@@ -5472,7 +5471,7 @@ packages:
     dependencies:
       dir-glob: 3.0.1
       fast-glob: 3.3.2
-      ignore: 5.2.4
+      ignore: 5.3.1
       merge2: 1.4.1
       slash: 4.0.0
     dev: true
@@ -5483,7 +5482,7 @@ packages:
     dependencies:
       '@sindresorhus/merge-streams': 2.3.0
       fast-glob: 3.3.2
-      ignore: 5.2.4
+      ignore: 5.3.1
       path-type: 5.0.0
       slash: 5.1.0
       unicorn-magic: 0.1.0
@@ -7148,18 +7147,11 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /minimatch@9.0.3:
-    resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
-    engines: {node: '>=16 || 14 >=14.17'}
-    dependencies:
-      brace-expansion: 2.0.1
-
   /minimatch@9.0.4:
     resolution: {integrity: sha512-KqWh+VchfxcMNRAJjj2tnsSJdNbHsVgnkBhTNrW7AjVo6OvLtxw8zfT9oLw1JSohlFzJ8jCoTgaoXvJ+kHt6fw==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
-    dev: true
 
   /minimist@1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
