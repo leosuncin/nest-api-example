@@ -188,8 +188,8 @@ devDependencies:
     specifier: 3.1.0
     version: 3.1.0(eslint@9.0.0)
   eslint-plugin-n:
-    specifier: 17.1.0
-    version: 17.1.0(eslint@9.0.0)
+    specifier: 17.2.0
+    version: 17.2.0(eslint@9.0.0)
   eslint-plugin-optimize-regex:
     specifier: 1.2.1
     version: 1.2.1
@@ -4647,8 +4647,8 @@ packages:
       - typescript
     dev: true
 
-  /eslint-plugin-n@17.1.0(eslint@9.0.0):
-    resolution: {integrity: sha512-+MTiTej3B07+8vS/RfSMD1w4O9VVR9BSJT9kSa9QUsBlXzKi5PZc+lB3w+iu/2eIS3drFU7zCikSrD8Yn8PEBQ==}
+  /eslint-plugin-n@17.2.0(eslint@9.0.0):
+    resolution: {integrity: sha512-XBkFQxjTFKy9oc925ezHcDoZ8VLdGfxRkdZf0poR4TjC+zvm28pG2Tc7ZZpD1/UxSAzbw6Zz0WpnpUX3KruAAA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
