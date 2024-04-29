@@ -51,8 +51,8 @@ importers:
         specifier: 1.4.6
         version: 1.4.6
       hibp:
-        specifier: 14.1.0
-        version: 14.1.0
+        specifier: 14.1.1
+        version: 14.1.1
       lru-cache:
         specifier: ^7.14.1
         version: 7.18.3
@@ -2929,8 +2929,8 @@ packages:
     resolution: {integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==}
     engines: {node: '>=8'}
 
-  hibp@14.1.0:
-    resolution: {integrity: sha512-+46FOmcS6D4zAaSa5Y7256HPx26u1v1chDFeWfnyWoI41mgVJxMIBogiuncyAsJ0yuiNZ+z4lyzCmO1RrryR0w==}
+  hibp@14.1.1:
+    resolution: {integrity: sha512-3HiU8siA/0PpciTzWR2l3GVX0CZ0mCCsOHG2lqk8yvRgM+hgkUJW5Occ809xsoz//rgbL9u2tPL3cW31RD4j+g==}
     engines: {node: '>= 18.0.0'}
 
   highlight.js@10.7.3:
@@ -8604,7 +8604,7 @@ snapshots:
 
   hexoid@1.0.0: {}
 
-  hibp@14.1.0:
+  hibp@14.1.1:
     dependencies:
       jssha: 3.3.1
       undici: 6.14.1
