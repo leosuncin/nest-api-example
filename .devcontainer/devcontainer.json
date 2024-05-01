@@ -11,7 +11,7 @@
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/dhoeric/features/k6:1": {},
-    "ghcr.io/NicoVIII/devcontainer-features/pnpm:1": {},
+    "ghcr.io/NicoVIII/devcontainer-features/pnpm:2": {},
     "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {}
   },
   "extensions": [
