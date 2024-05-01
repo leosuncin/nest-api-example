@@ -78,8 +78,8 @@ importers:
         specifier: 7.8.1
         version: 7.8.1
       short-uuid:
-        specifier: 5.0.0
-        version: 5.0.0
+        specifier: 5.0.1
+        version: 5.0.1
       slugify:
         specifier: 1.6.6
         version: 1.6.6
@@ -4629,9 +4629,9 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  short-uuid@5.0.0:
-    resolution: {integrity: sha512-pVXMs90RxTUxB6ucuVOjl+C5kK2q81xUQQO//TRNF+zWRJJTYoYNdbr1bsqn6568ZNOB5fWoLkpyn2wauwQg9g==}
-    engines: {node: '>=8'}
+  short-uuid@5.0.1:
+    resolution: {integrity: sha512-bB4vZNkqI26maSAlDrrYCmj2FyFgCALDOyqqH7sGBnpBA5r2IxWSsUNy0ScEvxLTWRfwYqAXh17GHg7PRmR+iQ==}
+    engines: {node: '>=14'}
 
   side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
@@ -10385,7 +10385,7 @@ snapshots:
       interpret: 1.4.0
       rechoir: 0.6.2
 
-  short-uuid@5.0.0:
+  short-uuid@5.0.1:
     dependencies:
       any-base: 1.1.0
       uuid: 9.0.1
