@@ -99,7 +99,7 @@
     "eslint-plugin-security": "3.0.0",
     "eslint-plugin-simple-import-sort": "12.1.0",
     "eslint-plugin-switch-case": "1.1.2",
-    "eslint-plugin-unicorn": "52.0.0",
+    "eslint-plugin-unicorn": "53.0.0",
     "factory.io": "0.1.4",
     "fast-check": "3.18.0",
     "husky": "9.0.11",
