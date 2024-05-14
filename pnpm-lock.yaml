@@ -190,8 +190,8 @@ importers:
         specifier: 3.1.0
         version: 3.1.0(eslint@9.2.0)
       eslint-plugin-n:
-        specifier: 17.6.0
-        version: 17.6.0(eslint@9.2.0)
+        specifier: 17.7.0
+        version: 17.7.0(eslint@9.2.0)
       eslint-plugin-optimize-regex:
         specifier: 1.2.1
         version: 1.2.1
@@ -2492,8 +2492,8 @@ packages:
       jest:
         optional: true
 
-  eslint-plugin-n@17.6.0:
-    resolution: {integrity: sha512-Y73o88ROwbCtVCCmZjYlYcPYkOG7mIzxxVK1XFRSa2epbKWtAPsmYpAD0pqxg/ZwlcWxMDceQPKHYQi4VIHz7w==}
+  eslint-plugin-n@17.7.0:
+    resolution: {integrity: sha512-4Jg4ZKVE4VjHig2caBqPHYNW5na84RVufUuipFLJbgM/G57O6FdpUKJbHakCDJb/yjQuyqVzYWRtU3HNYaZUwg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
@@ -8082,7 +8082,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-n@17.6.0(eslint@9.2.0):
+  eslint-plugin-n@17.7.0(eslint@9.2.0):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.2.0)
       enhanced-resolve: 5.15.0
