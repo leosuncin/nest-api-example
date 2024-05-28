@@ -28,4 +28,6 @@ COPY --from=builder /app/dist .
 
 EXPOSE ${PORT}
 
+HEALTHCHECK --interval=30s --timeout=2s --start-period=10s --retries=2 CMD [ "/nodejs/bin/node", "bin/health-checker.js" ]
+
 CMD ["main.js"]
