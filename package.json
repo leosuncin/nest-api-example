@@ -121,7 +121,7 @@
     "tsconfig-paths": "4.2.0",
     "txtgen": "3.0.2",
     "typeorm-extension": "2.8.1",
-    "typescript": "4.9.5"
+    "typescript": "5.4.5"
   },
   "engines": {
     "node": ">=14"
