@@ -265,8 +265,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       txtgen:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 3.0.7
+        version: 3.0.7
       typeorm-extension:
         specifier: 2.8.1
         version: 2.8.1(typeorm@0.3.20(pg@8.11.5)(ts-node@10.9.2(@types/node@20.14.0)(typescript@4.9.5)))
@@ -5075,9 +5075,9 @@ packages:
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  txtgen@3.0.2:
-    resolution: {integrity: sha512-NkXJS6CnIzIqaFOTD/7W6JuNxpyETBQdUFShe4LnXypGUg0BrDn4Toyt/NNnVpYghbdGmBAedV9sAfZsYEaNcg==}
-    engines: {node: '>= 14'}
+  txtgen@3.0.7:
+    resolution: {integrity: sha512-1yIREceryZibOmv3CU+rUFTnGJLLSyiB336E9P5+cRru8RLoSAzmm6F6ACkaSoC3uCWykICMKm5GGNlriJxdbA==}
+    engines: {node: '>= 18'}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -10865,7 +10865,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  txtgen@3.0.2: {}
+  txtgen@3.0.7: {}
 
   type-check@0.4.0:
     dependencies:
