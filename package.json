@@ -16,7 +16,7 @@
     "db:seed": "ts-node -r dotenv/config -r tsconfig-paths/register node_modules/typeorm-extension/dist/cli/index.js seed -r src/config",
     "format": "prettier --write \"{src,apps,libs,test}/**/*.ts\"",
     "lint": "eslint .",
-    "prepare": "husky install",
+    "prepare": "husky",
     "release": "semantic-release",
     "start": "nest start",
     "start:debug": "nest start --debug --watch",
