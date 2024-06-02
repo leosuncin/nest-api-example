@@ -119,7 +119,6 @@
     "ts-loader": "9.5.1",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
-    "txtgen": "3.0.2",
     "typeorm-extension": "2.8.1",
     "typescript": "5.4.5"
   },
