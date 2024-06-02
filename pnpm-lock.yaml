@@ -117,9 +117,9 @@ importers:
       '@semantic-release/git':
         specifier: 10.0.1
         version: 10.0.1(semantic-release@24.0.0(typescript@5.4.5))
-      '@tsconfig/node16-strictest':
-        specifier: 1.0.4
-        version: 1.0.4
+      '@tsconfig/node20':
+        specifier: ^20.1.4
+        version: 20.1.4
       '@types/bcryptjs':
         specifier: 2.4.6
         version: 2.4.6
@@ -1235,12 +1235,11 @@ packages:
   '@tsconfig/node14@1.0.3':
     resolution: {integrity: sha512-ysT8mhdixWK6Hw3i1V2AeRqZ5WfXg1G43mqoYlM2nc6388Fq5jcXyr5mRsqViLx/GJYdoL0bfXD8nmF+Zn/Iow==}
 
-  '@tsconfig/node16-strictest@1.0.4':
-    resolution: {integrity: sha512-kp6/DuAoKzHVv5U+p0uOesYbjrEvrYVNdQMl163a+yXXUv9twabvkCGEn3pmVxKXB45JU5MPGolDDWnONZL5ZQ==}
-    deprecated: TypeScript 5.0 supports combining TSConfigs using array syntax in extends
-
   '@tsconfig/node16@1.0.3':
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
+
+  '@tsconfig/node20@20.1.4':
+    resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
 
   '@types/babel__core@7.1.19':
     resolution: {integrity: sha512-WEOTgRsbYkvA/KCsDwVEGkd7WAr1e3g31VHQ8zy5gul/V1qKullU/BU5I68X5v7V3GnB9eotmom4v5a5gjxorw==}
@@ -6634,9 +6633,9 @@ snapshots:
 
   '@tsconfig/node14@1.0.3': {}
 
-  '@tsconfig/node16-strictest@1.0.4': {}
-
   '@tsconfig/node16@1.0.3': {}
+
+  '@tsconfig/node20@20.1.4': {}
 
   '@types/babel__core@7.1.19':
     dependencies:
