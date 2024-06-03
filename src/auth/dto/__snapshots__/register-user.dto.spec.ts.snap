@@ -11,7 +11,11 @@ exports[`Register user validations should require all properties 1`] = `
       "isString": "email must be a string",
     },
     "property": "email",
-    "target": RegisterUser {},
+    "target": RegisterUser {
+      "email": undefined,
+      "password": undefined,
+      "username": undefined,
+    },
     "value": undefined,
   },
   ValidationError {
@@ -25,7 +29,11 @@ exports[`Register user validations should require all properties 1`] = `
       "minLength": "password must be longer than or equal to 8 characters",
     },
     "property": "password",
-    "target": RegisterUser {},
+    "target": RegisterUser {
+      "email": undefined,
+      "password": undefined,
+      "username": undefined,
+    },
     "value": undefined,
   },
   ValidationError {
@@ -38,7 +46,11 @@ exports[`Register user validations should require all properties 1`] = `
       "maxLength": "username must be shorter than or equal to 30 characters",
     },
     "property": "username",
-    "target": RegisterUser {},
+    "target": RegisterUser {
+      "email": undefined,
+      "password": undefined,
+      "username": undefined,
+    },
     "value": undefined,
   },
 ]
