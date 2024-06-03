@@ -8,7 +8,7 @@ export const userFactory = setSeederFactory(User, (faker) =>
   User.fromPartial({
     bio: faker.hacker.phrase(),
     email: normalizeEmail(faker.internet.email()),
-    image: faker.internet.avatar(),
+    image: faker.image.avatarGitHub(),
     password: credentials.password,
     username: faker.internet.userName().toLowerCase(),
   }),

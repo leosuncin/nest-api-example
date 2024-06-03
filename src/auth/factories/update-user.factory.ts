@@ -8,7 +8,7 @@ export const updateUserFactory = FactoryBuilder.of(UpdateUser)
   .props({
     bio: faker.hacker.phrase,
     email: () => faker.internet.email().toLowerCase(),
-    image: faker.internet.avatar,
+    image: faker.image.avatarGitHub,
     newPassword: () => faker.internet.password({ length: 12, memorable: true }),
     password: () => faker.internet.password(),
     username: () => faker.internet.userName().toLowerCase(),
