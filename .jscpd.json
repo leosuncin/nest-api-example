@@ -1,6 +1,4 @@
 {
-  "threshold": 10,
-  "reporters": ["html", "markdown"],
   "ignore": [
     "**/node_modules/**",
     "**/.git/**",
@@ -14,5 +12,7 @@
     "**/.pactum/**",
     "**/dist/**",
     "**/coverage/**"
-  ]
+  ],
+  "reporters": ["html", "markdown"],
+  "threshold": 10
 }

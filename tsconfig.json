@@ -1,18 +1,13 @@
 {
-  "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "outDir": "./dist",
     "baseUrl": ".",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
     "incremental": true,
-    "resolveJsonModule": true,
-    "strict": true,
+    "outDir": "./dist",
     "paths": {
       "~app/*": ["src/*"],
       "~auth/*": ["src/auth/*"],
@@ -20,6 +15,11 @@
       "~common/*": ["src/common/*"],
       "~config/*": ["src/config/*"],
       "~migrations/*": ["src/migrations/*"]
-    }
-  }
+    },
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true
+  },
+  "extends": "@tsconfig/node20/tsconfig.json"
 }

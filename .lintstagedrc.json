@@ -1,6 +1,6 @@
 {
+  "*": ["cspell lint --no-summary --no-progress --no-must-find-files"],
   "*.{js,ts}": ["prettier --write", "eslint --fix"],
   "*.{json,md,yml,toml}": ["prettier --write"],
-  "package.json": ["sort-package-json"],
-  "*": ["cspell lint --no-summary --no-progress --no-must-find-files"]
+  "package.json": ["sort-package-json"]
 }

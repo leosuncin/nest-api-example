@@ -1,5 +1,5 @@
 {
-  "statusCode": 422,
+  "error": "Unprocessable Entity",
   "message": [
     "email should not be null or undefined",
     "email must be an email",
@@ -17,5 +17,5 @@
     "username should not be empty",
     "username must be a string"
   ],
-  "error": "Unprocessable Entity"
+  "statusCode": 422
 }

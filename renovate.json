@@ -1,9 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "addLabels": ["automerge"],
   "automerge": true,
-  "automergeType": "pr",
   "automergeStrategy": "rebase",
-  "rebaseWhen": "behind-base-branch",
-  "addLabels": ["automerge"]
+  "automergeType": "pr",
+  "extends": ["config:base"],
+  "rebaseWhen": "behind-base-branch"
 }

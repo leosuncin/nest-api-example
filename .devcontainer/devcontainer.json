@@ -1,19 +1,5 @@
 {
-  "name": "Node.js & PostgreSQL",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "zsh"
-  },
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/dhoeric/features/k6:1": {},
-    "ghcr.io/NicoVIII/devcontainer-features/pnpm:2": {},
-    "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {}
-  },
   "extensions": [
     "ChakrounAnas.turbo-console-log",
     "EditorConfig.EditorConfig",
@@ -25,6 +11,20 @@
     "wmaurer.change-case",
     "xabikos.JavaScriptSnippets"
   ],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/dhoeric/features/k6:1": {},
+    "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {},
+    "ghcr.io/NicoVIII/devcontainer-features/pnpm:2": {}
+  },
   "forwardPorts": [3000, 5432],
-  "postCreateCommand": "pnpm install"
+  "name": "Node.js & PostgreSQL",
+  "postCreateCommand": "pnpm install",
+  "service": "app",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "zsh"
+  },
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
 }

@@ -1,5 +1,5 @@
 {
-  "statusCode": 422,
+  "error": "Unprocessable Entity",
   "message": [
     "password should not be null or undefined",
     "password must be shorter than or equal to 30 characters",
@@ -12,5 +12,5 @@
     "username should not be empty",
     "username must be a string"
   ],
-  "error": "Unprocessable Entity"
+  "statusCode": 422
 }
