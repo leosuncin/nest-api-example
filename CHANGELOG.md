@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.3](https://github.com/leosuncin/nest-api-example/compare/v1.8.2...v1.8.3) (2024-06-04)
+
+### Bug Fixes
+
+- split DataSource configuration ([b25bdca](https://github.com/leosuncin/nest-api-example/commit/b25bdca6b2f96bcf3ef7ff5017565d186a682e3b))
+
 ## [1.8.2](https://github.com/leosuncin/nest-api-example/compare/v1.8.1...v1.8.2) (2024-06-04)
 
 ### Bug Fixes
