@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/leosuncin/nest-api-example/compare/v1.7.23...v1.8.0) (2024-06-04)
+
+### Bug Fixes
+
+- **deps:** update dependency @nestjs/config to v3.2.0 ([03c49f0](https://github.com/leosuncin/nest-api-example/commit/03c49f0e3a8161708291e9da7b32a4d11c90719d))
+- **deps:** update dependency @nestjs/config to v3.2.1 ([8464ab4](https://github.com/leosuncin/nest-api-example/commit/8464ab47fc1b1fbbbe4e1507b28fee196f1e513f))
+- **deps:** update dependency @nestjs/config to v3.2.2 ([e4a8970](https://github.com/leosuncin/nest-api-example/commit/e4a89707ab7a1bce0d31cfde889e38184f218f1c))
+- **deps:** update dependency @nestjs/mapped-types to v2.0.5 ([cc6f3a3](https://github.com/leosuncin/nest-api-example/commit/cc6f3a31d013d02195863ba4bb1965a4b0656c06))
+- **deps:** update dependency @nestjs/terminus to v10.2.1 ([d49e88d](https://github.com/leosuncin/nest-api-example/commit/d49e88d5e1df00d8e1a6253bfadc45530abdd363))
+- **deps:** update dependency @nestjs/terminus to v10.2.2 ([4c16b88](https://github.com/leosuncin/nest-api-example/commit/4c16b88639b036c06d7e066cc1c053532cd0d8d1))
+- **deps:** update dependency @nestjs/terminus to v10.2.3 ([96594c3](https://github.com/leosuncin/nest-api-example/commit/96594c3327838127e398c8b78bcd9d6fcb2e7bdd))
+- **deps:** update dependency @nestjs/typeorm to v10.0.2 ([3d62360](https://github.com/leosuncin/nest-api-example/commit/3d6236044549633d2cbcf6051b4618e962dcab19))
+- **deps:** update dependency cachified to v3.5.4 ([a583d36](https://github.com/leosuncin/nest-api-example/commit/a583d36d7201251302207d887234843bd3228f4e))
+- **deps:** update dependency class-validator to v0.14.1 ([e602b1e](https://github.com/leosuncin/nest-api-example/commit/e602b1ef821ddbcbd1848faedaae2496e2996a22))
+- **deps:** update dependency hibp to v14 ([41e2beb](https://github.com/leosuncin/nest-api-example/commit/41e2beb0e34a6918b0c0be94d3ec63c157510b24))
+- **deps:** update dependency hibp to v14.1.1 ([a122c31](https://github.com/leosuncin/nest-api-example/commit/a122c31bd062309eeeacd82239b8ee8453e4b00e))
+- **deps:** update dependency lru-cache to v7.18.3 ([7af6a60](https://github.com/leosuncin/nest-api-example/commit/7af6a6021258384b9d43418de02d7014ed13f33b))
+- **deps:** update dependency pg to v8.11.4 ([7c21f12](https://github.com/leosuncin/nest-api-example/commit/7c21f126941b210ad3dc8a2a268478acf38f3212))
+- **deps:** update dependency pg to v8.11.5 ([1faaedb](https://github.com/leosuncin/nest-api-example/commit/1faaedb15cfe9a4f175a665f9ec8c64694eb0485))
+- **deps:** update dependency reflect-metadata to v0.2.1 ([5dfc1c8](https://github.com/leosuncin/nest-api-example/commit/5dfc1c8304cef673a06068eb5688f13462acb168))
+- **deps:** update dependency reflect-metadata to v0.2.2 ([06196ac](https://github.com/leosuncin/nest-api-example/commit/06196acd24f512c123071d95dacd4d5ae9c13756))
+- **deps:** update dependency short-uuid to v5 ([11a90ad](https://github.com/leosuncin/nest-api-example/commit/11a90ad2ac7b91068051f0d140fdc5d168e8b860))
+- **deps:** update dependency short-uuid to v5.0.1 ([a4b8471](https://github.com/leosuncin/nest-api-example/commit/a4b84715883e0e2b57d6a0d6f0d5a964b9262116))
+- **deps:** update dependency short-uuid to v5.1.0 ([4488228](https://github.com/leosuncin/nest-api-example/commit/44882288af266dc6ce0f46aa2892256fb07b5644))
+- **deps:** update dependency short-uuid to v5.2.0 ([23726d8](https://github.com/leosuncin/nest-api-example/commit/23726d8f748589171639e435be85794ac1c4271e))
+- **deps:** update dependency tiny-invariant to v1.3.2 ([f95b625](https://github.com/leosuncin/nest-api-example/commit/f95b625f48d7dbe81b30a20983c49ce5e47a20b9))
+- **deps:** update dependency tiny-invariant to v1.3.3 ([e953bf8](https://github.com/leosuncin/nest-api-example/commit/e953bf8df7c88d39636b02de233bd42b7f5eb8ab))
+- **deps:** update dependency typeorm to v0.3.19 ([a575794](https://github.com/leosuncin/nest-api-example/commit/a575794a4e201a16ef7d15168fcfe339062686d0))
+- **deps:** update dependency typeorm to v0.3.20 ([d787ea4](https://github.com/leosuncin/nest-api-example/commit/d787ea4236b41e1193ad341d5cdea45cc0e738d2))
+- **deps:** update nest monorepo ([9bb237a](https://github.com/leosuncin/nest-api-example/commit/9bb237a799c1366865a51b8c0188b52b034359fa))
+- **deps:** update nest monorepo to v10.3.0 ([ea5dbdd](https://github.com/leosuncin/nest-api-example/commit/ea5dbdd7f2a3eb6b3094bfaa3c7296347d4dec55))
+- **deps:** update nest monorepo to v10.3.1 ([c298d9e](https://github.com/leosuncin/nest-api-example/commit/c298d9ef51b935c529e75e35a57f9fd397341d97))
+- **deps:** update nest monorepo to v10.3.3 ([75c773c](https://github.com/leosuncin/nest-api-example/commit/75c773c8e9a8c5fd28ef5a00bebcea8fd182114c))
+- **deps:** update nest monorepo to v10.3.4 ([7516086](https://github.com/leosuncin/nest-api-example/commit/7516086d03c5f4c3d85e6902a9b47a4fdeb9bffd))
+- **deps:** update nest monorepo to v10.3.5 ([e58e5fe](https://github.com/leosuncin/nest-api-example/commit/e58e5fe4e2363783aa4eaa402d3c6a6b60ce4027))
+- **deps:** update nest monorepo to v10.3.6 ([93d79a6](https://github.com/leosuncin/nest-api-example/commit/93d79a666ddf9c5e380122a190213f6b0ab3485d))
+- **deps:** update nest monorepo to v10.3.7 ([a17a585](https://github.com/leosuncin/nest-api-example/commit/a17a585344e4c356b5246215a649481125aa71a0))
+- **deps:** update nest monorepo to v10.3.8 ([e9db73d](https://github.com/leosuncin/nest-api-example/commit/e9db73dc7f3bf7a6d5716ed5550fb9e7031dfc30))
+- **deps:** update nest monorepo to v10.3.9 ([4a57a41](https://github.com/leosuncin/nest-api-example/commit/4a57a41184b08a86178ea59a34448d229b656c86))
+
+### Features
+
+- add script to make a request to /health ([81c6e8e](https://github.com/leosuncin/nest-api-example/commit/81c6e8e2d50f2683ad9577df5cb8a6b95e988dcb))
+
 ## [1.7.23](https://github.com/leosuncin/nest-api-example/compare/v1.7.22...v1.7.23) (2023-12-08)
 
 ### Bug Fixes
