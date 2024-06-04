@@ -17,7 +17,8 @@ FROM dependencies AS builder
 
 COPY --chown=node:node src/ /app/src
 
-RUN --mount=type=bind,source=package.json,target=/app/package.json \
+RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
+    --mount=type=bind,source=package.json,target=/app/package.json \
     --mount=type=bind,source=pnpm-lock.yaml,target=/app/pnpm-lock.yaml \
     --mount=type=bind,source=nest-cli.json,target=/app/nest-cli.json \
     --mount=type=bind,source=tsconfig.json,target=/app/tsconfig.json \
