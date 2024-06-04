@@ -11,7 +11,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PWNED_PASSWORD } from '~auth/providers/pwned-password.provider';
 import { database } from '~common/database';
 import { type ConfigObject, configuration } from '~config/configuration';
-import { dataSource } from '~config/data-source';
+import { dataSourceOptions } from '~config/data-source.cli';
 import { useContainer } from 'class-validator';
 import cookieParser from 'cookie-parser';
 import { type DataSource } from 'typeorm';
@@ -33,10 +33,12 @@ export async function buildTestApplication(
           database.adapters.createTypeormDataSource(
             options,
           ) as Promise<DataSource>,
-        imports: [ConfigModule.forFeature(dataSource)],
-        inject: [ConfigService],
-        useFactory(config: ConfigService) {
-          return config.getOrThrow('data-source');
+        useFactory() {
+          return {
+            ...dataSourceOptions,
+            autoLoadEntities: true,
+            migrationsRun: true,
+          };
         },
       }),
       ...modules,
