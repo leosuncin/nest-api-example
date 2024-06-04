@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.1](https://github.com/leosuncin/nest-api-example/compare/v1.8.0...v1.8.1) (2024-06-04)
+
+### Bug Fixes
+
+- copy source files to the builder stage ([ae05579](https://github.com/leosuncin/nest-api-example/commit/ae05579454329bce235ce90f5c4dc426a338a3f6))
+
 # [1.8.0](https://github.com/leosuncin/nest-api-example/compare/v1.7.23...v1.8.0) (2024-06-04)
 
 ### Bug Fixes
