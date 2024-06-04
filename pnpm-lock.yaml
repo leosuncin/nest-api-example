@@ -39,8 +39,8 @@ importers:
         specifier: 2.4.3
         version: 2.4.3
       cachified:
-        specifier: ^3.0.1
-        version: 3.5.4
+        specifier: ^4.0.0
+        version: 4.0.0
       class-transformer:
         specifier: 0.5.1
         version: 0.5.1
@@ -1823,8 +1823,9 @@ packages:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
     engines: {node: '>= 0.8'}
 
-  cachified@3.5.4:
-    resolution: {integrity: sha512-RO7jQl7vL1qulRvr+o++iVVduFlKb2pJUYxY48LULusyqmGUFaRESERu1Z7UI895JNtTB4yvfErNv64OsayK8g==}
+  cachified@4.0.0:
+    resolution: {integrity: sha512-gTi8sr7Ka/VuI8qEXEbUGG10N8UCcLCEtErj0hL780Og1P8hioWKNfdBGG3Q7jSH76CAfoPsxV2UwbVGyLXogA==}
+    deprecated: 'cachified has been moved to @epic-web/cachified with no breaking changes. You can continue to use v3 or uninstall cachified and install @epic-web/cachified instead then update all your imports. Learn more at: https://github.com/epicweb-dev/cachified/issues/74'
 
   call-bind@1.0.2:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
@@ -7406,7 +7407,7 @@ snapshots:
 
   bytes@3.1.2: {}
 
-  cachified@3.5.4: {}
+  cachified@4.0.0: {}
 
   call-bind@1.0.2:
     dependencies:
