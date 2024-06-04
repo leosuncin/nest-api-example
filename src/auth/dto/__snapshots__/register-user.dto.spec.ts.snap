@@ -42,7 +42,7 @@ exports[`Register user validations should require all properties 1`] = `
       "isDefined": "username should not be null or undefined",
       "isNotEmpty": "username should not be empty",
       "isString": "username must be a string",
-      "matches": "username must match /^[\\w.-]+$/i regular expression",
+      "matches": "username must match /^[\\w.-]+$/iu regular expression",
       "maxLength": "username must be shorter than or equal to 30 characters",
     },
     "property": "username",
