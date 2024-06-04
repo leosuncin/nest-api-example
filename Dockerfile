@@ -15,7 +15,15 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
 
 FROM dependencies AS builder
 
-RUN pnpm build && pnpm prune --prod
+COPY --chown=node:node src/ /app/src
+
+RUN --mount=type=bind,source=package.json,target=/app/package.json \
+    --mount=type=bind,source=pnpm-lock.yaml,target=/app/pnpm-lock.yaml \
+    --mount=type=bind,source=nest-cli.json,target=/app/nest-cli.json \
+    --mount=type=bind,source=tsconfig.json,target=/app/tsconfig.json \
+    --mount=type=bind,source=tsconfig.build.json,target=/app/tsconfig.build.json \
+    pnpm build && \
+    pnpm prune --prod --ignore-scripts
 
 FROM gcr.io/distroless/nodejs22-debian12:nonroot
 
@@ -23,8 +31,9 @@ WORKDIR /app
 
 ENV PORT=3000
 
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist .
+COPY --chown=nonroot:nonroot --from=builder /app/node_modules ./node_modules
+COPY --chown=nonroot:nonroot --from=builder /app/dist .
+COPY --chown=nonroot:nonroot CHANGELOG.md LICENSE package.json /app/
 
 EXPOSE ${PORT}
 
