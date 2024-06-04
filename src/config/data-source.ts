@@ -15,17 +15,6 @@ import invariant from 'tiny-invariant';
 import { DataSource, type DataSourceOptions } from 'typeorm';
 import { type SeederOptions } from 'typeorm-extension';
 
-// needed by TypeORM CLI
-declare global {
-  namespace NodeJS {
-    // eslint-disable-next-line unicorn/prevent-abbreviations, @typescript-eslint/consistent-type-definitions
-    interface ProcessEnv {
-      readonly DATABASE_URL: string;
-      readonly NODE_ENV: 'development' | 'production' | 'test';
-    }
-  }
-}
-
 const type: DataSourceOptions['type'] = 'postgres';
 const entities: DataSourceOptions['entities'] = [User, Article, Comment];
 const migrations: DataSourceOptions['migrations'] = [

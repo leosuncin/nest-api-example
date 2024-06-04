@@ -19,7 +19,8 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "strict": true
+    "strict": true,
+    "types": ["node", "jest", "./src/overrides"]
   },
   "extends": "@tsconfig/node20/tsconfig.json"
 }

@@ -6,14 +6,6 @@ import { type JwtPayload } from '~auth/interfaces/jwt-payload.interface';
 import { AuthenticationService } from '~auth/services/authentication.service';
 import { ExtractJwt, JwtFromRequestFunction, Strategy } from 'passport-jwt';
 
-declare module 'express' {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-  interface Request {
-    cookies: Record<string, string | null>;
-    signedCookies: Record<string, string | null>;
-  }
-}
-
 const extractJwtFromCookie: JwtFromRequestFunction = (request) => {
   // eslint-disable-next-line security/detect-object-injection, @typescript-eslint/no-non-null-assertion
   return request.signedCookies[TOKEN_COOKIE_NAME]!;
