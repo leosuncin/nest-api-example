@@ -1,13 +1,12 @@
 import { Test } from '@nestjs/testing';
-import { useContainer, validate } from 'class-validator';
-import { createMockInstance } from 'jest-create-mock-instance';
-
 import { jane, john } from '~auth/fixtures/users';
 import { AuthenticationService } from '~auth/services/authentication.service';
 import {
   IsAlreadyRegister,
   IsAlreadyRegisterConstraint,
 } from '~auth/validators/is-already-register.validator';
+import { useContainer, validate } from 'class-validator';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 class WithEmail {
   @IsAlreadyRegister()
@@ -44,7 +43,7 @@ describe('IsAlreadyRegister', () => {
           return createMockInstance(AuthenticationService);
         }
 
-        return;
+        return undefined;
       })
       .compile();
 
@@ -77,8 +76,8 @@ describe('IsAlreadyRegister', () => {
     expect(errors).toHaveLength(1);
     expect(errors[0]).toHaveProperty('property', 'username');
     expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
-      username: john.username,
       undefined,
+      username: john.username,
     });
   });
 
@@ -105,8 +104,8 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(0);
     expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
-      username: jane.username,
       id: undefined,
+      username: jane.username,
     });
   });
 
@@ -147,8 +146,8 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(0);
     expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
-      username: 'johndoe',
       id: dto.id,
+      username: 'johndoe',
     });
   });
 
@@ -161,8 +160,8 @@ describe('IsAlreadyRegister', () => {
 
     expect(errors).toHaveLength(1);
     expect(mockedAuthenticationService.isRegistered).toHaveBeenCalledWith({
-      username: jane.username,
       id: dto.id,
+      username: jane.username,
     });
   });
 });

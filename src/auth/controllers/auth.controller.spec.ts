@@ -1,15 +1,14 @@
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Test } from '@nestjs/testing';
-import { createMockInstance } from 'jest-create-mock-instance';
-
 import { AuthController } from '~auth/controllers/auth.controller';
-import type { LoginUser } from '~auth/dto/login-user.dto';
-import type { RegisterUser } from '~auth/dto/register-user.dto';
-import type { UpdateUser } from '~auth/dto/update-user.dto';
+import { type LoginUser } from '~auth/dto/login-user.dto';
+import { type RegisterUser } from '~auth/dto/register-user.dto';
+import { type UpdateUser } from '~auth/dto/update-user.dto';
 import { User } from '~auth/entities/user.entity';
 import { login, register } from '~auth/fixtures/credentials';
 import { AuthenticationService } from '~auth/services/authentication.service';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 describe('AuthController', () => {
   let controller: AuthController;
@@ -32,8 +31,8 @@ describe('AuthController', () => {
             Promise.resolve(
               User.fromPartial({
                 ...dto,
-                id: '',
                 createdAt: new Date(),
+                id: '',
                 updatedAt: new Date(),
               }),
             ),
@@ -81,12 +80,12 @@ describe('AuthController', () => {
   it('should update current user data', async () => {
     const user = User.fromPartial({});
     const changes: UpdateUser = {
-      image: 'https://thispersondoesnotexist.com/image',
-      username: 'john',
       bio: 'Aute culpa quis nostrud ipsum.',
       email: 'johndoe@example.com',
+      image: 'https://thispersondoesnotexist.com/image',
       newPassword: 'ji32k7au4a83',
       password: login.password,
+      username: 'john',
     };
 
     await expect(controller.updateUser(user, changes)).resolves.toBeInstanceOf(

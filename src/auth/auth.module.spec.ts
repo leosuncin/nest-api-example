@@ -1,13 +1,10 @@
-import type { INestApplication } from '@nestjs/common';
+import { type INestApplication } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { getDataSourceToken } from '@nestjs/typeorm';
-import request, { agent } from 'supertest';
-import { runSeeders } from 'typeorm-extension';
-
 import { AuthModule } from '~auth/auth.module';
 import { TOKEN_COOKIE_NAME } from '~auth/constants';
-import type { User } from '~auth/entities/user.entity';
+import { type User } from '~auth/entities/user.entity';
 import { loginUserFactory } from '~auth/factories/login-user.factory';
 import { registerUserFactory } from '~auth/factories/register-user.factory';
 import { updateUserFactory } from '~auth/factories/update-user.factory';
@@ -16,6 +13,8 @@ import { AuthenticationService } from '~auth/services/authentication.service';
 import { buildTestApplication } from '~common/build-test-application';
 import { database } from '~common/database';
 import { isoDateRegex, uuidRegex } from '~common/test-matchers';
+import request, { agent } from 'supertest';
+import { runSeeders } from 'typeorm-extension';
 
 const unprocessableError = {
   error: 'Unprocessable Entity',
@@ -57,13 +56,13 @@ describe('Auth module', () => {
       .expect('set-cookie', cookieRegex)
       .expect(({ body }) => {
         expect(body).toMatchObject({
-          email: data.email,
-          username: data.username,
-          image: '',
           bio: '',
-          id: expect.stringMatching(uuidRegex),
           createdAt: expect.stringMatching(isoDateRegex),
+          email: data.email,
+          id: expect.stringMatching(uuidRegex),
+          image: '',
           updatedAt: expect.stringMatching(isoDateRegex),
+          username: data.username,
         });
       });
   });
@@ -92,20 +91,20 @@ describe('Auth module', () => {
       .expect(HttpStatus.UNPROCESSABLE_ENTITY)
       .expect(({ body }) => {
         expect(body).toMatchObject({
-          statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+          error: 'Unprocessable Entity',
           message: [
             `email «${user.email}» is already registered`,
             `username «${user.username}» is already registered`,
           ],
-          error: 'Unprocessable Entity',
+          statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
         });
       });
   });
 
   it('login an existing user', async () => {
     const data = {
-      username: user.username,
       password,
+      username: user.username,
     };
 
     await request(app.getHttpServer())
@@ -115,13 +114,13 @@ describe('Auth module', () => {
       .expect('set-cookie', cookieRegex)
       .expect(({ body }) => {
         expect(body).toMatchObject({
-          email: user.email,
-          username: user.username,
-          image: user.image,
           bio: user.bio,
-          id: user.id,
           createdAt: expect.stringMatching(isoDateRegex),
+          email: user.email,
+          id: user.id,
+          image: user.image,
           updatedAt: expect.stringMatching(isoDateRegex),
+          username: user.username,
         });
       });
   });
@@ -155,7 +154,7 @@ describe('Auth module', () => {
 
     await client
       .post('/auth/login')
-      .send({ username: user.username, password })
+      .send({ password, username: user.username })
       .expect(HttpStatus.OK)
       .expect('set-cookie', cookieRegex);
 
@@ -272,7 +271,7 @@ describe('Auth module', () => {
 
     await client
       .post('/auth/login')
-      .send({ username: user.username, password })
+      .send({ password, username: user.username })
       .expect(HttpStatus.OK)
       .expect('set-cookie', cookieRegex);
 
@@ -286,7 +285,7 @@ describe('Auth module', () => {
 
     await client
       .post('/auth/login')
-      .send({ username: user.username, password: data.password })
+      .send({ password: data.password, username: user.username })
       .expect(HttpStatus.UNPROCESSABLE_ENTITY)
       .expect(({ body }) => {
         expect(body).toEqual({
@@ -298,7 +297,7 @@ describe('Auth module', () => {
 
     await client
       .post('/auth/login')
-      .send({ username: user.username, password })
+      .send({ password, username: user.username })
       .expect(HttpStatus.OK);
 
     await client

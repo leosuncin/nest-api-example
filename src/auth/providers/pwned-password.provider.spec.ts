@@ -1,14 +1,12 @@
-import { resolve } from 'node:path';
-
+import { register as credentials } from '~auth/fixtures/credentials';
+import { hasPasswordBeenPwned } from '~auth/providers/pwned-password.provider';
 import nock, {
   back as nockBack,
   cleanAll,
   enableNetConnect,
   restore,
 } from 'nock';
-
-import { register as credentials } from '~auth/fixtures/credentials';
-import { hasPasswordBeenPwned } from '~auth/providers/pwned-password.provider';
+import { resolve } from 'node:path';
 
 describe('pwnedPassword provider', () => {
   beforeAll(() => {
@@ -18,7 +16,7 @@ describe('pwnedPassword provider', () => {
     nock('https://api.pwnedpasswords.com')
       .persist()
       .replyDate()
-      .get(/range\/\w{5}/);
+      .get(/range\/\w{5}/u);
   });
 
   afterEach(() => {

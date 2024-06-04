@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
 import { ArticleController } from '~blog/controllers/article.controller';
 import { CommentController } from '~blog/controllers/comment.controller';
 import { Article } from '~blog/entities/article.entity';
@@ -10,8 +9,8 @@ import { CommentService } from '~blog/services/comment.service';
 import { ArticleExistConstraint } from '~blog/validators/article-exist.validator';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Article, Comment])],
   controllers: [ArticleController, CommentController],
+  imports: [TypeOrmModule.forFeature([Article, Comment])],
   providers: [ArticleService, CommentService, ArticleExistConstraint],
 })
 export class BlogModule {}

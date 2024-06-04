@@ -1,7 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { FactoryBuilder } from 'factory.io';
-
 import { UpdateArticle } from '~blog/dto/update-article.dto';
+import { FactoryBuilder } from 'factory.io';
 
 export const updateArticleFactory = FactoryBuilder.of(UpdateArticle)
   .props({

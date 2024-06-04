@@ -10,12 +10,11 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-
 import { CurrentUser } from '~auth/decorators/auth.decorator';
 import { LoginUser } from '~auth/dto/login-user.dto';
 import { RegisterUser } from '~auth/dto/register-user.dto';
 import { UpdateUser } from '~auth/dto/update-user.dto';
-import type { User } from '~auth/entities/user.entity';
+import { type User } from '~auth/entities/user.entity';
 import { JWTAuthGuard } from '~auth/guards/jwt-auth.guard';
 import { CurrentUserInterceptor } from '~auth/interceptors/current-user.interceptor';
 import { TokenInterceptor } from '~auth/interceptors/token.interceptor';

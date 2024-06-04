@@ -1,5 +1,4 @@
 import { randomUUID } from 'node:crypto';
-
 import { DataType, newDb } from 'pg-mem';
 
 export const database = newDb({
@@ -7,18 +6,18 @@ export const database = newDb({
 });
 
 database.public.registerFunction({
-  name: 'current_database',
   implementation: () => 'test',
+  name: 'current_database',
 });
 
 database.public.registerFunction({
-  name: 'version',
   implementation: () => 'PostgreSQL 14.0',
+  name: 'version',
 });
 
 database.public.registerFunction({
-  name: 'uuid_generate_v4',
-  returns: DataType.uuid,
   implementation: () => randomUUID(),
   impure: true,
+  name: 'uuid_generate_v4',
+  returns: DataType.uuid,
 });

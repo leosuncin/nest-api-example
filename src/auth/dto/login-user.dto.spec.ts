@@ -1,15 +1,14 @@
 import { faker } from '@faker-js/faker';
 import { Test } from '@nestjs/testing';
-import { plainToInstance } from 'class-transformer';
-import { useContainer, validate } from 'class-validator';
-import fc from 'fast-check';
-import { createMockInstance } from 'jest-create-mock-instance';
-
 import { LoginUser } from '~auth/dto/login-user.dto';
 import { loginUserFactory } from '~auth/factories/login-user.factory';
 import { login } from '~auth/fixtures/credentials';
 import { AuthenticationService } from '~auth/services/authentication.service';
 import { ValidateCredentialConstraint } from '~auth/validators/validate-credential.validator';
+import { plainToInstance } from 'class-transformer';
+import { useContainer, validate } from 'class-validator';
+import fc from 'fast-check';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 describe('Login user validations', () => {
   beforeAll(async () => {
@@ -24,7 +23,7 @@ describe('Login user validations', () => {
           return mock;
         }
 
-        return;
+        return undefined;
       })
       .compile();
 

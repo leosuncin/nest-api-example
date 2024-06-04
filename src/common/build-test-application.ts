@@ -8,14 +8,13 @@ import {
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Test } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { useContainer } from 'class-validator';
-import cookieParser from 'cookie-parser';
-import type { DataSource } from 'typeorm';
-
 import { PWNED_PASSWORD } from '~auth/providers/pwned-password.provider';
 import { database } from '~common/database';
 import { type ConfigObject, configuration } from '~config/configuration';
 import { dataSource } from '~config/data-source';
+import { useContainer } from 'class-validator';
+import cookieParser from 'cookie-parser';
+import { type DataSource } from 'typeorm';
 
 export async function buildTestApplication(
   ...modules: Array<
@@ -25,20 +24,20 @@ export async function buildTestApplication(
   const module = await Test.createTestingModule({
     imports: [
       ConfigModule.forRoot({
-        isGlobal: true,
         expandVariables: true,
+        isGlobal: true,
         load: [configuration],
       }),
       TypeOrmModule.forRootAsync({
+        dataSourceFactory: (options) =>
+          database.adapters.createTypeormDataSource(
+            options,
+          ) as Promise<DataSource>,
         imports: [ConfigModule.forFeature(dataSource)],
         inject: [ConfigService],
         useFactory(config: ConfigService) {
           return config.getOrThrow('data-source');
         },
-        dataSourceFactory: (options) =>
-          database.adapters.createTypeormDataSource(
-            options,
-          ) as Promise<DataSource>,
       }),
       ...modules,
     ],
@@ -49,10 +48,10 @@ export async function buildTestApplication(
     )
     .compile();
   const app = module.createNestApplication();
-  const config = app.get<ConfigService<ConfigObject>>(ConfigService);
+  const configService = app.get<ConfigService<ConfigObject>>(ConfigService);
 
-  app.useGlobalPipes(new ValidationPipe(config.get('validation')));
-  app.use(cookieParser(config.get('secret', 's€cr3to')));
+  app.useGlobalPipes(new ValidationPipe(configService.get('validation')));
+  app.use(cookieParser(configService.get('secret', 's€cr3to')));
   useContainer(module, { fallbackOnErrors: true });
 
   return app.init();

@@ -1,5 +1,4 @@
-import type { ArgumentMetadata } from '@nestjs/common';
-
+import { type ArgumentMetadata } from '@nestjs/common';
 import { john as user } from '~auth/fixtures/users';
 import { StripIdPipe } from '~auth/pipes/strip-id.pipe';
 
@@ -12,11 +11,11 @@ describe('StripIdPipe', () => {
     const pipe = new StripIdPipe();
     const value = {
       ...user,
-      image: 'https://thispersondoesnotexist.com/image',
-      username: 'john',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       email: 'johndoe@example.com',
+      image: 'https://thispersondoesnotexist.com/image',
       newPassword: 'ji32k7au4a83',
+      username: 'john',
     };
     const metadata: ArgumentMetadata = {
       type: 'body',
@@ -28,9 +27,9 @@ describe('StripIdPipe', () => {
   it('should do nothing to types different than "body"', () => {
     const pipe = new StripIdPipe();
     const value = {
+      email: 'johndoe@example.com',
       id: user.id,
       username: 'john',
-      email: 'johndoe@example.com',
     };
     const metadata: ArgumentMetadata = {
       type: 'custom',

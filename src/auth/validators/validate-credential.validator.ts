@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { AuthenticationService } from '~auth/services/authentication.service';
 import {
   isString,
   isUUID,
@@ -12,10 +13,8 @@ import {
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-import { AuthenticationService } from '~auth/services/authentication.service';
-
 @Injectable()
-@ValidatorConstraint({ name: 'credential', async: true })
+@ValidatorConstraint({ async: true, name: 'credential' })
 export class ValidateCredentialConstraint
   implements ValidatorConstraintInterface
 {
@@ -32,10 +31,10 @@ export class ValidateCredentialConstraint
   }
 
   private hasCredentials(object: object): object is {
-    username: string;
-    password: string;
-    id?: string;
     [key: string]: unknown;
+    id?: string;
+    password: string;
+    username: string;
   } {
     const { id, password, username } = object as Record<string, unknown>;
     const isValidId = isString(id) && isUUID(id, '4');
@@ -44,7 +43,7 @@ export class ValidateCredentialConstraint
     const isValidUsername =
       isString(username) &&
       maxLength(username, 30) &&
-      matches(username, /^[\w.-]+$/i);
+      matches(username, /^[\w.-]+$/u);
 
     if (isValidId && isValidPassword) return true;
     if (isValidPassword && isValidUsername) return true;
@@ -56,9 +55,9 @@ export class ValidateCredentialConstraint
 export function ValidateCredential(options: ValidationOptions = {}) {
   return function (object: object, propertyName: 'username' | 'password') {
     registerDecorator({
-      target: object.constructor,
-      propertyName,
       options,
+      propertyName,
+      target: object.constructor,
       validator: ValidateCredentialConstraint,
     });
   };

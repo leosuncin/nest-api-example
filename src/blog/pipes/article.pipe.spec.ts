@@ -1,11 +1,10 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { createMockInstance } from 'jest-create-mock-instance';
-
 import { Article } from '~blog/entities/article.entity';
 import { articleByJohn } from '~blog/fixtures/articles';
 import { ArticlePipe } from '~blog/pipes/article.pipe';
 import { ArticleService } from '~blog/services/article.service';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 describe('ArticlePipe', () => {
   let pipe: ArticlePipe;
@@ -20,12 +19,7 @@ describe('ArticlePipe', () => {
         if (token === ArticleService) {
           mock = createMockInstance(ArticleService);
           mock.getById.mockImplementation((id) =>
-            Promise.resolve(
-              id === articleByJohn.id
-                ? articleByJohn
-                : // eslint-disable-next-line unicorn/no-null
-                  null,
-            ),
+            Promise.resolve(id === articleByJohn.id ? articleByJohn : null),
           );
         }
 

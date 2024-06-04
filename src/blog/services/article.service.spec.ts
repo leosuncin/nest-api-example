@@ -1,13 +1,13 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { type TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { createMockInstance } from 'jest-create-mock-instance';
-import { Repository } from 'typeorm';
-
 import { User } from '~auth/entities/user.entity';
-import type { CreateArticle } from '~blog/dto/create-article.dto';
-import type { UpdateArticle } from '~blog/dto/update-article.dto';
+import { type CreateArticle } from '~blog/dto/create-article.dto';
+import { type UpdateArticle } from '~blog/dto/update-article.dto';
 import { Article } from '~blog/entities/article.entity';
 import { ArticleService } from '~blog/services/article.service';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { Repository } from 'typeorm';
 
 describe('ArticleService', () => {
   let service: ArticleService;
@@ -48,14 +48,14 @@ describe('ArticleService', () => {
 
   it('should save the new article', async () => {
     const newArticle: CreateArticle = {
-      title: 'Duis ullamco eiusmod deserunt laborum.',
+      author: new User(),
       content: `Eiusmod mollit officia est proident cillum amet quis elit exercitation.
 Exercitation fugiat cillum irure aute aliqua do quis mollit laboris deserunt fugiat aliquip esse aute proident.
 Et proident veniam dolore sunt qui ex laborum quis ut exercitation dolor est
 In magna sit qui et ut fugiat ex tempor id.
 Aute cillum voluptate ad ea cupidatat nostrud labore ad cillum adipisicing amet esse est nostrud irure.
 Nulla minim ea quis irure veniam laborum commodo non quis non ex eu.`,
-      author: new User(),
+      title: 'Duis ullamco eiusmod deserunt laborum.',
     };
 
     await expect(service.create(newArticle)).resolves.toBeInstanceOf(Article);

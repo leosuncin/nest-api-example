@@ -3,7 +3,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
 import { auth, AuthConfig } from '~auth/config/auth';
 import { AuthController } from '~auth/controllers/auth.controller';
 import { User } from '~auth/entities/user.entity';
@@ -18,6 +17,7 @@ import { IsNotVulnerableConstraint } from '~auth/validators/is-not-vulnerable.va
 import { ValidateCredentialConstraint } from '~auth/validators/validate-credential.validator';
 
 @Module({
+  controllers: [AuthController],
   imports: [
     ConfigModule.forFeature(auth),
     TypeOrmModule.forFeature([User]),
@@ -40,6 +40,5 @@ import { ValidateCredentialConstraint } from '~auth/validators/validate-credenti
     },
     IsNotVulnerableConstraint,
   ],
-  controllers: [AuthController],
 })
 export class AuthModule {}

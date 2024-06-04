@@ -29,10 +29,10 @@ export function IsNotTheSame<Type>(
 ) {
   return (object: object, propertyName: string) => {
     registerDecorator({
-      target: object.constructor,
-      propertyName,
-      options: validationOptions,
       constraints: [property],
+      options: validationOptions,
+      propertyName,
+      target: object.constructor,
       validator: IsNotTheSameConstraint,
     });
   };

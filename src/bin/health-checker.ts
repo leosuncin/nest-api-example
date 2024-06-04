@@ -1,14 +1,13 @@
 #!/usr/bin/env node
+import { HttpStatus } from '@nestjs/common';
 import { request, type RequestOptions } from 'node:http';
 import { format } from 'node:util';
 
-import { HttpStatus } from '@nestjs/common';
-
 const options: RequestOptions = {
   hostname: 'localhost',
-  port: process.env['PORT'] ?? '3000',
-  path: '/health',
   method: 'GET',
+  path: '/health',
+  port: process.env['PORT'] ?? '3000',
   timeout: 2_000,
 };
 

@@ -1,6 +1,5 @@
 import { ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common';
-
-import type { UpdateUser } from '~auth/dto/update-user.dto';
+import { type UpdateUser } from '~auth/dto/update-user.dto';
 
 @Injectable()
 export class StripIdPipe implements PipeTransform {

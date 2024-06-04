@@ -8,16 +8,15 @@ import {
   TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
 import { Test, type TestingModule } from '@nestjs/testing';
-import { createMockInstance } from 'jest-create-mock-instance';
-
 import { HealthController } from '~app/health.controller';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 function getStatus(key: string): Promise<HealthIndicatorResult> {
   return Promise.resolve({ [key]: { status: 'up' } });
 }
 
 function reduceResults(
-  results: Array<HealthIndicatorResult>,
+  results: HealthIndicatorResult[],
 ): HealthIndicatorResult {
   const summary: HealthIndicatorResult = {};
 
@@ -29,10 +28,10 @@ function reduceResults(
 }
 
 async function checkHealthIndicators(
-  indicators: Array<HealthIndicatorFunction>,
+  indicators: HealthIndicatorFunction[],
 ): Promise<HealthCheckResult> {
-  const success: Array<HealthIndicatorResult> = [];
-  const errors: Array<HealthIndicatorResult> = [];
+  const success: HealthIndicatorResult[] = [];
+  const errors: HealthIndicatorResult[] = [];
   const results = await Promise.allSettled(
     indicators.map((indicator) => indicator()),
   );
@@ -51,10 +50,10 @@ async function checkHealthIndicators(
   const details = reduceResults([...success, ...errors]);
 
   return {
-    status,
-    info,
-    error,
     details,
+    error,
+    info,
+    status,
   };
 }
 

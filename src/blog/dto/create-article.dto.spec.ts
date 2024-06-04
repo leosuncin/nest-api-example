@@ -1,9 +1,8 @@
 import { faker } from '@faker-js/faker';
+import { CreateArticle } from '~blog/dto/create-article.dto';
 import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import fc from 'fast-check';
-
-import { CreateArticle } from '~blog/dto/create-article.dto';
 
 describe('CreateArticle', () => {
   it('should fail with invalid data', async () => {
@@ -12,10 +11,8 @@ describe('CreateArticle', () => {
         fc
           .record(
             {
-              /* eslint-disable unicorn/no-null */
-              title: fc.oneof(fc.nat(), fc.constant(''), fc.constant(null)),
               content: fc.oneof(fc.nat(), fc.constant(''), fc.constant(null)),
-              /* eslint-enable */
+              title: fc.oneof(fc.nat(), fc.constant(''), fc.constant(null)),
             },
             { withDeletedKeys: true },
           )
@@ -45,8 +42,8 @@ describe('CreateArticle', () => {
             faker.seed(seed);
 
             return plainToInstance(CreateArticle, {
-              title: faker.company.catchPhrase(),
               content: faker.lorem.paragraph(),
+              title: faker.company.catchPhrase(),
             });
           }),
         async (data) => {

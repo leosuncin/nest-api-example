@@ -1,12 +1,11 @@
 import { HttpStatus } from '@nestjs/common';
-import { spec } from 'pactum';
-
 import { TOKEN_COOKIE_NAME } from '~auth/constants';
 import { loginUserFactory } from '~auth/factories/login-user.factory';
 import { registerUserFactory } from '~auth/factories/register-user.factory';
 import { updateUserFactory } from '~auth/factories/update-user.factory';
 import { register as credentials } from '~auth/fixtures/credentials';
 import { isoDateRegex, uuidRegex } from '~common/test-matchers';
+import { spec } from 'pactum';
 
 describe('AuthController (e2e)', () => {
   let tokenCookie: string;
@@ -27,19 +26,19 @@ describe('AuthController (e2e)', () => {
       .withBody(data)
       .expectStatus(HttpStatus.CREATED)
       .expectCookiesLike({
-        [TOKEN_COOKIE_NAME]: 'typeof $V === "string"',
-        // eslint-disable-next-line unicorn/no-null
         HttpOnly: null,
+
         SameSite: 'Strict',
+        [TOKEN_COOKIE_NAME]: 'typeof $V === "string"',
       })
       .expectJsonLike({
-        email: data.email,
-        username: data.username,
-        image: '',
         bio: '',
-        id: uuidRegex,
         createdAt: isoDateRegex,
+        email: data.email,
+        id: uuidRegex,
+        image: '',
         updatedAt: isoDateRegex,
+        username: data.username,
       })
       .toss();
   });
@@ -65,12 +64,12 @@ describe('AuthController (e2e)', () => {
       .withBody(data)
       .expectStatus(HttpStatus.UNPROCESSABLE_ENTITY)
       .expectJsonLike({
-        statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+        error: 'Unprocessable Entity',
         message: [
           `email «${credentials.email}» is already registered`,
           `username «${credentials.username}» is already registered`,
         ],
-        error: 'Unprocessable Entity',
+        statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
       })
       .toss();
   });
@@ -81,19 +80,19 @@ describe('AuthController (e2e)', () => {
       .withBody(credentials)
       .expectStatus(HttpStatus.OK)
       .expectCookiesLike({
-        [TOKEN_COOKIE_NAME]: 'typeof $V === "string"',
-        // eslint-disable-next-line unicorn/no-null
         HttpOnly: null,
+
         SameSite: 'Strict',
+        [TOKEN_COOKIE_NAME]: 'typeof $V === "string"',
       })
       .expectJsonLike({
-        email: credentials.email,
-        username: credentials.username,
-        image: 'typeof $V === "string"',
         bio: 'typeof $V === "string"',
-        id: uuidRegex,
         createdAt: isoDateRegex,
+        email: credentials.email,
+        id: uuidRegex,
+        image: 'typeof $V === "string"',
         updatedAt: isoDateRegex,
+        username: credentials.username,
       })
       .toss();
   });
@@ -134,13 +133,13 @@ describe('AuthController (e2e)', () => {
         expect(res.headers).not.toHaveProperty('set-cookie');
 
         expect(res.json).toMatchObject({
-          email: credentials.email,
-          username: credentials.username,
-          image: expect.any(String),
           bio: expect.any(String),
-          id: expect.stringMatching(uuidRegex),
           createdAt: expect.stringMatching(isoDateRegex),
+          email: credentials.email,
+          id: expect.stringMatching(uuidRegex),
+          image: expect.any(String),
           updatedAt: expect.stringMatching(isoDateRegex),
+          username: credentials.username,
         });
       })
       .toss();

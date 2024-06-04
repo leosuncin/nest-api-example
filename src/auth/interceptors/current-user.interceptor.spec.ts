@@ -1,10 +1,9 @@
-import type { CallHandler } from '@nestjs/common';
+import { type CallHandler } from '@nestjs/common';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
-import { createMocks } from 'node-mocks-http';
-import { lastValueFrom, of } from 'rxjs';
-
 import { john as user } from '~auth/fixtures/users';
 import { CurrentUserInterceptor } from '~auth/interceptors/current-user.interceptor';
+import { createMocks } from 'node-mocks-http';
+import { lastValueFrom, of } from 'rxjs';
 
 describe('UserInterceptor', () => {
   it('should be defined', () => {
@@ -13,14 +12,14 @@ describe('UserInterceptor', () => {
 
   it("should inject the user's id", async () => {
     const { req, res } = createMocks({
-      user,
       body: {
-        image: 'https://thispersondoesnotexist.com/image',
-        username: 'john.doe',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         email: 'johndoe@example.com',
+        image: 'https://thispersondoesnotexist.com/image',
         password: 'ji32k7au4a83',
+        username: 'john.doe',
       },
+      user,
     });
     const context = new ExecutionContextHost([req, res]);
     const next: CallHandler = {
@@ -52,14 +51,14 @@ describe('UserInterceptor', () => {
 
   it('should not modify when there is no user', async () => {
     const { req, res } = createMocks({
-      user: undefined,
       body: {
-        image: 'https://thispersondoesnotexist.com/image',
-        username: 'john.doe',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         email: 'johndoe@example.com',
+        image: 'https://thispersondoesnotexist.com/image',
         password: 'ji32k7au4a83',
+        username: 'john.doe',
       },
+      user: undefined,
     });
     const context = new ExecutionContextHost([req, res]);
     const next: CallHandler = {

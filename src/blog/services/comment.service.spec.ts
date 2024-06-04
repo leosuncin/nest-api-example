@@ -1,13 +1,12 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { createMockInstance } from 'jest-create-mock-instance';
-import { Repository, SelectQueryBuilder } from 'typeorm';
-
 import { User } from '~auth/entities/user.entity';
-import type { CreateComment } from '~blog/dto/create-comment';
+import { type CreateComment } from '~blog/dto/create-comment';
 import { Article } from '~blog/entities/article.entity';
 import { Comment } from '~blog/entities/comment.entity';
 import { CommentService } from '~blog/services/comment.service';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { Repository, SelectQueryBuilder } from 'typeorm';
 
 describe('CommentService', () => {
   let mockedCommentRepository: jest.Mocked<Repository<Comment>>;
@@ -42,9 +41,9 @@ describe('CommentService', () => {
 
   it('should save a new comment', async () => {
     const newComment: CreateComment = {
-      body: 'In fugiat consequat culpa labore eiusmod minim',
       article: new Article(),
       author: new User(),
+      body: 'In fugiat consequat culpa labore eiusmod minim',
     };
 
     await expect(service.create(newComment)).resolves.toBeInstanceOf(Comment);
@@ -97,9 +96,9 @@ describe('CommentService', () => {
     const id = 'a832e632-0335-4191-8469-4d849bbb72be';
 
     mockedCommentRepository.softDelete.mockResolvedValueOnce({
+      affected: 1,
       generatedMaps: [],
       raw: [],
-      affected: 1,
     });
 
     await expect(service.remove(id)).resolves.toBeDefined();

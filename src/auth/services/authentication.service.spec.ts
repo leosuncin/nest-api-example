@@ -1,17 +1,16 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { createMockInstance } from 'jest-create-mock-instance';
-import { Equal, type FindOptionsWhere, Not, Repository } from 'typeorm';
-
-import type { UpdateUser } from '~auth/dto/update-user.dto';
+import { type UpdateUser } from '~auth/dto/update-user.dto';
 import { User } from '~auth/entities/user.entity';
 import {
   login as credentials,
   register as newUser,
 } from '~auth/fixtures/credentials';
 import { john as user } from '~auth/fixtures/users';
-import type { JwtPayload } from '~auth/interfaces/jwt-payload.interface';
+import { type JwtPayload } from '~auth/interfaces/jwt-payload.interface';
 import { AuthenticationService } from '~auth/services/authentication.service';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { Equal, type FindOptionsWhere, Not, Repository } from 'typeorm';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
@@ -29,8 +28,8 @@ describe('AuthenticationService', () => {
             Promise.resolve(
               User.fromPartial({
                 ...entity,
-                id: '',
                 createdAt: new Date(),
+                id: '',
                 updatedAt: new Date(),
               }),
             ),
@@ -40,7 +39,7 @@ describe('AuthenticationService', () => {
           return mock;
         }
 
-        return;
+        return undefined;
       })
       .compile();
 
@@ -70,9 +69,9 @@ describe('AuthenticationService', () => {
 
   it('should find a user from the payload', async () => {
     const payload: JwtPayload = {
-      sub: user.id,
+      exp: Date.now() + 3_600,
       iat: Date.now(),
-      exp: Date.now() + 3600,
+      sub: user.id,
     };
     mockedUserRepository.findOne.mockResolvedValueOnce(user);
 
@@ -85,12 +84,12 @@ describe('AuthenticationService', () => {
 
   it('should update a user', async () => {
     const changes: UpdateUser = {
-      image: 'https://thispersondoesnotexist.com/image',
-      username: 'john',
       bio: 'Aute culpa quis nostrud ipsum.',
       email: 'johndoe@example.com',
+      image: 'https://thispersondoesnotexist.com/image',
       newPassword: 'ji32k7au4a83',
       password: credentials.password,
+      username: 'john',
     };
 
     await expect(service.update(user, changes)).resolves.toBeInstanceOf(User);
@@ -107,12 +106,11 @@ describe('AuthenticationService', () => {
       { id: Not(user.id), username: Equal('nostrud') },
     ],
     [
-      { id: user.id, email: 'magna@pariatur.do' },
-      { id: Not(user.id), email: Equal('magna@pariatur.do') },
+      { email: 'magna@pariatur.do', id: user.id },
+      { email: Equal('magna@pariatur.do'), id: Not(user.id) },
     ],
     [
-      // eslint-disable-next-line unicorn/no-null
-      { email: user.email, username: null, id: undefined },
+      { email: user.email, id: undefined, username: null },
       { email: Equal(user.email) },
     ],
   ])(
@@ -134,8 +132,8 @@ describe('AuthenticationService', () => {
       { email: Equal('johndoe@example.com'), id: Not(user.id) },
     ],
     [
-      { username: 'john', id: user.id },
-      { username: Equal('john'), id: Not(user.id) },
+      { id: user.id, username: 'john' },
+      { id: Not(user.id), username: Equal('john') },
     ],
   ])(
     'should check if it is not registered with %j',
@@ -154,23 +152,17 @@ describe('AuthenticationService', () => {
     [user, 'password', true],
     [{ id: user.id, password: 'password' }, 'password', false],
     [{ username: '' }, 'username', false],
-  ])(
-    'should verify the credentials %j',
-    async (credentials, property, expected) => {
-      mockedUserRepository.findOneBy.mockResolvedValueOnce(
-        // eslint-disable-next-line unicorn/no-null
-        Object.keys(credentials).length > 1 ? user : null,
-      );
+  ])('should verify the credentials %j', async (data, property, expected) => {
+    mockedUserRepository.findOneBy.mockResolvedValueOnce(
+      Object.keys(data).length > 1 ? user : null,
+    );
 
-      await expect(
-        // @ts-expect-error mocked value
-        service.verifyCredentials(credentials, property),
-      ).resolves.toBe(expected);
-      expect(mockedUserRepository.findOneBy).toHaveBeenCalledWith(
-        'id' in credentials
-          ? { id: credentials.id }
-          : { username: credentials.username },
-      );
-    },
-  );
+    await expect(
+      // @ts-expect-error mocked value
+      service.verifyCredentials(data, property),
+    ).resolves.toBe(expected);
+    expect(mockedUserRepository.findOneBy).toHaveBeenCalledWith(
+      'id' in data ? { id: data.id } : { username: data.username },
+    );
+  });
 });

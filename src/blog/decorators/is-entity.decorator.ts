@@ -1,5 +1,4 @@
 import { SetMetadata } from '@nestjs/common';
-
 import { Entities, ENTITY_METADATA_KEY } from '~blog/constants/entity.enum';
 
 export const IsArticle = () =>

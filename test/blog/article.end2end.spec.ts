@@ -1,6 +1,4 @@
 import { HttpStatus } from '@nestjs/common';
-import { e2e, spec } from 'pactum';
-
 import { login as credentials } from '~auth/fixtures/credentials';
 import { createArticleFactory } from '~blog/factories/create-article.factory';
 import { updateArticleFactory } from '~blog/factories/update-article.factory';
@@ -11,6 +9,7 @@ import {
   unauthorizedError,
   uuidRegex,
 } from '~common/test-matchers';
+import { e2e, spec } from 'pactum';
 
 const notFoundError = {
   error: 'Not Found',
@@ -152,7 +151,7 @@ describe('ArticleController (e2e)', () => {
   it.each(['id', 'slug'])('update one article by %s', async (property) => {
     const title = 'Aute pariatur ad sit id nostrud qui est nulla consectetur';
     const data = updateArticleFactory.buildOne({ title });
-    const slug: string = title.toLowerCase().replaceAll(/\s+/g, '-');
+    const slug: string = title.toLowerCase().replaceAll(/\s+/gu, '-');
 
     await testCase
       .step('Update article')

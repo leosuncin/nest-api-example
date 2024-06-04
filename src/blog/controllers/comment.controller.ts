@@ -12,19 +12,18 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import type { Pagination } from 'nestjs-typeorm-paginate';
-
 import { JWTAuthGuard } from '~auth/guards/jwt-auth.guard';
 import { IsComment } from '~blog/decorators/is-entity.decorator';
 import { CreateComment } from '~blog/dto/create-comment';
-import type { Article } from '~blog/entities/article.entity';
-import type { Comment } from '~blog/entities/comment.entity';
+import { type Article } from '~blog/entities/article.entity';
+import { type Comment } from '~blog/entities/comment.entity';
 import { IsAuthorGuard } from '~blog/guards/is-author.guard';
 import { SetArticleInterceptor } from '~blog/interceptors/set-article.interceptor';
 import { SetAuthorInterceptor } from '~blog/interceptors/set-author.interceptor';
 import { ArticlePipe } from '~blog/pipes/article.pipe';
 import { CommentService } from '~blog/services/comment.service';
 import { Paginate } from '~common/dto/paginate.dto';
+import { type Pagination } from 'nestjs-typeorm-paginate';
 
 @Controller('articles/:articleId/comments')
 @UseInterceptors(ClassSerializerInterceptor)

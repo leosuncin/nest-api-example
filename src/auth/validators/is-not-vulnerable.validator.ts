@@ -1,19 +1,19 @@
 import { Inject } from '@nestjs/common';
 import {
+  type hasPasswordBeenPwned,
+  PWNED_PASSWORD,
+} from '~auth/providers/pwned-password.provider';
+import {
   registerDecorator,
   ValidationOptions,
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-import {
-  type hasPasswordBeenPwned,
-  PWNED_PASSWORD,
-} from '~auth/providers/pwned-password.provider';
-
-@ValidatorConstraint({ name: 'isNotVulnerable', async: true })
+@ValidatorConstraint({ async: true, name: 'isNotVulnerable' })
 export class IsNotVulnerableConstraint implements ValidatorConstraintInterface {
   #formatter = new Intl.NumberFormat();
+
   #exposedTimes!: number;
 
   @Inject(PWNED_PASSWORD)
@@ -40,9 +40,9 @@ export class IsNotVulnerableConstraint implements ValidatorConstraintInterface {
 export function IsNotVulnerable(options: ValidationOptions = {}) {
   return function (object: object, propertyName: string) {
     registerDecorator({
-      target: object.constructor,
-      propertyName,
       options,
+      propertyName,
+      target: object.constructor,
       validator: IsNotVulnerableConstraint,
     });
   };

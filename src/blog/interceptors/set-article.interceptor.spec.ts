@@ -1,10 +1,9 @@
-import type { CallHandler } from '@nestjs/common';
+import { type CallHandler } from '@nestjs/common';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
-import { createMocks } from 'node-mocks-http';
-import { lastValueFrom, of } from 'rxjs';
-
 import { articleByJane } from '~blog/fixtures/articles';
 import { SetArticleInterceptor } from '~blog/interceptors/set-article.interceptor';
+import { createMocks } from 'node-mocks-http';
+import { lastValueFrom, of } from 'rxjs';
 
 describe('SetArticleInterceptor', () => {
   it('should be defined', () => {
@@ -15,11 +14,11 @@ describe('SetArticleInterceptor', () => {
     'should inject the article %s',
     async (articleId) => {
       const { req, res } = createMocks({
-        path: `/articles/${articleId}/comments`,
-        params: { articleId },
         body: {
           body: 'Excepteur do est minim amet laboris in enim nulla',
         },
+        params: { articleId },
+        path: `/articles/${articleId}/comments`,
       });
       const context = new ExecutionContextHost([req, res]);
       const next: CallHandler = {

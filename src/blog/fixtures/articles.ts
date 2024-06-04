@@ -2,9 +2,7 @@ import { jane, john } from '~auth/fixtures/users';
 import { Article } from '~blog/entities/article.entity';
 
 export const articleByJohn = Article.fromPartial({
-  id: 'a832e632-0335-4191-8469-4d849bbb72be',
-  title: '5 Key Reasons Business Owners Need to Know About Fintech',
-  slug: '5-key-reasons-business-owners-need-to-know-about-fintech-mLDYhAjz213rjfHRJwqUES',
+  author: john,
   content: `Finance & Investment Technologies have radically revolutionized the way in which companies are conducting their business.
 Financial technology (sometimes called fintech) is certainly one such technology which has fundamentally changed how organizations,
 small, medium and huge, process and make use of their financial information. However, like every other technology,
@@ -35,13 +33,13 @@ It is important to stay on the top of what’s happening on the planet of fintec
 Its advancement can hugely help a lot of companies, but in some cases it gives competition. Lastly, organizations need to upgrade themselves, or risk being burnt to the floor.
 David Zucchetto Co-Founder Fintech Review, Co-Founder ICOBooster, Co-Founder ICOVision, Business School 24 Ore professor, Knowledge Manager HiSkill, Keynote Speaker, Marketing Management Consultant, ICO Advisor.
 For more information about fintech index, simply visit our website.`,
-  author: john,
+  id: 'a832e632-0335-4191-8469-4d849bbb72be',
+  slug: '5-key-reasons-business-owners-need-to-know-about-fintech-mLDYhAjz213rjfHRJwqUES',
+  title: '5 Key Reasons Business Owners Need to Know About Fintech',
 });
 
 export const articleByJane = Article.fromPartial({
-  id: '31a10506-c334-4841-97a6-144a55bf4ebb',
-  title: 'The Newest High Speed Automatic Pocket Spring Machine',
-  slug: 'the-newest-high-speed-automatic-pocket-spring-machine-78rW4UUH2Ekokt36qUGxqP',
+  author: jane,
   content: `Business News,Import - Export,Manufacturing Following the development of the industrial and the demand/market increasing,
 our company has developed automatic pocket spring machine.Automatic CNC operation, Advanced servo control technology and pre-heat treatment technology for steel wire.
 using back-sealed ultrasonic sealing. Thinner nonmoving can also be used when producing thicker springs.
@@ -59,5 +57,7 @@ It is an ideal equipment for the independent bagged bed net and sofa seat bag.
 5 - Full servo precision control greatly reduces the amount of gas used and the maintenance rate of pneumatic components. The operation is more stable.
 6 - The program is more human, more secure and stable, and the operation is more convenient and reliable.
 7 - equipped with two winding heads, can realize two kinds of different thickness wire or two kinds of soft and hard different springs, Arbitrary partition.`,
-  author: jane,
+  id: '31a10506-c334-4841-97a6-144a55bf4ebb',
+  slug: 'the-newest-high-speed-automatic-pocket-spring-machine-78rW4UUH2Ekokt36qUGxqP',
+  title: 'The Newest High Speed Automatic Pocket Spring Machine',
 });

@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { AuthenticationService } from '~auth/services/authentication.service';
 import {
   isEmpty,
   registerDecorator,
@@ -8,10 +9,8 @@ import {
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-import { AuthenticationService } from '~auth/services/authentication.service';
-
 @Injectable()
-@ValidatorConstraint({ name: 'isAlreadyRegister', async: true })
+@ValidatorConstraint({ async: true, name: 'isAlreadyRegister' })
 export class IsAlreadyRegisterConstraint
   implements ValidatorConstraintInterface
 {
@@ -21,9 +20,10 @@ export class IsAlreadyRegisterConstraint
     if (isEmpty(value)) return true;
 
     const userExist = await this.authenticationService.isRegistered({
-      [property]: value,
       // @ts-expect-error object has an id property and it's defined
       id: object.id as unknown,
+
+      [property]: value,
     });
 
     return !userExist;
@@ -37,9 +37,9 @@ export class IsAlreadyRegisterConstraint
 export function IsAlreadyRegister(options: ValidationOptions = {}) {
   return function (object: object, propertyName: 'username' | 'email') {
     registerDecorator({
-      target: object.constructor,
-      propertyName,
       options,
+      propertyName,
+      target: object.constructor,
       validator: IsAlreadyRegisterConstraint,
     });
   };

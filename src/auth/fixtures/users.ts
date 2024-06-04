@@ -19,11 +19,11 @@ export const john = User.fromPartial({
   I, too, built a new project and grew from there. It taught me a lot.
 
   Go build a new project NOW and share on the Internet once you finish!`,
-  id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
-  image: 'https://randomuser.me/api/portraits/men/93.jpg',
   checkPassword(plainPassword: string) {
     return Promise.resolve(plainPassword === this.password);
   },
+  id: '0e6b9a6c-ea3b-4e39-8b17-f8e6623a17a5',
+  image: 'https://randomuser.me/api/portraits/men/93.jpg',
 });
 
 export const jane = User.fromPartial({
@@ -42,12 +42,12 @@ export const jane = User.fromPartial({
 
   Bottom line? You can get a salary increase in the office too.
   🎤🖐 Mic drop.`,
+  checkPassword(plainPassword: string) {
+    return Promise.resolve(plainPassword === this.password);
+  },
   email: 'jane@doe.me',
   id: '63770485-6ee9-4a59-b374-3f194091e2e1',
   image: 'https://randomuser.me/api/portraits/women/68.jpg',
   password: credentials.password,
   username: 'jane-doe',
-  checkPassword(plainPassword: string) {
-    return Promise.resolve(plainPassword === this.password);
-  },
 });

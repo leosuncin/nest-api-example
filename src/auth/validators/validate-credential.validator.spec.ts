@@ -1,7 +1,4 @@
 import { Test } from '@nestjs/testing';
-import { useContainer, validate } from 'class-validator';
-import { createMockInstance } from 'jest-create-mock-instance';
-
 import { login as credentials } from '~auth/fixtures/credentials';
 import { john as user } from '~auth/fixtures/users';
 import { AuthenticationService } from '~auth/services/authentication.service';
@@ -9,6 +6,8 @@ import {
   ValidateCredential,
   ValidateCredentialConstraint,
 } from '~auth/validators/validate-credential.validator';
+import { useContainer, validate } from 'class-validator';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 class DTO {
   @ValidateCredential()
@@ -57,15 +56,15 @@ describe('ValidateCredential', () => {
               )
                 ? false
                 : property === 'password'
-                ? payload.password === credentials.password
-                : true,
+                  ? payload.password === credentials.password
+                  : true,
             ),
           );
 
           return mock;
         }
 
-        return;
+        return undefined;
       })
       .compile();
 
@@ -91,8 +90,8 @@ describe('ValidateCredential', () => {
   );
 
   it.each([
-    { username: 'jane-doe', password: credentials.password },
-    { username: credentials.username, password: 'MiContraseña' },
+    { password: credentials.password, username: 'jane-doe' },
+    { password: 'MiContraseña', username: credentials.username },
     { id: user.id, password: 'Anim ex fugiat sunt ut culpa.' },
   ])('should fail with invalid credentials: %o', async (data) => {
     const dto = DTO.from(data);

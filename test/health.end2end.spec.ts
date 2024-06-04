@@ -7,30 +7,30 @@ describe('HealthController (e2e)', () => {
       .get('/health')
       .expectStatus(HttpStatus.OK)
       .expectJson({
-        status: 'ok',
-        info: {
-          database: {
-            status: 'up',
-          },
-          mem_rss: {
-            status: 'up',
-          },
-          mem_heap: {
-            status: 'up',
-          },
-        },
-        error: {},
         details: {
           database: {
             status: 'up',
           },
+          mem_heap: {
+            status: 'up',
+          },
           mem_rss: {
+            status: 'up',
+          },
+        },
+        error: {},
+        info: {
+          database: {
             status: 'up',
           },
           mem_heap: {
             status: 'up',
           },
+          mem_rss: {
+            status: 'up',
+          },
         },
+        status: 'ok',
       })
       .toss();
   });

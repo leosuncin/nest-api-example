@@ -6,13 +6,12 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import type { CookieOptions, Response } from 'express';
-import type { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
-import type { AuthConfig } from '~auth/config/auth';
+import { type AuthConfig } from '~auth/config/auth';
 import { TOKEN_COOKIE_NAME } from '~auth/constants/index';
-import type { User } from '~auth/entities/user.entity';
+import { type User } from '~auth/entities/user.entity';
+import { type CookieOptions, type Response } from 'express';
+import { type Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TokenInterceptor implements NestInterceptor {

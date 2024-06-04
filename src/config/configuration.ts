@@ -7,13 +7,13 @@ export function configuration() {
   invariant(process.env.SECRET, 'SECRET is missing');
 
   return {
-    port: Number.parseInt(process.env.PORT, 10) || 3000,
+    port: Number.parseInt(process.env.PORT, 10) || 3_000,
     secret: process.env.SECRET,
     validation: {
+      errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+      forbidUnknownValues: false,
       transform: true,
       whitelist: true,
-      forbidUnknownValues: false,
-      errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
     } as ValidationPipeOptions,
   };
 }

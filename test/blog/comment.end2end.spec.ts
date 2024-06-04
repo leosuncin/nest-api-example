@@ -1,6 +1,4 @@
 import { HttpStatus } from '@nestjs/common';
-import { e2e, spec } from 'pactum';
-
 import { login as credentials } from '~auth/fixtures/credentials';
 import { createCommentFactory } from '~blog/factories/create-comment.factory';
 import { articleByJohn } from '~blog/fixtures/articles';
@@ -14,6 +12,7 @@ import {
   unauthorizedError,
   uuidRegex,
 } from '~common/test-matchers';
+import { e2e, spec } from 'pactum';
 
 describe('CommentController (e2e)', () => {
   const testCase = e2e('Comment CRUD');

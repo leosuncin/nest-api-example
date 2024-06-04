@@ -1,10 +1,7 @@
-import type { INestApplication } from '@nestjs/common';
+import { type INestApplication } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { getDataSourceToken } from '@nestjs/typeorm';
-import request from 'supertest';
-import { runSeeders } from 'typeorm-extension';
-
 import { AuthModule } from '~auth/auth.module';
 import { jane } from '~auth/fixtures/users';
 import { BlogModule } from '~blog/blog.module';
@@ -15,6 +12,8 @@ import { articleByJane, articleByJohn } from '~blog/fixtures/articles';
 import { buildTestApplication } from '~common/build-test-application';
 import { database } from '~common/database';
 import { isoDateRegex, uuidRegex } from '~common/test-matchers';
+import request from 'supertest';
+import { runSeeders } from 'typeorm-extension';
 
 const unauthorizedError = {
   message: 'Unauthorized',
@@ -166,7 +165,7 @@ describe('BlogModule', () => {
         .send(data)
         .expect(HttpStatus.OK)
         .expect(({ body }) => {
-          const slug: string = title.toLowerCase().replaceAll(/\s+/g, '-');
+          const slug: string = title.toLowerCase().replaceAll(/\s+/gu, '-');
 
           expect(body).toHaveProperty('title', title);
           expect(body).toHaveProperty('slug', expect.stringContaining(slug));

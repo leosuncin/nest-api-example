@@ -1,20 +1,20 @@
-import { ForbiddenException, InjectionToken } from '@nestjs/common';
+import { type InjectionToken } from '@nestjs/common';
+import { ForbiddenException } from '@nestjs/common';
 import { ModuleRef, Reflector } from '@nestjs/core';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { Test } from '@nestjs/testing';
-import { createMockInstance } from 'jest-create-mock-instance';
-import { createMocks } from 'node-mocks-http';
-
 import { User } from '~auth/entities/user.entity';
 import { john as user } from '~auth/fixtures/users';
 import { Entities } from '~blog/constants/entity.enum';
-import type { Article } from '~blog/entities/article.entity';
-import type { Comment } from '~blog/entities/comment.entity';
+import { type Article } from '~blog/entities/article.entity';
+import { type Comment } from '~blog/entities/comment.entity';
 import { articleByJohn as article } from '~blog/fixtures/articles';
 import { commentByJaneOnArticleByJohn as comment } from '~blog/fixtures/comments';
 import { IsAuthorGuard } from '~blog/guards/is-author.guard';
 import { ArticleService } from '~blog/services/article.service';
 import { CommentService } from '~blog/services/comment.service';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { createMocks } from 'node-mocks-http';
 
 describe('IsAuthorGuard', () => {
   let mockedReflector: jest.Mocked<Reflector>;
@@ -32,7 +32,6 @@ describe('IsAuthorGuard', () => {
               if (typeOrToken === ArticleService) {
                 mock = createMockInstance(ArticleService);
                 mock.getById.mockImplementation((id: Article['id']) =>
-                  // eslint-disable-next-line unicorn/no-null
                   Promise.resolve(id === article.id ? article : null),
                 );
               }
@@ -40,7 +39,6 @@ describe('IsAuthorGuard', () => {
               if (typeOrToken === CommentService) {
                 mock = createMockInstance(CommentService);
                 mock.getById.mockImplementation((id: Comment['id']) =>
-                  // eslint-disable-next-line unicorn/no-null
                   Promise.resolve(id === comment.id ? comment : null),
                 );
               }
@@ -76,7 +74,7 @@ describe('IsAuthorGuard', () => {
     ${'188580f8-e3ff-43d8-ac37-f3063477db53'} | ${Entities.COMMENT} | ${'comment by id not exist'}
   `(
     'should authorize when $description',
-    async function ({ id, entity }: { id: string; entity: Entities }) {
+    async function ({ id, entity }: { entity: Entities; id: string }) {
       const { req, res } = createMocks({
         params: { id },
         user,
@@ -90,14 +88,14 @@ describe('IsAuthorGuard', () => {
   );
 
   it.each([
-    { id: article.id, entity: Entities.ARTICLE },
-    { id: comment.id, entity: Entities.COMMENT },
+    { entity: Entities.ARTICLE, id: article.id },
+    { entity: Entities.COMMENT, id: comment.id },
   ])(
     'should throw when the current user is not the author of the $entity',
     async ({ id, entity }) => {
       const { req, res } = createMocks({
-        user: User.fromPartial({ id: '63770485-6ee9-4a59-b374-3f194091e2e1' }),
         params: { id },
+        user: User.fromPartial({ id: '63770485-6ee9-4a59-b374-3f194091e2e1' }),
       });
       const context = new ExecutionContextHost([req, res]);
 

@@ -1,9 +1,5 @@
 import { registerAs } from '@nestjs/config';
-import type { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import invariant from 'tiny-invariant';
-import { DataSource, type DataSourceOptions } from 'typeorm';
-import type { SeederOptions } from 'typeorm-extension';
-
+import { type TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { User } from '~auth/entities/user.entity';
 import { userFactory } from '~auth/factories/user.factory';
 import { UserSeeder } from '~auth/seeders/user.seeder';
@@ -15,15 +11,17 @@ import { ArticleSeeder } from '~blog/seeders/article.seeder';
 import { CommentSeeder } from '~blog/seeders/comment.seeder';
 import { CreateUser1637703183543 } from '~migrations/1637703183543-create-user';
 import { CreateArticleComment1651517018946 } from '~migrations/1651517018946-create-article-comment';
+import invariant from 'tiny-invariant';
+import { DataSource, type DataSourceOptions } from 'typeorm';
+import { type SeederOptions } from 'typeorm-extension';
 
 // needed by TypeORM CLI
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace NodeJS {
-    // eslint-disable-next-line unicorn/prevent-abbreviations
+    // eslint-disable-next-line unicorn/prevent-abbreviations, @typescript-eslint/consistent-type-definitions
     interface ProcessEnv {
-      readonly NODE_ENV: 'development' | 'production' | 'test';
       readonly DATABASE_URL: string;
+      readonly NODE_ENV: 'development' | 'production' | 'test';
     }
   }
 }
@@ -46,34 +44,34 @@ const seeds: SeederOptions['seeds'] = [
 ];
 
 const dataSourceOptions: DataSourceOptions & SeederOptions = {
+  entities,
+  factories,
+  migrations,
+  seeds,
+  synchronize: false,
   type,
   url: process.env.DATABASE_URL,
-  synchronize: false,
-  entities,
-  migrations,
-  factories,
-  seeds,
 };
 
 export const dataSource = registerAs('data-source', () => {
   if (process.env.NODE_ENV === 'test') {
     return {
-      type,
       entities,
-      migrations,
       factories,
-      seeds,
+      migrations,
       migrationsRun: true,
+      seeds,
+      type,
     } as DataSourceOptions & SeederOptions;
   }
 
   invariant(process.env.DATABASE_URL, 'DATABASE_URL is missing');
 
   return {
+    autoLoadEntities: true,
+    synchronize: false,
     type,
     url: process.env.DATABASE_URL,
-    synchronize: false,
-    autoLoadEntities: true,
   } as TypeOrmModuleOptions;
 });
 

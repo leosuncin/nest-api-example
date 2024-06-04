@@ -1,10 +1,5 @@
 import { faker } from '@faker-js/faker';
 import { Test } from '@nestjs/testing';
-import { plainToInstance } from 'class-transformer';
-import { useContainer, validate } from 'class-validator';
-import fc from 'fast-check';
-import { createMockInstance } from 'jest-create-mock-instance';
-
 import { UpdateUser } from '~auth/dto/update-user.dto';
 import { updateUserFactory } from '~auth/factories/update-user.factory';
 import { john as user } from '~auth/fixtures/users';
@@ -13,6 +8,10 @@ import { AuthenticationService } from '~auth/services/authentication.service';
 import { IsAlreadyRegisterConstraint } from '~auth/validators/is-already-register.validator';
 import { IsNotVulnerableConstraint } from '~auth/validators/is-not-vulnerable.validator';
 import { ValidateCredentialConstraint } from '~auth/validators/validate-credential.validator';
+import { plainToInstance } from 'class-transformer';
+import { useContainer, validate } from 'class-validator';
+import fc from 'fast-check';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 describe('Update user validations', () => {
   beforeAll(async () => {
@@ -40,7 +39,7 @@ describe('Update user validations', () => {
           return mock;
         }
 
-        return;
+        return undefined;
       })
       .compile();
 
@@ -58,8 +57,8 @@ describe('Update user validations', () => {
             faker.seed(seed);
 
             return updateUserFactory.buildOne({
-              password: user.password,
               id: user.id,
+              password: user.password,
             });
           }),
         async (data) => {
@@ -95,8 +94,8 @@ describe('Update user validations', () => {
       fc.asyncProperty(
         fc.oneof(fc.integer(), fc.string({ minLength: 31 })).map((username) =>
           plainToInstance(UpdateUser, {
-            username,
             id: user.id,
+            username,
           }),
         ),
         async (data) => {
@@ -114,9 +113,9 @@ describe('Update user validations', () => {
   it('should validate that new password requires the current password', async () => {
     const errors = await validate(
       plainToInstance(UpdateUser, {
+        id: user.id,
         /* cspell:disable-next-line */
         newPassword: 'Tλ3Pa55wθrd?',
-        id: user.id,
       }),
     );
 

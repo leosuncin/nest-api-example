@@ -1,13 +1,12 @@
 import { Test } from '@nestjs/testing';
-import { createMockInstance } from 'jest-create-mock-instance';
-
 import { User } from '~auth/entities/user.entity';
 import { CommentController } from '~blog/controllers/comment.controller';
-import type { CreateComment } from '~blog/dto/create-comment';
+import { type CreateComment } from '~blog/dto/create-comment';
 import { Article } from '~blog/entities/article.entity';
 import { Comment } from '~blog/entities/comment.entity';
 import { ArticleService } from '~blog/services/article.service';
 import { CommentService } from '~blog/services/comment.service';
+import { createMockInstance } from 'jest-create-mock-instance';
 
 describe('CommentController', () => {
   let mockCommentService: jest.Mocked<CommentService>;
@@ -26,7 +25,7 @@ describe('CommentController', () => {
           return createMockInstance(ArticleService);
         }
 
-        return;
+        return undefined;
       })
       .compile();
 
@@ -40,9 +39,9 @@ describe('CommentController', () => {
 
   it('should create a new comment', async () => {
     const newComment: CreateComment = {
-      body: 'In fugiat consequat culpa labore eiusmod minim',
       article: new Article(),
       author: new User(),
+      body: 'In fugiat consequat culpa labore eiusmod minim',
     };
 
     mockCommentService.create.mockResolvedValue(
@@ -84,9 +83,9 @@ describe('CommentController', () => {
     const commentId = 'a832e632-0335-4191-8469-4d849bbb72be';
 
     mockCommentService.remove.mockResolvedValue({
+      affected: 1,
       generatedMaps: [],
       raw: [],
-      affected: 1,
     });
 
     await expect(controller.remove(commentId)).resolves.toBeDefined();

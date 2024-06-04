@@ -1,9 +1,7 @@
 import { faker } from '@faker-js/faker';
+import { UpdateUser } from '~auth/dto/update-user.dto';
 import { FactoryBuilder } from 'factory.io';
 
-import { UpdateUser } from '~auth/dto/update-user.dto';
-
-/* eslint-disable @typescript-eslint/unbound-method */
 export const updateUserFactory = FactoryBuilder.of(UpdateUser)
   .props({
     bio: faker.hacker.phrase,
@@ -14,4 +12,3 @@ export const updateUserFactory = FactoryBuilder.of(UpdateUser)
     username: () => faker.internet.userName().toLowerCase(),
   })
   .build();
-/* eslint-enable */

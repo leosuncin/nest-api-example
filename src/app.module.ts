@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TerminusModule } from '@nestjs/terminus';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
 import { HealthController } from '~app/health.controller';
 import { AuthModule } from '~auth/auth.module';
 import { BlogModule } from '~blog/blog.module';
@@ -10,10 +9,11 @@ import { configuration } from '~config/configuration';
 import { dataSource } from '~config/data-source';
 
 @Module({
+  controllers: [HealthController],
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true,
       expandVariables: true,
+      isGlobal: true,
       load: [configuration],
     }),
     TerminusModule.forRoot(),
@@ -27,6 +27,5 @@ import { dataSource } from '~config/data-source';
     AuthModule,
     BlogModule,
   ],
-  controllers: [HealthController],
 })
 export class AppModule {}

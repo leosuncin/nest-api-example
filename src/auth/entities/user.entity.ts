@@ -12,7 +12,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-const bcryptRegex = /^\$(?:2a|2x|2y|2b)\$\d+\$/;
+const bcryptRegex = /^\$(?:2a|2x|2y|2b)\$\d+\$/u;
 
 @Entity()
 export class User {
@@ -29,10 +29,10 @@ export class User {
   @Exclude()
   password!: string;
 
-  @Column({ nullable: true, default: '' })
+  @Column({ default: '', nullable: true })
   image?: string;
 
-  @Column({ nullable: true, default: '' })
+  @Column({ default: '', nullable: true })
   bio?: string;
 
   @CreateDateColumn()

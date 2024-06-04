@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { ArticleService } from '~blog/services/article.service';
 import {
   registerDecorator,
   ValidationOptions,
@@ -6,10 +7,8 @@ import {
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-import { ArticleService } from '~blog/services/article.service';
-
 @Injectable()
-@ValidatorConstraint({ name: 'articleExist', async: true })
+@ValidatorConstraint({ async: true, name: 'articleExist' })
 export class ArticleExistConstraint implements ValidatorConstraintInterface {
   constructor(private readonly articleService: ArticleService) {}
 
@@ -25,9 +24,9 @@ export class ArticleExistConstraint implements ValidatorConstraintInterface {
 export function ArticleExist(options: ValidationOptions = {}) {
   return (object: object, propertyName: string) =>
     registerDecorator({
-      target: object.constructor,
-      propertyName,
       options,
+      propertyName,
+      target: object.constructor,
       validator: ArticleExistConstraint,
     });
 }

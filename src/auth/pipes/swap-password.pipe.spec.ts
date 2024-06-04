@@ -1,16 +1,6 @@
-import type { ArgumentMetadata } from '@nestjs/common';
-
+import { type ArgumentMetadata } from '@nestjs/common';
 import { login as credentials } from '~auth/fixtures/credentials';
 import { SwapPasswordPipe } from '~auth/pipes/swap-password.pipe';
-
-const value = {
-  image: 'https://thispersondoesnotexist.com/image',
-  username: 'john',
-  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  email: 'johndoe@example.com',
-  newPassword: 'ji32k7au4a83',
-  password: credentials.password,
-};
 
 describe('StripPasswordPipe', () => {
   it('should be defined', () => {
@@ -20,11 +10,11 @@ describe('StripPasswordPipe', () => {
   it("should remove the user's password", () => {
     const pipe = new SwapPasswordPipe();
     const value = {
-      image: 'https://thispersondoesnotexist.com/image',
-      username: 'john',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       email: 'johndoe@example.com',
+      image: 'https://thispersondoesnotexist.com/image',
       password: credentials.password,
+      username: 'john',
     };
     const metadata: ArgumentMetadata = {
       type: 'body',
@@ -35,6 +25,14 @@ describe('StripPasswordPipe', () => {
 
   it('should swap the passwords', () => {
     const pipe = new SwapPasswordPipe();
+    const value = {
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      email: 'johndoe@example.com',
+      image: 'https://thispersondoesnotexist.com/image',
+      newPassword: 'ji32k7au4a83',
+      password: credentials.password,
+      username: 'john',
+    };
     const metadata: ArgumentMetadata = {
       type: 'body',
     };
@@ -46,6 +44,14 @@ describe('StripPasswordPipe', () => {
 
   it('should do nothing to types different than "body"', () => {
     const pipe = new SwapPasswordPipe();
+    const value = {
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      email: 'johndoe@example.com',
+      image: 'https://thispersondoesnotexist.com/image',
+      newPassword: 'ji32k7au4a83',
+      password: credentials.password,
+      username: 'john',
+    };
     const metadata: ArgumentMetadata = {
       type: 'custom',
     };

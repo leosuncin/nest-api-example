@@ -1,14 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { type CreateComment } from '~blog/dto/create-comment';
+import { Comment } from '~blog/entities/comment.entity';
 import {
   type IPaginationOptions,
   paginate,
   type Pagination,
 } from 'nestjs-typeorm-paginate';
-import type { Repository } from 'typeorm';
-
-import type { CreateComment } from '~blog/dto/create-comment';
-import { Comment } from '~blog/entities/comment.entity';
+import { type Repository } from 'typeorm';
 
 @Injectable()
 export class CommentService {

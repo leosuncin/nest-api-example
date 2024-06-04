@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
+import { JWT_STRATEGY_NAME, TOKEN_COOKIE_NAME } from '~auth/constants';
+import { type User } from '~auth/entities/user.entity';
+import { type JwtPayload } from '~auth/interfaces/jwt-payload.interface';
+import { AuthenticationService } from '~auth/services/authentication.service';
 import { ExtractJwt, JwtFromRequestFunction, Strategy } from 'passport-jwt';
 
-import { JWT_STRATEGY_NAME, TOKEN_COOKIE_NAME } from '~auth/constants';
-import type { User } from '~auth/entities/user.entity';
-import type { JwtPayload } from '~auth/interfaces/jwt-payload.interface';
-import { AuthenticationService } from '~auth/services/authentication.service';
-
 declare module 'express' {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Request {
     cookies: Record<string, string | null>;
     signedCookies: Record<string, string | null>;
@@ -23,13 +23,13 @@ const extractJwtFromCookie: JwtFromRequestFunction = (request) => {
 export class JwtStrategy extends PassportStrategy(Strategy, JWT_STRATEGY_NAME) {
   constructor(private readonly authenticationService: AuthenticationService) {
     super({
+      ignoreExpiration: false,
       jwtFromRequest: ExtractJwt.fromExtractors([
         extractJwtFromCookie,
         ExtractJwt.fromAuthHeaderAsBearerToken(),
       ]),
-      secretOrKey: process.env.SECRET,
-      ignoreExpiration: false,
       passReqToCallback: false,
+      secretOrKey: process.env.SECRET,
     });
   }
 

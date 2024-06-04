@@ -5,13 +5,12 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { ModuleRef, Reflector } from '@nestjs/core';
-import type { Request } from 'express';
-import invariant from 'tiny-invariant';
-
 import { Entities, ENTITY_METADATA_KEY } from '~blog/constants/entity.enum';
 import { Article } from '~blog/entities/article.entity';
 import { ArticleService } from '~blog/services/article.service';
 import { CommentService } from '~blog/services/comment.service';
+import { type Request } from 'express';
+import invariant from 'tiny-invariant';
 
 @Injectable()
 export class IsAuthorGuard implements CanActivate {

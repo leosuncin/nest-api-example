@@ -1,3 +1,5 @@
+import { User } from '~auth/entities/user.entity';
+import { Article } from '~blog/entities/article.entity';
 import { Exclude } from 'class-transformer';
 import {
   Column,
@@ -9,9 +11,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-
-import { User } from '~auth/entities/user.entity';
-import { Article } from '~blog/entities/article.entity';
 
 @Entity()
 export class Comment {
@@ -32,18 +31,18 @@ export class Comment {
   deletedAt?: Date;
 
   @ManyToOne(() => Article, (post) => post.comments, {
+    deferrable: 'INITIALLY DEFERRED',
     nullable: false,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
-    deferrable: 'INITIALLY DEFERRED',
   })
   article!: Article;
 
   @ManyToOne(() => User, {
+    eager: true,
     nullable: false,
     onDelete: 'RESTRICT',
     onUpdate: 'CASCADE',
-    eager: true,
   })
   author!: User;
 

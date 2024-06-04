@@ -1,3 +1,6 @@
+import { IsAlreadyRegister } from '~auth/validators/is-already-register.validator';
+import { IsNotVulnerable } from '~auth/validators/is-not-vulnerable.validator';
+import { ValidateCredential } from '~auth/validators/validate-credential.validator';
 import {
   Allow,
   IsDefined,
@@ -11,10 +14,6 @@ import {
   MinLength,
   ValidateIf,
 } from 'class-validator';
-
-import { IsAlreadyRegister } from '~auth/validators/is-already-register.validator';
-import { IsNotVulnerable } from '~auth/validators/is-not-vulnerable.validator';
-import { ValidateCredential } from '~auth/validators/validate-credential.validator';
 
 export class UpdateUser {
   @Allow()
@@ -31,7 +30,7 @@ export class UpdateUser {
   @IsString()
   @IsNotEmpty()
   @MaxLength(30)
-  @Matches(/^[\w.-]+$/i)
+  @Matches(/^[\w.-]+$/iu)
   @IsAlreadyRegister()
   readonly username?: string;
 
