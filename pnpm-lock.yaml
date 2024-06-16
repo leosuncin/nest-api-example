@@ -148,8 +148,8 @@ importers:
         specifier: 6.0.2
         version: 6.0.2
       '@types/validator':
-        specifier: 13.11.10
-        version: 13.11.10
+        specifier: 13.12.0
+        version: 13.12.0
       '@typescript-eslint/eslint-plugin':
         specifier: 7.13.0
         version: 7.13.0(@typescript-eslint/parser@7.13.0(eslint@9.5.0)(typescript@5.4.5))(eslint@9.5.0)(typescript@5.4.5)
@@ -1523,8 +1523,8 @@ packages:
   '@types/supertest@6.0.2':
     resolution: {integrity: sha512-137ypx2lk/wTQbW6An6safu9hXmajAifU/s7szAHLN/FeIm5w7yR0Wkl9fdJMRSHwOn4HLAI0DaB2TOORuhPDg==}
 
-  '@types/validator@13.11.10':
-    resolution: {integrity: sha512-e2PNXoXLr6Z+dbfx5zSh9TRlXJrELycxiaXznp4S5+D2M3b9bqJEitNHA5923jhnB2zzFiZHa2f0SI1HoIahpg==}
+  '@types/validator@13.12.0':
+    resolution: {integrity: sha512-nH45Lk7oPIJ1RVOF6JgFI6Dy0QpHEzq4QecZhvguxYPDwT8c93prCMqAtiIttm39voZ+DDR+qkNnMpJmMBRqag==}
 
   '@types/wait-on@5.3.1':
     resolution: {integrity: sha512-2FFOKCF/YydrMUaqg+fkk49qf0e5rDgwt6aQsMzFQzbS419h2gNOXyiwp/o2yYy27bi/C1z+HgfncryjGzlvgQ==}
@@ -7959,7 +7959,7 @@ snapshots:
       '@types/methods': 1.1.4
       '@types/superagent': 8.1.1
 
-  '@types/validator@13.11.10': {}
+  '@types/validator@13.12.0': {}
 
   '@types/wait-on@5.3.1':
     dependencies:
@@ -8735,7 +8735,7 @@ snapshots:
 
   class-validator@0.14.1:
     dependencies:
-      '@types/validator': 13.11.10
+      '@types/validator': 13.12.0
       libphonenumber-js: 1.10.53
       validator: 13.11.0
 
