@@ -54,8 +54,8 @@ importers:
         specifier: 14.1.1
         version: 14.1.1
       lru-cache:
-        specifier: 10.2.2
-        version: 10.2.2
+        specifier: 10.3.0
+        version: 10.3.0
       nestjs-typeorm-paginate:
         specifier: 4.0.4
         version: 4.0.4(@nestjs/common@10.3.9(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(typeorm@0.3.20(pg@8.12.0)(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2)))
@@ -4389,8 +4389,8 @@ packages:
     resolution: {integrity: sha512-G2Lj61tXDnVFFOi8VZds+SoQjtQC3dgokKdDG2mTm1tx4m50NUHBOZSBwQQHyy0V12A0JTG4icfZQH+xPyh8VA==}
     engines: {node: '>=0.10.0'}
 
-  lru-cache@10.2.2:
-    resolution: {integrity: sha512-9hp3Vp2/hFQUiIwKo8XCeFVnrg8Pk3TYNPIR7tJADKi5YfcF7vEaK7avFHTlSy3kOKYaJQaalfEo6YuXdceBOQ==}
+  lru-cache@10.3.0:
+    resolution: {integrity: sha512-CQl19J/g+Hbjbv4Y3mFNNXFEL/5t/KCg8POCuUqd4rMKjGG+j1ybER83hxV58zL+dFI1PTkt3GNFSHRt+d8qEQ==}
     engines: {node: 14 || >=16.14}
 
   lru-cache@5.1.1:
@@ -10688,7 +10688,7 @@ snapshots:
 
   hosted-git-info@7.0.0:
     dependencies:
-      lru-cache: 10.2.2
+      lru-cache: 10.3.0
 
   html-escaper@2.0.2: {}
 
@@ -11657,7 +11657,7 @@ snapshots:
 
   lowercase-keys@1.0.1: {}
 
-  lru-cache@10.2.2: {}
+  lru-cache@10.3.0: {}
 
   lru-cache@5.1.1:
     dependencies:
@@ -12157,7 +12157,7 @@ snapshots:
 
   path-scurry@1.10.1:
     dependencies:
-      lru-cache: 10.2.2
+      lru-cache: 10.3.0
       minipass: 7.0.4
 
   path-to-regexp@0.1.7: {}
