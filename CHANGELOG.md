@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.6](https://github.com/leosuncin/nest-api-example/compare/v1.8.5...v1.8.6) (2024-07-01)
+
+### Bug Fixes
+
+- **deps:** update dependency @nestjs/config to v3.2.3 ([33d447d](https://github.com/leosuncin/nest-api-example/commit/33d447d5dcf891b99c9e076a3919c8f5f9a6d0a8))
+
 ## [1.8.5](https://github.com/leosuncin/nest-api-example/compare/v1.8.4...v1.8.5) (2024-07-01)
 
 ### Bug Fixes
