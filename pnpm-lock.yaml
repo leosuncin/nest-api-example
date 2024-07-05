@@ -100,8 +100,8 @@ importers:
         specifier: 8.4.1
         version: 8.4.1
       '@nestjs/cli':
-        specifier: 10.4.0
-        version: 10.4.0
+        specifier: 10.4.2
+        version: 10.4.2
       '@nestjs/schematics':
         specifier: 10.1.2
         version: 10.1.2(chokidar@3.6.0)(typescript@5.5.3)
@@ -1128,8 +1128,8 @@ packages:
     resolution: {integrity: sha512-uSvJdwQU5nK+Vdf6zxcWAY2A8r7uqe+gePwLWzJ+fsQehq18pc0I2hJKwypZ2aLM90+Er9u1xn4iLJPZ+xlL4g==}
     engines: {node: '>=8'}
 
-  '@nestjs/cli@10.4.0':
-    resolution: {integrity: sha512-NIoYRA5cnpQPyj+dde4CgJVEt3NUZ7xoyzyP8ANSdJYSdRe1WMryL9jzDZeIin1iPDnvbmMr+Ft20jpQmDkTXQ==}
+  '@nestjs/cli@10.4.2':
+    resolution: {integrity: sha512-fQexIfLHfp6GUgX+CO4fOg+AEwV5ox/LHotQhyZi9wXUQDyIqS0NTTbumr//62EcX35qV4nU0359nYnuEdzG+A==}
     engines: {node: '>= 16.14'}
     hasBin: true
     peerDependencies:
@@ -2266,10 +2266,6 @@ packages:
   cli-spinners@2.7.0:
     resolution: {integrity: sha512-qu3pN8Y3qHNgE2AFweciB1IfMnmZ/fsNTEE+NOFjmGB2F/7rLhnhzppvpCnN4FovtP26k8lHyy9ptEbNwWFLzw==}
     engines: {node: '>=6'}
-
-  cli-table3@0.6.3:
-    resolution: {integrity: sha512-w5Jac5SykAeZJKntOxJCrm63Eg5/4dhMWIcuTbo9rpE+brgaSZo0RuNJZeOyMgsUdhDeojvgyQLmjI+K50ZGyg==}
-    engines: {node: 10.* || >= 12.*}
 
   cli-table3@0.6.5:
     resolution: {integrity: sha512-+W/5efTR7y5HRD7gACw9yQjqMVvEMLBHmboM/kPWam+H+Hmyrgjh6YncVKK122YZkXrLudzTuAukUw9FnMf7IQ==}
@@ -7632,7 +7628,7 @@ snapshots:
 
   '@lukeed/csprng@1.0.1': {}
 
-  '@nestjs/cli@10.4.0':
+  '@nestjs/cli@10.4.2':
     dependencies:
       '@angular-devkit/core': 17.3.8(chokidar@3.6.0)
       '@angular-devkit/schematics': 17.3.8(chokidar@3.6.0)
@@ -7647,7 +7643,6 @@ snapshots:
       inquirer: 8.2.6
       node-emoji: 1.11.0
       ora: 5.4.1
-      source-map-support: 0.5.21
       tree-kill: 1.2.2
       tsconfig-paths: 4.2.0
       tsconfig-paths-webpack-plugin: 4.1.0
@@ -9002,12 +8997,6 @@ snapshots:
       yargs: 16.2.0
 
   cli-spinners@2.7.0: {}
-
-  cli-table3@0.6.3:
-    dependencies:
-      string-width: 4.2.3
-    optionalDependencies:
-      '@colors/colors': 1.5.0
 
   cli-table3@0.6.5:
     dependencies:
@@ -10548,7 +10537,7 @@ snapshots:
       fs.realpath: 1.0.0
       minimatch: 7.4.2
       minipass: 4.2.5
-      path-scurry: 1.10.1
+      path-scurry: 1.11.1
 
   global-directory@4.0.1:
     dependencies:
@@ -11683,7 +11672,7 @@ snapshots:
       ansi-escapes: 6.2.0
       chalk: 5.3.0
       cli-highlight: 2.1.11
-      cli-table3: 0.6.3
+      cli-table3: 0.6.5
       marked: 12.0.0
       node-emoji: 2.1.3
       supports-hyperlinks: 3.0.0
@@ -12159,7 +12148,7 @@ snapshots:
   path-scurry@1.10.1:
     dependencies:
       lru-cache: 10.3.0
-      minipass: 7.0.4
+      minipass: 7.1.2
 
   path-scurry@1.11.1:
     dependencies:
