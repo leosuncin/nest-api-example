@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.8](https://github.com/leosuncin/nest-api-example/compare/v1.8.7...v1.8.8) (2024-07-08)
+
+### Bug Fixes
+
+- **deps:** update dependency lru-cache to v10.4.0 ([cb92b9c](https://github.com/leosuncin/nest-api-example/commit/cb92b9c7c0bac8768b389b9e5491f6cafb50e8dd))
+
 ## [1.8.7](https://github.com/leosuncin/nest-api-example/compare/v1.8.6...v1.8.7) (2024-07-06)
 
 ### Bug Fixes
