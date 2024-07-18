@@ -51,8 +51,8 @@ importers:
         specifier: 1.4.6
         version: 1.4.6
       hibp:
-        specifier: 14.1.1
-        version: 14.1.1
+        specifier: 14.1.2
+        version: 14.1.2
       lru-cache:
         specifier: 11.0.0
         version: 11.0.0
@@ -3549,8 +3549,8 @@ packages:
     resolution: {integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==}
     engines: {node: '>=8'}
 
-  hibp@14.1.1:
-    resolution: {integrity: sha512-3HiU8siA/0PpciTzWR2l3GVX0CZ0mCCsOHG2lqk8yvRgM+hgkUJW5Occ809xsoz//rgbL9u2tPL3cW31RD4j+g==}
+  hibp@14.1.2:
+    resolution: {integrity: sha512-DAMzWEEsjKFZMv4g8mDp1qPPo4FPmwLPhTlnJ6I1sBiC0x5FhjSyLhwvGA90uHCl8/6ckHwlgNuoinYrBCh3cQ==}
     engines: {node: '>= 18.0.0'}
 
   highlight.js@10.7.3:
@@ -6517,7 +6517,7 @@ snapshots:
       eslint-visitor-keys: 2.1.0
       semver: 6.3.1
 
-  '@babel/eslint-plugin@7.24.7(@babel/eslint-parser@7.24.8(@babel/core@7.24.7)(eslint@9.7.0))(eslint@9.7.0)':
+  '@babel/eslint-plugin@7.24.7(@babel/eslint-parser@7.24.8(@babel/core@7.24.9)(eslint@9.7.0))(eslint@9.7.0)':
     dependencies:
       '@babel/eslint-parser': 7.24.8(@babel/core@7.24.9)(eslint@9.7.0)
       eslint: 9.7.0
@@ -9606,7 +9606,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.24.9
       '@babel/eslint-parser': 7.24.8(@babel/core@7.24.9)(eslint@9.7.0)
-      '@babel/eslint-plugin': 7.24.7(@babel/eslint-parser@7.24.8(@babel/core@7.24.7)(eslint@9.7.0))(eslint@9.7.0)
+      '@babel/eslint-plugin': 7.24.7(@babel/eslint-parser@7.24.8(@babel/core@7.24.9)(eslint@9.7.0))(eslint@9.7.0)
       '@babel/plugin-syntax-import-assertions': 7.24.7(@babel/core@7.24.9)
       '@graphql-eslint/eslint-plugin': 3.20.1(@babel/core@7.24.9)(@types/node@20.14.11)(graphql@16.9.0)
       '@next/eslint-plugin-next': 14.2.5
@@ -10628,7 +10628,7 @@ snapshots:
 
   hexoid@1.0.0: {}
 
-  hibp@14.1.1:
+  hibp@14.1.2:
     dependencies:
       jssha: 3.3.1
       undici: 6.14.1
