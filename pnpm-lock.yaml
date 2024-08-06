@@ -199,8 +199,8 @@ importers:
         specifier: 3.7.1
         version: 3.7.1
       pg-mem:
-        specifier: 2.9.1
-        version: 2.9.1(typeorm@0.3.20(pg@8.12.0)(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
+        specifier: 3.0.0
+        version: 3.0.0(typeorm@0.3.20(pg@8.12.0)(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4)))
       prettier:
         specifier: 3.3.3
         version: 3.3.3
@@ -5091,8 +5091,8 @@ packages:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
 
-  pg-mem@2.9.1:
-    resolution: {integrity: sha512-OYq8vde7qwvAWGCEtIjkBu6zScGYD8hp3ldDIzVgQa1vtuU8ymWww/4fvcgLuFMmDl0r3NX+ZOCw254+/cLdAA==}
+  pg-mem@3.0.0:
+    resolution: {integrity: sha512-h6jILCbTsF3K9RBP2MRTfH4cClE43xCSDT/z2CbBU7Sed9pp8tFFZRTBROr2zL0oFkHSRxb+gU6xYMiJFn4aAQ==}
     peerDependencies:
       '@mikro-orm/core': '>=4.5.3'
       '@mikro-orm/postgresql': '>=4.5.3'
@@ -5100,6 +5100,8 @@ packages:
       kysely: '>=0.26'
       mikro-orm: '*'
       pg-promise: '>=10.8.7'
+      pg-server: ^0.1.5
+      postgres: ^3.4.4
       slonik: '>=23.0.1'
       typeorm: '>=0.2.29'
     peerDependenciesMeta:
@@ -5114,6 +5116,10 @@ packages:
       mikro-orm:
         optional: true
       pg-promise:
+        optional: true
+      pg-server:
+        optional: true
+      postgres:
         optional: true
       slonik:
         optional: true
@@ -12321,7 +12327,7 @@ snapshots:
 
   pg-int8@1.0.1: {}
 
-  pg-mem@2.9.1(typeorm@0.3.20(pg@8.12.0)(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))):
+  pg-mem@3.0.0(typeorm@0.3.20(pg@8.12.0)(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))):
     dependencies:
       functional-red-black-tree: 1.0.1
       immutable: 4.3.4
