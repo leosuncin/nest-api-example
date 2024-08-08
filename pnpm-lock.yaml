@@ -175,8 +175,8 @@ importers:
         specifier: 0.1.4
         version: 0.1.4
       fast-check:
-        specifier: 3.20.0
-        version: 3.20.0
+        specifier: 3.21.0
+        version: 3.21.0
       husky:
         specifier: 9.1.4
         version: 9.1.4
@@ -3214,8 +3214,8 @@ packages:
   factory.io@0.1.4:
     resolution: {integrity: sha512-HitBeYkQhdK7BKThgj62jDsB4GdASzEhwH9YigSsYRHfr7FJwHzilZeqWy0GTfw52A1HXPWCy0xecQEXFGlV9w==}
 
-  fast-check@3.20.0:
-    resolution: {integrity: sha512-pZIjqLpOZgdSLecec4GKC3Zq5702MZ34upMKxojnNVSWA0K64V3pXOBT1Wdsrc3AphLtzRBbsi8bRWF4TUGmUg==}
+  fast-check@3.21.0:
+    resolution: {integrity: sha512-QpmbiqRFRZ+SIlBJh6xi5d/PgXciUc/xWKc4Vi2RWEHHIRx6oM3f0fWNna++zP9VB5HUBTObUK9gTKQP3vVcrQ==}
     engines: {node: '>=8.0.0'}
 
   fast-decode-uri-component@1.0.1:
@@ -6599,7 +6599,7 @@ snapshots:
       eslint-visitor-keys: 2.1.0
       semver: 6.3.1
 
-  '@babel/eslint-plugin@7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.24.9)(eslint@9.8.0))(eslint@9.8.0)':
+  '@babel/eslint-plugin@7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.25.2)(eslint@9.8.0))(eslint@9.8.0)':
     dependencies:
       '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@9.8.0)
       eslint: 9.8.0
@@ -9768,7 +9768,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.25.2
       '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@9.8.0)
-      '@babel/eslint-plugin': 7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.24.9)(eslint@9.8.0))(eslint@9.8.0)
+      '@babel/eslint-plugin': 7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.25.2)(eslint@9.8.0))(eslint@9.8.0)
       '@babel/plugin-syntax-import-assertions': 7.24.7(@babel/core@7.25.2)
       '@graphql-eslint/eslint-plugin': 3.20.1(@babel/core@7.25.2)(@types/node@20.14.14)(graphql@16.9.0)
       '@next/eslint-plugin-next': 14.2.5
@@ -10350,7 +10350,7 @@ snapshots:
       '@types/lodash.assignin': 4.2.7
       lodash.assignin: 4.2.0
 
-  fast-check@3.20.0:
+  fast-check@3.21.0:
     dependencies:
       pure-rand: 6.1.0
 
