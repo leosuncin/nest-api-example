@@ -86,7 +86,7 @@
     "cspell": "8.14.1",
     "dotenv": "16.4.5",
     "eslint": "9.9.0",
-    "eslint-config-canonical": "43.0.15",
+    "eslint-config-canonical": "43.0.16",
     "eslint-plugin-security": "3.0.1",
     "factory.io": "0.1.4",
     "fast-check": "3.21.0",
