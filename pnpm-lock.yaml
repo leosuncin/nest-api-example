@@ -166,8 +166,8 @@ importers:
         specifier: 9.9.0
         version: 9.9.0(jiti@1.20.0)
       eslint-config-canonical:
-        specifier: 43.0.18
-        version: 43.0.18(@babel/plugin-syntax-flow@7.24.6(@babel/core@7.25.2))(@babel/plugin-transform-react-jsx@7.24.6(@babel/core@7.25.2))(@types/eslint@8.56.10)(@types/node@20.16.1)(eslint@9.9.0(jiti@1.20.0))(jest@29.7.0(@types/node@20.16.1)(ts-node@10.9.2(@types/node@20.16.1)(typescript@5.5.4)))(typescript@5.5.4)
+        specifier: 43.0.19
+        version: 43.0.19(@babel/plugin-syntax-flow@7.24.6(@babel/core@7.25.2))(@babel/plugin-transform-react-jsx@7.24.6(@babel/core@7.25.2))(@types/eslint@8.56.10)(@types/node@20.16.1)(eslint@9.9.0(jiti@1.20.0))(jest@29.7.0(@types/node@20.16.1)(ts-node@10.9.2(@types/node@20.16.1)(typescript@5.5.4)))(typescript@5.5.4)
       eslint-plugin-security:
         specifier: 3.0.1
         version: 3.0.1
@@ -2755,8 +2755,8 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
-  eslint-config-canonical@43.0.18:
-    resolution: {integrity: sha512-yNo1MfWjli3PEjmOrLa7ZiDmwU7aZdAs4sWM9rM3Wyk5N/G0wGxwNm8Zwwm4nJYxKXRvY0alb5q6qDsUL98cHQ==}
+  eslint-config-canonical@43.0.19:
+    resolution: {integrity: sha512-/OV6aGcw9opBmAPsbIobmjGrs950UuSYijHFdA15LMCncFx63NWS4se+5pmwL7Gla2kvoVb3bPyatg6z0Locpw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       eslint: ^8.30.0
@@ -9466,7 +9466,7 @@ snapshots:
       eslint: 9.9.0(jiti@1.20.0)
       semver: 7.6.3
 
-  eslint-config-canonical@43.0.18(@babel/plugin-syntax-flow@7.24.6(@babel/core@7.25.2))(@babel/plugin-transform-react-jsx@7.24.6(@babel/core@7.25.2))(@types/eslint@8.56.10)(@types/node@20.16.1)(eslint@9.9.0(jiti@1.20.0))(jest@29.7.0(@types/node@20.16.1)(ts-node@10.9.2(@types/node@20.16.1)(typescript@5.5.4)))(typescript@5.5.4):
+  eslint-config-canonical@43.0.19(@babel/plugin-syntax-flow@7.24.6(@babel/core@7.25.2))(@babel/plugin-transform-react-jsx@7.24.6(@babel/core@7.25.2))(@types/eslint@8.56.10)(@types/node@20.16.1)(eslint@9.9.0(jiti@1.20.0))(jest@29.7.0(@types/node@20.16.1)(ts-node@10.9.2(@types/node@20.16.1)(typescript@5.5.4)))(typescript@5.5.4):
     dependencies:
       '@babel/core': 7.25.2
       '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@9.9.0(jiti@1.20.0))
