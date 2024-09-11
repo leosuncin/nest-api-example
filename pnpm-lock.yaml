@@ -110,13 +110,13 @@ importers:
         version: 10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.1))
       '@semantic-release/changelog':
         specifier: 6.0.3
-        version: 6.0.3(semantic-release@24.1.0(typescript@5.6.2))
+        version: 6.0.3(semantic-release@24.1.1(typescript@5.6.2))
       '@semantic-release/exec':
         specifier: 6.0.3
-        version: 6.0.3(semantic-release@24.1.0(typescript@5.6.2))
+        version: 6.0.3(semantic-release@24.1.1(typescript@5.6.2))
       '@semantic-release/git':
         specifier: 10.0.1
-        version: 10.0.1(semantic-release@24.1.0(typescript@5.6.2))
+        version: 10.0.1(semantic-release@24.1.1(typescript@5.6.2))
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
@@ -208,8 +208,8 @@ importers:
         specifier: 2.0.1
         version: 2.0.1(prettier@3.3.3)
       semantic-release:
-        specifier: 24.1.0
-        version: 24.1.0(typescript@5.6.2)
+        specifier: 24.1.1
+        version: 24.1.1(typescript@5.6.2)
       sort-package-json:
         specifier: 2.10.1
         version: 2.10.1
@@ -3465,6 +3465,10 @@ packages:
     resolution: {integrity: sha512-ICclEpTLhHj+zCuSb2/usoNXSVkxUSIopre+b1w8NDY9Dntp9LO4vLdHYI336TH8sAqwrRgnSfdkBG2/YpisHA==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
+  hosted-git-info@8.0.0:
+    resolution: {integrity: sha512-4nw3vOVR+vHUOT8+U4giwe2tcGv+R3pwwRidUe67DoMBTjhrfr6rZYJVVwdkBE+Um050SG+X9tf0Jo4fOpn01w==}
+    engines: {node: ^18.17.0 || >=20.5.0}
+
   html-escaper@2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
 
@@ -5350,8 +5354,8 @@ packages:
     resolution: {integrity: sha512-3A6sD0WYP7+QrjbfNA2FN3FsOaGGFoekCVgTyypy53gPxhbkCIjtO6YWgdrfM+n/8sI8JeXZOIxsHjMTNxQ4nQ==}
     engines: {node: ^14.0.0 || >=16.0.0}
 
-  semantic-release@24.1.0:
-    resolution: {integrity: sha512-FwaE2hKDHQn9G6GA7xmqsc9WnsjaFD/ppLM5PUg56Do9oKSCf+vH6cPeb3hEBV/m06n8Sh9vbVqPjHu/1onzQw==}
+  semantic-release@24.1.1:
+    resolution: {integrity: sha512-4Ax2GxD411jUe9IdhOjMLuN+6wAj+aKjvOGngByrpD/iKL+UKN/2puQglhyI4gxNyy9XzEBMzBwbqpnEwbXGEg==}
     engines: {node: '>=20.8.1'}
     hasBin: true
 
@@ -7272,7 +7276,7 @@ snapshots:
       jest-haste-map: 29.7.0
       jest-regex-util: 29.6.3
       jest-util: 29.7.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       pirates: 4.0.5
       slash: 3.0.0
       write-file-atomic: 4.0.2
@@ -7601,15 +7605,15 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@semantic-release/changelog@6.0.3(semantic-release@24.1.0(typescript@5.6.2))':
+  '@semantic-release/changelog@6.0.3(semantic-release@24.1.1(typescript@5.6.2))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
       fs-extra: 11.1.0
       lodash: 4.17.21
-      semantic-release: 24.1.0(typescript@5.6.2)
+      semantic-release: 24.1.1(typescript@5.6.2)
 
-  '@semantic-release/commit-analyzer@13.0.0(semantic-release@24.1.0(typescript@5.6.2))':
+  '@semantic-release/commit-analyzer@13.0.0(semantic-release@24.1.1(typescript@5.6.2))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.0.0
@@ -7618,8 +7622,8 @@ snapshots:
       debug: 4.3.6
       import-from-esm: 1.3.1
       lodash-es: 4.17.21
-      micromatch: 4.0.7
-      semantic-release: 24.1.0(typescript@5.6.2)
+      micromatch: 4.0.8
+      semantic-release: 24.1.1(typescript@5.6.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -7627,7 +7631,7 @@ snapshots:
 
   '@semantic-release/error@4.0.0': {}
 
-  '@semantic-release/exec@6.0.3(semantic-release@24.1.0(typescript@5.6.2))':
+  '@semantic-release/exec@6.0.3(semantic-release@24.1.1(typescript@5.6.2))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
@@ -7635,11 +7639,11 @@ snapshots:
       execa: 5.1.1
       lodash: 4.17.21
       parse-json: 5.2.0
-      semantic-release: 24.1.0(typescript@5.6.2)
+      semantic-release: 24.1.1(typescript@5.6.2)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/git@10.0.1(semantic-release@24.1.0(typescript@5.6.2))':
+  '@semantic-release/git@10.0.1(semantic-release@24.1.1(typescript@5.6.2))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
@@ -7649,11 +7653,11 @@ snapshots:
       lodash: 4.17.21
       micromatch: 4.0.5
       p-reduce: 2.1.0
-      semantic-release: 24.1.0(typescript@5.6.2)
+      semantic-release: 24.1.1(typescript@5.6.2)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@10.0.2(semantic-release@24.1.0(typescript@5.6.2))':
+  '@semantic-release/github@10.0.2(semantic-release@24.1.1(typescript@5.6.2))':
     dependencies:
       '@octokit/core': 6.0.1
       '@octokit/plugin-paginate-rest': 10.0.0(@octokit/core@6.0.1)
@@ -7670,12 +7674,12 @@ snapshots:
       lodash-es: 4.17.21
       mime: 4.0.1
       p-filter: 4.1.0
-      semantic-release: 24.1.0(typescript@5.6.2)
+      semantic-release: 24.1.1(typescript@5.6.2)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/npm@12.0.0(semantic-release@24.1.0(typescript@5.6.2))':
+  '@semantic-release/npm@12.0.0(semantic-release@24.1.1(typescript@5.6.2))':
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
@@ -7688,11 +7692,11 @@ snapshots:
       rc: 1.2.8
       read-pkg: 9.0.0
       registry-auth-token: 5.0.2
-      semantic-release: 24.1.0(typescript@5.6.2)
+      semantic-release: 24.1.1(typescript@5.6.2)
       semver: 7.6.3
       tempy: 3.0.0
 
-  '@semantic-release/release-notes-generator@14.0.0(semantic-release@24.1.0(typescript@5.6.2))':
+  '@semantic-release/release-notes-generator@14.0.0(semantic-release@24.1.1(typescript@5.6.2))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.0.0
@@ -7704,7 +7708,7 @@ snapshots:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-pkg-up: 11.0.0
-      semantic-release: 24.1.0(typescript@5.6.2)
+      semantic-release: 24.1.1(typescript@5.6.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -9469,7 +9473,7 @@ snapshots:
 
   eslint-plugin-import-x@4.2.1(eslint@9.10.0(jiti@1.20.0))(typescript@5.6.2):
     dependencies:
-      '@typescript-eslint/utils': 8.4.0(eslint@9.10.0(jiti@1.20.0))(typescript@5.6.2)
+      '@typescript-eslint/utils': 8.5.0(eslint@9.10.0(jiti@1.20.0))(typescript@5.6.2)
       debug: 4.3.6
       doctrine: 3.0.0
       eslint: 9.10.0(jiti@1.20.0)
@@ -10335,6 +10339,10 @@ snapshots:
     dependencies:
       lru-cache: 10.4.2
 
+  hosted-git-info@8.0.0:
+    dependencies:
+      lru-cache: 10.4.2
+
   html-escaper@2.0.2: {}
 
   http-errors@2.0.0:
@@ -10790,7 +10798,7 @@ snapshots:
       jest-runner: 29.7.0
       jest-util: 29.7.0
       jest-validate: 29.7.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       parse-json: 5.2.0
       pretty-format: 29.7.0
       slash: 3.0.0
@@ -10845,7 +10853,7 @@ snapshots:
       jest-regex-util: 29.6.3
       jest-util: 29.7.0
       jest-worker: 29.7.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       walker: 1.0.8
     optionalDependencies:
       fsevents: 2.3.3
@@ -10869,7 +10877,7 @@ snapshots:
       '@types/stack-utils': 2.0.1
       chalk: 4.1.2
       graceful-fs: 4.2.11
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       pretty-format: 29.7.0
       slash: 3.0.0
       stack-utils: 2.0.5
@@ -12258,13 +12266,13 @@ snapshots:
       refa: 0.12.1
       regexp-ast-analysis: 0.7.1
 
-  semantic-release@24.1.0(typescript@5.6.2):
+  semantic-release@24.1.1(typescript@5.6.2):
     dependencies:
-      '@semantic-release/commit-analyzer': 13.0.0(semantic-release@24.1.0(typescript@5.6.2))
+      '@semantic-release/commit-analyzer': 13.0.0(semantic-release@24.1.1(typescript@5.6.2))
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 10.0.2(semantic-release@24.1.0(typescript@5.6.2))
-      '@semantic-release/npm': 12.0.0(semantic-release@24.1.0(typescript@5.6.2))
-      '@semantic-release/release-notes-generator': 14.0.0(semantic-release@24.1.0(typescript@5.6.2))
+      '@semantic-release/github': 10.0.2(semantic-release@24.1.1(typescript@5.6.2))
+      '@semantic-release/npm': 12.0.0(semantic-release@24.1.1(typescript@5.6.2))
+      '@semantic-release/release-notes-generator': 14.0.0(semantic-release@24.1.1(typescript@5.6.2))
       aggregate-error: 5.0.0
       cosmiconfig: 9.0.0(typescript@5.6.2)
       debug: 4.3.6
@@ -12275,12 +12283,12 @@ snapshots:
       get-stream: 6.0.1
       git-log-parser: 1.2.0
       hook-std: 3.0.0
-      hosted-git-info: 7.0.0
+      hosted-git-info: 8.0.0
       import-from-esm: 1.3.1
       lodash-es: 4.17.21
       marked: 12.0.0
       marked-terminal: 7.0.0(marked@12.0.0)
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       p-each-series: 3.0.0
       p-reduce: 3.0.0
       read-package-up: 11.0.0
