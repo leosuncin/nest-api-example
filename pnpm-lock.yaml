@@ -97,8 +97,8 @@ importers:
         specifier: 19.5.0
         version: 19.5.0
       '@faker-js/faker':
-        specifier: 8.4.1
-        version: 8.4.1
+        specifier: 9.0.1
+        version: 9.0.1
       '@nestjs/cli':
         specifier: 10.4.5
         version: 10.4.5
@@ -771,6 +771,10 @@ packages:
   '@faker-js/faker@8.4.1':
     resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
+
+  '@faker-js/faker@9.0.1':
+    resolution: {integrity: sha512-4mDeYIgM3By7X6t5E6eYwLAa+2h4DeZDF7thhzIg6XB76jeEvMwadYAMCFJL/R4AnEBcAUO9+gL0vhy3s+qvZA==}
+    engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
   '@graphql-eslint/eslint-plugin@3.20.1':
     resolution: {integrity: sha512-RbwVlz1gcYG62sECR1u0XqMh8w5e5XMCCZoMvPQ3nJzEBCTfXLGX727GBoRmSvY1x4gJmqNZ1lsOX7lZY14RIw==}
@@ -6896,6 +6900,8 @@ snapshots:
   '@exodus/schemasafe@1.3.0': {}
 
   '@faker-js/faker@8.4.1': {}
+
+  '@faker-js/faker@9.0.1': {}
 
   '@graphql-eslint/eslint-plugin@3.20.1(@babel/core@7.25.2)(@types/node@20.16.5)(graphql@16.9.0)':
     dependencies:
