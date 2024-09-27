@@ -59,7 +59,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'skip-ci')"
     services:
       postgres:
-        image: postgres:16
+        image: postgres:17
         env:
           POSTGRES_USER: armband
           POSTGRES_PASSWORD: 9HNtQV78T4MmBibJ
