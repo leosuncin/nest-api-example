@@ -45,7 +45,7 @@
     "bcryptjs": "2.4.3",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.1",
-    "cookie-parser": "1.4.6",
+    "cookie-parser": "1.4.7",
     "hibp": "14.1.2",
     "lru-cache": "11.0.1",
     "nestjs-typeorm-paginate": "4.0.4",
