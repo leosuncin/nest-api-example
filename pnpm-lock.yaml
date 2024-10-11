@@ -199,8 +199,8 @@ importers:
         specifier: 3.7.1
         version: 3.7.1
       pg-mem:
-        specifier: 3.0.2
-        version: 3.0.2(typeorm@0.3.20(pg@8.13.0)(ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.3)))
+        specifier: 3.0.3
+        version: 3.0.3(typeorm@0.3.20(pg@8.13.0)(ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.3)))
       prettier:
         specifier: 3.3.3
         version: 3.3.3
@@ -4960,8 +4960,8 @@ packages:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
 
-  pg-mem@3.0.2:
-    resolution: {integrity: sha512-fbf55spR1nNWfxBm28h9Cx6lC5VSubqBjbTMkCMORtGJPiBD3GTDyHAntUm3s5eSt4/ork7HvpNmeWgkgRmDWg==}
+  pg-mem@3.0.3:
+    resolution: {integrity: sha512-Bwg8T46AEMjAmqFT5KIuR2ukRE4GzkVSic7U8CAXqlzFr631N9fTGo4JqNgBHrRCT1qR4Nt2bjZA1AL9JhP4uw==}
     peerDependencies:
       '@mikro-orm/core': '>=4.5.3'
       '@mikro-orm/postgresql': '>=4.5.3'
@@ -11948,7 +11948,7 @@ snapshots:
 
   pg-int8@1.0.1: {}
 
-  pg-mem@3.0.2(typeorm@0.3.20(pg@8.13.0)(ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.3))):
+  pg-mem@3.0.3(typeorm@0.3.20(pg@8.13.0)(ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.3))):
     dependencies:
       functional-red-black-tree: 1.0.1
       immutable: 4.3.4
