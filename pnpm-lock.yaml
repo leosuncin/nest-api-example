@@ -196,8 +196,8 @@ importers:
         specifier: 1.16.1
         version: 1.16.1(@types/express@5.0.0)(@types/node@20.16.13)
       pactum:
-        specifier: 3.7.1
-        version: 3.7.1
+        specifier: 3.7.2
+        version: 3.7.2
       pg-mem:
         specifier: 3.0.3
         version: 3.0.3(typeorm@0.3.20(pg@8.13.0)(ts-node@10.9.2(@types/node@20.16.13)(typescript@5.6.3)))
@@ -2062,8 +2062,8 @@ packages:
   caniuse-lite@1.0.30001668:
     resolution: {integrity: sha512-nWLrdxqCdblixUO+27JtGJJE/txpJlyUy5YN1u53wLZkP0emYCo5zgS6QYft7VUYR42LGgi/S5hdLZTrnyIddw==}
 
-  centra@2.6.0:
-    resolution: {integrity: sha512-dgh+YleemrT8u85QL11Z6tYhegAs3MMxsaWAq/oXeAmYJ7VxL3SI9TZtnfaEvNDMAPolj25FXIb3S+HCI4wQaQ==}
+  centra@2.7.0:
+    resolution: {integrity: sha512-PbFMgMSrmgx6uxCdm57RUos9Tc3fclMvhLSATYN39XsDV29B89zZ3KA89jmY0vwSGazyU+uerqwa6t+KaodPcg==}
 
   chalk-template@1.1.0:
     resolution: {integrity: sha512-T2VJbcDuZQ0Tb2EWwSotMPJjgpy1/tGee1BTpUNsGZ/qgNjV2t7Mvu+d4600U564nbLesN1x2dPL+xii174Ekg==}
@@ -3226,6 +3226,15 @@ packages:
 
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
+
+  follow-redirects@1.15.9:
+    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
 
   for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -4860,8 +4869,8 @@ packages:
   pactum-matchers@1.1.7:
     resolution: {integrity: sha512-RqwewcUje6vhcYQGbPfdSXkcp/Vtwn4WmmTWLSmqp0CGxBroCEqRg3JMIjkjQTZCd2VmG+tTcQw+n4P/iuqv3Q==}
 
-  pactum@3.7.1:
-    resolution: {integrity: sha512-r+R1dMy2MfRCQpAHohMyICusiMz14t0E+bhnLDScl2x4lXJKQAvQUGV/WWKUUxN2DS0Jdm0PUj6KjblfcSk1GA==}
+  pactum@3.7.2:
+    resolution: {integrity: sha512-VomPB7WZaK3N3rE/3WLhOq6a15V9WRUoxBYWP3Pio2mG1umfaIOzBzSWef+bUx2TO6xIMTwH/Ngr8mWz/1H8Xg==}
     engines: {node: '>=10'}
 
   parent-module@1.0.1:
@@ -5046,10 +5055,9 @@ packages:
   pgsql-ast-parser@12.0.1:
     resolution: {integrity: sha512-pe8C6Zh5MsS+o38WlSu18NhrTjAv1UNMeDTs2/Km2ZReZdYBYtwtbWGZKK2BM2izv5CrQpbmP0oI10wvHOwv4A==}
 
-  phin@3.7.0:
-    resolution: {integrity: sha512-DqnVNrpYhKGBZppNKprD+UJylMeEKOZxHgPB+ZP6mGzf3uA2uox4Ep9tUm+rUc8WLIdHT3HcAE4X8fhwQA9JKg==}
+  phin@3.7.1:
+    resolution: {integrity: sha512-GEazpTWwTZaEQ9RhL7Nyz0WwqilbqgLahDM3D0hxWwmVDI52nXEybHqiN6/elwpkJBhcuj+WbBu+QfT0uhPGfQ==}
     engines: {node: '>= 8'}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   picocolors@1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
@@ -8702,7 +8710,11 @@ snapshots:
 
   caniuse-lite@1.0.30001668: {}
 
-  centra@2.6.0: {}
+  centra@2.7.0:
+    dependencies:
+      follow-redirects: 1.15.9
+    transitivePeerDependencies:
+      - debug
 
   chalk-template@1.1.0:
     dependencies:
@@ -10162,6 +10174,8 @@ snapshots:
   flat@5.0.2: {}
 
   flatted@3.3.1: {}
+
+  follow-redirects@1.15.9: {}
 
   for-each@0.3.3:
     dependencies:
@@ -11887,7 +11901,7 @@ snapshots:
 
   pactum-matchers@1.1.7: {}
 
-  pactum@3.7.1:
+  pactum@3.7.2:
     dependencies:
       '@exodus/schemasafe': 1.3.0
       deep-override: 1.0.2
@@ -11898,8 +11912,10 @@ snapshots:
       openapi-fuzzer-core: 1.0.6
       pactum-matchers: 1.1.7
       parse-graphql: 1.0.0
-      phin: 3.7.0
+      phin: 3.7.1
       polka: 0.5.2
+    transitivePeerDependencies:
+      - debug
 
   parent-module@1.0.1:
     dependencies:
@@ -12051,9 +12067,11 @@ snapshots:
       moo: 0.5.1
       nearley: 2.20.1
 
-  phin@3.7.0:
+  phin@3.7.1:
     dependencies:
-      centra: 2.6.0
+      centra: 2.7.0
+    transitivePeerDependencies:
+      - debug
 
   picocolors@1.0.1: {}
 
