@@ -130,8 +130,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0
       '@types/jest':
-        specifier: 29.5.13
-        version: 29.5.13
+        specifier: 29.5.14
+        version: 29.5.14
       '@types/jest-dev-server':
         specifier: 5.0.3
         version: 5.0.3
@@ -1455,8 +1455,8 @@ packages:
   '@types/jest-dev-server@5.0.3':
     resolution: {integrity: sha512-VtCh265b+PFtXH35tlqpizquQ/QYhm5CN7Lk1E30S4sMM0C8LJel0/OxGq/JVx8q/PlZohyMaTC0jiCMGmv8gg==}
 
-  '@types/jest@29.5.13':
-    resolution: {integrity: sha512-wd+MVEZCHt23V0/L642O5APvspWply/rGY5BcW4SUETo2UzPU3Z26qr8jC2qxpimI2jjx9h7+2cj2FwIr01bXg==}
+  '@types/jest@29.5.14':
+    resolution: {integrity: sha512-ZN+4sdnLUbo8EVvVc2ao0GFW6oVrQRPn4K2lglySj7APvSrgzxHiNNK99us4WDMi57xxA2yggblIAMNhXOotLQ==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -7973,7 +7973,7 @@ snapshots:
       '@types/node': 20.16.14
       '@types/wait-on': 5.3.1
 
-  '@types/jest@29.5.13':
+  '@types/jest@29.5.14':
     dependencies:
       expect: 29.7.0
       pretty-format: 29.7.0
