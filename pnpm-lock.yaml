@@ -139,8 +139,8 @@ importers:
         specifier: 20.17.2
         version: 20.17.2
       '@types/passport':
-        specifier: 1.0.16
-        version: 1.0.16
+        specifier: 1.0.17
+        version: 1.0.17
       '@types/passport-jwt':
         specifier: 4.0.1
         version: 4.0.1
@@ -1494,8 +1494,8 @@ packages:
   '@types/passport-strategy@0.2.35':
     resolution: {integrity: sha512-o5D19Jy2XPFoX2rKApykY15et3Apgax00RRLf0RUotPDUsYrQa7x4howLYr9El2mlUApHmCMv5CZ1IXqKFQ2+g==}
 
-  '@types/passport@1.0.16':
-    resolution: {integrity: sha512-FD0qD5hbPWQzaM0wHUnJ/T0BBCJBxCeemtnCwc/ThhTg3x9jfrAcRUmj5Dopza+MfFS9acTe3wk7rcVnRIp/0A==}
+  '@types/passport@1.0.17':
+    resolution: {integrity: sha512-aciLyx+wDwT2t2/kJGJR2AEeBz0nJU4WuRX04Wu9Dqc5lSUtwu0WERPHYsLhF9PtseiAMPBGNUOtFjxZ56prsg==}
 
   '@types/qs@6.9.7':
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
@@ -8008,9 +8008,9 @@ snapshots:
   '@types/passport-strategy@0.2.35':
     dependencies:
       '@types/express': 5.0.0
-      '@types/passport': 1.0.16
+      '@types/passport': 1.0.17
 
-  '@types/passport@1.0.16':
+  '@types/passport@1.0.17':
     dependencies:
       '@types/express': 5.0.0
 
