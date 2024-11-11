@@ -166,8 +166,8 @@ importers:
         specifier: 9.14.0
         version: 9.14.0(jiti@1.20.0)
       eslint-config-canonical:
-        specifier: 44.3.19
-        version: 44.3.19(@babel/core@7.25.2)(@types/eslint@8.56.10)(@types/node@22.9.0)(eslint-plugin-import-x@4.4.0(eslint@9.14.0(jiti@1.20.0))(typescript@5.6.3))(eslint@9.14.0(jiti@1.20.0))(jest@29.7.0(@types/node@22.9.0)(ts-node@10.9.2(@types/node@22.9.0)(typescript@5.6.3)))(typescript@5.6.3)
+        specifier: 44.3.27
+        version: 44.3.27(@babel/core@7.25.2)(@types/eslint@8.56.10)(@types/node@22.9.0)(eslint-plugin-import-x@4.4.0(eslint@9.14.0(jiti@1.20.0))(typescript@5.6.3))(eslint@9.14.0(jiti@1.20.0))(jest@29.7.0(@types/node@22.9.0)(ts-node@10.9.2(@types/node@22.9.0)(typescript@5.6.3)))(typescript@5.6.3)
       eslint-plugin-security:
         specifier: 3.0.1
         version: 3.0.1
@@ -2709,8 +2709,8 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
-  eslint-config-canonical@44.3.19:
-    resolution: {integrity: sha512-1itBkuykpT3hEknpBSgme0goSkQRODbVqg8BvMek/sfBWzs3PsQVz0kMD0Q4QZn1fhdwf1yVWCXgWafx69cgFg==}
+  eslint-config-canonical@44.3.27:
+    resolution: {integrity: sha512-1cAs2OJS5hHUICuMcoyc+kIdm4uRiSsqd98yIZ+c6aar9mwM/uobTf0SI5gNUer/hHGs+okg4/2gLoKSzRyrdg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       eslint: ^9
@@ -9324,7 +9324,7 @@ snapshots:
       eslint: 9.14.0(jiti@1.20.0)
       semver: 7.6.3
 
-  eslint-config-canonical@44.3.19(@babel/core@7.25.2)(@types/eslint@8.56.10)(@types/node@22.9.0)(eslint-plugin-import-x@4.4.0(eslint@9.14.0(jiti@1.20.0))(typescript@5.6.3))(eslint@9.14.0(jiti@1.20.0))(jest@29.7.0(@types/node@22.9.0)(ts-node@10.9.2(@types/node@22.9.0)(typescript@5.6.3)))(typescript@5.6.3):
+  eslint-config-canonical@44.3.27(@babel/core@7.25.2)(@types/eslint@8.56.10)(@types/node@22.9.0)(eslint-plugin-import-x@4.4.0(eslint@9.14.0(jiti@1.20.0))(typescript@5.6.3))(eslint@9.14.0(jiti@1.20.0))(jest@29.7.0(@types/node@22.9.0)(ts-node@10.9.2(@types/node@22.9.0)(typescript@5.6.3)))(typescript@5.6.3):
     dependencies:
       '@graphql-eslint/eslint-plugin': 3.20.1(@babel/core@7.25.2)(@types/node@22.9.0)(graphql@16.9.0)
       '@next/eslint-plugin-next': 14.2.15
