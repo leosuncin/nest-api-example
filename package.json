@@ -95,7 +95,7 @@
     "jest-create-mock-instance": "2.0.0",
     "lint-staged": "15.2.11",
     "nock": "13.5.6",
-    "node-mocks-http": "1.16.1",
+    "node-mocks-http": "1.16.2",
     "pactum": "3.7.4",
     "pg-mem": "3.0.4",
     "prettier": "3.4.2",
