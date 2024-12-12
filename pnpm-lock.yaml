@@ -196,8 +196,8 @@ importers:
         specifier: 1.16.2
         version: 1.16.2(@types/express@5.0.0)(@types/node@22.10.2)
       pactum:
-        specifier: 3.7.4
-        version: 3.7.4
+        specifier: 3.7.5
+        version: 3.7.5
       pg-mem:
         specifier: 3.0.4
         version: 3.0.4(typeorm@0.3.20(pg@8.13.1)(ts-node@10.9.2(@types/node@22.10.2)(typescript@5.7.2)))
@@ -4813,8 +4813,8 @@ packages:
   pactum-matchers@1.1.7:
     resolution: {integrity: sha512-RqwewcUje6vhcYQGbPfdSXkcp/Vtwn4WmmTWLSmqp0CGxBroCEqRg3JMIjkjQTZCd2VmG+tTcQw+n4P/iuqv3Q==}
 
-  pactum@3.7.4:
-    resolution: {integrity: sha512-CoPL9YAGpgNsGuZ1Mg4IsISt0PTk5bSw/8oisk9hpQFbhFxHjoxqsU19CXxsctWoXL54B7V4A7U97DAWOU4RNA==}
+  pactum@3.7.5:
+    resolution: {integrity: sha512-0aeqJ8m8Ro0y3aJLGAEqAwmo2gc6FIwKmjijfCkRCWRY7YkXn8M6pZw2/gD0Z23YkfZ7Nov4ab6f8Ficm+U6fA==}
     engines: {node: '>=10'}
 
   parent-module@1.0.1:
@@ -11711,7 +11711,7 @@ snapshots:
 
   pactum-matchers@1.1.7: {}
 
-  pactum@3.7.4:
+  pactum@3.7.5:
     dependencies:
       '@exodus/schemasafe': 1.3.0
       deep-override: 1.0.2
