@@ -85,7 +85,7 @@
     "@typescript-eslint/parser": "8.18.0",
     "cspell": "8.16.1",
     "dotenv": "16.4.7",
-    "eslint": "9.16.0",
+    "eslint": "9.17.0",
     "eslint-config-canonical": "44.3.34",
     "eslint-plugin-security": "3.0.1",
     "factory.io": "0.1.4",
