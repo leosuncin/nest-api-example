@@ -110,7 +110,7 @@
     "typeorm-extension": "2.8.1",
     "typescript": "5.7.2"
   },
-  "packageManager": "pnpm@9.15.2",
+  "packageManager": "pnpm@9.15.3",
   "engines": {
     "node": ">=20"
   }
