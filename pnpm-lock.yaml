@@ -51,8 +51,8 @@ importers:
         specifier: 1.4.7
         version: 1.4.7
       hibp:
-        specifier: 14.1.2
-        version: 14.1.2
+        specifier: 14.1.3
+        version: 14.1.3
       lru-cache:
         specifier: 11.0.2
         version: 11.0.2
@@ -3498,8 +3498,8 @@ packages:
     resolution: {integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==}
     engines: {node: '>=8'}
 
-  hibp@14.1.2:
-    resolution: {integrity: sha512-DAMzWEEsjKFZMv4g8mDp1qPPo4FPmwLPhTlnJ6I1sBiC0x5FhjSyLhwvGA90uHCl8/6ckHwlgNuoinYrBCh3cQ==}
+  hibp@14.1.3:
+    resolution: {integrity: sha512-ZTujZFDZxRTe2r6jO+YS2Lj+hLMU/rlE9FD484iKupvQcceBCMf9J6By36n3rEKlTi990TRmGtTLK3BXHQ4m5A==}
     engines: {node: '>= 18.0.0'}
 
   highlight.js@10.7.3:
@@ -9571,8 +9571,8 @@ snapshots:
   eslint-plugin-import-x@4.6.1(eslint@9.18.0(jiti@2.4.1))(typescript@5.7.3):
     dependencies:
       '@types/doctrine': 0.0.9
-      '@typescript-eslint/scope-manager': 8.20.0
-      '@typescript-eslint/utils': 8.20.0(eslint@9.18.0(jiti@2.4.1))(typescript@5.7.3)
+      '@typescript-eslint/scope-manager': 8.21.0
+      '@typescript-eslint/utils': 8.21.0(eslint@9.18.0(jiti@2.4.1))(typescript@5.7.3)
       debug: 4.4.0
       doctrine: 3.0.0
       enhanced-resolve: 5.17.1
@@ -10427,7 +10427,7 @@ snapshots:
 
   hexoid@1.0.0: {}
 
-  hibp@14.1.2:
+  hibp@14.1.3:
     dependencies:
       jssha: 3.3.1
       undici: 6.14.1
