@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@epic-web/cachified':
-        specifier: 5.2.1
-        version: 5.2.1
+        specifier: 5.5.0
+        version: 5.5.0
       '@nestjs/common':
         specifier: 10.4.15
         version: 10.4.15(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
@@ -736,8 +736,8 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@epic-web/cachified@5.2.1':
-    resolution: {integrity: sha512-8tHv9uEMPNK0L+VXMFmEoxWEqr5sGEi0CB+O00jzcPCRxl8kH16cOx4OS10B3/I2dEDp+GzUM1nFi4+OndOG/A==}
+  '@epic-web/cachified@5.5.0':
+    resolution: {integrity: sha512-5XA70gGs9LmH5P3HBDxzNOYAfLjJViMpHHqASuHp1WkZSPAYHkbFWykn9UHn1EFOQch/HdAoUFKIoSBJQakSgA==}
 
   '@es-joy/jsdoccomment@0.49.0':
     resolution: {integrity: sha512-xjZTSFgECpb9Ohuk5yMX5RhUEbfeQcuOp8IF60e+wyzWEF0M5xeSgqsfLtvPEX8BIyOX9saZqzuGPmZ8oWc+5Q==}
@@ -6893,7 +6893,7 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@epic-web/cachified@5.2.1': {}
+  '@epic-web/cachified@5.5.0': {}
 
   '@es-joy/jsdoccomment@0.49.0':
     dependencies:
