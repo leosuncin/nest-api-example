@@ -42,7 +42,7 @@
     "@nestjs/platform-express": "10.4.15",
     "@nestjs/terminus": "10.3.0",
     "@nestjs/typeorm": "11.0.0",
-    "bcryptjs": "2.4.3",
+    "bcryptjs": "3.0.0",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.1",
     "cookie-parser": "1.4.7",
