@@ -108,7 +108,7 @@
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "typeorm-extension": "2.8.1",
-    "typescript": "5.7.3"
+    "typescript": "5.8.2"
   },
   "packageManager": "pnpm@10.5.2",
   "engines": {
