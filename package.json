@@ -98,7 +98,7 @@
     "node-mocks-http": "1.16.2",
     "pactum": "3.7.6",
     "pg-mem": "3.0.5",
-    "prettier": "3.5.2",
+    "prettier": "3.5.3",
     "prettier-plugin-toml": "2.0.2",
     "semantic-release": "24.2.3",
     "sort-package-json": "2.15.1",
