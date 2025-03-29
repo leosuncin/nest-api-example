@@ -205,8 +205,8 @@ importers:
         specifier: 3.5.3
         version: 3.5.3
       prettier-plugin-toml:
-        specifier: 2.0.2
-        version: 2.0.2(prettier@3.5.3)
+        specifier: 2.0.3
+        version: 2.0.3(prettier@3.5.3)
       semantic-release:
         specifier: 24.2.3
         version: 24.2.3(typescript@5.8.2)
@@ -3857,9 +3857,6 @@ packages:
     resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
     engines: {node: '>= 0.4'}
 
-  is-core-module@2.13.1:
-    resolution: {integrity: sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==}
-
   is-core-module@2.16.1:
     resolution: {integrity: sha512-UfoeMA6fIJ8wTYFEUjelnaGI67v6+N7qXJEvQuIGa99l4xsCruSYOVSQ0uPANn4dAzm8lkYPaKLrrijLq7x23w==}
     engines: {node: '>= 0.4'}
@@ -5294,8 +5291,8 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
-  prettier-plugin-toml@2.0.2:
-    resolution: {integrity: sha512-tUIIhyfdVX5DMsLGKX/2qaEwi3W48OkUSR7XC91PRI5jFzhexmaYWkrSP1Xh/eWUcEc0TVMQenM3lB09xLQstQ==}
+  prettier-plugin-toml@2.0.3:
+    resolution: {integrity: sha512-2KSzvgWiyF+uaGvX6wK+UENNjhvuSh+HlJym9tY+OyIk3L+yjlDUd0wHP1ZHNC+u8su4UZj2QVjJhq5sZ16zrQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       prettier: ^3.0.3
@@ -10958,10 +10955,6 @@ snapshots:
 
   is-callable@1.2.7: {}
 
-  is-core-module@2.13.1:
-    dependencies:
-      hasown: 2.0.2
-
   is-core-module@2.16.1:
     dependencies:
       hasown: 2.0.2
@@ -12408,7 +12401,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-toml@2.0.2(prettier@3.5.3):
+  prettier-plugin-toml@2.0.3(prettier@3.5.3):
     dependencies:
       '@taplo/lib': 0.4.0-alpha.2
       prettier: 3.5.3
@@ -12620,7 +12613,7 @@ snapshots:
 
   resolve@1.22.8:
     dependencies:
-      is-core-module: 2.13.1
+      is-core-module: 2.16.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
