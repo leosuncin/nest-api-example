@@ -83,7 +83,7 @@
     "@types/validator": "13.15.0",
     "@typescript-eslint/eslint-plugin": "8.31.0",
     "@typescript-eslint/parser": "8.31.0",
-    "cspell": "8.19.2",
+    "cspell": "8.19.3",
     "dotenv": "16.5.0",
     "eslint": "9.25.1",
     "eslint-config-canonical": "44.9.5",
