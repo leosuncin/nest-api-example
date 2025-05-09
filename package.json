@@ -99,7 +99,7 @@
     "pactum": "3.7.6",
     "pg-mem": "3.0.5",
     "prettier": "3.5.3",
-    "prettier-plugin-toml": "2.0.4",
+    "prettier-plugin-toml": "2.0.5",
     "semantic-release": "24.2.3",
     "sort-package-json": "3.2.1",
     "supertest": "7.1.0",
