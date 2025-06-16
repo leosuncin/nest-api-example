@@ -74,7 +74,7 @@
     "@types/bcryptjs": "3.0.0",
     "@types/cookie-parser": "1.4.9",
     "@types/express": "5.0.3",
-    "@types/jest": "29.5.14",
+    "@types/jest": "30.0.0",
     "@types/jest-dev-server": "5.0.3",
     "@types/node": "22.15.32",
     "@types/passport": "1.0.17",
