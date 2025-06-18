@@ -34,10 +34,10 @@ importers:
         version: 10.4.19(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)
       '@nestjs/terminus':
         specifier: 10.3.0
-        version: 10.3.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(@nestjs/typeorm@11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))))(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
+        version: 10.3.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(@nestjs/typeorm@11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))))(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
       '@nestjs/typeorm':
         specifier: 11.0.0
-        version: 11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
+        version: 11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
       bcryptjs:
         specifier: 3.0.2
         version: 3.0.2
@@ -58,7 +58,7 @@ importers:
         version: 11.1.0
       nestjs-typeorm-paginate:
         specifier: 4.1.0
-        version: 4.1.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
+        version: 4.1.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
       normalize-email:
         specifier: 1.1.1
         version: 1.1.1
@@ -69,8 +69,8 @@ importers:
         specifier: 4.0.1
         version: 4.0.1
       pg:
-        specifier: 8.16.0
-        version: 8.16.0
+        specifier: 8.16.1
+        version: 8.16.1
       reflect-metadata:
         specifier: 0.2.2
         version: 0.2.2
@@ -88,7 +88,7 @@ importers:
         version: 1.3.3
       typeorm:
         specifier: 0.3.24
-        version: 0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
+        version: 0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
     devDependencies:
       '@commitlint/cli':
         specifier: 19.8.1
@@ -200,7 +200,7 @@ importers:
         version: 3.7.6
       pg-mem:
         specifier: 3.0.5
-        version: 3.0.5(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
+        version: 3.0.5(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -230,7 +230,7 @@ importers:
         version: 4.2.0
       typeorm-extension:
         specifier: 2.8.1
-        version: 2.8.1(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
+        version: 2.8.1(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -5529,11 +5529,11 @@ packages:
     resolution: {integrity: sha512-nri2TO5JE3/mRryik9LlHFT53cgHfRK0Lt0BAZQXku/AW3E6XLt2GaY8siWi7dvW/m1z0ecn+J+bpDa9ZN3IsQ==}
     engines: {node: '>=18'}
 
-  pg-cloudflare@1.2.5:
-    resolution: {integrity: sha512-OOX22Vt0vOSRrdoUPKJ8Wi2OpE/o/h9T8X1s4qSkCedbNah9ei2W2765be8iMVxQUsvgT7zIAT2eIa9fs5+vtg==}
+  pg-cloudflare@1.2.6:
+    resolution: {integrity: sha512-uxmJAnmIgmYgnSFzgOf2cqGQBzwnRYcrEgXuFjJNEkpedEIPBSEzxY7ph4uA9k1mI+l/GR0HjPNS6FKNZe8SBQ==}
 
-  pg-connection-string@2.9.0:
-    resolution: {integrity: sha512-P2DEBKuvh5RClafLngkAuGe9OUlFV7ebu8w1kmaaOgPcpJd1RIFh7otETfI6hAR8YupOLFTY7nuvvIn7PLciUQ==}
+  pg-connection-string@2.9.1:
+    resolution: {integrity: sha512-nkc6NpDcvPVpZXxrreI/FOtX3XemeLl8E0qFr6F2Lrm/I8WOnaWNhIPK2Z7OHpw7gh5XJThi6j6ppgNoaT1w4w==}
 
   pg-int8@1.0.1:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
@@ -5574,21 +5574,21 @@ packages:
       typeorm:
         optional: true
 
-  pg-pool@3.10.0:
-    resolution: {integrity: sha512-DzZ26On4sQ0KmqnO34muPcmKbhrjmyiO4lCCR0VwEd7MjmiKf5NTg/6+apUEu0NF7ESa37CGzFxH513CoUmWnA==}
+  pg-pool@3.10.1:
+    resolution: {integrity: sha512-Tu8jMlcX+9d8+QVzKIvM/uJtp07PKr82IUOYEphaWcoBhIYkoHpLXN3qO59nAI11ripznDsEzEv8nUxBVWajGg==}
     peerDependencies:
       pg: '>=8.0'
 
-  pg-protocol@1.10.0:
-    resolution: {integrity: sha512-IpdytjudNuLv8nhlHs/UrVBhU0e78J0oIS/0AVdTbWxSOkFUVdsHC/NrorO6nXsQNDTT1kzDSOMJubBQviX18Q==}
+  pg-protocol@1.10.1:
+    resolution: {integrity: sha512-9YS3ZonDj0Lxny//aF0ITPdfrEPgKWCJvONsSXAaIUhgpzlzl5JgaZNlbTFxvYNfm2terGEnHeOSUlF6qRGBzw==}
 
   pg-types@2.2.0:
     resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
     engines: {node: '>=4'}
 
-  pg@8.16.0:
-    resolution: {integrity: sha512-7SKfdvP8CTNXjMUzfcVTaI+TDzBEeaUnVwiVGZQD1Hh33Kpev7liQba9uLd4CfN8r9mCVsD0JIpq03+Unpz+kg==}
-    engines: {node: '>= 8.0.0'}
+  pg@8.16.1:
+    resolution: {integrity: sha512-5n6e7MgF5ABRsssOsX9xC95p+NUuhgDQDBSsrKSZJjYVqZHGyrmJuknym2IbVhGtzV9siBdzH9SEIQAuWF+sdg==}
+    engines: {node: '>= 16.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
     peerDependenciesMeta:
@@ -8317,7 +8317,7 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@nestjs/terminus@10.3.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(@nestjs/typeorm@11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))))(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))':
+  '@nestjs/terminus@10.3.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(@nestjs/typeorm@11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))))(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))':
     dependencies:
       '@nestjs/common': 11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 10.4.19(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -8326,8 +8326,8 @@ snapshots:
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
     optionalDependencies:
-      '@nestjs/typeorm': 11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
-      typeorm: 0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
+      '@nestjs/typeorm': 11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
+      typeorm: 0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
 
   '@nestjs/testing@10.4.19(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(@nestjs/platform-express@10.4.19)':
     dependencies:
@@ -8337,13 +8337,13 @@ snapshots:
     optionalDependencies:
       '@nestjs/platform-express': 10.4.19(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)
 
-  '@nestjs/typeorm@11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))':
+  '@nestjs/typeorm@11.0.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))':
     dependencies:
       '@nestjs/common': 11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 10.4.19(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@10.4.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
-      typeorm: 0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
+      typeorm: 0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
 
   '@next/eslint-plugin-next@15.2.4':
     dependencies:
@@ -8873,7 +8873,7 @@ snapshots:
   '@typescript-eslint/project-service@8.34.0(typescript@5.8.3)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.34.0(typescript@5.8.3)
-      '@typescript-eslint/types': 8.34.0
+      '@typescript-eslint/types': 8.34.1
       debug: 4.4.1
       typescript: 5.8.3
     transitivePeerDependencies:
@@ -10651,7 +10651,7 @@ snapshots:
 
   eslint-plugin-import-x@4.15.2(@typescript-eslint/utils@8.34.1(eslint@9.29.0(jiti@2.4.1))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.1)):
     dependencies:
-      '@typescript-eslint/types': 8.34.0
+      '@typescript-eslint/types': 8.34.1
       comment-parser: 1.4.1
       debug: 4.4.1
       eslint: 9.29.0(jiti@2.4.1)
@@ -12720,10 +12720,10 @@ snapshots:
 
   nerf-dart@1.0.0: {}
 
-  nestjs-typeorm-paginate@4.1.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))):
+  nestjs-typeorm-paginate@4.1.0(@nestjs/common@11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2))(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))):
     dependencies:
       '@nestjs/common': 11.1.3(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      typeorm: 0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
+      typeorm: 0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
 
   no-case@3.0.4:
     dependencies:
@@ -13069,14 +13069,14 @@ snapshots:
 
   peek-readable@7.0.0: {}
 
-  pg-cloudflare@1.2.5:
+  pg-cloudflare@1.2.6:
     optional: true
 
-  pg-connection-string@2.9.0: {}
+  pg-connection-string@2.9.1: {}
 
   pg-int8@1.0.1: {}
 
-  pg-mem@3.0.5(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))):
+  pg-mem@3.0.5(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))):
     dependencies:
       functional-red-black-tree: 1.0.1
       immutable: 4.3.4
@@ -13086,13 +13086,13 @@ snapshots:
       object-hash: 2.2.0
       pgsql-ast-parser: 12.0.1
     optionalDependencies:
-      typeorm: 0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
+      typeorm: 0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
 
-  pg-pool@3.10.0(pg@8.16.0):
+  pg-pool@3.10.1(pg@8.16.1):
     dependencies:
-      pg: 8.16.0
+      pg: 8.16.1
 
-  pg-protocol@1.10.0: {}
+  pg-protocol@1.10.1: {}
 
   pg-types@2.2.0:
     dependencies:
@@ -13102,15 +13102,15 @@ snapshots:
       postgres-date: 1.0.7
       postgres-interval: 1.2.0
 
-  pg@8.16.0:
+  pg@8.16.1:
     dependencies:
-      pg-connection-string: 2.9.0
-      pg-pool: 3.10.0(pg@8.16.0)
-      pg-protocol: 1.10.0
+      pg-connection-string: 2.9.1
+      pg-pool: 3.10.1(pg@8.16.1)
+      pg-protocol: 1.10.1
       pg-types: 2.2.0
       pgpass: 1.0.5
     optionalDependencies:
-      pg-cloudflare: 1.2.5
+      pg-cloudflare: 1.2.6
 
   pgpass@1.0.5:
     dependencies:
@@ -14165,7 +14165,7 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typeorm-extension@2.8.1(typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))):
+  typeorm-extension@2.8.1(typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))):
     dependencies:
       '@faker-js/faker': 8.4.1
       locter: 1.1.0
@@ -14173,10 +14173,10 @@ snapshots:
       rapiq: 0.8.1
       reflect-metadata: 0.1.14
       smob: 1.4.0
-      typeorm: 0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
+      typeorm: 0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
       yargs: 17.7.2
 
-  typeorm@0.3.24(pg@8.16.0)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)):
+  typeorm@0.3.24(pg@8.16.1)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)):
     dependencies:
       '@sqltools/formatter': 1.2.5
       ansis: 3.17.0
@@ -14194,7 +14194,7 @@ snapshots:
       uuid: 11.1.0
       yargs: 17.7.2
     optionalDependencies:
-      pg: 8.16.0
+      pg: 8.16.1
       ts-node: 10.9.2(@types/node@22.15.32)(typescript@5.8.3)
     transitivePeerDependencies:
       - babel-plugin-macros
