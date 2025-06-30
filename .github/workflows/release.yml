@@ -15,7 +15,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install PNPM 🧰
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: latest
       - name: Install Node.js LTS 📜
