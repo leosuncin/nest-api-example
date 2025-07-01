@@ -34,7 +34,7 @@ describe('CreateComment DTO', () => {
       fc.asyncProperty(
         fc
           .record({
-            article: fc.uuidV(4),
+            article: fc.uuid({ version: 4 }),
             body: fc.string({ minLength: 1 }),
           })
           .map((data) => plainToInstance(CreateComment, data)),

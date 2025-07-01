@@ -44,15 +44,11 @@ describe('Register user validations', () => {
   it('should be validated', async () => {
     await fc.assert(
       fc.asyncProperty(
-        fc
-          .integer()
-          .noBias()
-          .noShrink()
-          .map((seed) => {
-            faker.seed(seed);
+        fc.noShrink(fc.noBias(fc.integer())).map((seed) => {
+          faker.seed(seed);
 
-            return registerUserFactory.buildOne();
-          }),
+          return registerUserFactory.buildOne();
+        }),
         async (data) => {
           const errors = await validate(data);
 

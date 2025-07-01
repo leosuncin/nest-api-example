@@ -34,18 +34,14 @@ describe('CreateArticle', () => {
   it('should pass with valid data', async () => {
     await fc.assert(
       fc.asyncProperty(
-        fc
-          .integer()
-          .noBias()
-          .noShrink()
-          .map((seed) => {
-            faker.seed(seed);
+        fc.noShrink(fc.noBias(fc.integer())).map((seed) => {
+          faker.seed(seed);
 
-            return plainToInstance(CreateArticle, {
-              content: faker.lorem.paragraph(),
-              title: faker.company.catchPhrase(),
-            });
-          }),
+          return plainToInstance(CreateArticle, {
+            content: faker.lorem.paragraph(),
+            title: faker.company.catchPhrase(),
+          });
+        }),
         async (data) => {
           const errors = await validate(data);
 
