@@ -6,6 +6,7 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "isolatedModules": true,
     "incremental": true,
     "outDir": "./dist",
     "paths": {
