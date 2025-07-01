@@ -9,6 +9,6 @@ export const updateUserFactory = FactoryBuilder.of(UpdateUser)
     image: faker.image.avatarGitHub,
     newPassword: () => faker.internet.password({ length: 12, memorable: true }),
     password: () => faker.internet.password(),
-    username: () => faker.internet.userName().toLowerCase(),
+    username: () => faker.internet.username().toLowerCase(),
   })
   .build();
