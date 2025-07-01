@@ -2,7 +2,7 @@
   {
     "body": "",
     "method": "GET",
-    "path": "/range/5BAA6",
+    "path": "/range/5BAA6?mode=sha1",
     "rawHeaders": [
       "Content-Type",
       "text/plain",
