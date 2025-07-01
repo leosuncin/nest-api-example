@@ -1,0 +1,3 @@
+onlyBuiltDependencies:
+  - '@nestjs/core'
+  - unrs-resolver
