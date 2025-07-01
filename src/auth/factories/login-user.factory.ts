@@ -5,6 +5,6 @@ import { FactoryBuilder } from 'factory.io';
 export const loginUserFactory = FactoryBuilder.of(LoginUser)
   .props({
     password: () => faker.internet.password(),
-    username: () => faker.internet.userName().toLowerCase(),
+    username: () => faker.internet.username().toLowerCase(),
   })
   .build();
