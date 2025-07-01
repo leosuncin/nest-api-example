@@ -16,7 +16,8 @@ describe('pwnedPassword provider', () => {
     nock('https://api.pwnedpasswords.com')
       .persist()
       .replyDate()
-      .get(/range\/\w{5}/u);
+      .get(/range\/\w{5}/u)
+      .query({ mode: 'sha1' });
   });
 
   afterEach(() => {

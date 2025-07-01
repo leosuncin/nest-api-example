@@ -2,7 +2,7 @@
   {
     "body": "",
     "method": "GET",
-    "path": "/range/AB30B",
+    "path": "/range/AB30B?mode=sha1",
     "rawHeaders": [
       "Content-Type",
       "text/plain",
