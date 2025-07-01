@@ -38,8 +38,8 @@ describe('UpdateArticle', () => {
         fc
           .record(
             {
-              content: fc.fullUnicodeString({ minLength: 1 }),
-              title: fc.unicodeString({ minLength: 1 }),
+              content: fc.string({ minLength: 1, unit: 'binary' }),
+              title: fc.string({ minLength: 1, unit: 'binary' }),
             },
             { withDeletedKeys: true },
           )

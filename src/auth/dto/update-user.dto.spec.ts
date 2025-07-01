@@ -49,18 +49,14 @@ describe('Update user validations', () => {
   it('should pass with valid data', async () => {
     await fc.assert(
       fc.asyncProperty(
-        fc
-          .integer()
-          .noBias()
-          .noShrink()
-          .map((seed) => {
-            faker.seed(seed);
+        fc.noShrink(fc.noBias(fc.integer())).map((seed) => {
+          faker.seed(seed);
 
-            return updateUserFactory.buildOne({
-              id: user.id,
-              password: user.password,
-            });
-          }),
+          return updateUserFactory.buildOne({
+            id: user.id,
+            password: user.password,
+          });
+        }),
         async (data) => {
           await expect(validate(data)).resolves.toHaveLength(0);
         },
