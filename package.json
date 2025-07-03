@@ -96,7 +96,7 @@
     "lint-staged": "16.1.2",
     "nock": "14.0.5",
     "node-mocks-http": "1.17.2",
-    "pactum": "3.7.6",
+    "pactum": "3.8.0",
     "pg-mem": "3.0.5",
     "prettier": "3.6.2",
     "prettier-plugin-toml": "2.0.5",
