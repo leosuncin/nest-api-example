@@ -76,7 +76,7 @@
     "@types/express": "5.0.3",
     "@types/jest": "30.0.0",
     "@types/jest-dev-server": "5.0.3",
-    "@types/node": "22.16.0",
+    "@types/node": "22.16.1",
     "@types/passport": "1.0.17",
     "@types/passport-jwt": "4.0.1",
     "@types/supertest": "6.0.3",
