@@ -12,7 +12,7 @@ jobs:
       packages: write
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up QEMU 🖥️
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx 🐳
