@@ -17,7 +17,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'skip-ci')"
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install PNPM 🧰
         uses: pnpm/action-setup@v4
       - name: Install Node.js LTS 📜
@@ -68,7 +68,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install PNPM 🧰
         uses: pnpm/action-setup@v4
       - name: Install Node.js LTS 📜
