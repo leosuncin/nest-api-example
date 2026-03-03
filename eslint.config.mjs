@@ -1,4 +1,4 @@
-import auto from 'eslint-config-canonical/configurations/auto.js';
+import auto from 'eslint-config-canonical/auto';
 import pluginSecurity from 'eslint-plugin-security';
 
 export default [
