@@ -6,8 +6,8 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "isolatedModules": true,
     "incremental": true,
+    "isolatedModules": true,
     "outDir": "./dist",
     "paths": {
       "~app/*": ["src/*"],

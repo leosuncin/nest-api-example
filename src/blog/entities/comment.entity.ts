@@ -1,5 +1,3 @@
-import { User } from '~auth/entities/user.entity';
-import { Article } from '~blog/entities/article.entity';
 import { Exclude } from 'class-transformer';
 import {
   Column,
@@ -11,25 +9,11 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { User } from '~auth/entities/user.entity';
+import { Article } from '~blog/entities/article.entity';
 
 @Entity()
 export class Comment {
-  @PrimaryGeneratedColumn('uuid')
-  id!: string;
-
-  @Column()
-  body!: string;
-
-  @CreateDateColumn()
-  createdAt!: Date;
-
-  @UpdateDateColumn()
-  updatedAt!: Date;
-
-  @DeleteDateColumn()
-  @Exclude()
-  deletedAt?: Date;
-
   @ManyToOne(() => Article, (post) => post.comments, {
     deferrable: 'INITIALLY DEFERRED',
     nullable: false,
@@ -45,6 +29,22 @@ export class Comment {
     onUpdate: 'CASCADE',
   })
   author!: User;
+
+  @Column()
+  body!: string;
+
+  @CreateDateColumn()
+  createdAt!: Date;
+
+  @DeleteDateColumn()
+  @Exclude()
+  deletedAt?: Date;
+
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
+
+  @UpdateDateColumn()
+  updatedAt!: Date;
 
   static fromPartial(data: DeepPartial<Comment>): Comment {
     return Object.assign(new Comment(), data);

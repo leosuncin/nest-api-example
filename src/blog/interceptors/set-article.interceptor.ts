@@ -4,10 +4,10 @@ import {
   Injectable,
   NestInterceptor,
 } from '@nestjs/common';
-import { Article } from '~blog/entities/article.entity';
 import { type Request } from 'express';
 import { type Observable } from 'rxjs';
 import invariant from 'tiny-invariant';
+import { Article } from '~blog/entities/article.entity';
 
 @Injectable()
 export class SetArticleInterceptor implements NestInterceptor {

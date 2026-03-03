@@ -1,5 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { Equal, type FindOptionsWhere, Not, Repository } from 'typeorm';
 import { type UpdateUser } from '~auth/dto/update-user.dto';
 import { User } from '~auth/entities/user.entity';
 import {
@@ -9,8 +11,6 @@ import {
 import { john as user } from '~auth/fixtures/users';
 import { type JwtPayload } from '~auth/interfaces/jwt-payload.interface';
 import { AuthenticationService } from '~auth/services/authentication.service';
-import { createMockInstance } from 'jest-create-mock-instance';
-import { Equal, type FindOptionsWhere, Not, Repository } from 'typeorm';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;

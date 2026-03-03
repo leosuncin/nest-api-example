@@ -1,3 +1,5 @@
+import { DataSource, type DataSourceOptions } from 'typeorm';
+import { type SeederOptions } from 'typeorm-extension';
 import { User } from '~auth/entities/user.entity';
 import { userFactory } from '~auth/factories/user.factory';
 import { UserSeeder } from '~auth/seeders/user.seeder';
@@ -9,8 +11,6 @@ import { ArticleSeeder } from '~blog/seeders/article.seeder';
 import { CommentSeeder } from '~blog/seeders/comment.seeder';
 import { CreateUser1637703183543 } from '~migrations/1637703183543-create-user';
 import { CreateArticleComment1651517018946 } from '~migrations/1651517018946-create-article-comment';
-import { DataSource, type DataSourceOptions } from 'typeorm';
-import { type SeederOptions } from 'typeorm-extension';
 
 export const dataSourceOptions: DataSourceOptions & SeederOptions = {
   entities: [User, Article, Comment],

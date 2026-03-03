@@ -12,6 +12,7 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
+import { type Pagination } from 'nestjs-typeorm-paginate';
 import { JWTAuthGuard } from '~auth/guards/jwt-auth.guard';
 import { IsComment } from '~blog/decorators/is-entity.decorator';
 import { CreateComment } from '~blog/dto/create-comment';
@@ -23,7 +24,6 @@ import { SetAuthorInterceptor } from '~blog/interceptors/set-author.interceptor'
 import { ArticlePipe } from '~blog/pipes/article.pipe';
 import { CommentService } from '~blog/services/comment.service';
 import { Paginate } from '~common/dto/paginate.dto';
-import { type Pagination } from 'nestjs-typeorm-paginate';
 
 @Controller('articles/:articleId/comments')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -46,9 +46,9 @@ export class CommentController {
   }
 
   @Delete(':id([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})')
+  @HttpCode(HttpStatus.NO_CONTENT)
   @IsComment()
   @UseGuards(JWTAuthGuard, IsAuthorGuard)
-  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') commentId: Comment['id']) {
     return this.commentService.remove(commentId);
   }

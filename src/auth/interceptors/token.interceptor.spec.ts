@@ -3,14 +3,14 @@ import { ConfigService } from '@nestjs/config';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { JwtService } from '@nestjs/jwt';
 import { Test } from '@nestjs/testing';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { createMocks } from 'node-mocks-http';
+import { lastValueFrom, of } from 'rxjs';
 import { auth, type AuthConfig } from '~auth/config/auth';
 import { TOKEN_COOKIE_NAME } from '~auth/constants';
 import { type User } from '~auth/entities/user.entity';
 import { john as user } from '~auth/fixtures/users';
 import { TokenInterceptor } from '~auth/interceptors/token.interceptor';
-import { createMockInstance } from 'jest-create-mock-instance';
-import { createMocks } from 'node-mocks-http';
-import { lastValueFrom, of } from 'rxjs';
 
 describe('TokenInterceptor', () => {
   let interceptor: TokenInterceptor;

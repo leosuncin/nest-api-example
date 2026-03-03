@@ -1,4 +1,6 @@
 import { Test } from '@nestjs/testing';
+import { useContainer, validate } from 'class-validator';
+import { createMockInstance } from 'jest-create-mock-instance';
 import { login as credentials } from '~auth/fixtures/credentials';
 import { john as user } from '~auth/fixtures/users';
 import { AuthenticationService } from '~auth/services/authentication.service';
@@ -6,15 +8,13 @@ import {
   ValidateCredential,
   ValidateCredentialConstraint,
 } from '~auth/validators/validate-credential.validator';
-import { useContainer, validate } from 'class-validator';
-import { createMockInstance } from 'jest-create-mock-instance';
 
 class DTO {
   @ValidateCredential()
-  public readonly username: string;
+  public readonly password: string;
 
   @ValidateCredential()
-  public readonly password: string;
+  public readonly username: string;
 
   constructor(username: string, password: string) {
     this.username = username;

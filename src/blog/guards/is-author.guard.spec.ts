@@ -1,8 +1,9 @@
-import { type InjectionToken } from '@nestjs/common';
-import { ForbiddenException } from '@nestjs/common';
+import { ForbiddenException, type InjectionToken } from '@nestjs/common';
 import { ModuleRef, Reflector } from '@nestjs/core';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { Test } from '@nestjs/testing';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { createMocks } from 'node-mocks-http';
 import { User } from '~auth/entities/user.entity';
 import { john as user } from '~auth/fixtures/users';
 import { Entities } from '~blog/constants/entity.enum';
@@ -13,8 +14,6 @@ import { commentByJaneOnArticleByJohn as comment } from '~blog/fixtures/comments
 import { IsAuthorGuard } from '~blog/guards/is-author.guard';
 import { ArticleService } from '~blog/services/article.service';
 import { CommentService } from '~blog/services/comment.service';
-import { createMockInstance } from 'jest-create-mock-instance';
-import { createMocks } from 'node-mocks-http';
 
 describe('IsAuthorGuard', () => {
   let mockedReflector: jest.Mocked<Reflector>;
@@ -74,7 +73,7 @@ describe('IsAuthorGuard', () => {
     ${'188580f8-e3ff-43d8-ac37-f3063477db53'} | ${Entities.COMMENT} | ${'comment by id not exist'}
   `(
     'should authorize when $description',
-    async function ({ id, entity }: { entity: Entities; id: string }) {
+    async function ({ entity, id }: { entity: Entities; id: string }) {
       const { req, res } = createMocks({
         params: { id },
         user,
@@ -92,7 +91,7 @@ describe('IsAuthorGuard', () => {
     { entity: Entities.COMMENT, id: comment.id },
   ])(
     'should throw when the current user is not the author of the $entity',
-    async ({ id, entity }) => {
+    async ({ entity, id }) => {
       const { req, res } = createMocks({
         params: { id },
         user: User.fromPartial({ id: '63770485-6ee9-4a59-b374-3f194091e2e1' }),

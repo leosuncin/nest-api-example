@@ -8,17 +8,17 @@ import {
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Test } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { useContainer } from 'class-validator';
+import cookieParser from 'cookie-parser';
+import { type DataSource } from 'typeorm';
 import { PWNED_PASSWORD } from '~auth/providers/pwned-password.provider';
 import { database } from '~common/database';
 import { type ConfigObject, configuration } from '~config/configuration';
 import { dataSourceOptions } from '~config/data-source.cli';
-import { useContainer } from 'class-validator';
-import cookieParser from 'cookie-parser';
-import { type DataSource } from 'typeorm';
 
 export async function buildTestApplication(
   ...modules: Array<
-    Type<unknown> | DynamicModule | Promise<DynamicModule> | ForwardReference
+    DynamicModule | ForwardReference | Promise<DynamicModule> | Type<unknown>
   >
 ): Promise<INestApplication> {
   const module = await Test.createTestingModule({

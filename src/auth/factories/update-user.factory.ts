@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { UpdateUser } from '~auth/dto/update-user.dto';
 import { FactoryBuilder } from 'factory.io';
+import { UpdateUser } from '~auth/dto/update-user.dto';
 
 export const updateUserFactory = FactoryBuilder.of(UpdateUser)
   .props({
@@ -9,6 +9,6 @@ export const updateUserFactory = FactoryBuilder.of(UpdateUser)
     image: faker.image.avatarGitHub,
     newPassword: () => faker.internet.password({ length: 12, memorable: true }),
     password: () => faker.internet.password(),
-    username: () => faker.internet.username().toLowerCase().substring(0, 30),
+    username: () => faker.internet.username().toLowerCase().slice(0, 30),
   })
   .build();

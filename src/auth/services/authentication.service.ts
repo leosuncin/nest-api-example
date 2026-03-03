@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Equal, type FindOptionsWhere, Not, type Repository } from 'typeorm';
 import { type LoginUser } from '~auth/dto/login-user.dto';
 import { type RegisterUser } from '~auth/dto/register-user.dto';
 import { type UpdateUser } from '~auth/dto/update-user.dto';
 import { User } from '~auth/entities/user.entity';
 import { type JwtPayload } from '~auth/interfaces/jwt-payload.interface';
-import { Equal, type FindOptionsWhere, Not, type Repository } from 'typeorm';
 
 @Injectable()
 export class AuthenticationService {
@@ -13,32 +13,6 @@ export class AuthenticationService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
   ) {}
-
-  register(newUser: RegisterUser): Promise<User> {
-    const user = this.userRepository.create(newUser);
-
-    return this.userRepository.save(user);
-  }
-
-  async login(credentials: LoginUser): Promise<User> {
-    return this.userRepository.findOneOrFail({
-      where: {
-        username: credentials.username,
-      },
-    });
-  }
-
-  verifyPayload(payload: JwtPayload): Promise<User | null> {
-    return this.userRepository.findOne({
-      where: { id: payload.sub },
-    });
-  }
-
-  async update(user: User, changes: UpdateUser): Promise<User> {
-    this.userRepository.merge(user, changes);
-
-    return this.userRepository.save(user);
-  }
 
   async isRegistered(
     partial: Partial<Pick<User, 'email' | 'id' | 'username'>>,
@@ -57,6 +31,26 @@ export class AuthenticationService {
     return count >= 1;
   }
 
+  async login(credentials: LoginUser): Promise<User> {
+    return this.userRepository.findOneOrFail({
+      where: {
+        username: credentials.username,
+      },
+    });
+  }
+
+  register(newUser: RegisterUser): Promise<User> {
+    const user = this.userRepository.create(newUser);
+
+    return this.userRepository.save(user);
+  }
+
+  async update(user: User, changes: UpdateUser): Promise<User> {
+    this.userRepository.merge(user, changes);
+
+    return this.userRepository.save(user);
+  }
+
   async verifyCredentials(
     credentials: Required<LoginUser | UpdateUser>,
     property: string,
@@ -71,10 +65,20 @@ export class AuthenticationService {
 
     const user = await this.userRepository.findOneBy(where);
 
-    if (!user) return false;
+    if (!user) {
+      return false;
+    }
 
-    if (property !== 'password') return true;
+    if (property !== 'password') {
+      return true;
+    }
 
     return user.checkPassword(credentials.password);
+  }
+
+  verifyPayload(payload: JwtPayload): Promise<null | User> {
+    return this.userRepository.findOne({
+      where: { id: payload.sub },
+    });
   }
 }

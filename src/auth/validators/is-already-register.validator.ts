@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { AuthenticationService } from '~auth/services/authentication.service';
 import {
   isEmpty,
   registerDecorator,
@@ -8,6 +7,7 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
+import { AuthenticationService } from '~auth/services/authentication.service';
 
 @Injectable()
 @ValidatorConstraint({ async: true, name: 'isAlreadyRegister' })
@@ -16,8 +16,14 @@ export class IsAlreadyRegisterConstraint
 {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
+  defaultMessage(): string {
+    return '$property «$value» is already registered';
+  }
+
   async validate(value: string, { object, property }: ValidationArguments) {
-    if (isEmpty(value)) return true;
+    if (isEmpty(value)) {
+      return true;
+    }
 
     const userExist = await this.authenticationService.isRegistered({
       // @ts-expect-error object has an id property and it's defined
@@ -28,14 +34,10 @@ export class IsAlreadyRegisterConstraint
 
     return !userExist;
   }
-
-  defaultMessage(): string {
-    return '$property «$value» is already registered';
-  }
 }
 
 export function IsAlreadyRegister(options: ValidationOptions = {}) {
-  return function (object: object, propertyName: 'username' | 'email') {
+  return function (object: object, propertyName: 'email' | 'username') {
     registerDecorator({
       options,
       propertyName,

@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { useContainer, validate } from 'class-validator';
 import { login as credentials } from '~auth/fixtures/credentials';
 import {
   type hasPasswordBeenPwned,
@@ -8,7 +9,6 @@ import {
   IsNotVulnerable,
   IsNotVulnerableConstraint,
 } from '~auth/validators/is-not-vulnerable.validator';
-import { useContainer, validate } from 'class-validator';
 
 class DTO {
   @IsNotVulnerable()

@@ -1,23 +1,29 @@
 import { Inject } from '@nestjs/common';
 import {
-  type hasPasswordBeenPwned,
-  PWNED_PASSWORD,
-} from '~auth/providers/pwned-password.provider';
-import {
   registerDecorator,
   ValidationOptions,
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
+import {
+  type hasPasswordBeenPwned,
+  PWNED_PASSWORD,
+} from '~auth/providers/pwned-password.provider';
 
 @ValidatorConstraint({ async: true, name: 'isNotVulnerable' })
 export class IsNotVulnerableConstraint implements ValidatorConstraintInterface {
-  #formatter = new Intl.NumberFormat();
-
   #exposedTimes!: number;
+
+  #formatter = new Intl.NumberFormat();
 
   @Inject(PWNED_PASSWORD)
   private readonly pwnedPassword!: typeof hasPasswordBeenPwned;
+
+  defaultMessage() {
+    return `$property is vulnerable, it has been publicly exposed in ${this.#formatter.format(
+      this.#exposedTimes,
+    )} data breaches`;
+  }
 
   async validate(value: string): Promise<boolean> {
     if (typeof value !== 'string' || value.length === 0) {
@@ -28,12 +34,6 @@ export class IsNotVulnerableConstraint implements ValidatorConstraintInterface {
     this.#exposedTimes = await this.pwnedPassword(value);
 
     return this.#exposedTimes === 0;
-  }
-
-  defaultMessage() {
-    return `$property is vulnerable, it has been publicly exposed in ${this.#formatter.format(
-      this.#exposedTimes,
-    )} data breaches`;
   }
 }
 

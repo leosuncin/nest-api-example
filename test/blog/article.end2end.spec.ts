@@ -1,4 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
+import { e2e, spec } from 'pactum';
 import { login as credentials } from '~auth/fixtures/credentials';
 import { createArticleFactory } from '~blog/factories/create-article.factory';
 import { updateArticleFactory } from '~blog/factories/update-article.factory';
@@ -9,7 +10,6 @@ import {
   unauthorizedError,
   uuidRegex,
 } from '~common/test-matchers';
-import { e2e, spec } from 'pactum';
 
 const notFoundError = {
   error: 'Not Found',

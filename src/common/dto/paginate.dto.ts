@@ -3,13 +3,13 @@ import { IsOptional, IsPositive, Max } from 'class-validator';
 
 export class Paginate {
   @IsOptional()
-  @Transform(({ value }) => Number.parseInt(value as string, 10))
   @IsPositive()
   @Max(100)
+  @Transform(({ value }) => Number.parseInt(value as string, 10))
   readonly limit = 10;
 
   @IsOptional()
-  @Transform(({ value }) => Number.parseInt(value as string, 10))
   @IsPositive()
+  @Transform(({ value }) => Number.parseInt(value as string, 10))
   readonly page = 1;
 }

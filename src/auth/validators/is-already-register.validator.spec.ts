@@ -1,12 +1,12 @@
 import { Test } from '@nestjs/testing';
+import { useContainer, validate } from 'class-validator';
+import { createMockInstance } from 'jest-create-mock-instance';
 import { jane, john } from '~auth/fixtures/users';
 import { AuthenticationService } from '~auth/services/authentication.service';
 import {
   IsAlreadyRegister,
   IsAlreadyRegisterConstraint,
 } from '~auth/validators/is-already-register.validator';
-import { useContainer, validate } from 'class-validator';
-import { createMockInstance } from 'jest-create-mock-instance';
 
 class WithEmail {
   @IsAlreadyRegister()

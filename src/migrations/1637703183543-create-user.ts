@@ -3,6 +3,10 @@ import { type MigrationInterface, type QueryRunner } from 'typeorm';
 export class CreateUser1637703183543 implements MigrationInterface {
   name = 'CreateUser1637703183543';
 
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(`DROP TABLE "user"`);
+  }
+
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
       `CREATE TABLE "user" (
@@ -19,9 +23,5 @@ export class CreateUser1637703183543 implements MigrationInterface {
         CONSTRAINT "PK_cace4a159ff9f2512dd42373760" PRIMARY KEY ("id")
       )`,
     );
-  }
-
-  public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE "user"`);
   }
 }

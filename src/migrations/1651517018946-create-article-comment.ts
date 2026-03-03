@@ -3,6 +3,20 @@ import { type MigrationInterface, type QueryRunner } from 'typeorm';
 export class CreateArticleComment1651517018946 implements MigrationInterface {
   name = 'CreateArticleComment1651517018946';
 
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(
+      `ALTER TABLE "comment" DROP CONSTRAINT "FK_276779da446413a0d79598d4fbd"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "comment" DROP CONSTRAINT "FK_c20404221e5c125a581a0d90c0e"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "article" DROP CONSTRAINT "FK_a9c5f4ec6cceb1604b4a3c84c87"`,
+    );
+    await queryRunner.query(`DROP TABLE "comment"`);
+    await queryRunner.query(`DROP TABLE "article"`);
+  }
+
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`CREATE TABLE "article" (
   "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -51,19 +65,5 @@ ADD
   REFERENCES "user"("id")
   ON DELETE RESTRICT
   ON UPDATE CASCADE`);
-  }
-
-  public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(
-      `ALTER TABLE "comment" DROP CONSTRAINT "FK_276779da446413a0d79598d4fbd"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "comment" DROP CONSTRAINT "FK_c20404221e5c125a581a0d90c0e"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "article" DROP CONSTRAINT "FK_a9c5f4ec6cceb1604b4a3c84c87"`,
-    );
-    await queryRunner.query(`DROP TABLE "comment"`);
-    await queryRunner.query(`DROP TABLE "article"`);
   }
 }

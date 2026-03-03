@@ -1,10 +1,10 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
+import { createMockInstance } from 'jest-create-mock-instance';
 import { Article } from '~blog/entities/article.entity';
 import { articleByJohn } from '~blog/fixtures/articles';
 import { ArticlePipe } from '~blog/pipes/article.pipe';
 import { ArticleService } from '~blog/services/article.service';
-import { createMockInstance } from 'jest-create-mock-instance';
 
 describe('ArticlePipe', () => {
   let pipe: ArticlePipe;

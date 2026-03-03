@@ -1,6 +1,6 @@
 import { ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common';
-import { type UpdateUser } from '~auth/dto/update-user.dto';
 import invariant from 'tiny-invariant';
+import { type UpdateUser } from '~auth/dto/update-user.dto';
 
 type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 
@@ -10,7 +10,9 @@ export class SwapPasswordPipe implements PipeTransform {
     value: Record<string, unknown>,
     metadata: ArgumentMetadata,
   ): Record<string, unknown> {
-    if (metadata.type !== 'body') return value;
+    if (metadata.type !== 'body') {
+      return value;
+    }
 
     if (this.#want2ChangePassword(value)) {
       invariant(value.newPassword);

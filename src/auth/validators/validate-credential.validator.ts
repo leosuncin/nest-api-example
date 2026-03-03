@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { AuthenticationService } from '~auth/services/authentication.service';
 import {
   isString,
   isUUID,
@@ -12,6 +11,7 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
+import { AuthenticationService } from '~auth/services/authentication.service';
 
 @Injectable()
 @ValidatorConstraint({ async: true, name: 'credential' })
@@ -20,14 +20,16 @@ export class ValidateCredentialConstraint
 {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
-  validate(_: unknown, { object, property }: ValidationArguments) {
-    if (!this.hasCredentials(object)) return true;
-
-    return this.authenticationService.verifyCredentials(object, property);
-  }
-
   defaultMessage(): string {
     return '$property is incorrect';
+  }
+
+  validate(_: unknown, { object, property }: ValidationArguments) {
+    if (!this.hasCredentials(object)) {
+      return true;
+    }
+
+    return this.authenticationService.verifyCredentials(object, property);
   }
 
   private hasCredentials(object: object): object is {
@@ -45,15 +47,20 @@ export class ValidateCredentialConstraint
       maxLength(username, 30) &&
       matches(username, /^[\w.-]+$/u);
 
-    if (isValidId && isValidPassword) return true;
-    if (isValidPassword && isValidUsername) return true;
+    if (isValidId && isValidPassword) {
+      return true;
+    }
+
+    if (isValidPassword && isValidUsername) {
+      return true;
+    }
 
     return false;
   }
 }
 
 export function ValidateCredential(options: ValidationOptions = {}) {
-  return function (object: object, propertyName: 'username' | 'password') {
+  return function (object: object, propertyName: 'password' | 'username') {
     registerDecorator({
       options,
       propertyName,

@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker';
-import { CreateArticle } from '~blog/dto/create-article.dto';
 import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import fc from 'fast-check';
+import { CreateArticle } from '~blog/dto/create-article.dto';
 
 describe('CreateArticle', () => {
   it('should fail with invalid data', async () => {
@@ -23,7 +23,7 @@ describe('CreateArticle', () => {
           expect(errors.length).toBeGreaterThanOrEqual(1);
           expect(
             errors.every(({ property }) =>
-              ['title', 'content'].includes(property),
+              ['content', 'title'].includes(property),
             ),
           ).toBe(true);
         },

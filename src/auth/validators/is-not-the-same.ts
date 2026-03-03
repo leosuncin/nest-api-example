@@ -8,18 +8,18 @@ import {
 
 @ValidatorConstraint({ name: 'isNotTheSame' })
 export class IsNotTheSameConstraint implements ValidatorConstraintInterface {
+  defaultMessage({ constraints }: ValidationArguments) {
+    const [property] = constraints as [string];
+
+    return `$property must be different than ${property}`;
+  }
+
   validate(value: unknown, validationArguments: ValidationArguments): boolean {
     const [property] = validationArguments.constraints as [string];
     const object = validationArguments.object as Record<string, unknown>;
 
     // eslint-disable-next-line security/detect-object-injection
     return !Object.is(object[property], value);
-  }
-
-  defaultMessage({ constraints }: ValidationArguments) {
-    const [property] = constraints as [string];
-
-    return `$property must be different than ${property}`;
   }
 }
 

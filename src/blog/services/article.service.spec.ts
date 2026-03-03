@@ -1,13 +1,12 @@
-import { type TestingModule } from '@nestjs/testing';
-import { Test } from '@nestjs/testing';
+import { Test, type TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { createMockInstance } from 'jest-create-mock-instance';
+import { Repository } from 'typeorm';
 import { User } from '~auth/entities/user.entity';
 import { type CreateArticle } from '~blog/dto/create-article.dto';
 import { type UpdateArticle } from '~blog/dto/update-article.dto';
 import { Article } from '~blog/entities/article.entity';
 import { ArticleService } from '~blog/services/article.service';
-import { createMockInstance } from 'jest-create-mock-instance';
-import { Repository } from 'typeorm';
 
 describe('ArticleService', () => {
   let service: ArticleService;

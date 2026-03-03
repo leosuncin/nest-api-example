@@ -1,12 +1,12 @@
-import { register as credentials } from '~auth/fixtures/credentials';
-import { hasPasswordBeenPwned } from '~auth/providers/pwned-password.provider';
 import nock, {
-  back as nockBack,
   cleanAll,
   enableNetConnect,
+  back as nockBack,
   restore,
 } from 'nock';
 import { resolve } from 'node:path';
+import { register as credentials } from '~auth/fixtures/credentials';
+import { hasPasswordBeenPwned } from '~auth/providers/pwned-password.provider';
 
 describe('pwnedPassword provider', () => {
   beforeAll(() => {

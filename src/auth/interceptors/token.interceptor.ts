@@ -6,12 +6,12 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { type AuthConfig } from '~auth/config/auth';
-import { TOKEN_COOKIE_NAME } from '~auth/constants/index';
-import { type User } from '~auth/entities/user.entity';
 import { type CookieOptions, type Response } from 'express';
 import { type Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { type AuthConfig } from '~auth/config/auth';
+import { TOKEN_COOKIE_NAME } from '~auth/constants/index';
+import { type User } from '~auth/entities/user.entity';
 
 @Injectable()
 export class TokenInterceptor implements NestInterceptor {
@@ -22,6 +22,12 @@ export class TokenInterceptor implements NestInterceptor {
     config: ConfigService<AuthConfig, true>,
   ) {
     this.options = config.get('cookie');
+  }
+
+  generateToken(user: Pick<User, 'id'> | User): string {
+    return this.jwtService.sign({
+      sub: user.id,
+    });
   }
 
   intercept(
@@ -39,11 +45,5 @@ export class TokenInterceptor implements NestInterceptor {
         return user;
       }),
     );
-  }
-
-  generateToken(user: User | Pick<User, 'id'>): string {
-    return this.jwtService.sign({
-      sub: user.id,
-    });
   }
 }

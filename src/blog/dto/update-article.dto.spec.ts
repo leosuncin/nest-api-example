@@ -1,7 +1,7 @@
-import { UpdateArticle } from '~blog/dto/update-article.dto';
 import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import fc from 'fast-check';
+import { UpdateArticle } from '~blog/dto/update-article.dto';
 
 describe('UpdateArticle', () => {
   it('should fail with invalid data', async () => {
@@ -24,7 +24,7 @@ describe('UpdateArticle', () => {
           expect(errors.length).toBeGreaterThanOrEqual(1);
           expect(
             errors.every(({ property }) =>
-              ['title', 'content'].includes(property),
+              ['content', 'title'].includes(property),
             ),
           ).toBe(true);
         },

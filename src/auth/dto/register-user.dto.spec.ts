@@ -1,5 +1,9 @@
 import { faker } from '@faker-js/faker';
 import { Test } from '@nestjs/testing';
+import { plainToInstance } from 'class-transformer';
+import { useContainer, validate } from 'class-validator';
+import fc from 'fast-check';
+import { createMockInstance } from 'jest-create-mock-instance';
 import { RegisterUser } from '~auth/dto/register-user.dto';
 import { registerUserFactory } from '~auth/factories/register-user.factory';
 import { register } from '~auth/fixtures/credentials';
@@ -7,10 +11,6 @@ import { PWNED_PASSWORD } from '~auth/providers/pwned-password.provider';
 import { AuthenticationService } from '~auth/services/authentication.service';
 import { IsAlreadyRegisterConstraint } from '~auth/validators/is-already-register.validator';
 import { IsNotVulnerableConstraint } from '~auth/validators/is-not-vulnerable.validator';
-import { plainToInstance } from 'class-transformer';
-import { useContainer, validate } from 'class-validator';
-import fc from 'fast-check';
-import { createMockInstance } from 'jest-create-mock-instance';
 
 describe('Register user validations', () => {
   beforeAll(async () => {

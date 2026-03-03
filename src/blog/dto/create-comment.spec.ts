@@ -1,11 +1,11 @@
 import { Test } from '@nestjs/testing';
-import { CreateComment } from '~blog/dto/create-comment';
-import { ArticleService } from '~blog/services/article.service';
-import { ArticleExistConstraint } from '~blog/validators/article-exist.validator';
 import { plainToInstance } from 'class-transformer';
 import { isUUID, useContainer, validate } from 'class-validator';
 import fc from 'fast-check';
 import { createMockInstance } from 'jest-create-mock-instance';
+import { CreateComment } from '~blog/dto/create-comment';
+import { ArticleService } from '~blog/services/article.service';
+import { ArticleExistConstraint } from '~blog/validators/article-exist.validator';
 
 describe('CreateComment DTO', () => {
   beforeEach(async () => {

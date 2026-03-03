@@ -27,23 +27,23 @@ import { AuthenticationService } from '~auth/services/authentication.service';
 export class AuthController {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
-  @Post('/register')
-  @UseInterceptors(TokenInterceptor)
-  register(@Body() newUser: RegisterUser): Promise<User> {
-    return this.authenticationService.register(newUser);
+  @Get('/me')
+  @UseGuards(JWTAuthGuard)
+  currentUser(@CurrentUser() user: User): User {
+    return user;
   }
 
-  @Post('/login')
   @HttpCode(HttpStatus.OK)
+  @Post('/login')
   @UseInterceptors(TokenInterceptor)
   login(@Body() credentials: LoginUser): Promise<User> {
     return this.authenticationService.login(credentials);
   }
 
-  @Get('/me')
-  @UseGuards(JWTAuthGuard)
-  currentUser(@CurrentUser() user: User): User {
-    return user;
+  @Post('/register')
+  @UseInterceptors(TokenInterceptor)
+  register(@Body() newUser: RegisterUser): Promise<User> {
+    return this.authenticationService.register(newUser);
   }
 
   @Patch('/me')

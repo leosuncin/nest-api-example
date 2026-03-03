@@ -13,8 +13,8 @@ declare namespace NodeJS {
 declare module 'express' {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Request {
-    cookies: Record<string, string | null>;
-    signedCookies: Record<string, string | null>;
-    user: User | undefined;
+    cookies: Record<string, null | string>;
+    signedCookies: Record<string, null | string>;
+    user: undefined | User;
   }
 }

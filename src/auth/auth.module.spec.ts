@@ -1,7 +1,8 @@
-import { type INestApplication } from '@nestjs/common';
-import { HttpStatus } from '@nestjs/common';
+import { HttpStatus, type INestApplication } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { getDataSourceToken } from '@nestjs/typeorm';
+import request, { agent } from 'supertest';
+import { runSeeders } from 'typeorm-extension';
 import { AuthModule } from '~auth/auth.module';
 import { TOKEN_COOKIE_NAME } from '~auth/constants';
 import { type User } from '~auth/entities/user.entity';
@@ -13,8 +14,6 @@ import { AuthenticationService } from '~auth/services/authentication.service';
 import { buildTestApplication } from '~common/build-test-application';
 import { database } from '~common/database';
 import { isoDateRegex, uuidRegex } from '~common/test-matchers';
-import request, { agent } from 'supertest';
-import { runSeeders } from 'typeorm-extension';
 
 const unprocessableError = {
   error: 'Unprocessable Entity',

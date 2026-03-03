@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker';
-import { LoginUser } from '~auth/dto/login-user.dto';
 import { FactoryBuilder } from 'factory.io';
+import { LoginUser } from '~auth/dto/login-user.dto';
 
 export const loginUserFactory = FactoryBuilder.of(LoginUser)
   .props({
     password: () => faker.internet.password(),
-    username: () => faker.internet.username().toLowerCase().substring(0, 30),
+    username: () => faker.internet.username().toLowerCase().slice(0, 30),
   })
   .build();

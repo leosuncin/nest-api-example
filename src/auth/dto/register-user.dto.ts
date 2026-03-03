@@ -1,8 +1,3 @@
-import { NormalizeEmail } from '~auth/decorators/normalize-email.decorator';
-import { IsAlreadyRegister } from '~auth/validators/is-already-register.validator';
-import { IsNotTheSame } from '~auth/validators/is-not-the-same';
-import { IsNotVulnerable } from '~auth/validators/is-not-vulnerable.validator';
-import { Trim } from '~common/decorators/trim.decorator';
 import {
   IsDefined,
   IsEmail,
@@ -12,32 +7,37 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { NormalizeEmail } from '~auth/decorators/normalize-email.decorator';
+import { IsAlreadyRegister } from '~auth/validators/is-already-register.validator';
+import { IsNotTheSame } from '~auth/validators/is-not-the-same';
+import { IsNotVulnerable } from '~auth/validators/is-not-vulnerable.validator';
+import { Trim } from '~common/decorators/trim.decorator';
 
 export class RegisterUser {
-  @Trim()
-  @NormalizeEmail()
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  @IsEmail()
   @IsAlreadyRegister()
+  @IsDefined()
+  @IsEmail()
+  @IsNotEmpty()
+  @IsString()
+  @NormalizeEmail()
+  @Trim()
   readonly email!: string;
 
   @IsDefined()
-  @IsString()
   @IsNotEmpty()
-  @MinLength(8)
-  @MaxLength(30)
   @IsNotTheSame<RegisterUser>('username')
   @IsNotVulnerable()
+  @IsString()
+  @MaxLength(30)
+  @MinLength(8)
   readonly password!: string;
 
-  @Trim()
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  @MaxLength(30)
-  @Matches(/^[\w.-]+$/iu)
   @IsAlreadyRegister()
+  @IsDefined()
+  @IsNotEmpty()
+  @IsString()
+  @Matches(/^[\w.-]+$/iu)
+  @MaxLength(30)
+  @Trim()
   readonly username!: string;
 }

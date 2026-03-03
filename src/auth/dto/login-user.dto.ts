@@ -1,5 +1,3 @@
-import { ValidateCredential } from '~auth/validators/validate-credential.validator';
-import { Trim } from '~common/decorators/trim.decorator';
 import {
   IsDefined,
   IsNotEmpty,
@@ -8,22 +6,24 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { ValidateCredential } from '~auth/validators/validate-credential.validator';
+import { Trim } from '~common/decorators/trim.decorator';
 
 export class LoginUser {
   @IsDefined()
-  @IsString()
   @IsNotEmpty()
-  @MinLength(8)
+  @IsString()
   @MaxLength(30)
+  @MinLength(8)
   @ValidateCredential()
   readonly password!: string;
 
-  @Trim()
   @IsDefined()
-  @IsString()
   @IsNotEmpty()
-  @MaxLength(30)
+  @IsString()
   @Matches(/^[\w.-]+$/iu)
+  @MaxLength(30)
+  @Trim()
   @ValidateCredential()
   readonly username!: string;
 }

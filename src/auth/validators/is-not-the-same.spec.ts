@@ -1,12 +1,12 @@
-import { IsNotTheSame } from '~auth/validators/is-not-the-same';
 import { validateSync } from 'class-validator';
+import { IsNotTheSame } from '~auth/validators/is-not-the-same';
 
 describe('IsNotTheSame', () => {
   class DTO {
-    readonly username!: string;
-
     @IsNotTheSame<DTO>('username')
     readonly password: string;
+
+    readonly username!: string;
 
     constructor(username: string, password: string) {
       this.username = username;

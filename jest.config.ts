@@ -1,9 +1,8 @@
 import { readFileSync } from 'node:fs';
-
 import { pathsToModuleNameMapper } from 'ts-jest';
 
 const { compilerOptions } = JSON.parse(
-  readFileSync('./tsconfig.json', { encoding: 'utf-8' }),
+  readFileSync('./tsconfig.json', { encoding: 'utf8' }),
 );
 
 export default {

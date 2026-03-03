@@ -1,6 +1,3 @@
-import { IsAlreadyRegister } from '~auth/validators/is-already-register.validator';
-import { IsNotVulnerable } from '~auth/validators/is-not-vulnerable.validator';
-import { ValidateCredential } from '~auth/validators/validate-credential.validator';
 import {
   Allow,
   IsDefined,
@@ -14,42 +11,25 @@ import {
   MinLength,
   ValidateIf,
 } from 'class-validator';
+import { IsAlreadyRegister } from '~auth/validators/is-already-register.validator';
+import { IsNotVulnerable } from '~auth/validators/is-not-vulnerable.validator';
+import { ValidateCredential } from '~auth/validators/validate-credential.validator';
 
 export class UpdateUser {
-  @Allow()
-  id?: string;
-
+  @IsNotEmpty()
   @IsOptional()
   @IsString()
-  @IsNotEmpty()
-  @IsEmail()
+  readonly bio?: string;
+
   @IsAlreadyRegister()
+  @IsEmail()
+  @IsNotEmpty()
+  @IsOptional()
+  @IsString()
   readonly email?: string;
 
-  @IsOptional()
-  @IsString()
-  @IsNotEmpty()
-  @MaxLength(30)
-  @Matches(/^[\w.-]+$/iu)
-  @IsAlreadyRegister()
-  readonly username?: string;
-
-  @ValidateIf((object: UpdateUser) => typeof object.newPassword === 'string')
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  @MinLength(8)
-  @MaxLength(30)
-  @ValidateCredential()
-  readonly password?: string;
-
-  @IsOptional()
-  @IsString()
-  @IsNotEmpty()
-  @MinLength(8)
-  @MaxLength(30)
-  @IsNotVulnerable()
-  readonly newPassword?: string;
+  @Allow()
+  id?: string;
 
   @IsOptional()
   @IsString()
@@ -61,8 +41,28 @@ export class UpdateUser {
   })
   readonly image?: string;
 
+  @IsNotEmpty()
+  @IsNotVulnerable()
   @IsOptional()
   @IsString()
+  @MaxLength(30)
+  @MinLength(8)
+  readonly newPassword?: string;
+
+  @IsDefined()
   @IsNotEmpty()
-  readonly bio?: string;
+  @IsString()
+  @MaxLength(30)
+  @MinLength(8)
+  @ValidateCredential()
+  @ValidateIf((object: UpdateUser) => typeof object.newPassword === 'string')
+  readonly password?: string;
+
+  @IsAlreadyRegister()
+  @IsNotEmpty()
+  @IsOptional()
+  @IsString()
+  @Matches(/^[\w.-]+$/iu)
+  @MaxLength(30)
+  readonly username?: string;
 }
