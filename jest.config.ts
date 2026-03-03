@@ -1,11 +1,16 @@
-import { compilerOptions } from './tsconfig.json';
+import { readFileSync } from 'node:fs';
+
 import { pathsToModuleNameMapper } from 'ts-jest';
+
+const { compilerOptions } = JSON.parse(
+  readFileSync('./tsconfig.json', { encoding: 'utf-8' }),
+);
 
 export default {
   projects: [
     {
       displayName: 'Unit test',
-      moduleDirectories: ['node_modules', __dirname],
+      moduleDirectories: ['node_modules', process.cwd()],
       moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
       preset: 'ts-jest',
       rootDir: 'src',
@@ -15,7 +20,7 @@ export default {
     },
     {
       displayName: 'E2E test',
-      moduleDirectories: ['node_modules', __dirname],
+      moduleDirectories: ['node_modules', process.cwd()],
       moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
       preset: 'ts-jest',
       rootDir: 'test',
