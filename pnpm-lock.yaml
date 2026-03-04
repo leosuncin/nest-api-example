@@ -117,9 +117,9 @@ importers:
       '@semantic-release/git':
         specifier: 10.0.1
         version: 10.0.1(semantic-release@24.2.7(typescript@5.9.2))
-      '@tsconfig/node22':
-        specifier: ^22.0.0
-        version: 22.0.5
+      '@tsconfig/node24':
+        specifier: ^24.0.0
+        version: 24.0.4
       '@types/bcryptjs':
         specifier: 3.0.0
         version: 3.0.0
@@ -1543,8 +1543,8 @@ packages:
   '@tsconfig/node16@1.0.3':
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
 
-  '@tsconfig/node22@22.0.5':
-    resolution: {integrity: sha512-hLf2ld+sYN/BtOJjHUWOk568dvjFQkHnLNa6zce25GIH+vxKfvTgm3qpaH6ToF5tu/NN0IH66s+Bb5wElHrLcw==}
+  '@tsconfig/node24@24.0.4':
+    resolution: {integrity: sha512-2A933l5P5oCbv6qSxHs7ckKwobs8BDAe9SJ/Xr2Hy+nDlwmLE1GhFh/g/vXGRZWgxBg9nX/5piDtHR9Dkw/XuA==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -8569,7 +8569,7 @@ snapshots:
 
   '@tsconfig/node16@1.0.3': {}
 
-  '@tsconfig/node22@22.0.5': {}
+  '@tsconfig/node24@24.0.4': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -8817,7 +8817,7 @@ snapshots:
   '@typescript-eslint/project-service@8.39.0(typescript@5.9.2)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.39.0(typescript@5.9.2)
-      '@typescript-eslint/types': 8.39.0
+      '@typescript-eslint/types': 8.56.1
       debug: 4.4.3
       typescript: 5.9.2
     transitivePeerDependencies:
