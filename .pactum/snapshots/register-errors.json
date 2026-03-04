@@ -12,10 +12,10 @@
     "password must be different than username",
     "password should not be empty",
     "username should not be null or undefined",
-    "username must match /^[\\w.-]+$/iu regular expression",
     "username must be shorter than or equal to 30 characters",
-    "username should not be empty",
-    "username must be a string"
+    "username must match /^[\\w.-]+$/iu regular expression",
+    "username must be a string",
+    "username should not be empty"
   ],
   "statusCode": 422
 }
