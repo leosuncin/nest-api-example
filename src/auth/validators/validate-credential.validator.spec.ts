@@ -82,10 +82,10 @@ describe('ValidateCredential', () => {
       expect(errors).toHaveLength(0);
       expect(
         mockedAuthenticationService.verifyCredentials,
-      ).toHaveBeenNthCalledWith(1, dto, 'username');
+      ).toHaveBeenNthCalledWith(1, dto, 'password');
       expect(
         mockedAuthenticationService.verifyCredentials,
-      ).toHaveBeenNthCalledWith(2, dto, 'password');
+      ).toHaveBeenNthCalledWith(2, dto, 'username');
     },
   );
 

@@ -259,10 +259,10 @@ describe('BlogModule', () => {
         expect(body).toMatchObject({
           error: 'Unprocessable Entity',
           message: [
-            'body should not be null or undefined',
-            'body should not be empty',
-            'body must be a string',
             'article with id «00000000-0000-0000-0000-000000000000» does not exist',
+            'body should not be null or undefined',
+            'body must be a string',
+            'body should not be empty',
           ],
           statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
         });
