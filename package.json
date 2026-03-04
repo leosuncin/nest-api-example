@@ -73,7 +73,7 @@
     "@tsconfig/node22": "^22.0.0",
     "@types/bcryptjs": "3.0.0",
     "@types/cookie-parser": "1.4.10",
-    "@types/express": "5.0.3",
+    "@types/express": "5.0.6",
     "@types/jest": "30.0.0",
     "@types/jest-dev-server": "5.0.3",
     "@types/node": "22.19.13",
