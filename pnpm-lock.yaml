@@ -199,8 +199,8 @@ importers:
         specifier: 3.8.0
         version: 3.8.0
       pg-mem:
-        specifier: 3.0.5
-        version: 3.0.5(typeorm@0.3.26(pg@8.16.3)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.19.13)(typescript@5.9.2)))
+        specifier: 3.0.14
+        version: 3.0.14(typeorm@0.3.26(pg@8.16.3)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.19.13)(typescript@5.9.2)))
       prettier:
         specifier: 3.6.2
         version: 3.6.2
@@ -5510,8 +5510,8 @@ packages:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
 
-  pg-mem@3.0.5:
-    resolution: {integrity: sha512-Bh8xHD6u/wUXCoyFE2vyRs5pgaKbqjWFQowKDlbKWCiF0vOlo2A0PZdiUxmf2PKgb6Vb6C7gwAlA7jKvsfDHZA==}
+  pg-mem@3.0.14:
+    resolution: {integrity: sha512-G9m8OD0A+YS083smidSUJddTX2dEDPT8mRMG3sQGNiGfS/mkvAgd9Kf1/onD5633bFN7HcQK/Tn2x7qjBMFRUQ==}
     peerDependencies:
       '@mikro-orm/core': '>=4.5.3'
       '@mikro-orm/postgresql': '>=4.5.3'
@@ -5569,8 +5569,8 @@ packages:
   pgpass@1.0.5:
     resolution: {integrity: sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==}
 
-  pgsql-ast-parser@12.0.1:
-    resolution: {integrity: sha512-pe8C6Zh5MsS+o38WlSu18NhrTjAv1UNMeDTs2/Km2ZReZdYBYtwtbWGZKK2BM2izv5CrQpbmP0oI10wvHOwv4A==}
+  pgsql-ast-parser@12.0.2:
+    resolution: {integrity: sha512-1WWa96Sw6h4uv9GLw98EzH/+xoBTC8j2TwV/AMW3E+Ir/fHOu/jLLbj6kPiz3y2bGISTKNYvKWwHoqvQ5FLuAw==}
 
   phin@3.7.1:
     resolution: {integrity: sha512-GEazpTWwTZaEQ9RhL7Nyz0WwqilbqgLahDM3D0hxWwmVDI52nXEybHqiN6/elwpkJBhcuj+WbBu+QfT0uhPGfQ==}
@@ -13019,7 +13019,7 @@ snapshots:
 
   pg-int8@1.0.1: {}
 
-  pg-mem@3.0.5(typeorm@0.3.26(pg@8.16.3)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.19.13)(typescript@5.9.2))):
+  pg-mem@3.0.14(typeorm@0.3.26(pg@8.16.3)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.19.13)(typescript@5.9.2))):
     dependencies:
       functional-red-black-tree: 1.0.1
       immutable: 4.3.4
@@ -13027,7 +13027,7 @@ snapshots:
       lru-cache: 6.0.0
       moment: 2.29.4
       object-hash: 2.2.0
-      pgsql-ast-parser: 12.0.1
+      pgsql-ast-parser: 12.0.2
     optionalDependencies:
       typeorm: 0.3.26(pg@8.16.3)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@22.19.13)(typescript@5.9.2))
 
@@ -13059,7 +13059,7 @@ snapshots:
     dependencies:
       split2: 4.1.0
 
-  pgsql-ast-parser@12.0.1:
+  pgsql-ast-parser@12.0.2:
     dependencies:
       moo: 0.5.1
       nearley: 2.20.1
