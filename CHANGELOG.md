@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.15](https://github.com/leosuncin/nest-api-example/compare/v1.8.14...v1.8.15) (2026-03-04)
+
+### Bug Fixes
+
+- **deps:** update dependency @epic-web/cachified to v5.6.1 ([22f942e](https://github.com/leosuncin/nest-api-example/commit/22f942e24e513f0babf19a5eb80dfa43bc9d0233))
+
 ## [1.8.14](https://github.com/leosuncin/nest-api-example/compare/v1.8.13...v1.8.14) (2026-03-04)
 
 ### Bug Fixes
