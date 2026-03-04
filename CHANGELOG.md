@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.14](https://github.com/leosuncin/nest-api-example/compare/v1.8.13...v1.8.14) (2026-03-04)
+
+### Bug Fixes
+
+- **deps:** update dependency typeorm to v0.3.26 [security] ([efb3497](https://github.com/leosuncin/nest-api-example/commit/efb34971ea43bcbab7c685c28b156f8300aab05a))
+
 ## [1.8.13](https://github.com/leosuncin/nest-api-example/compare/v1.8.12...v1.8.13) (2026-03-04)
 
 ### Bug Fixes
