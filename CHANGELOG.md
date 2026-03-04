@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.16](https://github.com/leosuncin/nest-api-example/compare/v1.8.15...v1.8.16) (2026-03-04)
+
+### Bug Fixes
+
+- **deps:** update dependency @nestjs/jwt to v11.0.2 ([21ecad2](https://github.com/leosuncin/nest-api-example/commit/21ecad2d7303b5e855ac5b8406d368bac151cd1e))
+- **deps:** update dependency bcryptjs to v3.0.3 ([781d2c8](https://github.com/leosuncin/nest-api-example/commit/781d2c87db290f17599595417e1502df1df4bfec))
+
 ## [1.8.15](https://github.com/leosuncin/nest-api-example/compare/v1.8.14...v1.8.15) (2026-03-04)
 
 ### Bug Fixes
