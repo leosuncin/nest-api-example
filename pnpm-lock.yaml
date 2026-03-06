@@ -54,8 +54,8 @@ importers:
         specifier: 14.1.3
         version: 14.1.3
       lru-cache:
-        specifier: 11.1.0
-        version: 11.1.0
+        specifier: 11.2.6
+        version: 11.2.6
       nestjs-typeorm-paginate:
         specifier: 4.1.0
         version: 4.1.0(@nestjs/common@11.1.16(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2))(typeorm@0.3.28(pg@8.16.3)(ts-node@10.9.2(@types/node@22.19.13)(typescript@5.9.3)))
@@ -4719,8 +4719,8 @@ packages:
     resolution: {integrity: sha512-voV4dDrdVZVNz84n39LFKDaRzfwhdzJ7akpyXfTMxCgRUp07U3lcJUXRlhTKP17rgt09sUzLi5iCitpEAr+6ug==}
     engines: {node: 14 || 16 || 18 || 20 || >=22}
 
-  lru-cache@11.1.0:
-    resolution: {integrity: sha512-QIXZUBJUx+2zHUdQujWejBkcD9+cs94tLn0+YL8UrCh+D5sCXZ4c7LaEH48pNwRY3MLDgqUFyhlCyjJPf1WP0A==}
+  lru-cache@11.2.6:
+    resolution: {integrity: sha512-ESL2CrkS/2wTPfuend7Zhkzo2u0daGJ/A2VucJOgQ/C48S/zB8MMeMHSGKYpXhIjbPxfuezITkaBH1wqv00DDQ==}
     engines: {node: 20 || >=22}
 
   lru-cache@5.1.1:
@@ -12199,7 +12199,7 @@ snapshots:
 
   lru-cache@10.4.2: {}
 
-  lru-cache@11.1.0: {}
+  lru-cache@11.2.6: {}
 
   lru-cache@5.1.1:
     dependencies:
