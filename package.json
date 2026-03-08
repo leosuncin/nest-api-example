@@ -89,7 +89,7 @@
     "eslint-config-canonical": "47.4.2",
     "eslint-plugin-security": "4.0.0",
     "factory.io": "0.1.4",
-    "fast-check": "4.5.3",
+    "fast-check": "4.6.0",
     "husky": "9.1.7",
     "jest": "30.0.5",
     "jest-create-mock-instance": "2.0.0",
