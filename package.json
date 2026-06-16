@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/leosuncin/nest-api-example.git"
   },
-  "license": "GPL-3.0",
+  "license": "AGPL-3.0-only",
   "author": "Jaime Leonardo Suncin Cruz <leosuncin@gmail.com>",
   "scripts": {
     "build": "nest build",
