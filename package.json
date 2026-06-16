@@ -70,12 +70,12 @@
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/exec": "7.1.0",
     "@semantic-release/git": "10.0.1",
-    "@tsconfig/node26": "26.0.0",
+    "@tsconfig/node24": "^24.0.0",
     "@types/cookie-parser": "1.4.10",
     "@types/express": "5.0.6",
     "@types/jest": "30.0.0",
     "@types/jest-dev-server": "5.0.3",
-    "@types/node": "25.9.3",
+    "@types/node": "24.12.2",
     "@types/passport": "1.0.17",
     "@types/passport-jwt": "4.0.1",
     "@types/supertest": "7.2.0",
@@ -107,10 +107,10 @@
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "typeorm-extension": "2.8.1",
-    "typescript": "6.0.3"
+    "typescript": "5.9.3"
   },
   "packageManager": "pnpm@11.7.0",
   "engines": {
-    "node": ">=24"
+    "node": ">=20"
   }
 }
