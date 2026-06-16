@@ -21,7 +21,8 @@ export class JwtStrategy extends PassportStrategy(Strategy, JWT_STRATEGY_NAME) {
         ExtractJwt.fromAuthHeaderAsBearerToken(),
       ]),
       passReqToCallback: false,
-      secretOrKey: process.env.SECRET,
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      secretOrKey: process.env.SECRET!,
     });
   }
 

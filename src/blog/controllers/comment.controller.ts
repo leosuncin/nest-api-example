@@ -45,7 +45,7 @@ export class CommentController {
     return this.commentService.findBy(query, { article });
   }
 
-  @Delete(':id([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})')
+  @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @IsComment()
   @UseGuards(JWTAuthGuard, IsAuthorGuard)

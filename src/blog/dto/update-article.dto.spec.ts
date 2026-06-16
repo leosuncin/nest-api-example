@@ -8,13 +8,10 @@ describe('UpdateArticle', () => {
     await fc.assert(
       fc.asyncProperty(
         fc
-          .record(
-            {
-              content: fc.oneof(fc.nat(), fc.constant('')),
-              title: fc.oneof(fc.nat(), fc.constant('')),
-            },
-            { withDeletedKeys: true },
-          )
+          .record({
+            content: fc.oneof(fc.nat(), fc.constant('')),
+            title: fc.oneof(fc.nat(), fc.constant('')),
+          })
           .map((record) => plainToInstance(UpdateArticle, record)),
         async (data) => {
           fc.pre(Object.keys(data).length > 0);
@@ -36,13 +33,10 @@ describe('UpdateArticle', () => {
     await fc.assert(
       fc.asyncProperty(
         fc
-          .record(
-            {
-              content: fc.string({ minLength: 1, unit: 'binary' }),
-              title: fc.string({ minLength: 1, unit: 'binary' }),
-            },
-            { withDeletedKeys: true },
-          )
+          .record({
+            content: fc.string({ minLength: 1, unit: 'binary' }),
+            title: fc.string({ minLength: 1, unit: 'binary' }),
+          })
           .map((record) => plainToInstance(UpdateArticle, record)),
         async (data) => {
           const errors = await validate(data);
