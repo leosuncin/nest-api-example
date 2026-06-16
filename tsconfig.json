@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "declaration": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -10,12 +9,12 @@
     "isolatedModules": true,
     "outDir": "./dist",
     "paths": {
-      "~app/*": ["src/*"],
-      "~auth/*": ["src/auth/*"],
-      "~blog/*": ["src/blog/*"],
-      "~common/*": ["src/common/*"],
-      "~config/*": ["src/config/*"],
-      "~migrations/*": ["src/migrations/*"]
+      "~app/*": ["./src/*"],
+      "~auth/*": ["./src/auth/*"],
+      "~blog/*": ["./src/blog/*"],
+      "~common/*": ["./src/common/*"],
+      "~config/*": ["./src/config/*"],
+      "~migrations/*": ["./src/migrations/*"]
     },
     "removeComments": true,
     "resolveJsonModule": true,
@@ -23,5 +22,5 @@
     "strict": true,
     "types": ["node", "jest", "./src/overrides"]
   },
-  "extends": "@tsconfig/node24/tsconfig.json"
+  "extends": "@tsconfig/node26/tsconfig.json"
 }
