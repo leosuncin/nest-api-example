@@ -1,5 +1,6 @@
-onlyBuiltDependencies:
-  - '@nestjs/core'
-  - unrs-resolver
 overrides:
   jwa: '^2.0.0'
+strictPeerDependencies: false
+allowBuilds:
+  '@nestjs/core': true
+  unrs-resolver: true
