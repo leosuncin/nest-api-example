@@ -9,13 +9,10 @@ describe('CreateArticle', () => {
     await fc.assert(
       fc.asyncProperty(
         fc
-          .record(
-            {
-              content: fc.oneof(fc.nat(), fc.constant(''), fc.constant(null)),
-              title: fc.oneof(fc.nat(), fc.constant(''), fc.constant(null)),
-            },
-            { withDeletedKeys: true },
-          )
+          .record({
+            content: fc.oneof(fc.nat(), fc.constant(''), fc.constant(null)),
+            title: fc.oneof(fc.nat(), fc.constant(''), fc.constant(null)),
+          })
           .map((record) => plainToInstance(CreateArticle, record)),
         async (data) => {
           const errors = await validate(data);
