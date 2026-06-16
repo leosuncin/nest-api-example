@@ -70,6 +70,8 @@
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/exec": "7.1.0",
     "@semantic-release/git": "10.0.1",
+    "@swc/cli": "0.8.1",
+    "@swc/core": "1.15.41",
     "@tsconfig/node24": "^24.0.0",
     "@types/cookie-parser": "1.4.10",
     "@types/express": "5.0.6",

@@ -1,3 +1,4 @@
 allowBuilds:
   '@nestjs/core': true
+  '@swc/core': true
   unrs-resolver: true
