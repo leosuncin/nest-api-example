@@ -190,8 +190,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       lint-staged:
-        specifier: 17.0.2
-        version: 17.0.2
+        specifier: 17.0.7
+        version: 17.0.7
       nock:
         specifier: 14.0.15
         version: 14.0.15
@@ -4599,8 +4599,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@17.0.2:
-    resolution: {integrity: sha512-Rbr6rdmbCn1fIDHBZpn0madg0hEkdlh+QwajnL3Qq0ZUq/icAJfLGj9BVBajAXi7657ZzKQ7kobGP9S5XOHYRw==}
+  lint-staged@17.0.7:
+    resolution: {integrity: sha512-JrSobt+tW3rH8IOMi8tDZd3foorM5yPEkLD/V2NxobgHrFfHWGee4MOLVuZeScgxftEwbHrPHIFA/ZL+nUJeuA==}
     engines: {node: '>=22.22.1'}
     hasBin: true
 
@@ -6209,8 +6209,8 @@ packages:
     resolution: {integrity: sha512-u9r3uZC0bdpGOXtlxUIdwf9pkmvhqJdrVCH9fapQtgy/OeTTMZ1nqH7agtvEfmGui6e1XxjcdrlxvxJvc3sMqw==}
     engines: {node: '>=18'}
 
-  tinyexec@1.1.2:
-    resolution: {integrity: sha512-dAqSqE/RabpBKI8+h26GfLq6Vb3JVXs30XYQjdMjaj/c2tS8IYYMbIzP599KtRj7c57/wYApb3QjgRgXmrCukA==}
+  tinyexec@1.2.4:
+    resolution: {integrity: sha512-SHf/r48b7vOrjve9PxJo3MN5v5yuyjHvdUcrQffT3WXMUfnGmHDVbC4k3sHJaJTgZCwpUplIaAo5ANtMyp3YHg==}
     engines: {node: '>=18'}
 
   tinyglobby@0.2.15:
@@ -6707,16 +6707,6 @@ packages:
   yaml-eslint-parser@2.0.0:
     resolution: {integrity: sha512-h0uDm97wvT2bokfwwTmY6kJ1hp6YDFL0nRHwNKz8s/VD1FH/vvZjAKoMUE+un0eaYBSG7/c6h+lJTP+31tjgTw==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
-
-  yaml@2.8.3:
-    resolution: {integrity: sha512-AvbaCLOO2Otw/lW5bmh9d/WEdcDFdQp2Z2ZUH3pX9U2ihyUY0nvLv7J6TrWowklRGPYbB/IuIMfYgxaCPg5Bpg==}
-    engines: {node: '>= 14.6'}
-    hasBin: true
-
-  yaml@2.8.4:
-    resolution: {integrity: sha512-ml/JPOj9fOQK8RNnWojA67GbZ0ApXAUlN2UQclwv2eVgTgn7O9gg9o7paZWKMp4g0H3nTLtS9LVzhkpOFIKzog==}
-    engines: {node: '>= 14.6'}
-    hasBin: true
 
   yaml@2.9.0:
     resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
@@ -12093,14 +12083,14 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@17.0.2:
+  lint-staged@17.0.7:
     dependencies:
       listr2: 10.2.1
       picomatch: 4.0.4
       string-argv: 0.3.2
-      tinyexec: 1.1.2
+      tinyexec: 1.2.4
     optionalDependencies:
-      yaml: 2.8.4
+      yaml: 2.9.0
 
   listr2@10.2.1:
     dependencies:
@@ -13646,7 +13636,7 @@ snapshots:
 
   tinyexec@1.0.4: {}
 
-  tinyexec@1.1.2: {}
+  tinyexec@1.2.4: {}
 
   tinyglobby@0.2.15:
     dependencies:
@@ -14134,12 +14124,7 @@ snapshots:
   yaml-eslint-parser@2.0.0:
     dependencies:
       eslint-visitor-keys: 5.0.1
-      yaml: 2.8.3
-
-  yaml@2.8.3: {}
-
-  yaml@2.8.4:
-    optional: true
+      yaml: 2.9.0
 
   yaml@2.9.0: {}
 
