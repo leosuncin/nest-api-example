@@ -205,11 +205,11 @@ importers:
         specifier: 3.0.14
         version: 3.0.14(typeorm@0.3.28(pg@8.20.0)(ts-node@10.9.2(@types/node@24.12.2)(typescript@5.9.3)))
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-toml:
         specifier: 2.0.6
-        version: 2.0.6(prettier@3.8.3)
+        version: 2.0.6(prettier@3.8.4)
       semantic-release:
         specifier: 25.0.3
         version: 25.0.3(typescript@5.9.3)
@@ -5487,6 +5487,11 @@ packages:
 
   prettier@3.8.3:
     resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
+    engines: {node: '>=14'}
+    hasBin: true
+
+  prettier@3.8.4:
+    resolution: {integrity: sha512-N2MylSdi48+5N/6S5j+maeHbUSIzzZ5uOcX5Hm4QpV8Dkb1HFjfAKTKX6yNPJQD9AhcT3ifHNB66tWTTJDi11Q==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -12818,12 +12823,14 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-toml@2.0.6(prettier@3.8.3):
+  prettier-plugin-toml@2.0.6(prettier@3.8.4):
     dependencies:
       '@taplo/lib': 0.5.0
-      prettier: 3.8.3
+      prettier: 3.8.4
 
   prettier@3.8.3: {}
+
+  prettier@3.8.4: {}
 
   pretty-format@30.0.0:
     dependencies:
