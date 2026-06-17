@@ -87,7 +87,7 @@
     "dotenv": "17.4.2",
     "eslint": "10.3.0",
     "eslint-config-canonical": "47.4.2",
-    "eslint-plugin-security": "4.0.0",
+    "eslint-plugin-security": "4.0.1",
     "factory.io": "0.1.4",
     "fast-check": "4.7.0",
     "husky": "9.1.7",
