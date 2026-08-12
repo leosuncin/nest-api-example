@@ -190,8 +190,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       lint-staged:
-        specifier: 17.2.0
-        version: 17.2.0
+        specifier: 17.3.0
+        version: 17.3.0
       nock:
         specifier: 14.0.17
         version: 14.0.17
@@ -4565,8 +4565,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@17.2.0:
-    resolution: {integrity: sha512-FchGnFe4i4B1C/a35SPU9bNGPEHSC1+1iV0plLjzBmKVe9klZrlRfSgK6Cw4VeHyqOXbJUXP0vON61uRftNQ0A==}
+  lint-staged@17.3.0:
+    resolution: {integrity: sha512-woZS3vNe3UKqBaLPvbLOtKRY4tLANpWQhom12MGWqC8Mh1lCOO+WgSwmX2amjJAqTY9BkXYW87fCUH5H9Ph6xw==}
     engines: {node: '>=22.22.1'}
     hasBin: true
 
@@ -8309,7 +8309,7 @@ snapshots:
       eslint-visitor-keys: 4.2.1
       espree: 10.4.0
       estraverse: 5.3.0
-      picomatch: 4.0.4
+      picomatch: 4.0.5
 
   '@taplo/core@0.2.0': {}
 
@@ -11988,7 +11988,7 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@17.2.0:
+  lint-staged@17.3.0:
     dependencies:
       picomatch: 4.0.5
       string-argv: 0.3.2
@@ -13530,7 +13530,7 @@ snapshots:
 
   ts-declaration-location@1.0.7(typescript@5.9.3):
     dependencies:
-      picomatch: 4.0.4
+      picomatch: 4.0.5
       typescript: 5.9.3
 
   ts-jest@29.4.12(@babel/core@7.27.4(supports-color@8.1.1))(@jest/transform@30.0.5(supports-color@8.1.1))(@jest/types@30.0.5)(babel-jest@30.0.5(@babel/core@7.27.4(supports-color@8.1.1))(supports-color@8.1.1))(jest-util@30.0.5)(jest@30.0.5(@types/node@24.13.3)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@24.13.3)(typescript@5.9.3)))(typescript@5.9.3):
