@@ -100,7 +100,7 @@
     "pg-mem": "3.0.14",
     "prettier": "3.9.6",
     "prettier-plugin-toml": "2.0.6",
-    "semantic-release": "25.0.8",
+    "semantic-release": "25.0.9",
     "sort-package-json": "4.0.0",
     "supertest": "7.2.2",
     "ts-jest": "29.4.12",
