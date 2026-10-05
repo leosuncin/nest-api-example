@@ -205,11 +205,11 @@ importers:
         specifier: 3.0.14
         version: 3.0.14(typeorm@1.1.1(pg@8.23.0)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@24.13.3)(typescript@5.9.3)))
       prettier:
-        specifier: 3.9.6
-        version: 3.9.6
+        specifier: 3.9.9
+        version: 3.9.9
       prettier-plugin-toml:
         specifier: 2.0.6
-        version: 2.0.6(prettier@3.9.6)
+        version: 2.0.6(prettier@3.9.9)
       semantic-release:
         specifier: 25.0.9
         version: 25.0.9(supports-color@8.1.1)(typescript@5.9.3)
@@ -5440,8 +5440,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.3
 
-  prettier@3.9.6:
-    resolution: {integrity: sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==}
+  prettier@3.9.9:
+    resolution: {integrity: sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -10013,7 +10013,7 @@ snapshots:
       eslint-plugin-modules-newline: 0.0.6
       eslint-plugin-n: 17.24.0(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))(typescript@5.9.3)
       eslint-plugin-perfectionist: 5.6.0(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)
-      eslint-plugin-prettier: 5.5.5(@types/eslint@8.56.10)(eslint-config-prettier@10.1.8(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1)))(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))(prettier@3.9.6)
+      eslint-plugin-prettier: 5.5.5(@types/eslint@8.56.10)(eslint-config-prettier@10.1.8(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1)))(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))(prettier@3.9.9)
       eslint-plugin-promise: 7.2.1(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))
       eslint-plugin-react: 7.37.5(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))
       eslint-plugin-react-hooks: 7.0.1(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))(supports-color@8.1.1)
@@ -10023,7 +10023,7 @@ snapshots:
       eslint-plugin-zod: 3.4.0(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)(zod@4.3.6)
       globals: 16.5.0
       graphql: 16.13.1
-      prettier: 3.9.6
+      prettier: 3.9.9
       ramda: 0.32.0
     transitivePeerDependencies:
       - '@apollo/subgraph'
@@ -10309,10 +10309,10 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-prettier@5.5.5(@types/eslint@8.56.10)(eslint-config-prettier@10.1.8(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1)))(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))(prettier@3.9.6):
+  eslint-plugin-prettier@5.5.5(@types/eslint@8.56.10)(eslint-config-prettier@10.1.8(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1)))(eslint@10.9.1(jiti@2.4.1)(supports-color@8.1.1))(prettier@3.9.9):
     dependencies:
       eslint: 10.9.1(jiti@2.4.1)(supports-color@8.1.1)
-      prettier: 3.9.6
+      prettier: 3.9.9
       prettier-linter-helpers: 1.0.1
       synckit: 0.11.12
     optionalDependencies:
@@ -12711,12 +12711,12 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-toml@2.0.6(prettier@3.9.6):
+  prettier-plugin-toml@2.0.6(prettier@3.9.9):
     dependencies:
       '@taplo/lib': 0.5.0
-      prettier: 3.9.6
+      prettier: 3.9.9
 
-  prettier@3.9.6: {}
+  prettier@3.9.9: {}
 
   pretty-format@30.0.0:
     dependencies:
