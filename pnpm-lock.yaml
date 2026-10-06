@@ -220,8 +220,8 @@ importers:
         specifier: 7.2.2
         version: 7.2.2(supports-color@8.1.1)
       ts-jest:
-        specifier: 29.4.12
-        version: 29.4.12(@babel/core@7.27.4(supports-color@8.1.1))(@jest/transform@30.0.5(supports-color@8.1.1))(@jest/types@30.0.5)(babel-jest@30.0.5(@babel/core@7.27.4(supports-color@8.1.1))(supports-color@8.1.1))(jest-util@30.0.5)(jest@30.0.5(@types/node@24.13.3)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@24.13.3)(typescript@5.9.3)))(typescript@5.9.3)
+        specifier: 29.4.14
+        version: 29.4.14(@babel/core@7.27.4(supports-color@8.1.1))(@jest/transform@30.0.5(supports-color@8.1.1))(@jest/types@30.0.5)(babel-jest@30.0.5(@babel/core@7.27.4(supports-color@8.1.1))(supports-color@8.1.1))(jest-util@30.0.5)(jest@30.0.5(@types/node@24.13.3)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@24.13.3)(typescript@5.9.3)))(typescript@5.9.3)
       ts-loader:
         specifier: 9.5.2
         version: 9.5.2(typescript@5.9.3)(webpack@5.97.1(uglify-js@3.17.4))
@@ -6192,12 +6192,12 @@ packages:
     peerDependencies:
       typescript: '>=4.0.0'
 
-  ts-jest@29.4.12:
-    resolution: {integrity: sha512-Ov6ClY53Fflh6BGAnY2DlTq1hYDrTycz2PVTXBWFW2CU+9zrEqAp9fWdGXl42EXO5RLSFAcAZ2JFKbP+zBTFfw==}
+  ts-jest@29.4.14:
+    resolution: {integrity: sha512-+943G6wCX5E3VpzTQhBGBFntCmdT+QAkTvUlp03edTONFBvqskuXPhpyX16xdUotO4P5HQKyppldSWjocoltLQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
-      '@babel/core': '>=7.0.0-beta.0 <8'
+      '@babel/core': '>=7.0.0-beta.0 <9'
       '@jest/transform': ^29.0.0 || ^30.0.0
       '@jest/types': ^29.0.0 || ^30.0.0
       babel-jest: ^29.0.0 || ^30.0.0
@@ -13549,7 +13549,7 @@ snapshots:
       picomatch: 4.0.5
       typescript: 5.9.3
 
-  ts-jest@29.4.12(@babel/core@7.27.4(supports-color@8.1.1))(@jest/transform@30.0.5(supports-color@8.1.1))(@jest/types@30.0.5)(babel-jest@30.0.5(@babel/core@7.27.4(supports-color@8.1.1))(supports-color@8.1.1))(jest-util@30.0.5)(jest@30.0.5(@types/node@24.13.3)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@24.13.3)(typescript@5.9.3)))(typescript@5.9.3):
+  ts-jest@29.4.14(@babel/core@7.27.4(supports-color@8.1.1))(@jest/transform@30.0.5(supports-color@8.1.1))(@jest/types@30.0.5)(babel-jest@30.0.5(@babel/core@7.27.4(supports-color@8.1.1))(supports-color@8.1.1))(jest-util@30.0.5)(jest@30.0.5(@types/node@24.13.3)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@24.13.3)(typescript@5.9.3)))(typescript@5.9.3):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
