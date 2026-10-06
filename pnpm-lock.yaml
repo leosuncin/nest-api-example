@@ -178,8 +178,8 @@ importers:
         specifier: 0.1.4
         version: 0.1.4
       fast-check:
-        specifier: 4.9.0
-        version: 4.9.0
+        specifier: 4.10.2
+        version: 4.10.2
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -3481,8 +3481,8 @@ packages:
   factory.io@0.1.4:
     resolution: {integrity: sha512-HitBeYkQhdK7BKThgj62jDsB4GdASzEhwH9YigSsYRHfr7FJwHzilZeqWy0GTfw52A1HXPWCy0xecQEXFGlV9w==}
 
-  fast-check@4.9.0:
-    resolution: {integrity: sha512-7ms6T7SybUev/PQITciI0yLM2pOSFy5zpG8Ty7tQofcVaQUvrMXp6CBwqF6fThLCLOrfBtuHAtwq6Yu4XPCllg==}
+  fast-check@4.10.2:
+    resolution: {integrity: sha512-iK2f+YrcmoeGqk6fA0ea2bptcu/itMIm4NfEozq6N25+aG6h7s5HZbB/k1aV7b5w5sFLMCbbtRUsTVR+BgC3xw==}
     engines: {node: '>=12.17.0'}
 
   fast-content-type-parse@3.0.0:
@@ -10690,7 +10690,7 @@ snapshots:
       '@types/lodash.assignin': 4.2.7
       lodash.assignin: 4.2.0
 
-  fast-check@4.9.0:
+  fast-check@4.10.2:
     dependencies:
       pure-rand: 8.0.0
 
