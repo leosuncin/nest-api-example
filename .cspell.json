@@ -94,6 +94,7 @@
     "buildx",
     "commitlintrc",
     "lintstagedrc",
-    "releaserc"
+    "releaserc",
+    "jupyterhub"
   ]
 }

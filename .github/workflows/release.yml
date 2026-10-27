@@ -5,26 +5,45 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+
 jobs:
   release:
-    name: Release a new version 🚀
+    name: Release the new version
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎
+      - uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          client-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          skip-token-revoke: false
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+
+      - name: Checkout
         uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - name: Install PNPM 🧰
-        uses: pnpm/action-setup@v6
-      - name: Install Node.js LTS 📜
-        uses: actions/setup-node@v7
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Setup PNPM
+        uses: pnpm/setup@v3
         with:
-          node-version: 'lts/*'
-          cache: pnpm
-      - name: Install dependencies 📦
-        run: pnpm install --frozen-lockfile --strict-peer-dependencies
-      - name: Release 🚀
-        run: pnpm release
+          cache: true
+
+      - name: Audit dependencies
+        run: pnpm audit signatures
+
+      - name: Semantic release
+        run: >-
+          pnx --package=@semantic-release/changelog
+          --package=@semantic-release/exec
+          --package=@semantic-release/git
+          --package=semantic-release
+          semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
-          CI: true
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
