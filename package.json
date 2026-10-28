@@ -106,7 +106,7 @@
     "typeorm-extension": "2.8.1",
     "typescript": "5.9.3"
   },
-  "packageManager": "pnpm@11.28.9",
+  "packageManager": "pnpm@12.16.1",
   "engines": {
     "node": ">=20"
   }
